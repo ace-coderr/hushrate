@@ -6,11 +6,10 @@
   "scripts": {
     "probe": "tsx src/probe.ts",
     "wallet": "tsx src/wallet.ts",
-    "ask": "tsx src/ask.ts",
-    "sample": "tsx src/sample.ts",
-    "verify": "tsx src/verify.ts",
-    "typecheck": "tsc --noEmit",
-    "agent": "tsx src/agent.ts"
+    "agent": "tsx src/agent.ts",
+    "retest": "tsx src/retest.ts",
+    "mint": "tsx src/mint.ts",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

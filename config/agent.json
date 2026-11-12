@@ -1,0 +1,13 @@
+{
+  "nodes": ["TH_SP15_GEN-APND", "TH_NP15_GEN-APND", "TH_ZP26_GEN-APND"],
+  "telegraph": {
+    "hashprice_miner": "71083",
+    "power_miner": null,
+    "power_nodes_max": 2
+  },
+  "tolerance": {
+    "hashprice_rel": 0.01,
+    "power_abs_usd": 1,
+    "power_rel": 0.03
+  }
+}

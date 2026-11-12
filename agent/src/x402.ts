@@ -12,7 +12,7 @@ try { process.loadEnvFile(`${ROOT}.env`); } catch { /* env may already be set */
 export const NODE = (process.env.TELEGRAPH_NODE ?? "https://devnode.telegraphprotocol.com").replace(/\/$/, "");
 export const NETWORK = "eip155:11155111";
 export const MAX_PER_PAYMENT = "30000"; // 3 cents in 6-decimal test USDC
-export const MAX_PAID_CALLS = 4;
+export const MAX_PAID_CALLS = 3;
 const RECEIPTS = `${ROOT}data/receipts`;
 
 const key = process.env.EVM_PRIVATE_KEY;
@@ -68,12 +68,12 @@ function alreadyDone(c: Call): string | null {
   return null;
 }
 
-export interface Outcome { skipped?: string; status?: number; paid?: boolean; body?: any; file?: string; }
+export interface Outcome { skipped?: string; /** receipt file name, set for both new and skipped calls */ receipt_file?: string; status?: number; paid?: boolean; body?: any; file?: string; }
 
 /** Runs one call. Never retries. Records a receipt for anything that was paid. */
 export async function run(c: Call): Promise<Outcome> {
   const prior = alreadyDone(c);
-  if (prior) { console.log(`[${c.label}] already paid for identical request (${prior}); skipping.`); return { skipped: prior }; }
+  if (prior) { console.log(`[${c.label}] already paid for identical request (${prior}); skipping.`); return { skipped: prior, receipt_file: prior }; }
   currentCallPaid = false;
   const url = `${NODE}/engine/v1/ask${c.minerId ? `/${encodeURIComponent(c.minerId)}` : ""}`;
   console.log(`[${c.label}] POST ${url} ${c.intent} ${JSON.stringify(c.params)}`);
@@ -108,5 +108,9 @@ export async function run(c: Call): Promise<Outcome> {
   };
   writeFileSync(`${RECEIPTS}/${file}`, JSON.stringify(record, null, 2));
   console.log(`[${c.label}] HTTP ${res.status} paid=${currentCallPaid} -> data/receipts/${file}`);
-  return { status: res.status, paid: currentCallPaid, body, file };
+  return { status: res.status, paid: currentCallPaid, body, file, receipt_file: file };
+}
+
+export function readReceipt(file: string): any {
+  return JSON.parse(readFileSync(`${RECEIPTS}/${file}`, "utf8"));
 }

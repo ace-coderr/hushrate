@@ -13,10 +13,8 @@
   "scripts": {
     "probe": "npm run probe -w agent",
     "wallet": "npm run wallet -w agent",
-    "ask": "npm run ask -w agent",
-    "sample": "npm run sample -w agent",
-    "verify": "npm run verify -w agent",
     "agent": "npm run agent -w agent --",
-    "test": "npm test -w packages/core"
+    "test": "npm test -w packages/core",
+    "typecheck": "npm run typecheck -w packages/core && npm run typecheck -w agent"
   }
 }
