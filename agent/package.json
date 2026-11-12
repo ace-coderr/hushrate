@@ -10,8 +10,7 @@
     "sample": "tsx src/sample.ts",
     "verify": "tsx src/verify.ts",
     "typecheck": "tsc --noEmit",
-    "agent": "tsx src/agent.ts",
-    "test": "tsx --test src/decide.test.ts"
+    "agent": "tsx src/agent.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
@@ -21,6 +20,7 @@
   "dependencies": {
     "@x402/evm": "^2.30.0",
     "@x402/fetch": "^2.30.0",
-    "viem": "^2.57.19"
+    "viem": "^2.57.19",
+    "@hushrate/core": "*"
   }
 }

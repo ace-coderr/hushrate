@@ -6,6 +6,7 @@
     "node": ">=20"
   },
   "workspaces": [
+    "packages/*",
     "agent",
     "web"
   ],
@@ -16,6 +17,6 @@
     "sample": "npm run sample -w agent",
     "verify": "npm run verify -w agent",
     "agent": "npm run agent -w agent --",
-    "test": "npm test -w agent"
+    "test": "npm test -w packages/core"
   }
 }
