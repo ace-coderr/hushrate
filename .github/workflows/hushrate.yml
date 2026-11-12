@@ -36,16 +36,15 @@ jobs:
           EVM_PRIVATE_KEY: ${{ secrets.EVM_PRIVATE_KEY }}
           TELEGRAPH_NODE: https://devnode.telegraphprotocol.com
         run: npm run agent
+      # Never rebase or merge generated data: save it, reset to the remote, copy it back (the run's files win),
+      # commit and push, retrying up to 3 times. The script runs from a copy because the reset rewrites the tree.
       - name: Commit new data
         if: always()
         run: |
           git config user.name "ace-coderr"
           git config user.email "207328107+ace-coderr@users.noreply.github.com"
-          git add data/market data/latest.json data/history.json data/status.json data/ledger.json data/receipts
-          if git diff --cached --quiet; then echo "no new data"; exit 0; fi
-          git commit -m "Record market tape $(date -u +%Y-%m-%dT%H:%MZ)"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          cp scripts/commit-data.sh "$RUNNER_TEMP/commit-data.sh"
+          bash "$RUNNER_TEMP/commit-data.sh"
 
   deploy:
     needs: record
