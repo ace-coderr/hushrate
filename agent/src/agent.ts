@@ -10,6 +10,7 @@ import {
 } from "@hushrate/core";
 import { balances } from "./wallet.js";
 import { dayAhead, realTime } from "./caiso.js";
+import { writeLedger } from "./ledger.js";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const cfg = JSON.parse(readFileSync(`${ROOT}config/agent.json`, "utf8"));
@@ -167,6 +168,7 @@ if (existsSync(hp)) { try { hist = JSON.parse(readFileSync(hp, "utf8")); } catch
 hist = hist.filter((h) => h.interval_start !== hourIso);
 hist.push(toHistoryEntry(tape));
 write("data/history.json", hist.slice(-HISTORY_MAX));
+if (!dry) console.log(`ledger rows: ${writeLedger()}`);
 status("ok", { usdc_balance: tape.wallet_usdc_after, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls, cost_usd_last_run: tape.spend.cost_usd, hashprice_source: hashSource });
 
 console.log(`\ninterval ${hourIso} | block ${tip} | BTC $${btc}`);

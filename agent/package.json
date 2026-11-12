@@ -9,7 +9,8 @@
     "agent": "tsx src/agent.ts",
     "retest": "tsx src/retest.ts",
     "mint": "tsx src/mint.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ledger": "tsx src/ledger.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

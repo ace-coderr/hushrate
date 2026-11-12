@@ -1,0 +1,81 @@
+name: hushrate
+
+on:
+  schedule:
+    - cron: "7 * * * *"      # every hour at :07 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+# One run at a time: the agent spends test USDC and commits data, so runs must never overlap.
+concurrency:
+  group: hushrate
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  record:
+    # Only scheduled and manual runs buy data. A normal push just rebuilds and redeploys.
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - name: Record the hourly market tape
+        env:
+          EVM_PRIVATE_KEY: ${{ secrets.EVM_PRIVATE_KEY }}
+          TELEGRAPH_NODE: https://devnode.telegraphprotocol.com
+        run: npm run agent
+      - name: Commit new data
+        if: always()
+        run: |
+          git config user.name "ace-coderr"
+          git config user.email "207328107+ace-coderr@users.noreply.github.com"
+          git add data/market data/latest.json data/history.json data/status.json data/ledger.json data/receipts
+          if git diff --cached --quiet; then echo "no new data"; exit 0; fi
+          git commit -m "Record market tape $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+  deploy:
+    needs: record
+    # Run after a successful record, after a failed one (to publish the status file), and on plain pushes.
+    if: always() && (needs.record.result == 'success' || needs.record.result == 'failure' || needs.record.result == 'skipped')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build web
+        env:
+          VITE_BASE: /hushrate/
+        run: npm run build -w web
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
