@@ -42,6 +42,15 @@ npm run agent -- --loop     # repeat at 5 minutes past each UTC hour
 npm test                    # hand-computed checks of the run/curtail math
 ```
 
+## Dashboard
+
+```bash
+npm run dev -w web      # local dev server
+npm run build -w web    # static build in web/dist
+```
+
+The dashboard shows the latest decision per site, where each number came from, the Telegraph payment receipt, and a history table. It bundles the saved files in `data/decisions/` and `data/receipts/` at build time, so rebuild after running the agent. It shows nothing that was not saved by the agent.
+
 ## How a cycle decides
 
 1. Fetch the latest Bitcoin block height, the BTC/USD price and the block's own reward and difficulty from mempool.space, and compute the public hashprice for that block.
