@@ -16,6 +16,8 @@ export interface LedgerRow {
   paid_usd: number;
   receipt_hash: string | null;
   tx_hash: string | null;
+  payer: string | null;
+  amount_uusdc: string | null;
   signal_hash: string | null;
   outcome: string;
 }
@@ -46,6 +48,8 @@ export function buildLedger(root = ROOT): LedgerRow[] {
       paid_usd: PRICE_PER_CALL,
       receipt_hash: tr.receipt_hash ?? null,
       tx_hash: tr.tx_hash ?? r.payment_response?.transaction ?? b.payment?.transaction ?? null,
+      payer: tr.payer ?? r.payment_response?.payer ?? b.payment?.payer ?? null,
+      amount_uusdc: tr.amount_uusdc ?? null,
       signal_hash: b.signal_hash ?? null,
       outcome: ok ? "served" : "failed after payment; credited to escrow",
     });
