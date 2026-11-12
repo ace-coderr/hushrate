@@ -22,8 +22,8 @@
         "basis": "real-time"
       }
     ],
-    "paid_calls": 0,
-    "cost_usd": 0,
+    "paid_calls": 1,
+    "cost_usd": 0.01,
     "tx_hashes": [
       "0x12d94c3eb5a4fe506cc260a7f2c2be727cb698a15a4318132a1ba486eb98add2"
     ],

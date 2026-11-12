@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "interval_start": "2026-11-12T16:00:00Z",
-  "recorded_at": "2026-11-12T16:27:26.103Z",
+  "recorded_at": "2026-11-12T16:30:04.470Z",
   "block_height": 975572,
   "btc_usd": 71862,
   "hashprice": {
@@ -71,8 +71,8 @@
     }
   ],
   "spend": {
-    "paid_calls": 0,
-    "cost_usd": 0
+    "paid_calls": 1,
+    "cost_usd": 0.01
   },
   "wallet_usdc_after": "15.92",
   "notes": []

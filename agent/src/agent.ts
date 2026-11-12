@@ -149,10 +149,14 @@ for (const node of cfg.nodes as string[]) {
 }
 
 // ---- tape ----------------------------------------------------------------------------------
+// Accounting follows the calls the tape references, so a second run in the same hour (which skips an
+// identical purchase) still reports what that hour cost.
+const tapeCalls = [hashCall, ...power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && c.paid);
+const tapeSpend = { paid_calls: tapeCalls.length, cost_usd: Number(tapeCalls.reduce((a, c) => a + (c.cost_usd ?? 0), 0).toFixed(2)) };
 const tape: MarketTape = {
   schema: 1, interval_start: hourIso, recorded_at: now.toISOString(), block_height: tip, btc_usd: btc,
   hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: w, telegraph: hashCall, public_at_telegraph_height: singleAtTip },
-  power, spend: { paid_calls: spendCalls, cost_usd: Number(spendUsd.toFixed(2)) },
+  power, spend: tapeSpend,
   wallet_usdc_after: null, notes,
 };
 tape.wallet_usdc_after = (await balances()).usdc;
@@ -169,10 +173,10 @@ hist = hist.filter((h) => h.interval_start !== hourIso);
 hist.push(toHistoryEntry(tape));
 write("data/history.json", hist.slice(-HISTORY_MAX));
 if (!dry) console.log(`ledger rows: ${writeLedger()}`);
-status("ok", { usdc_balance: tape.wallet_usdc_after, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls, cost_usd_last_run: tape.spend.cost_usd, hashprice_source: hashSource });
+status("ok", { usdc_balance: tape.wallet_usdc_after, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls, cost_usd_last_run: Number(spendUsd.toFixed(2)), hashprice_source: hashSource });
 
 console.log(`\ninterval ${hourIso} | block ${tip} | BTC $${btc}`);
 console.log(`hashprice ${hashValue.toFixed(1)} sats/PH/day (${hashSource}); single block at tip ${singleAtTip.toFixed(1)}, 144-block range ${w.min_block.toFixed(0)}..${w.max_block.toFixed(0)}`);
 console.log(`  ${hashLabel}`);
 for (const p of power) console.log(`${p.node}: real-time ${p.real_time_usd_per_mwh ?? "n/a"}  day-ahead ${p.day_ahead_usd_per_mwh ?? "n/a"} $/MWh${p.errors.length ? "  (" + p.errors.join("; ") + ")" : ""}`);
-console.log(`spent this run: ${spendCalls} call(s), $${tape.spend.cost_usd.toFixed(2)}; wallet ${tape.wallet_usdc_after} USDC${dry ? " [dry run: nothing written]" : ""}`);
+console.log(`spent this run: ${spendCalls} call(s), $${spendUsd.toFixed(2)}; tape accounts for ${tapeSpend.paid_calls} paid call(s), $${tapeSpend.cost_usd.toFixed(2)}; wallet ${tape.wallet_usdc_after} USDC${dry ? " [dry run: nothing written]" : ""}`);

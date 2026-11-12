@@ -127,7 +127,7 @@ export function Landing() {
           {[
             ["Is this real money?", "No. Payments are Ethereum Sepolia test USDC at $0.01 per request. Nothing here touches mainnet."],
             ["Where do my site numbers go?", "Nowhere. Sites live in your browser's local storage and decisions are computed in the page. The published files hold market data only."],
-            ["Why not use Telegraph for the power price?", "It was tested twice and the answer disagreed with CAISO by about $29/MWh, so Hushrate uses CAISO directly and says so. The probe report has the numbers."],
+            ["Why not use Telegraph for the power price?", "In the tests recorded in the probe report, the one miner that answered was about $29/MWh away from CAISO for the same hour and node, so Hushrate uses CAISO directly and says so."],
             ["What does real-time versus day-ahead change?", "Real-time prices move every five minutes and can differ a lot from the day-ahead price. Hushrate uses real-time when CAISO has it and labels which one decided."],
             ["Does it switch my machines?", "No. It tells you RUN, CURTAIL or HOLD with the numbers behind it. Acting on that is up to your own controls."],
           ].map(([q, a]) => <details key={q}><summary>{q}</summary><p>{a}</p></details>)}
