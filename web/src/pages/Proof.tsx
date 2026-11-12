@@ -33,10 +33,11 @@ export function Proof() {
   const row: LedgerRow | undefined = rows.find((r) => r.tx_hash === tx);
 
   async function recompute(tape: MarketTape) {
+    if (tape.block_height === null) { setHp({ state: "error", text: "This tape has no block height (mempool.space was unreachable that hour), so there is nothing to recompute." }); setCmp(idle); return; }
     setHp({ state: "running", text: "Reading 144 blocks from mempool.space…" });
     setCmp(idle);
     try {
-      const w = windowHashprice(await fetchBlocks(tape.block_height!, 144));
+      const w = windowHashprice(await fetchBlocks(tape.block_height, 144));
       const rec = tape.hashprice.public_144?.hashprice_sats_per_ph_day;
       if (rec == null) { setHp({ state: "error", text: "The tape has no recorded 144-block value to compare." }); return; }
       const rel = Math.abs(w.hashprice_sats_per_ph_day - rec) / rec;

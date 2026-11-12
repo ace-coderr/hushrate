@@ -27,6 +27,7 @@ export function summarizeMarket(t: MarketTape) {
       };
     }),
     notes: t.notes,
+    degraded: t.degraded ?? [],
   };
 }
 

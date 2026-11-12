@@ -21,7 +21,7 @@ export function Desk() {
 
       {status.data && status.data.state !== "ok" && (
         <div className="notice warn" role="alert">
-          Agent status: <b>{status.data.state}</b>. {status.data.reason} Last update {ago(status.data.updated_at)}.
+          Agent status: <b>{status.data.state}</b>. {status.data.reason} Last update {ago(status.data.updated_at)}.{status.data.degraded && status.data.degraded.length > 0 && <ul>{status.data.degraded.map((x) => <li key={x}>{x}</li>)}</ul>}
         </div>
       )}
 

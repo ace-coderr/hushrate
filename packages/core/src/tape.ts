@@ -50,6 +50,8 @@ export interface MarketTape {
   spend: { paid_calls: number; cost_usd: number };
   wallet_usdc_after: string | null;
   notes: string[];
+  /** Upstream sources that failed this run (mempool.space, CAISO, Telegraph, Sepolia RPC). Empty or absent when clean. */
+  degraded?: string[];
 }
 
 export interface HistoryEntry {
@@ -63,6 +65,11 @@ export interface HistoryEntry {
   cost_usd: number;
   tx_hashes: string[];
   receipt_hashes: string[];
+}
+
+/** Completeness of a tape or history entry: used to stop a degraded rerun from overwriting a better tape for the same hour. */
+export function tapeScore(t: { hashprice: number | null; btc: number | null; powerNodesWithPrice: number }): number {
+  return (t.hashprice !== null ? 1 : 0) + (t.btc !== null ? 1 : 0) + t.powerNodesWithPrice;
 }
 
 export type PowerBasis = "real-time" | "day-ahead";

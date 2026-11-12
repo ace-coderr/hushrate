@@ -4,11 +4,12 @@ import type { MarketTape, HistoryEntry } from "@hushrate/core";
 export const BASE: string = import.meta.env.BASE_URL;
 
 export interface Status {
-  state: "ok" | "paused" | "error";
+  state: "ok" | "degraded" | "paused" | "error";
+  degraded?: string[];
   updated_at: string;
   last_success_at?: string | null;
   reason?: string;
-  usdc_balance?: string;
+  usdc_balance?: string | null;
   last_tape?: string;
   paid_calls_last_run?: number;
   cost_usd_last_run?: number;

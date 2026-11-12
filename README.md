@@ -48,6 +48,19 @@ The default fleet is a **sample fleet of demo assumptions**, labelled as such in
 
 The agent never retries after a payment settled, skips an identical request it already paid for, and pauses (writes `data/status.json`, buys nothing) if the test-USDC balance is below 0.20. A request that settles and then fails upstream is credited back to escrow by the node and shows in the ledger as billed $0.
 
+## Failure handling
+
+The agent exits non-zero only for real failures: a missing or wrong wallet key, unreadable config, a failed file write, or an unexpected bug (it also writes `status: error`). A failed upstream source (mempool.space, CAISO OASIS, Telegraph, the Sepolia RPC) is a **degraded run**: the run still finishes with exit code 0, the failure is listed in the tape's `degraded` field and in `data/status.json` (`state: degraded`), it shows as a warning in the Actions run, and the affected inputs are left empty so sites that need them decide HOLD. Specifics:
+
+- mempool.space down: no hashprice or BTC price on the tape, and no Telegraph purchase (there is nothing to verify it against, so no money is spent).
+- CAISO down for a node: that node has no price and decides HOLD.
+- Telegraph call fails: the public hashprice is used and the tape says why.
+- Sepolia RPC down: the balance cannot be proven, so no paid call is made.
+- A degraded rerun never overwrites a more complete tape already recorded for the same hour (every run is still kept under `data/market/`).
+- Below 0.20 test USDC the run is `paused` (exit code 0), not an error.
+
+The Settings page shows the state, the last successful run (a degraded run counts, since the schedule is alive) and the degraded reasons.
+
 ## Limits
 
 - **Testnet.** Sepolia test USDC only.

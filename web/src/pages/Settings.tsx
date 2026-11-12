@@ -48,7 +48,7 @@ export function Settings() {
           {s && stalled && <div className="notice warn" role="alert">The hourly schedule looks stalled: no successful run for over 2.5 hours. Market data on this site may be out of date.</div>}
           {s && (
             <dl>
-              <dt>State</dt><dd><span className={`badge ${s.state === "ok" ? "run" : s.state === "paused" ? "hold" : "cut"}`}>{s.state}</span></dd>
+              <dt>State</dt><dd><span className={`badge ${s.state === "ok" ? "run" : s.state === "paused" || s.state === "degraded" ? "hold" : "cut"}`}>{s.state}</span></dd>
               <dt>Last successful run</dt>
               <dd className={stalled ? "stall" : undefined}>{lastOk ? `${new Date(lastOk).toISOString().slice(0, 16).replace("T", " ")} UTC · ${ago(lastOk)}` : "never recorded"}</dd>
               <dt>Last status update</dt><dd>{ago(s.updated_at)}</dd>
@@ -57,6 +57,9 @@ export function Settings() {
               {s.paid_calls_last_run !== undefined && <><dt>Last run</dt><dd className="mono">{s.paid_calls_last_run} paid call(s), ${(s.cost_usd_last_run ?? 0).toFixed(2)}</dd></>}
               {s.hashprice_source && <><dt>Hashprice source</dt><dd>{s.hashprice_source}</dd></>}
             </dl>
+          )}
+          {s?.degraded && s.degraded.length > 0 && (
+            <div className="notice warn"><b>Degraded run.</b> An upstream source failed; the tape was still recorded and affected sites hold.<ul>{s.degraded.map((d) => <li key={d}>{d}</li>)}</ul></div>
           )}
           {latest.data && <p className="small muted">Latest tape: {hourLabel(latest.data.interval_start)}, recorded {ago(latest.data.recorded_at)}. History holds {history.data?.length ?? 0} hour(s); the ledger holds {ledger.data?.length ?? 0} paid request(s).</p>}
         </section>
