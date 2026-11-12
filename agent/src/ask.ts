@@ -69,11 +69,25 @@ async function run(c: Call): Promise<void> {
   if (prior) { console.log(`[${c.label}] already paid for identical request (${prior}); skipping.`); return; }
   currentCallPaid = false;
   console.log(`[${c.label}] POST ${NODE}/engine/v1/ask ${c.intent} ${JSON.stringify(c.params)}`);
-  const res = await fetchWithPayment(`${NODE}/engine/v1/ask`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ intent: c.intent, params: c.params }),
-  });
+  let res: Response;
+  try {
+    res = await fetchWithPayment(`${NODE}/engine/v1/ask`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ intent: c.intent, params: c.params }),
+    });
+  } catch (e) {
+    // If a payment was already signed and sent, record it so a re-run never pays twice.
+    if (currentCallPaid) {
+      const ts = new Date().toISOString().replace(/[:.]/g, "-");
+      writeFileSync(`${RECEIPTS}/${ts}-${c.label}.json`, JSON.stringify({
+        label: c.label, intent: c.intent, params: c.params,
+        idempotency_key: JSON.stringify([c.intent, c.params]),
+        paid: true, http_status: null, error: String(e),
+      }, null, 2));
+    }
+    throw e;
+  }
   const text = await res.text();
   let body: unknown; try { body = JSON.parse(text); } catch { body = { raw: text }; }
   const record = {
