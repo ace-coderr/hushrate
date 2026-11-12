@@ -50,9 +50,9 @@ function b64json(v: string | null): unknown {
   try { return JSON.parse(Buffer.from(v, "base64").toString("utf8")); } catch { return { undecodable: v }; }
 }
 
-export interface Call { label: string; intent: string; params: Record<string, unknown>; minerId?: string; }
+export interface Call { label: string; intent: string; params?: Record<string, unknown>; query?: string; minerId?: string; }
 
-const keyOf = (c: Call) => JSON.stringify([c.minerId ?? null, c.intent, c.params]);
+const keyOf = (c: Call) => JSON.stringify(c.query ? [c.minerId ?? null, c.intent, c.params ?? null, c.query] : [c.minerId ?? null, c.intent, c.params]);
 
 function alreadyDone(c: Call): string | null {
   mkdirSync(RECEIPTS, { recursive: true });
@@ -76,20 +76,20 @@ export async function run(c: Call): Promise<Outcome> {
   if (prior) { console.log(`[${c.label}] already paid for identical request (${prior}); skipping.`); return { skipped: prior, receipt_file: prior }; }
   currentCallPaid = false;
   const url = `${NODE}/engine/v1/ask${c.minerId ? `/${encodeURIComponent(c.minerId)}` : ""}`;
-  console.log(`[${c.label}] POST ${url} ${c.intent} ${JSON.stringify(c.params)}`);
+  console.log(`[${c.label}] POST ${url} ${c.intent} ${JSON.stringify(c.params ?? c.query)}`);
   const stamp = () => new Date().toISOString().replace(/[:.]/g, "-");
   let res: Response;
   try {
     res = await fetchWithPayment(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ intent: c.intent, params: c.params }),
+      body: JSON.stringify({ intent: c.intent, ...(c.params ? { params: c.params } : {}), ...(c.query ? { query: c.query } : {}) }),
     });
   } catch (e) {
     // If a payment was already signed and sent, record it so a re-run never pays twice.
     if (currentCallPaid) {
       writeFileSync(`${RECEIPTS}/${stamp()}-${c.label}.json`, JSON.stringify({
-        label: c.label, miner_id_requested: c.minerId ?? null, intent: c.intent, params: c.params,
+        label: c.label, miner_id_requested: c.minerId ?? null, intent: c.intent, params: c.params ?? null, query: c.query ?? null,
         idempotency_key: keyOf(c), paid: true, http_status: null, error: String(e),
       }, null, 2));
     }
@@ -100,7 +100,7 @@ export async function run(c: Call): Promise<Outcome> {
   const file = `${stamp()}-${c.label}.json`;
   // Unpaid refusals (400/402/404/503 before settlement) carry no receipt; keep them out of the ledger.
   const record = {
-    label: c.label, miner_id_requested: c.minerId ?? null, intent: c.intent, params: c.params,
+    label: c.label, miner_id_requested: c.minerId ?? null, intent: c.intent, params: c.params ?? null, query: c.query ?? null,
     idempotency_key: keyOf(c), paid: currentCallPaid, http_status: res.status,
     payment_response: b64json(res.headers.get("payment-response")),
     telegraph_receipt: b64json(res.headers.get("x-telegraph-receipt")),

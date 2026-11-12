@@ -1,0 +1,64 @@
+{
+  "label": "retest-router-params",
+  "miner_id_requested": null,
+  "intent": "GRID_POWER_PRICE_GENERAL",
+  "params": {
+    "node_or_zone": "TH_SP15_GEN-APND",
+    "interval_start": "2026-11-12T16:00:00Z"
+  },
+  "query": null,
+  "idempotency_key": "[null,\"GRID_POWER_PRICE_GENERAL\",{\"node_or_zone\":\"TH_SP15_GEN-APND\",\"interval_start\":\"2026-11-12T16:00:00Z\"}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x3402ab0da37e47f3bc7eb3975281855cdfcda8c38f75cfd19a124e05567a681a",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0xacc9ca87eed98dd0815354a2d8c3e85c00a31404d6b8ac1e7f91950eecdda4fe",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "4893",
+    "intent": "GRID_POWER_PRICE_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 2075,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0x3402ab0da37e47f3bc7eb3975281855cdfcda8c38f75cfd19a124e05567a681a",
+    "timestamp": 1794499649
+  },
+  "response": {
+    "miner_id": "302",
+    "miner_name": "ChainSight — Universal Intelligence & Data Oracle",
+    "endpoint": "/gridprice",
+    "result": {
+      "lmp_usd_per_mwh": 42.7,
+      "node_or_zone": "TH_SP15_GEN-APND",
+      "market": null,
+      "interval_start": null,
+      "currency": null
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "lmp_usd_per_mwh": "ok",
+      "node_or_zone": "ok",
+      "market": "missing",
+      "interval_start": "rejected",
+      "currency": "missing"
+    },
+    "input": {
+      "node_or_zone": "TH_SP15_GEN-APND",
+      "interval_start": "2026-11-12T16:00:00Z"
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 1636,
+    "timestamp": "2026-11-12T16:07:27.54624745Z",
+    "reasoning": "Intent: intent given by the caller\nMiner: The user is asking for grid power price information, and the intent GRID_POWER_PRICE_GENERAL is explicitly provided. The ChainSight miner's /gridprice endpoint is described as serving the GRID_POWER_PRICE_GENERAL intent and is suitable for retrieving wholesale electricity prices. The question includes specific parameters that need to be passed to the query parameter of this endpoint.",
+    "intent": "GRID_POWER_PRICE_GENERAL",
+    "signal_hash": "0xe5c391277b28511d593356d7a95a3d04212d3faf319e5a5d2aab9623f16cd188"
+  }
+}

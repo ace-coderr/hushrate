@@ -58,6 +58,28 @@ Revised verdicts:
 - `MINING_HASHPRICE_VERIFY_GENERAL`: **usable when pinned to a good miner** (71083 verified on one block). The router's first pick (67004) was not usable and miner 4283 timed out, so pin the miner and re-verify against the public formula on every call.
 - `GRID_POWER_PRICE_GENERAL`: **still not usable.** The router's miner (302) was off by about 33%, and the CAISO-specific miners reject the canonical params. No verified CAISO price source through Telegraph yet.
 
+## Round 3: power-price retest (2026-11-12, 16:07 UTC)
+
+Script: `agent/src/retest.ts` (`npm run retest -w agent`). Raw output: `data/probe/power-retest-*.json`, receipts in `data/receipts/`. Reference: CAISO OASIS day-ahead LMP for `TH_SP15_GEN-APND`, hour starting 16:00 UTC = **13.27178 USD/MWh**. The node ids, the RFC 3339 `interval_start` and the intent schema (`node_or_zone`, `interval_start`) follow the docs at `/docs/using/intent-schema`.
+
+| Attempt | Outcome | Cost |
+|---|---|---|
+| Router, `intent` + `params` | HTTP 200 from miner 302 (ChainSight): `lmp_usd_per_mwh` 42.7, `field_status`: lmp `ok`, `market` `missing`, `interval_start` `rejected`, `currency` `missing`. **29.43 above CAISO.** | $0.01 |
+| Router, `intent` + free-text `query` | HTTP 200 from miner 302 again: 42.8, `market` `rejected`, `interval_start` `missing`. **29.53 above CAISO.** | $0.01 |
+| Direct to miner 92881 (CAISO NP15 DAM), `intent` + `query` | HTTP 503 before payment: `/query` has no field for `node_or_zone`, `interval_start` | $0 |
+
+Result: **still not usable.** The one miner that answers returns about the same figure (42.7 to 42.8) in two modes and in the earlier 15:00 UTC call (42.7), while the CAISO SP15 day-ahead price moved from 32.20 (15:00) to 13.27 (16:00). It never confirms the interval or market. Hushrate therefore keeps `power_miner: null` in `config/agent.json`, so it does not pay for power price every hour, and uses CAISO OASIS directly (real-time first, day-ahead otherwise). If a Telegraph miner is later proven, setting `power_miner` makes the agent buy and cross-check it automatically (accepted only within the larger of $1 or 3% of CAISO day-ahead).
+
+## Other Mission 12 intents
+
+- `DATACENTER_TELEMETRY_VERIFY_GENERAL` takes one param, `facility` (a data centre, rack or device), and returns `power_kw` (the only on-chain scored field). Hushrate holds only market data and the operator's own site parameters typed in the browser; it has no facility identifier with a telemetry source behind it, so there is no real input to send. Not used, not called.
+- `SLA_COMPLIANCE_GENERAL` takes `service` and `period` and returns `uptime_pct`. The product makes no uptime claims about any service. Not used, not called.
+- Both schemas are saved in `data/discovery/`. They would become relevant if an operator supplied a facility or service to verify; that is outside this build.
+
+## Hashprice acceptance rule
+
+The agent requires `hashprice_sats_per_ph_day`, `block_height` and `hashrate_eh_s` to be `ok`, the returned height to equal the requested tip, and the value to be within 1% of the public 144-block mean. Miner 71083 returns `hashprice_usd_per_ph_day` as `missing`; this is not required because USD is computed locally from the public BTC price. Telegraph computes a single block, so its value and the 144-block mean can differ by the block's fee noise; when they differ by more than 1% the public value is used and the receipt says why.
+
 ## Recommendation
 
 On this evidence, Mission 12 data quality is **not good enough yet** to drive run or curtail decisions from the node alone. One sample per intent is thin, but both samples failed. Hushrate should:

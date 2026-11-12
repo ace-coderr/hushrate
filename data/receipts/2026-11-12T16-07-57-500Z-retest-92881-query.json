@@ -1,0 +1,18 @@
+{
+  "label": "retest-92881-query",
+  "miner_id_requested": "92881",
+  "intent": "GRID_POWER_PRICE_GENERAL",
+  "params": null,
+  "query": "What is the CAISO day-ahead locational marginal price in US dollars per MWh for node TH_SP15_GEN-APND for the hour starting 2026-11-12T16:00:00Z?",
+  "idempotency_key": "[\"92881\",\"GRID_POWER_PRICE_GENERAL\",null,\"What is the CAISO day-ahead locational marginal price in US dollars per MWh for node TH_SP15_GEN-APND for the hour starting 2026-11-12T16:00:00Z?\"]",
+  "paid": false,
+  "http_status": 503,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "error": "no_compatible_miner",
+    "intent": "GRID_POWER_PRICE_GENERAL",
+    "message": "miner grid-caiso-np15-b cannot take this request's params: /query has no field for required param(s) node_or_zone, interval_start",
+    "schema_version": 1
+  }
+}
