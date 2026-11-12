@@ -12,7 +12,7 @@ export function Logo({ size = 28 }: { size?: number }) {
   );
 }
 
-const TABS: { to: Route; label: string }[] = [
+const APP_TABS: { to: Route; label: string }[] = [
   { to: "/desk", label: "Desk" },
   { to: "/sites", label: "Sites" },
   { to: "/whatif", label: "What-if" },
@@ -22,67 +22,98 @@ const TABS: { to: Route; label: string }[] = [
   { to: "/settings", label: "Settings" },
 ];
 
-export function Nav({ route }: { route: Route }) {
+const LANDING_LINKS: { to: Route; label: string }[] = [
+  { to: "/", label: "Product" },
+  { to: "/desk", label: "Desk" },
+  { to: "/proof", label: "Proof" },
+  { to: "/docs", label: "Docs" },
+];
+
+function ThemeToggle() {
   const { settings, setSettings } = useStore();
-  const [open, setOpen] = useState(false);
-  useEffect(() => setOpen(false), [route]);
   const dark = document.documentElement.dataset.theme !== "light";
-  const link = (to: Route, label: string) => (
-    <a href={`#${to}`} className={route === to ? "active" : ""} aria-current={route === to ? "page" : undefined}>{label}</a>
-  );
   return (
-    <header className="nav">
+    <button className="icon-btn" onClick={() => setSettings({ theme: dark ? "light" : "dark" })} aria-label={dark ? "Switch to light theme" : "Switch to dark theme"} title="Toggle theme" data-theme-setting={settings.theme}>
+      {dark ? (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+      ) : (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
+      )}
+    </button>
+  );
+}
+
+/**
+ * The one navigation bar, in two modes.
+ *  - Landing ("/"): Product, Desk, Proof, Docs, theme toggle and the "Open the desk" button.
+ *  - App pages: the seven app tabs and the theme toggle. Nothing repeats and there is no call-to-action button.
+ */
+export function Nav({ route }: { route: Route }) {
+  const app = route !== "/";
+  const [open, setOpen] = useState(false);
+  const activeRef = useRef<HTMLAnchorElement>(null);
+  useEffect(() => setOpen(false), [route]);
+  // Keep the active tab in view when the tab strip scrolls horizontally on a narrow screen.
+  useEffect(() => { activeRef.current?.scrollIntoView({ inline: "center", block: "nearest" }); }, [route]);
+
+  const items = app ? APP_TABS : LANDING_LINKS;
+  return (
+    <header className={`nav ${app ? "nav-app" : "nav-landing"}`}>
       <div className="nav-in">
-        <a className="brand" href="#/" aria-label="Hushrate home"><Logo /><span>hushrate</span></a>
-        <nav className={`nav-links ${open ? "open" : ""}`} aria-label="Main">
-          {link("/", "Product")}{link("/desk", "Desk")}{link("/proof", "Proof")}{link("/docs", "Docs")}
+        <a className="brand" href="#/" aria-label="Hushrate home"><Logo /><span className="brand-name">hushrate</span></a>
+        <nav className={`nav-links ${app ? "tabs-strip" : ""} ${open ? "open" : ""}`} aria-label={app ? "App sections" : "Main"}>
+          {items.map((l) => {
+            const active = route === l.to;
+            return (
+              <a key={l.to} ref={active ? activeRef : undefined} href={`#${l.to}`} className={active ? "navlink active" : "navlink"} aria-current={active ? "page" : undefined}>{l.label}</a>
+            );
+          })}
         </nav>
         <div className="nav-end">
-          <button className="icon-btn" onClick={() => setSettings({ theme: dark ? "light" : "dark" })} aria-label={dark ? "Switch to light theme" : "Switch to dark theme"} title="Toggle theme">
-            {dark ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
-            )}
-          </button>
-          <a className="pill primary nav-cta" href="#/desk">Open the desk</a>
-          <button className="icon-btn menu-btn" aria-expanded={open} aria-label="Menu" onClick={() => setOpen((o) => !o)}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
-          </button>
+          <ThemeToggle />
+          {!app && <a className="pill primary nav-cta" href="#/desk">Open the desk</a>}
+          {!app && (
+            <button className="icon-btn menu-btn" aria-expanded={open} aria-controls="landing-menu" aria-label="Menu" onClick={() => setOpen((o) => !o)}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+            </button>
+          )}
         </div>
       </div>
     </header>
   );
 }
 
-export function TabNav({ route }: { route: Route }) {
-  if (route === "/") return null;
-  return (
-    <div className="tabs-wrap">
-      <nav className="tabs" aria-label="App sections">
-        {TABS.map((t) => (
-          <a key={t.to} href={`#${t.to}`} className={route === t.to ? "tab active" : "tab"} aria-current={route === t.to ? "page" : undefined}>{t.label}</a>
-        ))}
-      </nav>
-    </div>
-  );
-}
+const REPO = "https://github.com/ace-coderr/hushrate";
 
 export function Footer() {
   return (
     <footer className="footer">
       <div className="foot-in">
-        <div className="foot-brand">
-          <a className="brand" href="#/"><Logo size={24} /><span>hushrate</span></a>
-          <p>Hourly run-or-curtail decisions for bitcoin mining sites, backed by receipts you can check. Testnet only: data is paid for in Ethereum Sepolia test USDC.</p>
+        <div className="foot-grid">
+          <div className="foot-brand">
+            <a className="brand" href="#/"><Logo size={24} /><span className="brand-name">hushrate</span></a>
+            <p>Testnet build: paid in Ethereum Sepolia test USDC.</p>
+          </div>
+          <nav className="foot-col" aria-label="Product">
+            <h4>Product</h4>
+            <a href="#/desk">Desk</a><a href="#/sites">Sites</a><a href="#/whatif">What-if</a>
+          </nav>
+          <nav className="foot-col" aria-label="Verify">
+            <h4>Verify</h4>
+            <a href="#/receipts">Receipts</a><a href="#/proof">Proof</a><a href="#/docs">Docs</a>
+          </nav>
+          <nav className="foot-col" aria-label="Project">
+            <h4>Project</h4>
+            <a href="#/settings">Settings</a>
+            <a href={REPO} target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+            <a href={`${REPO}/tree/main/packages/mcp`} target="_blank" rel="noopener noreferrer">MCP server</a>
+          </nav>
         </div>
-        <nav className="foot-links" aria-label="Footer">
-          {TABS.map((t) => <a key={t.to} href={`#${t.to}`}>{t.label}</a>)}
-          <a href="https://github.com/ace-coderr/hushrate" rel="noopener noreferrer">Source</a>
-        </nav>
-        <p className="built">
-          Built by <a className="ace-pill" href="https://x.com/_ace_won" rel="noopener noreferrer" target="_blank">ace</a>
-        </p>
+        <hr className="foot-rule" />
+        <div className="foot-bottom">
+          <p className="foot-note">Testnet only. Nothing here touches mainnet or real funds.</p>
+          <p className="built">Built by <a className="ace-pill" href="https://x.com/_ace_won" rel="noopener noreferrer" target="_blank">ace</a></p>
+        </div>
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Footer, Nav, TabNav } from "./components/Layout";
+import { Footer, Nav } from "./components/Layout";
 import { useRoute } from "./lib/store";
 import { Landing } from "./pages/Landing";
 import { Desk } from "./pages/Desk";
@@ -24,7 +24,6 @@ export function App() {
     <>
       <a className="skip" href="#main" onClick={(e) => { e.preventDefault(); main.current?.focus(); }}>Skip to content</a>
       <Nav route={route} />
-      <TabNav route={route} />
       <main id="main" ref={main} tabIndex={-1} className="page" key={route}>
         <Page />
       </main>
