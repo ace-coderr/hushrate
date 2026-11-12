@@ -24,6 +24,14 @@ export interface LedgerRow {
   signal_hash: string | null; outcome: string;
 }
 
+export interface Ticker {
+  last_trigger?: string;
+  last_trigger_at?: string;
+  last_ticker_at?: string;
+  last_schedule_at?: string;
+  last_manual_at?: string;
+}
+
 export interface Loaded<T> { data: T | null; error: string | null; loading: boolean; }
 
 const cache = new Map<string, Promise<unknown>>();
@@ -53,4 +61,5 @@ export function useJson<T>(path: string): Loaded<T> {
 export const useLatest = () => useJson<MarketTape>("data/latest.json");
 export const useHistory = () => useJson<HistoryEntry[]>("data/history.json");
 export const useStatus = () => useJson<Status>("data/status.json");
+export const useTicker = () => useJson<Ticker>("data/ticker.json");
 export const useLedger = () => useJson<LedgerRow[]>("data/ledger.json");

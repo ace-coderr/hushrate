@@ -1,5 +1,5 @@
 import { PageHead } from "../components/Layout";
-import { BASE, useHistory, useLatest, useLedger, useStatus } from "../lib/data";
+import { BASE, useHistory, useLatest, useLedger, useStatus, useTicker } from "../lib/data";
 import { ago, hourLabel } from "../lib/format";
 import { useStore } from "../lib/store";
 
@@ -9,9 +9,13 @@ export function Settings() {
   const latest = useLatest();
   const history = useHistory();
   const ledger = useLedger();
+  const ticker = useTicker();
   const s = status.data;
   // The agent runs hourly. More than 150 minutes without a successful run means the schedule has stalled.
   const lastOk = s?.last_success_at ?? (s?.state === "ok" ? s.updated_at : null);
+  // The ticker dispatches a run at HH:17 UTC every hour. No ticker-started run for 90 minutes means the chain has stopped.
+  const lastTick = ticker.data?.last_ticker_at ?? null;
+  const tickerAlive = !!lastTick && Date.now() - new Date(lastTick).getTime() < 90 * 60_000;
   const stalled = !!s && (!lastOk || Date.now() - new Date(lastOk).getTime() > 150 * 60_000);
   const files = [
     ["data/latest.json", "Latest market tape"],
@@ -51,6 +55,8 @@ export function Settings() {
               <dt>State</dt><dd><span className={`badge ${s.state === "ok" ? "run" : s.state === "paused" || s.state === "degraded" ? "hold" : "cut"}`}>{s.state}</span></dd>
               <dt>Last successful run</dt>
               <dd className={stalled ? "stall" : undefined}>{lastOk ? `${new Date(lastOk).toISOString().slice(0, 16).replace("T", " ")} UTC · ${ago(lastOk)}` : "never recorded"}</dd>
+              <dt>Ticker</dt>
+              <dd className={tickerAlive ? undefined : "stall"}>{tickerAlive ? `alive · last tick ${new Date(lastTick!).toISOString().slice(11, 16)} UTC · ${ago(lastTick!)}` : lastTick ? `not seen for ${ago(lastTick).replace(" ago", "")} · restart it` : "not started yet · start it once"}</dd>
               <dt>Last status update</dt><dd>{ago(s.updated_at)}</dd>
               {s.reason && <><dt>Reason</dt><dd>{s.reason}</dd></>}
               {s.usdc_balance && <><dt>Test-USDC balance</dt><dd className="mono">{s.usdc_balance}</dd></>}

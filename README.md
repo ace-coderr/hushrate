@@ -108,6 +108,20 @@ To reproduce the proof by hand, open the Proof page, or recompute the mean of `r
 
 Setup once: add the secret `EVM_PRIVATE_KEY` (Settings, Secrets and variables, Actions) and set Settings, Pages, Source to GitHub Actions.
 
+### The ticker (so hourly runs do not depend on GitHub's cron)
+
+GitHub's `schedule` trigger is best-effort and, for this repo, has never fired. `.github/workflows/ticker.yml` is a self-chaining replacement:
+
+1. It sleeps until the next `HH:17` UTC.
+2. It dispatches the `hushrate` workflow (`gh workflow run hushrate.yml -f source=ticker`), with 3 attempts.
+3. In a final step that runs `if: always()` (so a failed dispatch or a failed record run cannot break the chain) it dispatches itself again, with 3 attempts. If the wait step fails early it still waits until 10 minutes after it started before chaining, so a fault can never make it spin.
+
+It has its own concurrency group (`hushrate-ticker`), permissions `actions: write` and `contents: read`, and a 75-minute timeout. The `schedule` trigger on the main workflow stays as a second source. A job-hour of runner time is used per hour, which is free on a public repository.
+
+**Start it, or restart it if the chain ever stops:** GitHub, Actions tab, `ticker` in the left list, Run workflow, branch `main`. Or `gh workflow run ticker.yml`. Starting it twice does not create two chains: a second run queued behind the waiting one is replaced when the first chains its successor. The Settings page shows **Ticker alive** (last ticker-started run within 90 minutes) or tells you to restart it; the run's step summary names the exact time of the next dispatch. The chain stops only if the ticker job is killed (for example by the 75-minute timeout) or if GitHub rejects every dispatch attempt; the red `Chain the next ticker` step then carries the message to restart it.
+
+**Two triggers in one hour cannot buy twice.** The ticker, the schedule and a manual run can all land in the same UTC hour. The agent checks first whether that hour already has a paid purchase, from two independent sources: the tape history entry for the hour, and any paid receipt file stamped inside the hour (`agent/src/guard.ts`). If so the run logs `SKIP: ... this trigger is a no-op` and exits 0 without buying or recording anything. This is separate from the per-request duplicate check, which is keyed on the block height and would not stop a second purchase after a new block. An hour whose attempt never paid (for example a degraded run) can still be retried. Runs are also serialised by the workflow's concurrency group. Check it with `npm test -w agent` (the guard tests include a two-triggers, different-block-heights scenario), or in a run log: a second trigger in the same hour prints the `SKIP` line and buys nothing.
+
 ## MCP server
 
 Reads the published JSON, so it needs no key and no wallet.

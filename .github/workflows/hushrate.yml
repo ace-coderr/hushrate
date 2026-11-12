@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "17 * * * *"     # every hour at :17 UTC (off the busy top of the hour)
   workflow_dispatch:
+    inputs:
+      source:
+        description: "Who started this run (the ticker sets this to ticker)"
+        required: false
+        default: manual
+        type: string
   push:
     branches: [main]
 
@@ -35,6 +41,8 @@ jobs:
         env:
           EVM_PRIVATE_KEY: ${{ secrets.EVM_PRIVATE_KEY }}
           TELEGRAPH_NODE: https://devnode.telegraphprotocol.com
+          # ticker, schedule or manual: lets the Settings page show whether the hourly chain is alive
+          HUSHRATE_TRIGGER: ${{ github.event_name == 'workflow_dispatch' && inputs.source || github.event_name }}
         run: npm run agent
       # Never rebase or merge generated data: save it, reset to the remote, copy it back (the run's files win),
       # commit and push, retrying up to 3 times. The script runs from a copy because the reset rewrites the tree.

@@ -10,7 +10,8 @@
     "retest": "tsx src/retest.ts",
     "mint": "tsx src/mint.ts",
     "typecheck": "tsc --noEmit",
-    "ledger": "tsx src/ledger.ts"
+    "ledger": "tsx src/ledger.ts",
+    "test": "tsx --test src/*.test.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

@@ -14,7 +14,7 @@ REMOTE="${REMOTE:-origin}"
 BRANCH="${BRANCH:-main}"
 ATTEMPTS="${ATTEMPTS:-3}"
 STASH="$(mktemp -d)"
-GENERATED=(market latest.json history.json status.json ledger.json receipts)
+GENERATED=(market latest.json history.json status.json ledger.json ticker.json receipts)
 
 mkdir -p "$STASH/data"
 for p in "${GENERATED[@]}"; do

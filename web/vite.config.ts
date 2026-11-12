@@ -5,7 +5,7 @@ import { resolve, join, normalize } from "node:path";
 
 const DATA = resolve(__dirname, "../data");
 // Only the published market data is served; discovery dumps and probe files stay in the repo.
-const PUBLISHED = ["latest.json", "history.json", "status.json", "ledger.json", "market", "receipts"];
+const PUBLISHED = ["latest.json", "history.json", "status.json", "ledger.json", "ticker.json", "market", "receipts"];
 
 /** Serves ../data at /data in dev and copies the published subset into dist/data on build. */
 function publishData(): Plugin {

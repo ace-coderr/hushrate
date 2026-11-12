@@ -15,6 +15,7 @@ import {
 import { balances } from "./wallet.js";
 import { dayAhead, realTime } from "./caiso.js";
 import { writeLedger } from "./ledger.js";
+import { paidThisHourFromDisk } from "./guard.js";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const noPay = process.argv.includes("--no-pay");
@@ -50,6 +51,22 @@ const status = (state: State, extra: Record<string, unknown>) => {
   });
 };
 
+/** HUSHRATE_TRIGGER is set by the workflow: ticker, schedule, manual, push... Unset for local runs, which are not recorded. */
+function noteTrigger(now: Date): void {
+  const t = process.env.HUSHRATE_TRIGGER;
+  if (!t) return;
+  const prev = readJson<Record<string, string | null>>("data/ticker.json") ?? {};
+  const at = now.toISOString();
+  write("data/ticker.json", {
+    ...prev,
+    last_trigger: t,
+    last_trigger_at: at,
+    ...(t === "ticker" ? { last_ticker_at: at } : {}),
+    ...(t === "schedule" ? { last_schedule_at: at } : {}),
+    ...(t === "manual" || t === "workflow_dispatch" ? { last_manual_at: at } : {}),
+  });
+}
+
 const warn = (m: string) => { console.warn(`DEGRADED: ${m}`); if (process.env.GITHUB_ACTIONS) console.log(`::warning title=Hushrate degraded run::${m}`); };
 
 async function main(): Promise<void> {
@@ -57,6 +74,23 @@ async function main(): Promise<void> {
   const degraded: string[] = [];
   const notes: string[] = [];
   let spendCalls = 0, spendUsd = 0;
+
+  const now = new Date();
+  const hour = new Date(now); hour.setUTCMinutes(0, 0, 0);
+  const hourIso = hour.toISOString().replace(".000Z", "Z");
+
+  // Note which trigger started this run (ticker, schedule or manual) so the Settings page can show whether the
+  // hourly chain is alive. Written even when the run turns out to be a no-op below.
+  noteTrigger(now);
+
+  // Same-hour guard: two triggers in one UTC hour must never make two paid purchases.
+  if (!noPay) {
+    const g = paidThisHourFromDisk(ROOT, hourIso);
+    if (g.paid) {
+      console.log(`SKIP: ${g.why}. Nothing to buy or record for ${hourIso}; this trigger is a no-op.`);
+      return;
+    }
+  }
 
   console.log("Cost table (Ethereum Sepolia, test USDC, no real money)");
   console.log(`  price per call           $${PRICE.toFixed(2)} (10000 units, cap per payment 30000)`);
@@ -81,10 +115,6 @@ async function main(): Promise<void> {
     degraded.push(`Sepolia RPC: balance check failed (${msg(e)})`);
     if (canPay) { canPay = false; notes.push("paid call skipped: the wallet balance could not be checked"); }
   }
-
-  const now = new Date();
-  const hour = new Date(now); hour.setUTCMinutes(0, 0, 0);
-  const hourIso = hour.toISOString().replace(".000Z", "Z");
 
   // ---- public market inputs: each source fails on its own ---------------------------------------------
   let tip: number | null = null, btc: number | null = null;

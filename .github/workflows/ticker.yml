@@ -1,0 +1,76 @@
+name: ticker
+
+# Self-chaining hourly trigger, so hourly runs do not depend on GitHub's cron scheduler.
+# One run: sleep until the next HH:17 UTC, dispatch the main "hushrate" workflow, then dispatch itself again.
+# Start the chain (or restart it if it ever stops) with: Actions > ticker > Run workflow, or `gh workflow run ticker.yml`.
+# The main workflow keeps its own schedule trigger as a second source; the same-hour guard in the agent
+# makes sure two triggers in one hour can never cause two paid calls.
+on:
+  workflow_dispatch:
+
+# Its own group, one at a time. Starting a second ticker by hand while one is waiting does not create a
+# second chain: a run queued behind the waiting one is replaced by the next self-dispatch.
+concurrency:
+  group: hushrate-ticker
+  cancel-in-progress: false
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Wait until the next HH:17 UTC
+        run: |
+          set -euo pipefail
+          start=$(date -u +%s)
+          echo "START_EPOCH=$start" >> "$GITHUB_ENV"
+          hour=$(date -u -d "@$start" +%Y-%m-%dT%H)
+          target=$(date -u -d "${hour}:17:00 UTC" +%s)
+          if [ "$start" -ge "$target" ]; then target=$((target + 3600)); fi
+          wait=$((target - start))
+          echo "now    $(date -u -d "@$start" +%Y-%m-%dT%H:%M:%SZ)"
+          echo "target $(date -u -d "@$target" +%Y-%m-%dT%H:%M:%SZ) (sleeping ${wait}s)"
+          echo "Ticker: next hushrate run at $(date -u -d "@$target" +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_STEP_SUMMARY"
+          sleep "$wait"
+
+      - name: Dispatch the hushrate workflow (3 attempts)
+        run: |
+          set -u
+          for i in 1 2 3; do
+            if gh workflow run hushrate.yml --ref main -f source=ticker; then
+              echo "dispatched hushrate on attempt $i at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+              exit 0
+            fi
+            echo "dispatch attempt $i failed"
+            sleep $((i * 5))
+          done
+          echo "::error::could not dispatch hushrate after 3 attempts"
+          exit 1
+
+      # Runs even when an earlier step failed, so a failed dispatch or record run cannot break the chain.
+      - name: Chain the next ticker
+        if: always()
+        run: |
+          set -u
+          # Storm guard: if the wait step failed early, never start the next generation sooner than 10 minutes
+          # after this one began (a normal tick has already waited much longer, so this never delays it).
+          now=$(date -u +%s)
+          elapsed=$((now - ${START_EPOCH:-$now}))
+          if [ "$elapsed" -lt 600 ]; then sleep $((600 - elapsed)); fi
+          for i in 1 2 3; do
+            if gh workflow run ticker.yml --ref main; then
+              echo "chained the next ticker on attempt $i"
+              exit 0
+            fi
+            echo "chain attempt $i failed"
+            sleep $((i * 5))
+          done
+          echo "::error::could not re-dispatch the ticker; the chain has stopped. Restart it: Actions > ticker > Run workflow."
+          exit 1
