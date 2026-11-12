@@ -31,6 +31,7 @@ cp .env.example .env   # then set EVM_PRIVATE_KEY (Ethereum Sepolia test wallet 
 npm run probe     # free: fetch intent schemas and miners
 npm run wallet    # free: print Sepolia ETH and test USDC balances
 npm run ask       # PAID (test USDC): one GRID_POWER_PRICE_GENERAL and one MINING_HASHPRICE_VERIFY_GENERAL call
+npm run sample    # PAID (test USDC): direct calls to chosen miners, checked against public sources
 npm run verify    # free: compare saved results with CAISO OASIS and mempool.space
 ```
 

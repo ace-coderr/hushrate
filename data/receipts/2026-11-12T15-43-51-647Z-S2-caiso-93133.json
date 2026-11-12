@@ -1,0 +1,20 @@
+{
+  "label": "S2-caiso-93133",
+  "miner_id_requested": "93133",
+  "intent": "GRID_POWER_PRICE_GENERAL",
+  "params": {
+    "node_or_zone": "TH_NP15_GEN-APND",
+    "interval_start": "2026-11-12T15:00:00Z"
+  },
+  "idempotency_key": "[\"93133\",\"GRID_POWER_PRICE_GENERAL\",{\"node_or_zone\":\"TH_NP15_GEN-APND\",\"interval_start\":\"2026-11-12T15:00:00Z\"}]",
+  "paid": false,
+  "http_status": 503,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "error": "no_compatible_miner",
+    "intent": "GRID_POWER_PRICE_GENERAL",
+    "message": "miner grid-caiso-np15-c cannot take this request's params: /query has no field for required param(s) node_or_zone, interval_start",
+    "schema_version": 1
+  }
+}

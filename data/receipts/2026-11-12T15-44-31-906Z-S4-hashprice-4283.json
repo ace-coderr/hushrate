@@ -1,0 +1,30 @@
+{
+  "label": "S4-hashprice-4283",
+  "miner_id_requested": "4283",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 975569
+  },
+  "idempotency_key": "[\"4283\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":975569}]",
+  "paid": true,
+  "http_status": 500,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x1d1d139b37e8183d9e390fc826ff3d0e95586cf8e1399b1bd687a2b986026cb7",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": null,
+  "response": {
+    "error": "upstream call failed: Get \"https://gauge.2-29-171-24.sslip.io/hashprice?block_height=975569\": dial tcp 2.29.171.24:443: i/o timeout",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_id": "4283",
+    "payment": {
+      "status": "escrow_credit_pending",
+      "message": "Your payment settled but the request failed, so nothing was billed. The amount is being credited to your Telegraph escrow balance (on-chain, usually within a few minutes): it then pays for your next asks, or withdraw it with requestWithdraw then executeWithdraw. If your balance has not risen after a while, contact support with this transaction.",
+      "transaction": "0x1d1d139b37e8183d9e390fc826ff3d0e95586cf8e1399b1bd687a2b986026cb7",
+      "network": "eip155:11155111",
+      "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e"
+    }
+  }
+}

@@ -7,6 +7,7 @@
     "probe": "tsx src/probe.ts",
     "wallet": "tsx src/wallet.ts",
     "ask": "tsx src/ask.ts",
+    "sample": "tsx src/sample.ts",
     "verify": "tsx src/verify.ts",
     "typecheck": "tsc --noEmit"
   },
