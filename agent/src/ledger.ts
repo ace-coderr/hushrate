@@ -32,6 +32,7 @@ export function buildLedger(root = ROOT): LedgerRow[] {
     let r: any;
     try { r = JSON.parse(readFileSync(`${dir}/${f}`, "utf8")); } catch { continue; }
     if (!r.paid) continue; // refused before payment: nothing was spent
+    if (r.http_status === 402) continue; // payment was not accepted by the node: nothing settled
     const b = r.response ?? {};
     const tr = r.telegraph_receipt ?? {};
     const ok = r.http_status === 200;
@@ -51,7 +52,7 @@ export function buildLedger(root = ROOT): LedgerRow[] {
       payer: tr.payer ?? r.payment_response?.payer ?? b.payment?.payer ?? null,
       amount_uusdc: tr.amount_uusdc ?? null,
       signal_hash: b.signal_hash ?? null,
-      outcome: ok ? "served" : "failed after payment; credited to escrow",
+      outcome: ok ? "served" : r.http_status === null ? "transport error after payment was signed; status unknown, check the wallet" : "failed after payment; credited to escrow",
     });
   }
   return rows;

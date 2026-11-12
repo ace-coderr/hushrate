@@ -1,68 +1,125 @@
 # Hushrate
 
-Autonomous hourly power-allocation agent for bitcoin miners and compute operators. It is intended to buy grid power price and hashprice data per request over x402 from the Telegraph network, decide run or curtail per site, and print a receipt for every decision.
+Hourly run-or-curtail decisions for bitcoin mining sites, with a receipt for every one.
 
-Entry for Telegraph Hackathon Season II, Apps & Agents track, Mission 12 (Mining and Power).
+Hushrate buys real market data from the [Telegraph](https://anjoman.ai/docs/introduction) network over x402 (Ethereum Sepolia, test USDC, $0.01 per request), records an hourly **market tape**, and lets each operator decide RUN, CURTAIL or HOLD for their own sites in the browser. Entry for Telegraph Hackathon Season II, Apps & Agents, Mission 12 (Mining and Power).
 
-## Status
+- Live: https://ace-coderr.github.io/hushrate/
+- **Testnet only.** No mainnet, no real money.
+- Nothing is mocked. Where an input is missing the answer is HOLD, never a guess.
 
-Data-discovery stage. The decision loop and UI are not built yet. See [docs/probe-report.md](docs/probe-report.md) for what the first paid calls returned and whether the data is usable.
+## How it works
 
-## Layout
+```
+GitHub Actions (hourly)
+  agent  ── mempool.space ──▶ 144-block hashprice, BTC/USD (public)
+         ── Telegraph (x402) ▶ hashprice from pinned miner 71083, $0.01 test USDC
+         ── CAISO OASIS ─────▶ day-ahead and real-time LMP per node (public)
+         └─▶ data/market/<time>.json, latest.json, history.json, ledger.json, status.json
+  web    ── reads data/*.json ─▶ decisions computed in the browser with @hushrate/core
+  mcp    ── reads data/*.json ─▶ hushrate_market, hushrate_decide, hushrate_receipts
+```
 
-- `agent/` Node + TypeScript scripts
-- `web/` React + Vite shell (no UI yet)
-- `data/discovery/` saved intent schemas and miner listings
-- `data/receipts/` decoded payment and Telegraph receipts for each paid call
-- `data/verification/` comparison of results with public sources
+Rules the agent follows each run:
 
-## Setup
+1. Compute the public hashprice as the mean over the last 144 blocks (block reward including fees, difficulty), with BTC/USD from mempool.space.
+2. Buy the same quantity from Telegraph miner 71083. Accept it only if `hashprice_sats_per_ph_day`, `block_height` and `hashrate_eh_s` are `ok`, the returned height equals the requested tip, and the value is within 1% of the public value. Otherwise use the public value and label why on the tape.
+3. Fetch CAISO day-ahead and latest real-time (5-minute) prices for each configured node. Decisions use real-time when available, day-ahead otherwise, and the label says which.
+4. Write the tape. The tape contains **market data only**; sites and decisions never leave the user's browser.
+
+`@hushrate/core` (`packages/core`) holds the decision math, the 144-block hashprice and the tape types, and is used by the agent, the web app and the MCP server, with hand-computed tests.
+
+## Pages
+
+Landing, Desk (live market, 24-hour dispatch tape, per-site decisions with breakeven bars), Sites (your own sites in local storage, validated, JSON import/export), What-if (sliders for price, hashprice and efficiency), Receipts (ledger of paid requests with Sepolia explorer links, and data cost against loss avoided), Proof (re-verify in your browser: recompute 144 blocks, apply the acceptance rule, check the payment on Sepolia through a public RPC), Docs, Settings.
+
+The default fleet is a **sample fleet of demo assumptions**, labelled as such in the app. There are no customers and no adoption numbers anywhere.
+
+## Cost
+
+| | |
+|---|---|
+| Price per Telegraph request | $0.01 (10000 units of test USDC) |
+| Cap per payment | 30000 units ($0.03) |
+| Paid calls per run | planned 1 (hashprice), hard cap 3 |
+| Worst case per run | $0.03 |
+| Worst case per day (24 runs) | $0.72 |
+| Worst case to 1 Dec (19 days) | $13.68 |
+
+The agent never retries after a payment settled, skips an identical request it already paid for, and pauses (writes `data/status.json`, buys nothing) if the test-USDC balance is below 0.20. A request that settles and then fails upstream is credited back to escrow by the node and shows in the ledger as billed $0.
+
+## Limits
+
+- **Testnet.** Sepolia test USDC only.
+- **Sample fleet.** Default sites are demo assumptions. Decisions are only as good as your load, efficiency and power adder.
+- **Day-ahead versus real-time.** Real-time moves every five minutes. Hushrate uses the latest published interval, not a forecast.
+- **Hashprice** is a 144-block mean; single blocks vary with fees. Telegraph's miner returns one block, so its value is accepted only inside 1% of the mean.
+- **Telegraph power price is not used.** `GRID_POWER_PRICE_GENERAL` was tested in params and query mode: miner 302 returned about 42.7 for SP15 while CAISO showed 13.27, and the CAISO-specific miners refuse the standard params. CAISO OASIS supplies power prices. Details and raw outputs are in [docs/probe-report.md](docs/probe-report.md).
+- **Telemetry and SLA intents are not used.** They need a facility or service identifier the product does not have. See the probe report.
+- **Three nodes.** The tape covers `TH_SP15_GEN-APND`, `TH_NP15_GEN-APND`, `TH_ZP26_GEN-APND`. Other nodes decide HOLD.
+- **It reports, it does not switch hardware**, and it ignores ramp, restart and contract costs. Not financial advice.
+
+## Run it yourself
 
 Node 20 or newer.
 
 ```bash
+git clone https://github.com/ace-coderr/hushrate.git
+cd hushrate
 npm install
-cp .env.example .env   # then set EVM_PRIVATE_KEY (Ethereum Sepolia test wallet only)
+cp .env.example .env           # set EVM_PRIVATE_KEY to a Sepolia TEST wallet
+npm run wallet                 # test ETH and test USDC balances (read-only)
+npm run agent -- --no-pay --dry   # free: print a tape from public sources only
+npm run agent                  # buys one hashprice reading and writes data/
+npm run dev -w web             # local web app (serves ../data at /data)
 ```
 
-## Scripts
+Other scripts: `npm run probe` (free discovery), `npm run retest -w agent` (power-price retest, up to 3 paid calls), `npm run ledger -w agent`, and `npm run mint -w agent` (dry run unless `--confirm`; mints Sepolia test USDC via `mint(address,uint256)`).
+
+## Reproduce the build and checks
 
 ```bash
-npm run probe     # free: fetch intent schemas and miners
-npm run wallet    # free: print Sepolia ETH and test USDC balances
-npm run ask       # PAID (test USDC): one GRID_POWER_PRICE_GENERAL and one MINING_HASHPRICE_VERIFY_GENERAL call
-npm run sample    # PAID (test USDC): direct calls to chosen miners, checked against public sources
-npm run verify    # free: compare saved results with CAISO OASIS and mempool.space
+npm test               # core and MCP tests (hand-computed)
+npm run typecheck
+npm run build -w web   # static site in web/dist (VITE_BASE=/hushrate/ for Pages)
+npm run build -w packages/mcp
 ```
+
+To reproduce the proof by hand, open the Proof page, or recompute the mean of `reward * 1e15 * 86400 / (difficulty * 2^32)` over the 144 blocks ending at `block_height` in `data/latest.json`, and look up any `tx_hash` from `data/ledger.json` on Sepolia.
+
+## Hourly workflow
+
+`.github/workflows/hushrate.yml` runs every hour (`7 * * * *`) and on demand, one run at a time. It runs the tests, records the tape with `EVM_PRIVATE_KEY` from a repository secret, commits `data/` with the noreply author, builds the web app and deploys to GitHub Pages. A push to `main` only rebuilds and deploys; it does not buy data.
+
+Setup once: add the secret `EVM_PRIVATE_KEY` (Settings, Secrets and variables, Actions) and set Settings, Pages, Source to GitHub Actions.
+
+## MCP server
+
+Reads the published JSON, so it needs no key and no wallet.
 
 ```bash
-npm run agent               # one allocation cycle: buys hashprice (test USDC), prints a receipt per site
-npm run agent -- --no-pay   # same, public sources only, spends nothing
-npm run agent -- --loop     # repeat at 5 minutes past each UTC hour
-npm test                    # hand-computed checks of the run/curtail math
+npm install
+npm run build -w packages/mcp
 ```
 
-## Dashboard
+Add to your MCP client (for example `claude_desktop_config.json`) with the real absolute path:
 
-```bash
-npm run dev -w web      # local dev server
-npm run build -w web    # static build in web/dist
+```json
+{
+  "mcpServers": {
+    "hushrate": { "command": "node", "args": ["/absolute/path/to/hushrate/packages/mcp/dist/index.js"] }
+  }
+}
 ```
 
-The dashboard shows the latest decision per site, where each number came from, the Telegraph payment receipt, and a history table. It bundles the saved files in `data/decisions/` and `data/receipts/` at build time, so rebuild after running the agent. It shows nothing that was not saved by the agent.
+Tools: `hushrate_market` (latest tape), `hushrate_decide` (site parameters in, decision and breakeven out), `hushrate_receipts` (ledger of paid requests). Set `HUSHRATE_DATA_URL` to read a different copy of `data/`.
 
-## How a cycle decides
+## Repository layout
 
-1. Fetch the latest Bitcoin block height, the BTC/USD price and the block's own reward and difficulty from mempool.space, and compute the public hashprice for that block.
-2. Buy the same hashprice from Telegraph miner 71083 (`POST /engine/v1/ask/71083`, $0.01 test USDC). Use it only if the call succeeds, every field is `ok`, the returned height matches, and the value is within 1% of the public computation. Otherwise fall back to the public value and say so on the receipt.
-3. Fetch the CAISO day-ahead LMP for each site's node for the current UTC hour from CAISO OASIS. If it is unavailable the site gets `HOLD (no power price)`, never a guessed value.
-4. For each site in `config/sites.json`: revenue = fleet hashrate x hashprice x BTC price; cost = fleet energy per day x (LMP + adder). `RUN` if margin exceeds the site's threshold, else `CURTAIL`. The receipt also shows the breakeven LMP.
-5. Print the receipt and save it to `data/decisions/`.
-
-Telegraph's power-price intent is not used for decisions: in testing it was wrong or unavailable (see the probe report). `config/sites.json` holds operator assumptions (fleet size, efficiency, adder), not market data; replace them with your own.
-
-Known limits: hashprice is gross for a single block, so unusually large fees in that block move it; the decision is per hour with no ramp or restart cost modelling; the agent prints decisions and does not control hardware.
-
-`ask` safeguards: network is pinned to Ethereum Sepolia, at most 4 paid calls per run, at most 3 cents per payment, a payment is never sent twice for one call, and a request already paid for (same intent and params) is skipped on re-run. The key in `.env` is checked against the expected wallet before any payment. Test funds only.
-
-Never commit `.env`.
+- `agent/` Node + TypeScript: agent, CAISO client, x402 client with spend guards, ledger, probe, retest, mint
+- `packages/core/` shared decision math, hashprice, tape types
+- `packages/mcp/` MCP server
+- `web/` React + Vite app
+- `config/agent.json` nodes, pinned miners, tolerances
+- `data/` published tape (`market/`, `latest.json`, `history.json`, `ledger.json`, `status.json`), `receipts/` (decoded payment and Telegraph receipts), `discovery/` and `probe/` (raw research output), `verification/`
+- `docs/probe-report.md` what Telegraph returned, with verdicts
