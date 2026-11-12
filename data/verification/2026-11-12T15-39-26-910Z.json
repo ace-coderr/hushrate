@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-11-12T15:39:23.851Z",
+  "grid_power": {
+    "receipt_file": "2026-11-12T15-37-04-599Z-A-grid-power.json",
+    "miner_id": "302",
+    "miner_name": "ChainSight — Universal Intelligence & Data Oracle",
+    "field_status": {
+      "lmp_usd_per_mwh": "ok",
+      "node_or_zone": "ok",
+      "market": "missing",
+      "interval_start": "rejected",
+      "currency": "missing"
+    },
+    "cost_usd": 0.01,
+    "signal_hash": "0xce9ec8b87697ce537c4b2b2d6c5750b9177b6e59d5f66ed5eb777c12397724e6",
+    "miner_value_usd_per_mwh": 42.7,
+    "reference_source": "CAISO OASIS PRC_LMP, DAM, LMP component",
+    "reference_value_usd_per_mwh": 32.1996,
+    "abs_diff": 10.500400000000006,
+    "verdict": "mismatch"
+  },
+  "hashprice": {
+    "receipt_file": "2026-11-12T15-37-43-623Z-B-hashprice.json",
+    "miner_id": "67004",
+    "miner_name": "Mempool Mining Pools",
+    "field_status": {
+      "hashprice_sats_per_ph_day": "missing",
+      "block_height": "ok",
+      "hashrate_eh_s": "missing",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "cost_usd": 0.01,
+    "signal_hash": "0xef1a9752d84f3a31076c912e1e868197b0a26f2056442d74cd176eed1e35f8d4",
+    "requested_block_height": 975569,
+    "miner_result": {
+      "hashprice_sats_per_ph_day": null,
+      "block_height": 975570,
+      "hashrate_eh_s": null,
+      "hashprice_usd_per_ph_day": null
+    },
+    "reference_source": "mempool.space",
+    "reference_tip_height_now": 975569,
+    "reference_hashrate_eh_s": 942.270011605655,
+    "height_verdict": "mismatch",
+    "hashrate_verdict": "no value returned",
+    "hashprice_verdict": "no value returned"
+  }
+}
