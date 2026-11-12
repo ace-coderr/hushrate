@@ -25,8 +25,14 @@ const write = (rel: string, data: unknown) => {
   mkdirSync(p.slice(0, p.lastIndexOf("/")), { recursive: true });
   writeFileSync(p, JSON.stringify(data, null, 2) + "\n");
 };
-const status = (state: "ok" | "paused" | "error", extra: Record<string, unknown>) =>
-  write("data/status.json", { state, updated_at: new Date().toISOString(), ...extra });
+// last_success_at only moves forward on an "ok" run, so a paused or failing agent shows as stale.
+const previousSuccess = (): string | null => {
+  try { return JSON.parse(readFileSync(`${ROOT}data/status.json`, "utf8")).last_success_at ?? null; } catch { return null; }
+};
+const status = (state: "ok" | "paused" | "error", extra: Record<string, unknown>) => {
+  const at = new Date().toISOString();
+  write("data/status.json", { state, updated_at: at, last_success_at: state === "ok" ? at : previousSuccess(), ...extra });
+};
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 // ---- cost table ----------------------------------------------------------------------------

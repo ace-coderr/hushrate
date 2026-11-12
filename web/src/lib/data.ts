@@ -6,6 +6,7 @@ export const BASE: string = import.meta.env.BASE_URL;
 export interface Status {
   state: "ok" | "paused" | "error";
   updated_at: string;
+  last_success_at?: string | null;
   reason?: string;
   usdc_balance?: string;
   last_tape?: string;

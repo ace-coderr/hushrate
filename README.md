@@ -89,7 +89,7 @@ To reproduce the proof by hand, open the Proof page, or recompute the mean of `r
 
 ## Hourly workflow
 
-`.github/workflows/hushrate.yml` runs every hour (`7 * * * *`) and on demand, one run at a time. It runs the tests, records the tape with `EVM_PRIVATE_KEY` from a repository secret, commits `data/` with the noreply author, builds the web app and deploys to GitHub Pages. A push to `main` only rebuilds and deploys; it does not buy data.
+`.github/workflows/hushrate.yml` runs every hour at :17 UTC (`17 * * * *`) and on demand, one run at a time. It runs the tests, records the tape with `EVM_PRIVATE_KEY` from a repository secret, commits `data/` with the noreply author, builds the web app and deploys to GitHub Pages. A push to `main` only rebuilds and deploys; it does not buy data.
 
 Setup once: add the secret `EVM_PRIVATE_KEY` (Settings, Secrets and variables, Actions) and set Settings, Pages, Source to GitHub Actions.
 

@@ -10,6 +10,9 @@ export function Settings() {
   const history = useHistory();
   const ledger = useLedger();
   const s = status.data;
+  // The agent runs hourly. More than 150 minutes without a successful run means the schedule has stalled.
+  const lastOk = s?.last_success_at ?? (s?.state === "ok" ? s.updated_at : null);
+  const stalled = !!s && (!lastOk || Date.now() - new Date(lastOk).getTime() > 150 * 60_000);
   const files = [
     ["data/latest.json", "Latest market tape"],
     ["data/history.json", "Rolling hourly history (last 500)"],
@@ -42,10 +45,13 @@ export function Settings() {
           <h3>Agent status</h3>
           {status.loading && <p className="muted">Loading…</p>}
           {status.error && <p className="muted">No status file published yet ({status.error}).</p>}
+          {s && stalled && <div className="notice warn" role="alert">The hourly schedule looks stalled: no successful run for over 2.5 hours. Market data on this site may be out of date.</div>}
           {s && (
             <dl>
               <dt>State</dt><dd><span className={`badge ${s.state === "ok" ? "run" : s.state === "paused" ? "hold" : "cut"}`}>{s.state}</span></dd>
-              <dt>Updated</dt><dd>{ago(s.updated_at)}</dd>
+              <dt>Last successful run</dt>
+              <dd className={stalled ? "stall" : undefined}>{lastOk ? `${new Date(lastOk).toISOString().slice(0, 16).replace("T", " ")} UTC · ${ago(lastOk)}` : "never recorded"}</dd>
+              <dt>Last status update</dt><dd>{ago(s.updated_at)}</dd>
               {s.reason && <><dt>Reason</dt><dd>{s.reason}</dd></>}
               {s.usdc_balance && <><dt>Test-USDC balance</dt><dd className="mono">{s.usdc_balance}</dd></>}
               {s.paid_calls_last_run !== undefined && <><dt>Last run</dt><dd className="mono">{s.paid_calls_last_run} paid call(s), ${(s.cost_usd_last_run ?? 0).toFixed(2)}</dd></>}

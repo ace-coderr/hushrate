@@ -229,3 +229,5 @@ pre code { background: none; padding: 0; }
   h2 { margin-top: 44px; }
   .sticky-actions .pill { flex: 1 1 auto; }
 }
+
+.stall { color: var(--bad); font-weight: 700; }
