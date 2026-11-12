@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "interval_start": "2026-11-12T16:00:00Z",
+  "recorded_at": "2026-11-12T16:27:26.103Z",
+  "block_height": 975572,
+  "btc_usd": 71862,
+  "hashprice": {
+    "value_sats_per_ph_day": 42921.532852,
+    "source": "telegraph",
+    "label": "Telegraph miner 71083, within 1% of the public 144-block value",
+    "public_144": {
+      "tip": 975572,
+      "blocks": 144,
+      "from_height": 975429,
+      "to_height": 975572,
+      "hashprice_sats_per_ph_day": 42747.929237969736,
+      "min_block": 42392.99523576336,
+      "max_block": 43756.88384424223
+    },
+    "telegraph": {
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "requested_miner": "71083",
+      "miner_id": "71083",
+      "miner_name": "Bitcoin Block Hashprice",
+      "http_status": 200,
+      "paid": true,
+      "cost_usd": 0.01,
+      "field_status": {
+        "hashprice_sats_per_ph_day": "ok",
+        "block_height": "ok",
+        "hashrate_eh_s": "ok",
+        "hashprice_usd_per_ph_day": "missing"
+      },
+      "value": 42921.532852,
+      "returned_height": 975572,
+      "signal_hash": "0x8e5657835fb5d152bac710256563f4d6cf5f75471b448cf3740581d232c3b28b",
+      "receipt_hash": "0x2cf9495c031d3dab13487a62ac3154e6704a57af11f9144b12618a22ec954d37",
+      "tx_hash": "0x12d94c3eb5a4fe506cc260a7f2c2be727cb698a15a4318132a1ba486eb98add2",
+      "receipt_file": "2026-11-12T16-11-02-989Z-hashprice-975572.json",
+      "accepted": true
+    },
+    "public_at_telegraph_height": 42921.53285189346
+  },
+  "power": [
+    {
+      "node": "TH_SP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 13.27178,
+      "day_ahead_interval": "2026-11-12T16:00:00.000Z",
+      "real_time_usd_per_mwh": 9.16297,
+      "real_time_interval": "2026-11-12T16:25:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_NP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 41.08497,
+      "day_ahead_interval": "2026-11-12T16:00:00.000Z",
+      "real_time_usd_per_mwh": 43.24623,
+      "real_time_interval": "2026-11-12T16:25:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_ZP26_GEN-APND",
+      "day_ahead_usd_per_mwh": 16.50468,
+      "day_ahead_interval": "2026-11-12T16:00:00.000Z",
+      "real_time_usd_per_mwh": 8.52432,
+      "real_time_interval": "2026-11-12T16:25:00.000Z",
+      "telegraph": null,
+      "errors": []
+    }
+  ],
+  "spend": {
+    "paid_calls": 0,
+    "cost_usd": 0
+  },
+  "wallet_usdc_after": "15.92",
+  "notes": []
+}
