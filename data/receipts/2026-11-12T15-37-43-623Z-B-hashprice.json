@@ -1,0 +1,58 @@
+{
+  "label": "B-hashprice",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 975569
+  },
+  "idempotency_key": "[\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":975569}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x5996dee50049cf45ab68851c229e52d569aeb7840b0be6f4c4d1b4f51a647fbe",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0xc9951e589b521b1080e94baaf66c080c67165bebfd47e43dd238dd3840320475",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "3604",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 2074,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0x5996dee50049cf45ab68851c229e52d569aeb7840b0be6f4c4d1b4f51a647fbe",
+    "timestamp": 1794497864
+  },
+  "response": {
+    "miner_id": "67004",
+    "miner_name": "Mempool Mining Pools",
+    "endpoint": "/query",
+    "result": {
+      "hashprice_sats_per_ph_day": null,
+      "block_height": 975570,
+      "hashrate_eh_s": null,
+      "hashprice_usd_per_ph_day": null
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "hashprice_sats_per_ph_day": "missing",
+      "block_height": "ok",
+      "hashrate_eh_s": "missing",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "input": {
+      "block_height": 975569
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 1668,
+    "timestamp": "2026-11-12T15:37:35.481781073Z",
+    "reasoning": "Intent: intent given by the caller\nMiner: The user is asking for a MINING_HASHPRICE_VERIFY_GENERAL request. The Mempool Mining Pools miner has an endpoint at /query that serves the MINING_HASHPRICE_VERIFY intent. The question specifies parameters to be used, and the timePeriod parameter is required for this endpoint. The value '975569' from the user's prompt is used for the timePeriod parameter.",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "signal_hash": "0xef1a9752d84f3a31076c912e1e868197b0a26f2056442d74cd176eed1e35f8d4"
+  }
+}
