@@ -1,0 +1,13 @@
+{
+  "name": "hushrate",
+  "private": true,
+  "version": "0.1.0",
+  "engines": { "node": ">=20" },
+  "workspaces": ["agent", "web"],
+  "scripts": {
+    "probe": "npm run probe -w agent",
+    "wallet": "npm run wallet -w agent",
+    "ask": "npm run ask -w agent",
+    "verify": "npm run verify -w agent"
+  }
+}
