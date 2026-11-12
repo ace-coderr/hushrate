@@ -49,6 +49,20 @@ export async function blockHashprice(height: number) {
   return { block_hash: hash, reward_sats: reward, difficulty, hashprice_sats_per_ph_day: sats };
 }
 
+export async function btcUsd(): Promise<number> {
+  const p = (await getJson("https://mempool.space/api/v1/prices")).USD;
+  if (typeof p !== "number" || !(p > 0)) throw new Error("invalid BTC/USD from mempool.space");
+  return p;
+}
+
+export async function tipHeight(): Promise<number> {
+  const r = await fetch("https://mempool.space/api/blocks/tip/height", { signal: AbortSignal.timeout(30000) });
+  if (!r.ok) throw new Error(`tip height -> ${r.status}`);
+  const h = Number((await r.text()).trim());
+  if (!Number.isInteger(h) || h <= 0) throw new Error("invalid tip height");
+  return h;
+}
+
 export async function networkHashrateEh(): Promise<number> {
   return (await getJson("https://mempool.space/api/v1/mining/hashrate/3d")).currentHashrate / 1e18;
 }

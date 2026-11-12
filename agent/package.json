@@ -9,7 +9,9 @@
     "ask": "tsx src/ask.ts",
     "sample": "tsx src/sample.ts",
     "verify": "tsx src/verify.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "agent": "tsx src/agent.ts",
+    "test": "tsx --test src/decide.test.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",

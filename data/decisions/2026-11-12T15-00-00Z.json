@@ -1,0 +1,68 @@
+{
+  "agent": "hushrate",
+  "interval_start": "2026-11-12T15:00:00Z",
+  "decided_at": "2026-11-12T15:48:08.812Z",
+  "inputs": {
+    "block_height": 975571,
+    "btc_usd": 71365,
+    "hashprice_sats_per_ph_day": 42514.095257,
+    "hashprice_source": "telegraph miner 71083 (verified within 1% of public)",
+    "power_source": "CAISO OASIS PRC_LMP day-ahead (public)"
+  },
+  "telegraph": {
+    "http_status": 200,
+    "paid": true,
+    "receipt_file": "2026-11-12T15-47-55-317Z-agent-hashprice-975571.json",
+    "miner_id": "71083",
+    "field_status": {
+      "hashprice_sats_per_ph_day": "ok",
+      "block_height": "ok",
+      "hashrate_eh_s": "ok",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "value_sats_per_ph_day": 42514.095257,
+    "rel_diff_vs_public": 9.272657858873735e-12,
+    "signal_hash": "0x2e47a02b2ce38c6c64f970a67c6c7537f96722749e72f0aedaa702e8da6cec2b"
+  },
+  "notes": [],
+  "sites": [
+    {
+      "name": "site-sp15",
+      "caiso_node": "TH_SP15_GEN-APND",
+      "hashrate_th": 20000,
+      "efficiency_j_per_th": 17.5,
+      "power_adder_usd_per_mwh": 10,
+      "min_margin_usd_per_day": 0
+    },
+    {
+      "name": "site-np15",
+      "caiso_node": "TH_NP15_GEN-APND",
+      "hashrate_th": 10000,
+      "efficiency_j_per_th": 29.5,
+      "power_adder_usd_per_mwh": 10,
+      "min_margin_usd_per_day": 0
+    }
+  ],
+  "decisions": [
+    {
+      "site": "site-sp15",
+      "node": "TH_SP15_GEN-APND",
+      "lmp_usd_per_mwh": 32.1996,
+      "action": "RUN",
+      "revenue_usd_per_day": 606.8036816031611,
+      "power_cost_usd_per_day": 354.47664,
+      "margin_usd_per_day": 252.3270416031611,
+      "breakeven_lmp_usd_per_mwh": 62.23853352418584
+    },
+    {
+      "site": "site-np15",
+      "node": "TH_NP15_GEN-APND",
+      "lmp_usd_per_mwh": 42.89231,
+      "action": "CURTAIL",
+      "revenue_usd_per_day": 303.40184080158053,
+      "power_cost_usd_per_day": 374.4775548,
+      "margin_usd_per_day": -71.07571399841947,
+      "breakeven_lmp_usd_per_mwh": 32.853367344856004
+    }
+  ]
+}
