@@ -235,7 +235,7 @@ pre code { background: none; padding: 0; }
 @media (max-width: 600px) {
   .nav-in { gap: 8px; padding: 10px 12px; }
   .nav-app .brand-name { display: none; }
-  .nav-app .nav-links { margin-left: 0; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10px, #000 calc(100% - 22px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 10px, #000 calc(100% - 22px), transparent 100%); }
+  .nav-app .nav-links { margin-left: 0; -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 22px), transparent 100%); mask-image: linear-gradient(90deg, #000 calc(100% - 22px), transparent 100%); }
   .tape-track { gap: 3px; padding: 8px; }
   .cell { border-radius: 6px; } .cell-h { font-size: .5rem; }
   h2 { margin-top: 44px; }
