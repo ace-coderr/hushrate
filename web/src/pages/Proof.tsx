@@ -71,17 +71,20 @@ export function Proof() {
     const r = checkBtcPurchase(b.telegraph, b.public_usd, TOL);
     const recorded = b.source === "telegraph";
     const rel = r.rel === null ? "n/a" : `${(r.rel * 100).toFixed(3)}%`;
-    let drift = "";
-    try {
-      const live = await fetchBtcUsd();
-      const mins = Math.round((Date.now() - new Date(tape.recorded_at).getTime()) / 60000);
-      drift = ` For context, mempool.space now says ${num(live, 2)} (${(((live - (b.public_usd ?? live)) / (b.public_usd ?? live)) * 100).toFixed(2)}% from the recorded public price, ${mins} min later; the market moves, so only the recorded pair is compared).`;
-    } catch { /* live price is context only */ }
-    setBtc({
-      state: r.accepted === recorded ? "pass" : "fail",
+    // The verdict is shown immediately: it depends only on the recorded values. The live price below is optional context.
+    const verdict = {
+      state: (r.accepted === recorded ? "pass" : "fail") as Result["state"],
       text: `Bought ${num(b.telegraph.value, 2)} vs public ${num(b.public_usd, 2)} recorded with it: ${rel} apart (limit ${TOL * 100}%). Rule says ${r.accepted ? "accept" : `reject (${r.reason})`}; the tape used the ${recorded ? "Telegraph" : "public"} price.`,
-      detail: (r.accepted === recorded ? "The tape's choice matches the rule." : "The tape's choice does not match the rule.") + drift,
-    });
+      detail: r.accepted === recorded ? "The tape's choice matches the rule." : "The tape's choice does not match the rule.",
+    };
+    setBtc(verdict);
+    try {
+      // Never delays or changes the verdict: give up quietly after 6 seconds.
+      const live = await Promise.race([fetchBtcUsd(), new Promise<never>((_, reject) => setTimeout(() => reject(new Error("slow")), 6000))]);
+      const mins = Math.round((Date.now() - new Date(tape.recorded_at).getTime()) / 60000);
+      const ref = b.public_usd ?? live;
+      setBtc({ ...verdict, detail: `${verdict.detail} For context, mempool.space now says ${num(live, 2)} (${(((live - ref) / ref) * 100).toFixed(2)}% from the recorded public price, ${mins} min later; the market moves, so only the recorded pair is compared).` });
+    } catch { /* live price is context only */ }
   }
 
   async function checkPayment() {
