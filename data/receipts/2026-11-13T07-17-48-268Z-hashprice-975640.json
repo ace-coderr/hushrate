@@ -1,0 +1,63 @@
+{
+  "label": "hashprice-975640",
+  "miner_id_requested": "71083",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 975640
+  },
+  "query": null,
+  "idempotency_key": "[\"71083\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":975640}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x6c62220aed521d3de204eeea5de19eb7fa5be7117cbc86dea7353db656cf355c",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x6be4606691b7174214e95aae46940df411ec9d22d22912ef0b8433f3c4f0357a",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "4859",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 2080,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0x6c62220aed521d3de204eeea5de19eb7fa5be7117cbc86dea7353db656cf355c",
+    "timestamp": 1794554268
+  },
+  "response": {
+    "miner_id": "71083",
+    "miner_name": "Bitcoin Block Hashprice",
+    "endpoint": "/hashprice",
+    "result": {
+      "hashprice_sats_per_ph_day": 43161.726993,
+      "block_height": 975640,
+      "hashrate_eh_s": 1062.034896,
+      "hashprice_usd_per_ph_day": null
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "hashprice_sats_per_ph_day": "ok",
+      "block_height": "ok",
+      "hashrate_eh_s": "ok",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "input": {
+      "block_height": 975640
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 7028,
+    "timestamp": "2026-11-13T07:17:47.278736613Z",
+    "reasoning": "Intent: miner zk-hashprice given by the caller\nMiner: input schema v1 mapped in code to GET /hashprice",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "signal_hash": "0x7882d2e0d869d10a16ec02971d96a1dfbc4417740eeed4e947367073dcced0c2",
+    "warnings": [
+      "parameter \"block_height\" value 975640.00 violates the miner's declared limit (lte 100000000.00): Bitcoin block_height must be an integer from 0 to 100000000; the exact block must exist and its result must fit the intent range."
+    ]
+  }
+}
