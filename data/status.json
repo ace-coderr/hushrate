@@ -1,11 +1,11 @@
 {
   "state": "ok",
-  "updated_at": "2026-11-13T21:18:28.862Z",
-  "last_success_at": "2026-11-13T21:18:28.862Z",
-  "usdc_balance": "15.41",
-  "last_tape": "data/market/2026-11-13T21-17-19Z.json",
+  "updated_at": "2026-11-13T22:18:27.121Z",
+  "last_success_at": "2026-11-13T22:18:27.121Z",
+  "usdc_balance": "15.39",
+  "last_tape": "data/market/2026-11-13T22-17-17Z.json",
   "paid_calls_last_run": 2,
   "cost_usd_last_run": 0.02,
-  "hashprice_source": "telegraph",
+  "hashprice_source": "public",
   "btc_source": "telegraph"
 }
