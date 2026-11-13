@@ -268,5 +268,23 @@
     "amount_uusdc": "10000",
     "signal_hash": "0xa2c180cf3dc8115e046d4636dd1a99ce51142abba1b90315ca79f3a6a43132f5",
     "outcome": "served"
+  },
+  {
+    "file": "2026-11-13T03-17-40-276Z-hashprice-975627.json",
+    "at": "2026-11-13T03:17:40.276Z",
+    "label": "hashprice-975627",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_requested": "71083",
+    "miner_id": "71083",
+    "miner_name": "Bitcoin Block Hashprice",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0x55e7e34f3139f3af16e8a8d07def4e8a6512084e41d736ca843bbccffb237112",
+    "tx_hash": "0x30314b53ee378849992e2df3a2354c240825ef725e564741c1dcb32f9483846d",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "amount_uusdc": "10000",
+    "signal_hash": "0x6a7a34027cf0be463d7da1af51d5ed8900e0e18c74739bb766ba03cfaea02617",
+    "outcome": "served"
   }
 ]
