@@ -1,19 +1,19 @@
 {
   "schema": 1,
-  "interval_start": "2026-11-13T10:00:00Z",
-  "recorded_at": "2026-11-13T10:17:18.675Z",
-  "block_height": 975661,
-  "btc_usd": 69269.7,
+  "interval_start": "2026-11-13T11:00:00Z",
+  "recorded_at": "2026-11-13T11:17:24.521Z",
+  "block_height": 975667,
+  "btc_usd": 69323,
   "hashprice": {
-    "value_sats_per_ph_day": 42716.987437,
+    "value_sats_per_ph_day": 42606.188773,
     "source": "telegraph",
     "label": "Telegraph miner 71083, within 1% of the public 144-block value",
     "public_144": {
-      "tip": 975661,
+      "tip": 975667,
       "blocks": 144,
-      "from_height": 975518,
-      "to_height": 975661,
-      "hashprice_sats_per_ph_day": 42716.670688805636,
+      "from_height": 975524,
+      "to_height": 975667,
+      "hashprice_sats_per_ph_day": 42719.14329117562,
       "min_block": 42392.56948704094,
       "max_block": 43415.07609246036
     },
@@ -31,21 +31,21 @@
         "hashrate_eh_s": "ok",
         "hashprice_usd_per_ph_day": "missing"
       },
-      "value": 42716.987437,
-      "returned_height": 975661,
-      "signal_hash": "0xe917fb100a83494947ea33d7d30a2d36ce1e73b2f49e4ec841a0ab528c9d27e3",
-      "receipt_hash": "0x5e2f81bdec21ecbc6d8926af6b0be1862debc69784bb942758ba436d28b29c8e",
-      "tx_hash": "0x1a8196e1775af2f873bc3c806ef71f64af9c6ac82b10ddd444209c4a822d8af0",
-      "receipt_file": "2026-11-13T10-17-44-881Z-hashprice-975661.json",
+      "value": 42606.188773,
+      "returned_height": 975667,
+      "signal_hash": "0x2d9dccc40f9113bd1bbd5dea2e9ee5d9400045b5208e987b3edfc681548a3125",
+      "receipt_hash": "0xc3ead02720a3209ec5e7b26b22a89b538bfac643fcf1d96ee1e5abb71d400e9d",
+      "tx_hash": "0xf91825bd00ba0940ba6af7cee57fbb1596ba7950dd6e548242f6201a72e801a6",
+      "receipt_file": "2026-11-13T11-17-50-411Z-hashprice-975667.json",
       "accepted": true
     },
-    "public_at_telegraph_height": 42716.98743734316
+    "public_at_telegraph_height": 42606.18877292951
   },
   "btc": {
-    "value_usd": 69269.7,
+    "value_usd": 69323,
     "source": "telegraph",
     "label": "Telegraph miner 7320, within 0.5% of the public mempool.space price",
-    "public_usd": 69227,
+    "public_usd": 69262,
     "tolerance_rel": 0.005,
     "telegraph": {
       "intent": "CRYPTO_PRICE_USD",
@@ -58,40 +58,40 @@
       "field_status": {
         "price_usd": "ok"
       },
-      "value": 69269.7,
+      "value": 69323,
       "returned_height": null,
-      "signal_hash": "0x351213101da8cb86feaccbad39370570c012d9922d7916ac6ad05fa3a302a310",
-      "receipt_hash": "0xda23b3e5214ed8492e06f66d65f2242e4b4fd7598762bbf74c7f5cacac6e6192",
-      "tx_hash": "0x78dc30a6c57a724f8e3875729021c80b4ecce91ea9eb8f9c28b56c96c8e627cf",
-      "receipt_file": "2026-11-13T10-17-54-197Z-btc-2026-11-13T10-00-00Z.json",
+      "signal_hash": "0x92602cd3cfd691441157c206f0d26366375b55208a76dba7fa4945ad93908151",
+      "receipt_hash": "0xa93fa19843636b5f9d356d7845a53a06f0f680e74a5a821e9d8e19c8981c8faa",
+      "tx_hash": "0x12d0c581e621eb0afe7037915d31a11315f5c3277b8b1e8ba19736ae6d297872",
+      "receipt_file": "2026-11-13T11-18-05-179Z-btc-2026-11-13T11-00-00Z.json",
       "accepted": true
     }
   },
   "power": [
     {
       "node": "TH_SP15_GEN-APND",
-      "day_ahead_usd_per_mwh": 43.68121,
-      "day_ahead_interval": "2026-11-13T10:00:00.000Z",
-      "real_time_usd_per_mwh": 47.56366,
-      "real_time_interval": "2026-11-13T10:15:00.000Z",
+      "day_ahead_usd_per_mwh": 43.68776,
+      "day_ahead_interval": "2026-11-13T11:00:00.000Z",
+      "real_time_usd_per_mwh": 49.01485,
+      "real_time_interval": "2026-11-13T11:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_NP15_GEN-APND",
-      "day_ahead_usd_per_mwh": 44.21397,
-      "day_ahead_interval": "2026-11-13T10:00:00.000Z",
-      "real_time_usd_per_mwh": 48.1388,
-      "real_time_interval": "2026-11-13T10:15:00.000Z",
+      "day_ahead_usd_per_mwh": 44.5008,
+      "day_ahead_interval": "2026-11-13T11:00:00.000Z",
+      "real_time_usd_per_mwh": 49.32163,
+      "real_time_interval": "2026-11-13T11:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_ZP26_GEN-APND",
-      "day_ahead_usd_per_mwh": 43.10524,
-      "day_ahead_interval": "2026-11-13T10:00:00.000Z",
-      "real_time_usd_per_mwh": 48.1388,
-      "real_time_interval": "2026-11-13T10:15:00.000Z",
+      "day_ahead_usd_per_mwh": 43.27967,
+      "day_ahead_interval": "2026-11-13T11:00:00.000Z",
+      "real_time_usd_per_mwh": 47.99391,
+      "real_time_interval": "2026-11-13T11:15:00.000Z",
       "telegraph": null,
       "errors": []
     }
@@ -100,7 +100,7 @@
     "paid_calls": 2,
     "cost_usd": 0.02
   },
-  "wallet_usdc_after": "15.65",
+  "wallet_usdc_after": "15.63",
   "notes": [],
   "degraded": []
 }
