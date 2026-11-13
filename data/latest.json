@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "interval_start": "2026-11-13T16:00:00Z",
-  "recorded_at": "2026-11-13T16:17:25.317Z",
+  "recorded_at": "2026-11-13T16:20:02.961Z",
   "block_height": 975693,
-  "btc_usd": 68403.9,
+  "btc_usd": 68407.8,
   "hashprice": {
     "value_sats_per_ph_day": 42704.253169330645,
     "source": "public",
@@ -33,17 +33,17 @@
       },
       "value": 43212.300247,
       "returned_height": 975693,
-      "signal_hash": "0xb413a52af84d6fea1d7920e3cd0410cbcaa064432885fcb3f6251f2f41374351",
-      "receipt_hash": "0x7a7fed6ace71a4949b4705a9cb6c3bed7d96428f9a1a5ebced514e1ccff5fc01",
-      "tx_hash": "0xbd7e51ebda0c7b0d2b13277bdb4f8400083c1238892587b9631f04bbecb9ca16",
-      "receipt_file": "2026-11-13T16-17-41-974Z-hashprice-975693.json",
+      "signal_hash": "0x1dc7b108474081452670d0a9c3e28a616d78da8a7c16eb38c54b65295ab8c545",
+      "receipt_hash": "0xa7b6b3a998a3098d68fbfb8e387d22d2890843588286ed099b38870d2d1c3c8e",
+      "tx_hash": "0xbb8111ebb23dea3b835912b67596241ffed244fa9932862d6667478f0346eaa1",
+      "receipt_file": "2026-11-13T16-20-18-550Z-hashprice-975693.json",
       "accepted": false,
       "reject_reason": "differs 1.19% from the public 144-block value (limit 1%)"
     },
     "public_at_telegraph_height": 43212.30024688344
   },
   "btc": {
-    "value_usd": 68403.9,
+    "value_usd": 68407.8,
     "source": "telegraph",
     "label": "Telegraph miner 7320, within 0.5% of the public mempool.space price",
     "public_usd": 68521,
@@ -59,12 +59,12 @@
       "field_status": {
         "price_usd": "ok"
       },
-      "value": 68403.9,
+      "value": 68407.8,
       "returned_height": null,
-      "signal_hash": "0x45c46e7c082309997a630d76a0e2b98d18bb7275c9a7cc8b1d8e694bc5904fae",
-      "receipt_hash": "0xe566bd5bfe13b8646f0fd533a0732c662e495a59b863cd07067be145d460561b",
-      "tx_hash": "0xacb0ba4816bbd378ccc18728774f58867ca40c2e8f77431ab05e80fbf24d331e",
-      "receipt_file": "2026-11-13T16-17-51-455Z-btc-2026-11-13T16-00-00Z.json",
+      "signal_hash": "0x1574072c432bc167ced4692e9fbefc583e6f3ccb1cbede236683a9e7c9ae8db4",
+      "receipt_hash": "0xa92cae5e605f6561bd2b14c023d20f7b5583884c1a64c267c69e1a68f06ac5e9",
+      "tx_hash": "0xaa274ade6efd4547085ea6d0aa2fbc202e22415dc30b634d46baad49116fe01c",
+      "receipt_file": "2026-11-13T16-20-31-365Z-btc-2026-11-13T16-00-00Z.json",
       "accepted": true
     }
   },
@@ -101,7 +101,7 @@
     "paid_calls": 2,
     "cost_usd": 0.02
   },
-  "wallet_usdc_after": "15.53",
+  "wallet_usdc_after": "15.51",
   "notes": [],
   "degraded": []
 }

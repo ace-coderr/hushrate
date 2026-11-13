@@ -751,7 +751,7 @@
   {
     "interval_start": "2026-11-13T16:00:00Z",
     "block_height": 975693,
-    "btc_usd": 68403.9,
+    "btc_usd": 68407.8,
     "hashprice_sats_per_ph_day": 42704.253169330645,
     "hashprice_source": "public",
     "power": [
@@ -774,12 +774,12 @@
     "paid_calls": 2,
     "cost_usd": 0.02,
     "tx_hashes": [
-      "0xbd7e51ebda0c7b0d2b13277bdb4f8400083c1238892587b9631f04bbecb9ca16",
-      "0xacb0ba4816bbd378ccc18728774f58867ca40c2e8f77431ab05e80fbf24d331e"
+      "0xbb8111ebb23dea3b835912b67596241ffed244fa9932862d6667478f0346eaa1",
+      "0xaa274ade6efd4547085ea6d0aa2fbc202e22415dc30b634d46baad49116fe01c"
     ],
     "receipt_hashes": [
-      "0x7a7fed6ace71a4949b4705a9cb6c3bed7d96428f9a1a5ebced514e1ccff5fc01",
-      "0xe566bd5bfe13b8646f0fd533a0732c662e495a59b863cd07067be145d460561b"
+      "0xa7b6b3a998a3098d68fbfb8e387d22d2890843588286ed099b38870d2d1c3c8e",
+      "0xa92cae5e605f6561bd2b14c023d20f7b5583884c1a64c267c69e1a68f06ac5e9"
     ],
     "paid_kinds": [
       "hashprice",
