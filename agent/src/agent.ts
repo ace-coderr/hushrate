@@ -1,33 +1,37 @@
 // Hushrate market agent: one run records one hourly MARKET tape. No site data, no decisions.
-//   tsx src/agent.ts            buy hashprice from Telegraph (test USDC), write the tape
+//   tsx src/agent.ts            buy hashprice and the BTC price from Telegraph (test USDC), write the tape
 //   tsx src/agent.ts --no-pay   public sources only, spends nothing
 //   tsx src/agent.ts --dry      print the tape, write nothing
 //
+// Two paid intents per run: MINING_HASHPRICE_VERIFY_GENERAL and CRYPTO_PRICE_USD (BTC). Each is bought only if the
+// current UTC hour has not already paid for it (see guard.ts). A bought value is used for decisions only when it
+// verifies against a public source; otherwise the public value is used and the tape says why.
+//
 // Exit codes: 0 for a clean run, a degraded run (an upstream source failed; recorded in the tape and in
-// data/status.json) and a paused run (balance below 0.20). Non-zero only for real failures: an unusable key,
-// unreadable config, a failed write, or an unexpected bug.
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from "node:fs";
+// data/status.json) and a paused run (balance below the minimum). Non-zero only for real failures: an unusable key,
+// a refused network config, unreadable config, a failed write, or an unexpected bug.
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import {
-  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore,
+  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase,
   type MarketTape, type PowerPrice, type TelegraphCall, type HistoryEntry,
 } from "@hushrate/core";
 import { balances } from "./wallet.js";
 import { dayAhead, realTime } from "./caiso.js";
 import { writeLedger } from "./ledger.js";
-import { paidThisHourFromDisk } from "./guard.js";
+import { allBought, purchasesThisHourFromDisk } from "./guard.js";
+import { loadNetwork } from "./network.js";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const noPay = process.argv.includes("--no-pay");
 const dry = process.argv.includes("--dry");
-const MIN_USDC_RAW = 200_000n; // stop below 0.20 test USDC
 const HISTORY_MAX = 500;
-const MAX_CALLS = 3, PRICE = 0.01, HOURS = 24, DAYS = 19;
+const PRICE = 0.01, HOURS = 24, DAYS = 19;
 
 const msg = (e: unknown) => (e instanceof Error ? e.message : String(e));
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-/** A key or wallet problem is a real failure, never a degraded run. */
-const isFatal = (e: unknown) => /EVM_PRIVATE_KEY|Configured key controls/.test(msg(e));
+/** A key, wallet or network-config problem is a real failure, never a degraded run. */
+const isFatal = (e: unknown) => /EVM_PRIVATE_KEY|Configured key controls|NETWORK CONFIG/.test(msg(e));
 
 const write = (rel: string, data: unknown) => {
   if (dry) return;
@@ -70,6 +74,7 @@ function noteTrigger(now: Date): void {
 const warn = (m: string) => { console.warn(`DEGRADED: ${m}`); if (process.env.GITHUB_ACTIONS) console.log(`::warning title=Hushrate degraded run::${m}`); };
 
 async function main(): Promise<void> {
+  const net = loadNetwork();
   const cfg = JSON.parse(readFileSync(`${ROOT}config/agent.json`, "utf8"));
   const degraded: string[] = [];
   const notes: string[] = [];
@@ -83,45 +88,51 @@ async function main(): Promise<void> {
   // hourly chain is alive. Written even when the run turns out to be a no-op below.
   noteTrigger(now);
 
-  // Same-hour guard: two triggers in one UTC hour must never make two paid purchases.
-  if (!noPay) {
-    const g = paidThisHourFromDisk(ROOT, hourIso);
-    if (g.paid) {
-      console.log(`SKIP: ${g.why}. Nothing to buy or record for ${hourIso}; this trigger is a no-op.`);
-      return;
-    }
+  // Same-hour guard, per intent: two triggers in one UTC hour must never buy the same thing twice, and a half-bought
+  // hour buys only what is missing. An hour that already paid for both is a no-op.
+  const bought = noPay ? { hashprice: false, btc: false, why: {} } : purchasesThisHourFromDisk(ROOT, hourIso);
+  if (!noPay && allBought(bought)) {
+    console.log(`SKIP: ${bought.why.hashprice}; ${bought.why.btc}. Nothing to buy or record for ${hourIso}; this trigger is a no-op.`);
+    return;
   }
+  if (bought.hashprice) console.log(`hashprice already bought this hour: ${bought.why.hashprice}`);
+  if (bought.btc) console.log(`BTC price already bought this hour: ${bought.why.btc}`);
+  const priorTape = readJson<MarketTape>("data/latest.json");
+  const prior = priorTape && priorTape.interval_start === hourIso ? priorTape : null;
 
-  console.log("Cost table (Ethereum Sepolia, test USDC, no real money)");
-  console.log(`  price per call           $${PRICE.toFixed(2)} (10000 units, cap per payment 30000)`);
-  console.log(`  paid calls per run (max) ${MAX_CALLS}  -> $${(MAX_CALLS * PRICE).toFixed(2)} worst case per run`);
-  console.log(`  per day (24 runs)        $${(MAX_CALLS * PRICE * HOURS).toFixed(2)}`);
-  console.log(`  to 1 Dec (${DAYS} days)       $${(MAX_CALLS * PRICE * HOURS * DAYS).toFixed(2)}`);
-  console.log(`  planned this run         ${noPay ? 0 : 1 + (cfg.telegraph.power_miner ? Math.min(cfg.telegraph.power_nodes_max, cfg.nodes.length) : 0)} call(s)`);
+  const plannedCalls = noPay ? 0 : (bought.hashprice ? 0 : 1) + (bought.btc ? 0 : 1) + (cfg.telegraph.power_miner ? Math.min(cfg.telegraph.power_nodes_max, cfg.nodes.length) : 0);
+  const perRun = (noPay ? 0 : 2) * PRICE;
+  console.log(`Cost table (${net.label}, ${net.testnet ? "test USDC, no real money" : "REAL USDC"})`);
+  console.log(`  price per call            $${PRICE.toFixed(2)} (10000 units); cap per payment ${net.max_amount_per_payment} units`);
+  console.log(`  paid calls per run        2 planned (hashprice + BTC price), hard cap ${net.max_paid_calls_per_run}`);
+  console.log(`  per run                   $${perRun.toFixed(2)}`);
+  console.log(`  per day (24 runs)         $${(perRun * HOURS).toFixed(2)}`);
+  console.log(`  to 1 Dec (${DAYS} days)        $${(perRun * HOURS * DAYS).toFixed(2)}`);
+  console.log(`  planned this run          ${plannedCalls} call(s)`);
 
-  // ---- balance guard (a Sepolia RPC outage means we cannot prove the balance, so we do not pay) --------
+  // ---- balance guard (an RPC outage means we cannot prove the balance, so we do not pay) ----------------
   let canPay = !noPay;
   let usdcBalance: string | null = null;
   try {
     const bal = await balances();
     usdcBalance = bal.usdc;
     console.log(`wallet: ${bal.eth} ETH, ${bal.usdc} USDC`);
-    if (canPay && BigInt(bal.usdcRaw) < MIN_USDC_RAW) {
-      status("paused", { reason: `test-USDC balance ${bal.usdc} is below 0.20; no paid calls made`, usdc_balance: bal.usdc });
-      console.error("PAUSED: balance below 0.20 test USDC. status written, nothing bought.");
+    if (canPay && BigInt(bal.usdcRaw) < net.min_balance_units) {
+      status("paused", { reason: `USDC balance ${bal.usdc} is below the minimum (${Number(net.min_balance_units) / 10 ** net.usdc.decimals}); no paid calls made`, usdc_balance: bal.usdc });
+      console.error("PAUSED: balance below the minimum. status written, nothing bought.");
       return;
     }
   } catch (e) {
-    degraded.push(`Sepolia RPC: balance check failed (${msg(e)})`);
-    if (canPay) { canPay = false; notes.push("paid call skipped: the wallet balance could not be checked"); }
+    degraded.push(`${net.label} RPC: balance check failed (${msg(e)})`);
+    if (canPay) { canPay = false; notes.push("paid calls skipped: the wallet balance could not be checked"); }
   }
 
   // ---- public market inputs: each source fails on its own ---------------------------------------------
-  let tip: number | null = null, btc: number | null = null;
+  let tip: number | null = null, btcPublic: number | null = null;
   let w: (ReturnType<typeof windowHashprice> & { tip: number }) | null = null;
   let singleAtTip: number | null = null;
   try { tip = await fetchTipHeight(); } catch (e) { degraded.push(`mempool.space tip height: ${msg(e)}`); }
-  try { btc = await fetchBtcUsd(); } catch (e) { degraded.push(`mempool.space BTC/USD price: ${msg(e)}`); }
+  try { btcPublic = await fetchBtcUsd(); } catch (e) { degraded.push(`mempool.space BTC/USD price: ${msg(e)}`); }
   if (tip !== null) {
     try {
       const rows = await fetchBlocks(tip, 144);
@@ -131,15 +142,15 @@ async function main(): Promise<void> {
   }
 
   // ---- Telegraph calls ----------------------------------------------------------------------------------
-  async function paid(label: string, minerId: string, intent: string, params: Record<string, unknown>, valueKey: string): Promise<TelegraphCall> {
+  async function paid(label: string, minerId: string, intent: string, params: Record<string, unknown>, valueKey: string, dedupe?: string): Promise<TelegraphCall> {
     const base: TelegraphCall = { intent, requested_miner: minerId, http_status: null, paid: false, cost_usd: null, value: null, accepted: false, receipt_file: null };
     let x: typeof import("./x402.js");
     try { x = await import("./x402.js"); } catch (e) {
-      if (isFatal(e)) throw e; // missing or wrong key
+      if (isFatal(e)) throw e; // missing or wrong key, or a refused network
       return { ...base, reject_reason: `payment client failed to load: ${msg(e)}` };
     }
     let out;
-    try { out = await x.run({ label, minerId, intent, params }); }
+    try { out = await x.run({ label, minerId, intent, params, dedupe }); }
     catch (e) {
       if (isFatal(e)) throw e;
       return { ...base, reject_reason: `call failed: ${msg(e)}` };
@@ -160,15 +171,23 @@ async function main(): Promise<void> {
     };
   }
 
+  // ---- hashprice ----
   let hashCall: TelegraphCall | null = null;
   let hashValue: number | null = w ? w.hashprice_sats_per_ph_day : null;
   let hashSource: "telegraph" | "public" | null = w ? "public" : null;
   let hashLabel = w ? "public: mempool.space, mean of the last 144 blocks (reward incl. fees, difficulty)" : "unavailable: mempool.space blocks could not be read this run";
+  let tapeBlock = tip, tapePublic144 = w, tapeSingle = singleAtTip;
 
-  if (canPay && tip !== null && w !== null) {
+  const reuseHash = bought.hashprice && prior?.hashprice.telegraph?.paid ? prior : null;
+  if (reuseHash) {
+    // Already bought (and verified) earlier this hour: keep that purchase exactly as recorded, with its own block and public check.
+    hashCall = reuseHash.hashprice.telegraph; hashValue = reuseHash.hashprice.value_sats_per_ph_day; hashSource = reuseHash.hashprice.source;
+    hashLabel = `${reuseHash.hashprice.label} (kept from the earlier run this hour)`;
+    tapeBlock = reuseHash.block_height; tapePublic144 = reuseHash.hashprice.public_144; tapeSingle = reuseHash.hashprice.public_at_telegraph_height;
+  } else if (canPay && !bought.hashprice && tip !== null && w !== null) {
     hashCall = await paid(`hashprice-${tip}`, cfg.telegraph.hashprice_miner, "MINING_HASHPRICE_VERIFY_GENERAL", { block_height: tip }, "hashprice_sats_per_ph_day");
     const fs = hashCall.field_status ?? {};
-    // Fields this agent relies on must be ok. hashprice_usd_per_ph_day is not required: USD is computed locally from the public BTC price.
+    // Fields this agent relies on must be ok. hashprice_usd_per_ph_day is not required: USD is computed locally.
     const bad = ["hashprice_sats_per_ph_day", "block_height", "hashrate_eh_s"].filter((k) => fs[k] !== "ok");
     const rel = hashCall.value !== null ? Math.abs(hashCall.value - w.hashprice_sats_per_ph_day) / w.hashprice_sats_per_ph_day : null;
     let reason: string | null = null;
@@ -184,13 +203,39 @@ async function main(): Promise<void> {
     } else {
       hashCall.reject_reason = reason;
       hashLabel += `; Telegraph value not used: ${reason}`;
-      // A value that is merely outside tolerance is a normal outcome. A call that failed is an upstream failure.
-      if (hashCall.http_status !== 200) degraded.push(`Telegraph miner ${cfg.telegraph.hashprice_miner}: ${reason}`);
+      // A value merely outside tolerance is a normal outcome. A call that failed is an upstream failure.
+      if (hashCall.http_status !== 200) degraded.push(`Telegraph miner ${cfg.telegraph.hashprice_miner} (hashprice): ${reason}`);
     }
   } else if (!noPay) {
-    const why = !canPay ? "wallet balance could not be checked" : tip === null ? "no Bitcoin block height" : "no public 144-block value to verify against";
+    const why = bought.hashprice ? "a purchase for this hour exists but its tape was not found" : !canPay ? "wallet balance could not be checked" : tip === null ? "no Bitcoin block height" : "no public 144-block value to verify against";
     notes.push(`Telegraph hashprice not bought this run: ${why}`);
     hashLabel += `; Telegraph value not bought: ${why}`;
+  }
+
+  // ---- BTC/USD price (second paid intent) ----
+  let btcCall: TelegraphCall | null = null;
+  let btcValue: number | null = btcPublic;
+  let btcSource: "telegraph" | "public" | null = btcPublic !== null ? "public" : null;
+  let btcLabel = btcPublic !== null ? "public: mempool.space BTC/USD" : "unavailable: mempool.space BTC/USD could not be read this run";
+
+  const reuseBtc = bought.btc && prior?.btc?.telegraph?.paid ? prior.btc : null;
+  if (reuseBtc) {
+    btcCall = reuseBtc.telegraph; btcValue = reuseBtc.value_usd; btcSource = reuseBtc.source; btcLabel = `${reuseBtc.label} (kept from the earlier run this hour)`;
+  } else if (canPay && !bought.btc && btcPublic !== null) {
+    btcCall = await paid(`btc-${hourIso.replace(/:/g, "-")}`, cfg.telegraph.btc_miner, "CRYPTO_PRICE_USD", { symbol: "BTC" }, "price_usd", hourIso);
+    const { accepted, reason: reasonB } = checkBtcPurchase(btcCall, btcPublic, cfg.tolerance.btc_rel);
+    if (accepted) {
+      btcCall.accepted = true; btcValue = btcCall.value as number; btcSource = "telegraph";
+      btcLabel = `Telegraph miner ${btcCall.miner_id}, within ${cfg.tolerance.btc_rel * 100}% of the public mempool.space price`;
+    } else {
+      btcCall.reject_reason = reasonB ?? "rejected";
+      btcLabel += `; Telegraph price not used: ${reasonB}`;
+      if (btcCall.http_status !== 200) degraded.push(`Telegraph miner ${cfg.telegraph.btc_miner} (BTC price): ${reasonB}`);
+    }
+  } else if (!noPay) {
+    const why = bought.btc ? "a purchase for this hour exists but its tape was not found" : !canPay ? "wallet balance could not be checked" : "no public BTC/USD price to verify against";
+    notes.push(`Telegraph BTC price not bought this run: ${why}`);
+    btcLabel += `; Telegraph price not bought: ${why}`;
   }
 
   // ---- power: public CAISO prices, optional Telegraph power miner once one has been proven ----------------
@@ -206,7 +251,7 @@ async function main(): Promise<void> {
     await sleep(5500);
     if (tgPowerLeft > 0) {
       tgPowerLeft--;
-      const c = await paid(`power-${node}-${hourIso}`, cfg.telegraph.power_miner, "GRID_POWER_PRICE_GENERAL", { node_or_zone: node, interval_start: hourIso }, "lmp_usd_per_mwh");
+      const c = await paid(`power-${node}-${hourIso.replace(/:/g, "-")}`, cfg.telegraph.power_miner, "GRID_POWER_PRICE_GENERAL", { node_or_zone: node, interval_start: hourIso }, "lmp_usd_per_mwh", hourIso);
       const ref = p.day_ahead_usd_per_mwh;
       const diff = c.value !== null && ref !== null ? Math.abs(c.value - ref) : null;
       const tol = ref !== null ? Math.max(cfg.tolerance.power_abs_usd, Math.abs(ref) * cfg.tolerance.power_rel) : null;
@@ -221,15 +266,17 @@ async function main(): Promise<void> {
   }
 
   // ---- tape ---------------------------------------------------------------------------------------------
-  // Accounting follows the calls the tape references, so a second run in the same hour (which skips an
-  // identical purchase) still reports what that hour cost.
-  const tapeCalls = [hashCall, ...power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && c.paid);
+  // Accounting follows the calls the tape references (including purchases kept from an earlier run this hour).
+  const tapeCalls = [hashCall, btcCall, ...power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && c.paid);
   const tapeSpend = { paid_calls: tapeCalls.length, cost_usd: Number(tapeCalls.reduce((a, c) => a + (c.cost_usd ?? 0), 0).toFixed(2)) };
   if (noPay) notes.push("run with --no-pay: no Telegraph data bought");
   for (const p of power) if (p.real_time_usd_per_mwh === null && p.day_ahead_usd_per_mwh === null) notes.push(`${p.node}: no power price available`);
   const tape: MarketTape = {
-    schema: 1, interval_start: hourIso, recorded_at: now.toISOString(), block_height: tip, btc_usd: btc,
-    hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: w, telegraph: hashCall, public_at_telegraph_height: singleAtTip },
+    schema: 1, interval_start: hourIso, recorded_at: now.toISOString(), block_height: tapeBlock,
+    // btc_usd is the price decisions use: the verified Telegraph price when it passed the check, else the public price.
+    btc_usd: btcValue,
+    hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: tapePublic144, telegraph: hashCall, public_at_telegraph_height: tapeSingle },
+    btc: { value_usd: btcValue, source: btcSource, label: btcLabel, public_usd: btcPublic ?? reuseBtc?.public_usd ?? null, telegraph: btcCall },
     power, spend: tapeSpend, wallet_usdc_after: usdcBalance, notes, degraded,
   };
   try { tape.wallet_usdc_after = (await balances()).usdc; } catch { /* keep the earlier reading, or null */ }
@@ -241,8 +288,7 @@ async function main(): Promise<void> {
   write(`data/market/${stamp}.json`, tape); // every run is kept on record
 
   // A degraded rerun in the same hour must not replace a more complete tape for that hour.
-  const prevLatest = readJson<MarketTape>("data/latest.json");
-  const keepLatest = !!prevLatest && prevLatest.interval_start === hourIso && tapeQuality(prevLatest) > tapeQuality(tape);
+  const keepLatest = !!prior && tapeQuality(prior) > tapeQuality(tape);
   if (keepLatest) notes.push("kept the more complete earlier tape for this hour as latest.json and history");
   else write("data/latest.json", tape);
 
@@ -256,11 +302,13 @@ async function main(): Promise<void> {
   const state: State = degraded.length ? "degraded" : "ok";
   status(state, {
     usdc_balance: tape.wallet_usdc_after, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls,
-    cost_usd_last_run: Number(spendUsd.toFixed(2)), hashprice_source: hashSource, ...(degraded.length ? { degraded, reason: `${degraded.length} upstream problem(s); see degraded list` } : {}),
+    cost_usd_last_run: Number(spendUsd.toFixed(2)), hashprice_source: hashSource, btc_source: btcSource,
+    ...(degraded.length ? { degraded, reason: `${degraded.length} upstream problem(s); see degraded list` } : {}),
   });
 
-  console.log(`\ninterval ${hourIso} | block ${tip ?? "n/a"} | BTC ${btc !== null ? `$${btc}` : "n/a"}`);
-  console.log(hashValue !== null && w ? `hashprice ${hashValue.toFixed(1)} sats/PH/day (${hashSource}); single block at tip ${singleAtTip?.toFixed(1)}, 144-block range ${w.min_block.toFixed(0)}..${w.max_block.toFixed(0)}` : "hashprice unavailable this run");
+  console.log(`\ninterval ${hourIso} | block ${tapeBlock ?? "n/a"} | BTC ${btcValue !== null ? `$${btcValue}` : "n/a"} (${btcSource ?? "none"})`);
+  console.log(`  btc: ${btcLabel}`);
+  console.log(hashValue !== null && tapePublic144 ? `hashprice ${hashValue.toFixed(1)} sats/PH/day (${hashSource}); single block ${tapeSingle?.toFixed(1)}, 144-block range ${tapePublic144.min_block.toFixed(0)}..${tapePublic144.max_block.toFixed(0)}` : "hashprice unavailable this run");
   console.log(`  ${hashLabel}`);
   for (const p of power) console.log(`${p.node}: real-time ${p.real_time_usd_per_mwh ?? "n/a"}  day-ahead ${p.day_ahead_usd_per_mwh ?? "n/a"} $/MWh`);
   console.log(`spent this run: ${spendCalls} call(s), $${spendUsd.toFixed(2)}; tape accounts for ${tapeSpend.paid_calls} paid call(s), $${tapeSpend.cost_usd.toFixed(2)}; wallet ${tape.wallet_usdc_after ?? "unknown"} USDC${dry ? " [dry run: nothing written]" : ""}`);
@@ -269,7 +317,7 @@ async function main(): Promise<void> {
 }
 
 main().catch((e) => {
-  // A real failure: unusable key, unreadable config, failed write, or an unexpected bug.
+  // A real failure: unusable key, refused network, unreadable config, failed write, or an unexpected bug.
   console.error(`ERROR: ${msg(e)}`);
   try { status("error", { reason: msg(e) }); } catch { /* nothing more we can do */ }
   process.exitCode = 1;

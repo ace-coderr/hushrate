@@ -1,0 +1,55 @@
+{
+  "label": "probe-btc-190075",
+  "miner_id_requested": "190075",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"190075\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x32ba90c799013125a676d5a4ec1d793e20a7810556e7861a0a8ebdf1d6d55546",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x975abfcc6ce5c5b4ed977aea91ec1d503a8dd13194cdd295df28283d83e39f8c",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "4682",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 2077,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0x32ba90c799013125a676d5a4ec1d793e20a7810556e7861a0a8ebdf1d6d55546",
+    "timestamp": 1794522650
+  },
+  "response": {
+    "miner_id": "190075",
+    "miner_name": "Cp Htx",
+    "endpoint": "/query",
+    "result": {
+      "err-code": "invalid-parameter",
+      "err-msg": "invalid symbol",
+      "status": "error",
+      "ts": 1794522649485
+    },
+    "result_shape": "raw",
+    "shape_error": "no_fields_found",
+    "format_version": 1,
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 124,
+    "timestamp": "2026-11-12T22:30:49.537861089Z",
+    "reasoning": "Intent: miner cp-htx given by the caller\nMiner: input schema v3 mapped in code to GET /query",
+    "intent": "CRYPTO_PRICE_USD",
+    "signal_hash": "0x88d75fb046826bdef4d4973e51674c055a856e8e06c0ea27202818c519a02aca"
+  }
+}

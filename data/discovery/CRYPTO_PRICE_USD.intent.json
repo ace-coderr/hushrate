@@ -1,0 +1,1168 @@
+{
+  "url": "https://devnode.telegraphprotocol.com/engine/v1/intents/CRYPTO_PRICE_USD",
+  "status": 200,
+  "body": {
+    "class": "deterministic",
+    "intent_id": "CRYPTO_PRICE_USD",
+    "intent_name": "CRYPTO_PRICE_USD",
+    "miner_count": 54,
+    "miners": [
+      {
+        "id": "32005",
+        "name": "Bitstamp Spot Price",
+        "slug": "crypto-bitstamp",
+        "description": "Bitstamp Spot Price public ticker → price_usd_cents for pinned pair. Intent CRYPTO_PRICE — Usman truth-spec miner.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "32001",
+        "name": "CoinGecko Crypto Price",
+        "slug": "crypto-coingecko",
+        "description": "Live crypto spot via CoinGecko simple/price. Intent CRYPTO_PRICE. Direct Request shows ids + vs_currencies.\n",
+        "base_url": "https://api.coingecko.com/api/v3",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190074",
+        "name": "Cp Gemini",
+        "slug": "cp-gemini",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Gemini",
+        "base_url": "https://api.gemini.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190202",
+        "name": "Cp Phemex",
+        "slug": "cp-phemex",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "7311",
+        "name": "Optivis Market Data",
+        "slug": "optivis-crypto-price",
+        "description": "Verifiable crypto pricing, currency exchange and financial data for autonomous agents. Wraps CoinGecko keyless API (spot price, exchange rates, market cap/FDV) and DexScreener for on-chain pair depth. Solana-first. Multi-source answers: price plus liquidity, volume and FDV.\n",
+        "base_url": "https://api.coingecko.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD",
+          "CURRENCY_EXCHANGE_CONVERT",
+          "FINANCIAL_DATA_GENERAL"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190206",
+        "name": "Cp Digifinex",
+        "slug": "cp-digifinex",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "32003",
+        "name": "Kraken Spot Price",
+        "slug": "crypto-kraken",
+        "description": "Kraken Spot Price public ticker → price_usd_cents for pinned pair. Intent CRYPTO_PRICE — Usman truth-spec miner.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190065",
+        "name": "Cp Bitfinex",
+        "slug": "cp-bitfinex",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Bitfinex",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "302",
+        "name": "ChainSight — Universal Intelligence & Data Oracle",
+        "slug": "chainsight-oracle",
+        "description": "A single high-reliability provider that answers ANY request across conversation, search, research, verification, language, finance, crypto/on-chain, security, weather, logistics and IoT. Routes here for: general conversational questions and chat; open-ended Q&A and knowledge; web search and current news; deep research and academic/scholarly lookups; fact-checking and claim/content verification; translation, summarization, rewriting and text generation; sentiment, classification, moderation, AI-text and authenticity detection; live crypto prices, market cap, DeFi TVL and yields, fiat FX, gas, wallet balances, on-chain transactions, token supply and holders; stock and macro indicators; fraud, sanctions, threat-intel, CVE and vulnerability, URL/email/SSL security, code review and generation; weather, air-quality and geolocation; shipping, port, warehouse, package and vessel logistics; sensor, grid, datacenter and validator telemetry. Every answer is direct, grounded in a real source, number-first for quantitative intents, low-latency and never empty. Broad coverage with specialist-grade quality on each intent — a reliable default the router can trust for almost any question.",
+        "base_url": "https://hub.shadrakbessanh.me",
+        "capabilities": [
+          "ACADEMIC_SEARCH_GENERAL",
+          "AGENT_TASK_GENERAL",
+          "AIR_QUALITY_INDEX_GENERAL",
+          "AI_TEXT_DETECTION_GENERAL",
+          "API_HEALTH_CHECK_GENERAL",
+          "ASSET_RESERVE_ATTESTATION_GENERAL",
+          "B2B_IDENTITY_ENRICHMENT_GENERAL",
+          "CARRIER_SERVICEABILITY_GENERAL",
+          "CHATBOT_CONVERSATION_GENERAL",
+          "CHAT_COMPLETION_GENERAL",
+          "CLOUD_RESOURCE_USAGE_GENERAL",
+          "CODE_GENERATION_GENERAL",
+          "CODE_PATCH_VERIFY_GENERAL",
+          "CODE_REVIEW_GENERAL",
+          "COMMERCE_PURCHASE_VERIFY_GENERAL",
+          "CONTENT_EXTRACTION_GENERAL",
+          "CONTENT_MODERATION_GENERAL",
+          "CONTENT_VERIFICATION_GENERAL",
+          "CONTRACT_OBLIGATION_AUDIT_GENERAL",
+          "CORPORATE_REGISTRY_LOOKUP_GENERAL",
+          "CROSS_CHAIN_STATE_VERIFY_GENERAL",
+          "CRYPTO_PRICE_USD",
+          "CRYPTO_TRANSFER_VERIFY_GENERAL",
+          "CRYPTO_YIELD_RATE_GENERAL",
+          "CURRENCY_EXCHANGE_CONVERT",
+          "CUSTOMER_TICKET_RESOLUTION_GENERAL",
+          "CVE_LOOKUP_CVSS",
+          "DATACENTER_TELEMETRY_VERIFY_GENERAL",
+          "DEEPFAKE_DETECTION_GENERAL",
+          "DNS_RECORD_LOOKUP_GENERAL",
+          "DOCUMENT_AUTHENTICITY_GENERAL",
+          "EMAIL_SECURITY_GENERAL",
+          "ENTITY_EXTRACTION_GENERAL",
+          "EVENT_OUTCOME_RESOLUTION_GENERAL",
+          "FACT_CHECK_GENERAL",
+          "FINANCIAL_DATA_GENERAL",
+          "FRAUD_DETECTION_GENERAL",
+          "FRAUD_RISK_GENERAL",
+          "FX_NOW_CAD",
+          "FX_NOW_EUR",
+          "FX_NOW_SEK",
+          "GAS_PRICE_GENERAL",
+          "GRAMMAR_SPELL_CHECK_GENERAL",
+          "GRID_POWER_PRICE_GENERAL",
+          "IMAGE_CAPTIONING_GENERAL",
+          "IMAGE_VERIFICATION_GENERAL",
+          "IP_GEOLOCATION_GENERAL",
+          "KEYWORD_EXTRACTION_GENERAL",
+          "LANGUAGE_GENERATION_GENERAL",
+          "LANGUAGE_TRANSLATION_GENERAL",
+          "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+          "LIVE_PORT_CONGESTION_GENERAL",
+          "LIVE_SHELF_PRICE_GENERAL",
+          "LLM_OUTPUT_EVALUATION_GENERAL",
+          "LOAN_INTEREST_RATE_QUOTE_GENERAL",
+          "MACRO_ECONOMIC_INDICATOR_GENERAL",
+          "MEDIA_AUTHENTICITY_CHECK_GENERAL",
+          "MEDIA_FORENSIC_VERIFY_GENERAL",
+          "MINING_HASHPRICE_VERIFY_GENERAL",
+          "NEWS_HEADLINES_GENERAL",
+          "NEWS_SEARCH_GENERAL",
+          "ONCHAIN_METRIC_VERIFY_GENERAL",
+          "ONCHAIN_TX_LOOKUP_GENERAL",
+          "PACKAGE_STATUS_GENERAL",
+          "PAYMENT_METHOD_VERIFY_GENERAL",
+          "PRODUCT_AUTHENTICITY_GENERAL",
+          "QUESTION_ANSWERING_GENERAL",
+          "REGRESSION_VERIFY_GENERAL",
+          "REGULATORY_FILING_MONITOR_GENERAL",
+          "RESEARCH_QUERY_GENERAL",
+          "RESEARCH_SYNTHESIS_GENERAL",
+          "ROUTE_ETA_GENERAL",
+          "SANCTIONS_SCREENING_MATCH_GENERAL",
+          "SATELLITE_IMAGERY_ANALYSIS_GENERAL",
+          "SECURITY_REVIEW_GENERAL",
+          "SEMANTIC_SIMILARITY_GENERAL",
+          "SENSOR_TELEMETRY_VERIFY_GENERAL",
+          "SENTIMENT_ANALYSIS_GENERAL",
+          "SERVER_UPTIME_MONITOR_GENERAL",
+          "SHIPMENT_DELAY_RISK_GENERAL",
+          "SHIP_RATE_ETA_GENERAL",
+          "SKU_IN_STOCK_GENERAL",
+          "SLA_COMPLIANCE_GENERAL",
+          "SMART_CONTRACT_AUDIT_GENERAL",
+          "SOCIAL_BOT_DETECTION_GENERAL",
+          "SSL_VERIFICATION_CERT",
+          "STOCK_PRICE_US_EQUITY",
+          "STORM_ALERT_GENERAL",
+          "TASK_EXECUTION_QUALITY_GENERAL",
+          "TELEGRAPH_KNOWLEDGE_GENERAL",
+          "TEXT_AUTHENTICITY_CHECK_GENERAL",
+          "TEXT_CLASSIFICATION_GENERAL",
+          "TEXT_GENERATION_GENERAL",
+          "TEXT_SUMMARIZATION_GENERAL",
+          "THREAT_INTELLIGENCE_INDICATOR",
+          "THREAT_IP_REPUTATION_GENERAL",
+          "TOKEN_HOLDER_COUNT_GENERAL",
+          "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "TRANSACTION_RISK_GENERAL",
+          "TRAVEL_DISRUPTION_GENERAL",
+          "TVL_LOOKUP_GENERAL",
+          "URL_SAFE_GENERAL",
+          "URL_SCAN_VERDICT",
+          "VALIDATOR_PERFORMANCE_VERIFY_GENERAL",
+          "VENDOR_VERIFY_GENERAL",
+          "VESSEL_TELEMETRY_VERIFY_GENERAL",
+          "VIDEO_VERIFICATION_GENERAL",
+          "VULNERABILITY_TRIAGE_GENERAL",
+          "WALLET_BALANCE_CHECK_GENERAL",
+          "WAREHOUSE_INVENTORY_GENERAL",
+          "WASH_TRADING_DETECTION_GENERAL",
+          "WEATHER_CHECK_TEMPERATURE",
+          "WEATHER_FORECAST_GENERAL",
+          "WEATHER_FORECAST_VERIFY_GENERAL",
+          "WEB_SEARCH_GENERAL"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190073",
+        "name": "Cp Gate",
+        "slug": "cp-gate",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Gate.io",
+        "base_url": "https://api.gateio.ws",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190208",
+        "name": "Cp Bitso",
+        "slug": "cp-bitso",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://api.bitso.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "32006",
+        "name": "Gemini Spot Price",
+        "slug": "crypto-gemini",
+        "description": "Gemini Spot Price public ticker → price_usd_cents for pinned pair. Intent CRYPTO_PRICE — Usman truth-spec miner.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190204",
+        "name": "Cp Bitrue",
+        "slug": "cp-bitrue",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://openapi.bitrue.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190067",
+        "name": "Cp Bitstamp",
+        "slug": "cp-bitstamp",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Bitstamp",
+        "base_url": "https://www.bitstamp.net",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190203",
+        "name": "Cp Xt",
+        "slug": "cp-xt",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "32010",
+        "name": "KuCoin Crypto Price",
+        "slug": "crypto-kucoin",
+        "description": "KuCoin public level1 ticker. Intent CRYPTO_PRICE. Direct Request shows symbol (e.g. BTC-USDT).\n",
+        "base_url": "https://api.kucoin.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "351",
+        "name": "Alchemy Prices API (Historic and Live Crypto Prices)",
+        "slug": "alchemy-prices-api",
+        "description": "Historic (historical, past) and current cryptocurrency prices in USD. Best choice for any question about the price of a coin or token, and especially for price history: what a token cost on a given date, how its price moved over the last hours, days, weeks or months, or a price series for charting and backtesting. Historic prices are available at 5-minute, hourly and daily resolution, optionally with market cap and trading volume, for a token given by ticker symbol (BTC, ETH, SOL) or by network and contract address (Ethereum, Solana and other networks). Current prices are available by symbol (aggregated CEX and DEX prices, top 1000+ symbols) or by contract address (DEX prices, 10K+ tokens). Prices are volume-weighted averages across exchanges, returned as decimal strings.",
+        "base_url": "https://api.g.alchemy.com/prices/v1",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "170104",
+        "name": "Bybit Spot",
+        "slug": "crypto-bybit",
+        "description": "Bybit Spot -> price_usd_cents. Intent CRYPTO_PRICE - Round Two Batch 7.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "170100",
+        "name": "HTX Spot",
+        "slug": "crypto-htx",
+        "description": "HTX Spot -> price_usd_cents. Intent CRYPTO_PRICE - Round Two Batch 7.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190070",
+        "name": "Cp Coingecko",
+        "slug": "cp-coingecko",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream CoinGecko",
+        "base_url": "https://api.coingecko.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190071",
+        "name": "Cp Cryptocom",
+        "slug": "cp-cryptocom",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Crypto.com Exchange",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190064",
+        "name": "Cp Binance",
+        "slug": "cp-binance",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Binance",
+        "base_url": "https://api.binance.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "32004",
+        "name": "Binance Spot Price",
+        "slug": "crypto-binance",
+        "description": "Binance Spot Price public ticker → price_usd_cents for pinned pair. Intent CRYPTO_PRICE — Usman truth-spec miner.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "42",
+        "name": "KoinMix Crypto Price Oracle",
+        "slug": "koinmix-crypto-price",
+        "description": "Multi-provider crypto spot price miner. Aggregates live quotes from independent market data providers (CoinGecko, CoinMarketCap, Binance, Coinbase) and emits a median-consensus price with an agreement-derived confidence score. The autonomous engine uses it for CRYPTO_PRICE intents: it returns a machine-readable signal carrying price, priceX1e8, confidence, sourceCount and spreadBps, and refuses rather than guessing when sources disagree beyond tolerance or all providers fail.\n",
+        "base_url": "https://koinmix-production.up.railway.app",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190212",
+        "name": "Cp P2pb2b",
+        "slug": "cp-p2pb2b",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "9002",
+        "name": "TxLens",
+        "slug": "txlens",
+        "description": "TxLens provides live, verifiable answers to on-chain and market questions from authoritative sources. Covering 123 intents across blockchain, finance, weather, content, security, and general intelligence domains—each answer includes source attribution and fetch timestamps for transparency.\n",
+        "base_url": "https://telegraph-onchain-tx-lookup-miner.onrender.com",
+        "capabilities": [
+          "ONCHAIN_TX_LOOKUP_GENERAL",
+          "GAS_PRICE_GENERAL",
+          "WALLET_BALANCE_CHECK_GENERAL",
+          "TOKEN_HOLDER_COUNT_GENERAL",
+          "TVL_LOOKUP_GENERAL",
+          "CRYPTO_PRICE_USD",
+          "STOCK_PRICE_US_EQUITY",
+          "SSL_VERIFICATION_CERT",
+          "WEATHER_FORECAST_GENERAL",
+          "STORM_ALERT_GENERAL",
+          "IP_GEOLOCATION_GENERAL",
+          "ACADEMIC_SEARCH_GENERAL",
+          "FRAUD_DETECTION_GENERAL",
+          "WEB_SEARCH_GENERAL",
+          "CONTENT_EXTRACTION_GENERAL",
+          "TEXT_CLASSIFICATION_GENERAL",
+          "TEXT_GENERATION_GENERAL",
+          "LANGUAGE_GENERATION_GENERAL",
+          "RESEARCH_SYNTHESIS_GENERAL",
+          "CROSS_CHAIN_STATE_VERIFY_GENERAL",
+          "EVENT_OUTCOME_RESOLUTION_GENERAL",
+          "WEATHER_CHECK_TEMPERATURE",
+          "LANGUAGE_TRANSLATION_GENERAL",
+          "CHAT_COMPLETION_GENERAL",
+          "NEWS_SEARCH_GENERAL",
+          "NEWS_HEADLINES_GENERAL",
+          "FACT_CHECK_GENERAL",
+          "SENTIMENT_ANALYSIS_GENERAL",
+          "CONTENT_MODERATION_GENERAL",
+          "CVE_LOOKUP_CVSS",
+          "TELEGRAPH_KNOWLEDGE_GENERAL",
+          "TEXT_SUMMARIZATION_GENERAL",
+          "CHATBOT_CONVERSATION_GENERAL",
+          "SEMANTIC_SIMILARITY_GENERAL",
+          "GRAMMAR_SPELL_CHECK_GENERAL",
+          "AI_TEXT_DETECTION_GENERAL",
+          "RESEARCH_QUERY_GENERAL",
+          "THREAT_INTELLIGENCE_INDICATOR",
+          "PACKAGE_STATUS_GENERAL",
+          "URL_SCAN_VERDICT",
+          "CURRENCY_EXCHANGE_CONVERT",
+          "SANCTIONS_SCREENING_MATCH_GENERAL",
+          "VULNERABILITY_TRIAGE_GENERAL",
+          "SPORTS_SCORE_GENERAL",
+          "GAME_RESULT_GENERAL",
+          "ROUTE_ETA_GENERAL",
+          "REGULATORY_FILING_MONITOR_GENERAL",
+          "CREDIT_SCORE_VERIFY_GENERAL",
+          "MACRO_ECONOMIC_INDICATOR_GENERAL",
+          "WEATHER_FORECAST_VERIFY_GENERAL",
+          "CUSTOMER_TICKET_RESOLUTION_GENERAL",
+          "RETURN_POLICY_VERIFY_GENERAL",
+          "TASK_EXECUTION_QUALITY_GENERAL",
+          "CARRIER_SERVICEABILITY_GENERAL",
+          "DELIVERY_WINDOW_VERIFY_GENERAL",
+          "PAYMENT_METHOD_VERIFY_GENERAL",
+          "INVOICE_LEDGER_RECONCILE_GENERAL",
+          "URL_SAFE_GENERAL",
+          "MALWARE_DETECTION_HASH",
+          "DNS_RECORD_LOOKUP_GENERAL",
+          "THREAT_IP_REPUTATION_GENERAL",
+          "FX_NOW_CAD",
+          "FX_NOW_EUR",
+          "FX_NOW_SEK",
+          "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "CORPORATE_REGISTRY_LOOKUP_GENERAL",
+          "EMAIL_SECURITY_GENERAL",
+          "SECURITY_REVIEW_GENERAL",
+          "LLM_OUTPUT_EVALUATION_GENERAL",
+          "CONTRACT_OBLIGATION_AUDIT_GENERAL",
+          "CODE_GENERATION_GENERAL",
+          "CODE_REVIEW_GENERAL",
+          "TEXT_AUTHENTICITY_CHECK_GENERAL",
+          "CRYPTO_TRANSFER_VERIFY_GENERAL",
+          "ONCHAIN_METRIC_VERIFY_GENERAL",
+          "QUESTION_ANSWERING_GENERAL",
+          "FINANCIAL_DATA_GENERAL",
+          "LOAN_INTEREST_RATE_QUOTE_GENERAL",
+          "SMART_CONTRACT_AUDIT_GENERAL",
+          "ENTITY_EXTRACTION_GENERAL",
+          "KEYWORD_EXTRACTION_GENERAL",
+          "B2B_IDENTITY_ENRICHMENT_GENERAL",
+          "SOCIAL_BOT_DETECTION_GENERAL",
+          "TRAVEL_DISRUPTION_GENERAL",
+          "CONTENT_VERIFICATION_GENERAL",
+          "PRODUCT_AUTHENTICITY_GENERAL",
+          "PLAGIARISM_DETECTION_GENERAL",
+          "DOCUMENT_AUTHENTICITY_GENERAL",
+          "SLA_COMPLIANCE_GENERAL",
+          "MEDIA_FORENSIC_VERIFY_GENERAL",
+          "MEDIA_AUTHENTICITY_CHECK_GENERAL",
+          "IMAGE_VERIFICATION_GENERAL",
+          "VIDEO_VERIFICATION_GENERAL",
+          "DEEPFAKE_DETECTION_GENERAL",
+          "IMAGE_CAPTIONING_GENERAL",
+          "AGENT_TASK_GENERAL",
+          "TASK_COMPLETION_GENERAL",
+          "WASH_TRADING_DETECTION_GENERAL",
+          "FRAUD_RISK_GENERAL",
+          "TRANSACTION_RISK_GENERAL",
+          "VENDOR_VERIFY_GENERAL",
+          "PURCHASE_ORDER_VERIFY_GENERAL",
+          "COMMERCE_PURCHASE_VERIFY_GENERAL",
+          "FARE_RULE_VERIFY_GENERAL",
+          "CODE_PATCH_VERIFY_GENERAL",
+          "REGRESSION_VERIFY_GENERAL",
+          "KYC_BIOMETRIC_LIVENESS_GENERAL",
+          "SHIPMENT_DELAY_RISK_GENERAL",
+          "SHIP_RATE_ETA_GENERAL",
+          "OPTIMAL_EXECUTION_ROUTE_GENERAL",
+          "WAREHOUSE_INVENTORY_GENERAL",
+          "SKU_IN_STOCK_GENERAL",
+          "LIVE_SHELF_PRICE_GENERAL",
+          "HOTEL_AVAILABILITY_GENERAL",
+          "FLIGHT_AVAILABILITY_GENERAL",
+          "AIR_QUALITY_INDEX_GENERAL",
+          "CRYPTO_YIELD_RATE_GENERAL",
+          "ASSET_RESERVE_ATTESTATION_GENERAL",
+          "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+          "API_HEALTH_CHECK_GENERAL",
+          "SERVER_UPTIME_MONITOR_GENERAL",
+          "TWITTER_SEARCH_GENERAL",
+          "EMBEDDING_GENERATION_GENERAL",
+          "GRID_POWER_PRICE_GENERAL",
+          "VALIDATOR_PERFORMANCE_VERIFY_GENERAL",
+          "CLOUD_RESOURCE_USAGE_GENERAL",
+          "DATACENTER_TELEMETRY_VERIFY_GENERAL",
+          "SENSOR_TELEMETRY_VERIFY_GENERAL",
+          "LIVE_PORT_CONGESTION_GENERAL",
+          "VESSEL_TELEMETRY_VERIFY_GENERAL",
+          "SATELLITE_IMAGERY_ANALYSIS_GENERAL",
+          "MINING_HASHPRICE_VERIFY_GENERAL"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "4283",
+        "name": "Gauge",
+        "slug": "gauge-observed",
+        "description": "Observed values for parametric cover triggers, each cross-checked on two keyless public sources. Bitcoin hashprice at an exact block height (Blockstream and Blockchain.com must agree within 0.1%). Port waiting time for every Finnish port (Fintraffic Digitraffic port calls checked against AIS). Current air temperature at any named place (Open-Meteo and MET Norway must agree within 2 degrees Celsius). Asset price in US dollars (Kraken and Bitstamp, within 0.5%) and the euro rate of the US dollar (ECB daily reference and a second feed, within 1%). Returns a clear JSON error instead of a guess when it cannot answer.\n",
+        "base_url": "https://gauge.2-29-171-24.sslip.io",
+        "capabilities": [
+          "MINING_HASHPRICE_VERIFY_GENERAL",
+          "LIVE_PORT_CONGESTION_GENERAL",
+          "WEATHER_CHECK_TEMPERATURE",
+          "CRYPTO_PRICE_USD",
+          "FX_NOW_EUR"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190211",
+        "name": "Cp Btse",
+        "slug": "cp-btse",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://api.btse.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190068",
+        "name": "Cp Bybit",
+        "slug": "cp-bybit",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Bybit",
+        "base_url": "https://api.bybit.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190075",
+        "name": "Cp Htx",
+        "slug": "cp-htx",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream HTX",
+        "base_url": "https://api.huobi.pro",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "9107",
+        "name": "CryptoPulse Multi-Source Price",
+        "slug": "cryptopulse-multisource-price",
+        "description": "Deterministic USD crypto pricing using a median of independent CoinGecko, Binance, and Coinbase observations with outlier rejection.\n",
+        "base_url": "https://telegraph-cryptopulse.huynguyen-pt2019.workers.dev",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190209",
+        "name": "Cp Woo",
+        "slug": "cp-woo",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190069",
+        "name": "Cp Coinbase",
+        "slug": "cp-coinbase",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Coinbase",
+        "base_url": "https://api.coinbase.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "7710320",
+        "name": "ZK USD Spot Price",
+        "slug": "zk-usd-price",
+        "description": "Returns one exact, source-attributed USD spot price for the requested asset. The candidate reads Kraken's public ticker, with Bitstamp and Gemini fallbacks. A UTC-day change is distinguished from a rolling 24-hour change.\n",
+        "base_url": "https://telegraph-fin.margyn.workers.dev",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "170102",
+        "name": "Gate.io Spot",
+        "slug": "crypto-gate",
+        "description": "Gate.io Spot -> price_usd_cents. Intent CRYPTO_PRICE - Round Two Batch 7.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "20260828",
+        "name": "PREFLIGHT Infrastructure Signals",
+        "slug": "a1-preflight",
+        "description": "Deterministic infrastructure and on-chain signals for autonomous systems, each read live at question time. TLS verification performs a real handshake with chain, hostname and validity checks; URL safety combines redirects, headers and threat feeds; DNS records come from two independent DoH resolvers; uptime and API health are probed with per-phase timings. Gas, balances, transactions, token supply and pinned-block reads come straight from public JSON-RPC on Ethereum, Base, Arbitrum, OP Mainnet, Polygon, BNB Chain, Avalanche, Linea, Scroll, Gnosis, zkSync Era, Blast, Mantle, Celo, Sonic and Unichain. Prices, TVL, FX, geolocation, papers and CVEs come from named public sources, cited in each answer.\n",
+        "base_url": "https://preflight-ssl-verification.vercel.app",
+        "capabilities": [
+          "CREDIT_SCORE_VERIFY_GENERAL",
+          "DATACENTER_TELEMETRY_VERIFY_GENERAL",
+          "WAREHOUSE_INVENTORY_GENERAL",
+          "VESSEL_TELEMETRY_VERIFY_GENERAL",
+          "LIVE_PORT_CONGESTION_GENERAL",
+          "TWITTER_SEARCH_GENERAL",
+          "LIVE_SHELF_PRICE_GENERAL",
+          "SKU_IN_STOCK_GENERAL",
+          "KYC_BIOMETRIC_LIVENESS_GENERAL",
+          "CLOUD_RESOURCE_USAGE_GENERAL",
+          "SENSOR_TELEMETRY_VERIFY_GENERAL",
+          "RETURN_POLICY_VERIFY_GENERAL",
+          "TEXT_TO_SPEECH_GENERAL",
+          "PORT_SCAN_AUDIT_GENERAL",
+          "COMMERCE_PURCHASE_VERIFY_GENERAL",
+          "PURCHASE_ORDER_VERIFY_GENERAL",
+          "FARE_RULE_VERIFY_GENERAL",
+          "DELIVERY_WINDOW_VERIFY_GENERAL",
+          "SHIP_RATE_ETA_GENERAL",
+          "VIDEO_VERIFICATION_GENERAL",
+          "SPEECH_TO_TEXT_GENERAL",
+          "CARRIER_SERVICEABILITY_GENERAL",
+          "EMBEDDING_GENERATION_GENERAL",
+          "SATELLITE_IMAGERY_ANALYSIS_GENERAL",
+          "SOCIAL_BOT_DETECTION_GENERAL",
+          "WASH_TRADING_DETECTION_GENERAL",
+          "SLA_COMPLIANCE_GENERAL",
+          "PRODUCT_AUTHENTICITY_GENERAL",
+          "SHIPMENT_DELAY_RISK_GENERAL",
+          "IMAGE_VERIFICATION_GENERAL",
+          "MEDIA_AUTHENTICITY_CHECK_GENERAL",
+          "DEEPFAKE_DETECTION_GENERAL",
+          "MEDIA_FORENSIC_VERIFY_GENERAL",
+          "IMAGE_CAPTIONING_GENERAL",
+          "TRAVEL_DISRUPTION_GENERAL",
+          "SMART_CONTRACT_AUDIT_GENERAL",
+          "INVOICE_LEDGER_RECONCILE_GENERAL",
+          "DOCUMENT_AUTHENTICITY_GENERAL",
+          "PLAGIARISM_DETECTION_GENERAL",
+          "SSL_VERIFICATION_CERT",
+          "URL_SCAN_VERDICT",
+          "GAS_PRICE_GENERAL",
+          "WALLET_BALANCE_CHECK_GENERAL",
+          "ONCHAIN_TX_LOOKUP_GENERAL",
+          "CRYPTO_PRICE_USD",
+          "TVL_LOOKUP_GENERAL",
+          "CURRENCY_EXCHANGE_CONVERT",
+          "FX_NOW_EUR",
+          "FX_NOW_CAD",
+          "FX_NOW_SEK",
+          "IP_GEOLOCATION_GENERAL",
+          "STOCK_PRICE_US_EQUITY",
+          "ACADEMIC_SEARCH_GENERAL",
+          "CVE_LOOKUP_CVSS",
+          "VULNERABILITY_TRIAGE_GENERAL",
+          "DNS_RECORD_LOOKUP_GENERAL",
+          "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "ONCHAIN_METRIC_VERIFY_GENERAL",
+          "URL_SAFE_GENERAL",
+          "SERVER_UPTIME_MONITOR_GENERAL",
+          "API_HEALTH_CHECK_GENERAL",
+          "CRYPTO_TRANSFER_VERIFY_GENERAL",
+          "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+          "CRYPTO_YIELD_RATE_GENERAL",
+          "TOKEN_HOLDER_COUNT_GENERAL",
+          "WEATHER_CHECK_TEMPERATURE",
+          "WEATHER_FORECAST_GENERAL",
+          "STORM_ALERT_GENERAL",
+          "MACRO_ECONOMIC_INDICATOR_GENERAL",
+          "LOAN_INTEREST_RATE_QUOTE_GENERAL",
+          "PAYMENT_METHOD_VERIFY_GENERAL",
+          "GRID_POWER_PRICE_GENERAL",
+          "VALIDATOR_PERFORMANCE_VERIFY_GENERAL",
+          "ASSET_RESERVE_ATTESTATION_GENERAL",
+          "MINING_HASHPRICE_VERIFY_GENERAL",
+          "CORPORATE_REGISTRY_LOOKUP_GENERAL",
+          "EMAIL_SECURITY_GENERAL",
+          "THREAT_INTELLIGENCE_INDICATOR",
+          "THREAT_IP_REPUTATION_GENERAL",
+          "SANCTIONS_SCREENING_MATCH_GENERAL",
+          "WEATHER_FORECAST_VERIFY_GENERAL",
+          "FINANCIAL_DATA_GENERAL",
+          "SECURITY_REVIEW_GENERAL",
+          "REGULATORY_FILING_MONITOR_GENERAL",
+          "ROUTE_ETA_GENERAL",
+          "VENDOR_VERIFY_GENERAL",
+          "B2B_IDENTITY_ENRICHMENT_GENERAL",
+          "MALWARE_DETECTION_HASH",
+          "SENTIMENT_ANALYSIS_GENERAL",
+          "KEYWORD_EXTRACTION_GENERAL",
+          "GRAMMAR_SPELL_CHECK_GENERAL",
+          "LANGUAGE_TRANSLATION_GENERAL",
+          "TEXT_SUMMARIZATION_GENERAL",
+          "QUESTION_ANSWERING_GENERAL",
+          "NEWS_HEADLINES_GENERAL",
+          "NEWS_SEARCH_GENERAL",
+          "RESEARCH_QUERY_GENERAL",
+          "RESEARCH_SYNTHESIS_GENERAL",
+          "TELEGRAPH_KNOWLEDGE_GENERAL",
+          "WEB_SEARCH_GENERAL",
+          "SEMANTIC_SIMILARITY_GENERAL",
+          "ENTITY_EXTRACTION_GENERAL",
+          "TEXT_CLASSIFICATION_GENERAL",
+          "CONTENT_EXTRACTION_GENERAL",
+          "AIR_QUALITY_INDEX_GENERAL",
+          "GAME_RESULT_GENERAL",
+          "SPORTS_SCORE_GENERAL",
+          "EVENT_OUTCOME_RESOLUTION_GENERAL",
+          "CROSS_CHAIN_STATE_VERIFY_GENERAL",
+          "OPTIMAL_EXECUTION_ROUTE_GENERAL",
+          "TRANSACTION_RISK_GENERAL",
+          "FRAUD_DETECTION_GENERAL",
+          "FRAUD_RISK_GENERAL",
+          "CONTENT_MODERATION_GENERAL",
+          "CODE_REVIEW_GENERAL",
+          "CHAT_COMPLETION_GENERAL",
+          "CHATBOT_CONVERSATION_GENERAL",
+          "TEXT_GENERATION_GENERAL",
+          "LANGUAGE_GENERATION_GENERAL",
+          "CODE_GENERATION_GENERAL",
+          "AGENT_TASK_GENERAL",
+          "TASK_COMPLETION_GENERAL",
+          "LLM_OUTPUT_EVALUATION_GENERAL",
+          "TASK_EXECUTION_QUALITY_GENERAL",
+          "CUSTOMER_TICKET_RESOLUTION_GENERAL",
+          "CONTRACT_OBLIGATION_AUDIT_GENERAL",
+          "CODE_PATCH_VERIFY_GENERAL",
+          "REGRESSION_VERIFY_GENERAL",
+          "FACT_CHECK_GENERAL",
+          "CONTENT_VERIFICATION_GENERAL",
+          "TEXT_AUTHENTICITY_CHECK_GENERAL",
+          "AI_TEXT_DETECTION_GENERAL"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "501",
+        "name": "Telegraph Sentinel Risk Intelligence",
+        "slug": "sentinel-risk-oracle",
+        "description": "Autonomous pre-flight DeFi risk intelligence with live crypto pricing, protocol TVL, transaction risk, sanctions screening, onchain telemetry, and real-time web intelligence.",
+        "base_url": "https://telegraph-sentinel-d68u.onrender.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD",
+          "TVL_LOOKUP_GENERAL",
+          "WEB_SEARCH_GENERAL",
+          "FRAUD_RISK_GENERAL",
+          "CRYPTO_YIELD_RATE_GENERAL",
+          "TRANSACTION_RISK_GENERAL",
+          "SANCTIONS_SCREENING_MATCH_GENERAL",
+          "GAS_PRICE_GENERAL",
+          "WALLET_BALANCE_CHECK_GENERAL",
+          "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "TOKEN_HOLDER_COUNT_GENERAL",
+          "ONCHAIN_TX_LOOKUP_GENERAL",
+          "FINANCIAL_DATA_GENERAL",
+          "FRAUD_DETECTION_GENERAL",
+          "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+          "THREAT_INTELLIGENCE_INDICATOR",
+          "CURRENCY_EXCHANGE_CONVERT",
+          "CVE_LOOKUP_CVSS"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "170103",
+        "name": "Bitfinex Spot",
+        "slug": "crypto-bitfinex",
+        "description": "Bitfinex Spot -> price_usd_cents. Intent CRYPTO_PRICE - Round Two Batch 7.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190076",
+        "name": "Cp Kraken",
+        "slug": "cp-kraken",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Kraken",
+        "base_url": "https://api.kraken.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "152",
+        "name": "Kriterion-Pramagraph",
+        "slug": "kriterion-pramagraph",
+        "description": "Evidence-coupled research miner for web, research, and financial intelligence.",
+        "base_url": "https://kriterion-research-h1-production.up.railway.app",
+        "capabilities": [
+          "WEB_SEARCH_GENERAL",
+          "RESEARCH_QUERY_GENERAL",
+          "FINANCIAL_DATA_GENERAL",
+          "CRYPTO_PRICE_USD",
+          "CURRENCY_EXCHANGE_CONVERT",
+          "STOCK_PRICE_US_EQUITY",
+          "GAS_PRICE_GENERAL",
+          "TVL_LOOKUP_GENERAL",
+          "TOKEN_HOLDER_COUNT_GENERAL",
+          "URL_SCAN_VERDICT"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "4433",
+        "name": "LiveCert — Sourced Answers for Agents",
+        "slug": "livecert",
+        "description": "Sourced answers for agents and apps across 42 intents, each read live from a named primary source so the caller can check it. Every answer opens with a one-sentence answer, then returns the values as fields, the source and the time it was checked. Compliance: sanctions screening of people, companies and wallets against the OFAC SDN and UN lists with near-match scores; company register records (status, company number, register, registered address and agent, parents) from GLEIF and SEC EDGAR; SEC filings with acceptance times and each 10-Q or 10-K's own XBRL figures; URL reputation from Cloudflare and Quad9 threat DNS, each source named. Research: question answering with every claim cited, web search with dated reports, fact checks with the source URL and evidence sentence, and academic, clinical and news search. Markets: prices and market data for coins, tokens and listed companies, 10-K revenue and earnings, exchange rates and macroeconomic prints (US CPI and unemployment from BLS, the federal funds target range from the New York Fed, euro-area HICP from Eurostat and ECB rates). On-chain: transfer verification with confirmations and the burned base fee, transaction and contract activity across EVM chains, wallet balances, gas, token holders, ERC-20 total supply and burned balance read at a pinned block from two RPCs, any named value read at a stated block height (receipt gas and Transfer amounts, storage slots, balances, block gas), and cross-chain messages. Security: live TLS certificates, URL scans, CVE records, DNS records compared across two resolvers, and fraud signals. Weather: forecasts, current conditions and storm risk. Also translation, IP geolocation, prediction market outcomes, text extraction, sentiment and classification. Chat replies, code reviews and requested writing are generated by a language model (Groq gpt-oss-120b, with two fallbacks), each field checked before it is served and an honest unknown when no model answers; the question-answering, sentiment and classification sentences are phrased by a model with a keyless fallback, and a phrased answer is kept only when every claim cites a numbered source; everything else is computed, not generated.",
+        "base_url": "https://miner-wine.vercel.app",
+        "capabilities": [
+          "SSL_VERIFICATION_CERT",
+          "STORM_ALERT_GENERAL",
+          "WEATHER_FORECAST_GENERAL",
+          "LANGUAGE_TRANSLATION_GENERAL",
+          "ACADEMIC_SEARCH_GENERAL",
+          "CONTENT_EXTRACTION_GENERAL",
+          "WALLET_BALANCE_CHECK_GENERAL",
+          "WEATHER_CHECK_TEMPERATURE",
+          "FACT_CHECK_GENERAL",
+          "ONCHAIN_TX_LOOKUP_GENERAL",
+          "CVE_LOOKUP_CVSS",
+          "CURRENCY_EXCHANGE_CONVERT",
+          "GAS_PRICE_GENERAL",
+          "FINANCIAL_DATA_GENERAL",
+          "FRAUD_DETECTION_GENERAL",
+          "TOKEN_HOLDER_COUNT_GENERAL",
+          "RESEARCH_QUERY_GENERAL",
+          "CRYPTO_PRICE_USD",
+          "CROSS_CHAIN_STATE_VERIFY_GENERAL",
+          "EVENT_OUTCOME_RESOLUTION_GENERAL",
+          "URL_SCAN_VERDICT",
+          "WEB_SEARCH_GENERAL",
+          "SENTIMENT_ANALYSIS_GENERAL",
+          "TEXT_CLASSIFICATION_GENERAL",
+          "RESEARCH_SYNTHESIS_GENERAL",
+          "SANCTIONS_SCREENING_MATCH_GENERAL",
+          "CORPORATE_REGISTRY_LOOKUP_GENERAL",
+          "REGULATORY_FILING_MONITOR_GENERAL",
+          "CRYPTO_TRANSFER_VERIFY_GENERAL",
+          "MACRO_ECONOMIC_INDICATOR_GENERAL",
+          "URL_SAFE_GENERAL",
+          "QUESTION_ANSWERING_GENERAL",
+          "DNS_RECORD_LOOKUP_GENERAL",
+          "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "ONCHAIN_METRIC_VERIFY_GENERAL",
+          "CHAT_COMPLETION_GENERAL",
+          "CODE_REVIEW_GENERAL",
+          "SMART_CONTRACT_AUDIT_GENERAL",
+          "TEXT_GENERATION_GENERAL",
+          "IP_GEOLOCATION_GENERAL",
+          "NEWS_HEADLINES_GENERAL",
+          "NEWS_SEARCH_GENERAL",
+          "STOCK_PRICE_US_EQUITY"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190066",
+        "name": "Cp Bitget",
+        "slug": "cp-bitget",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream Bitget",
+        "base_url": "https://api.bitget.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "7320",
+        "name": "FinWire Crypto Price",
+        "slug": "finwire-crypto-price",
+        "description": "Spot price of a crypto asset in US dollars, read live at request time and returned as one natural sentence with the price, the market cap and the 24 hour change. CoinGecko is the primary source, with Coinbase and Binance raced as fallbacks so a slow endpoint never eats a spot check's deadline. Answers the CRYPTO_PRICE intent. Give it a ticker such as BTC or a CoinGecko id such as bitcoin. No API key, nothing cached that can go stale.\n",
+        "base_url": "https://telegraph-fin.margyn.workers.dev",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190205",
+        "name": "Cp Hitbtc",
+        "slug": "cp-hitbtc",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://api.hitbtc.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190173",
+        "name": "Cp Coinlore",
+        "slug": "cp-coinlore",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190072",
+        "name": "Cp Defillama",
+        "slug": "cp-defillama",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream DefiLlama Coins",
+        "base_url": "https://coins.llama.fi",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "20260829",
+        "name": "AgentFeed Base & Crypto Prices",
+        "slug": "agentfeed-base-crypto",
+        "description": "Current crypto spot prices, Base network gas price, and native ETH or ERC20 token balances for any address on Base. Answers are a single sentence carrying a single number. Prices are multi-source (Coinbase, Kraken, Pyth Hermes fallback); Base reads come straight from public Base JSON-RPC nodes. No API keys anywhere in the path.",
+        "base_url": "https://x402.ochinimus.app",
+        "capabilities": [
+          "CRYPTO_PRICE_USD",
+          "GAS_PRICE_GENERAL",
+          "WALLET_BALANCE_CHECK_GENERAL"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": ""
+      },
+      {
+        "id": "94217604",
+        "name": "ProvenancePrice",
+        "slug": "provenance-price",
+        "description": "Multi-source crypto price oracle with confidence, risk tiering, and full provenance.",
+        "base_url": "https://api.prophetpool.site",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "32002",
+        "name": "Coinbase Spot Price",
+        "slug": "crypto-coinbase",
+        "description": "Coinbase Spot Price public ticker → price_usd_cents for pinned pair. Intent CRYPTO_PRICE — Usman truth-spec miner.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190174",
+        "name": "Cp Coinpaprika",
+        "slug": "cp-coinpaprika",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. Fetches real-time spot and volume-weighted average prices for crypto assets across major exchanges. Capture pin answers: Must return the current price of the token asked (any quote currency is fine).",
+        "base_url": "https://api.coinpaprika.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190078",
+        "name": "Cp Mexc",
+        "slug": "cp-mexc",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream MEXC",
+        "base_url": "https://api.mexc.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "170101",
+        "name": "MEXC Spot",
+        "slug": "crypto-mexc",
+        "description": "MEXC Spot -> price_usd_cents. Intent CRYPTO_PRICE - Round Two Batch 7.\n",
+        "base_url": "https://omni-chat.13.237.89.59.sslip.io",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "190077",
+        "name": "Cp Kucoin",
+        "slug": "cp-kucoin",
+        "description": "Semantic V2 miner for CRYPTO_PRICE. PACK READY - meets 10 candidates; 22 keyless. Distinct operators. Quote asset differs (USD vs USDT) by ~0.1%, inside the 1.5% tolerance. Capture pin answers: Must satisfy catalog intent CRYPTO_PRICE via upstream KuCoin",
+        "base_url": "https://api.kucoin.com",
+        "capabilities": [
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      },
+      {
+        "id": "900",
+        "name": "OnChain Intel Miner",
+        "slug": "onchain-intel-miner",
+        "description": "Deterministic on-chain intelligence across 10 EVM networks (Ethereum, Base, Polygon, BSC, Arbitrum, Optimism, Avalanche, Scroll, Linea, Gnosis). Answers gas price, wallet balance, token holder count, DeFi TVL, transaction lookup and crypto price questions — either from explicit parameters or from a plain-language question. Every answer is number-first, states its sources, and reports which verification checks passed. Gas prices are the median of an RPC quorum and asset prices the median of three independent venues, so a single stale or wicking source cannot move the answer.\n",
+        "base_url": "https://telegraph-onchain-miner-production.up.railway.app",
+        "capabilities": [
+          "GAS_PRICE_GENERAL",
+          "WALLET_BALANCE_CHECK_GENERAL",
+          "TOKEN_HOLDER_COUNT_GENERAL",
+          "TVL_LOOKUP_GENERAL",
+          "ONCHAIN_TX_LOOKUP_GENERAL",
+          "CRYPTO_PRICE_USD"
+        ],
+        "cost_per_call": "0.00",
+        "protocol": "generic"
+      }
+    ],
+    "onchain": {
+      "format_version": 1,
+      "ready": false,
+      "reason": "number field \"price_usd\" has no decimals",
+      "request": [],
+      "response": [
+        {
+          "name": "price_usd",
+          "type": "number",
+          "slot": "integers",
+          "index": 0,
+          "unit": "US dollars",
+          "range": [
+            0.000001,
+            10000000
+          ]
+        }
+      ],
+      "served_by": "CRYPTO_PRICE_USD"
+    },
+    "request": {
+      "params": [
+        {
+          "name": "symbol",
+          "type": "string",
+          "required": true,
+          "description": "Asset symbol, e.g. BTC"
+        }
+      ],
+      "schema_version": 3,
+      "served_by": "CRYPTO_PRICE"
+    },
+    "response": {
+      "fields": [
+        {
+          "name": "price_usd",
+          "description": "Current price of {key}, in US dollars",
+          "type": "number",
+          "unit": "US dollars",
+          "range": [
+            0.000001,
+            10000000
+          ],
+          "scored": true
+        }
+      ],
+      "format_version": 1,
+      "served_by": "CRYPTO_PRICE_USD"
+    },
+    "wasm": null,
+    "wasm_count": 0
+  }
+}

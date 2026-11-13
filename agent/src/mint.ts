@@ -5,12 +5,13 @@ import { fileURLToPath } from "node:url";
 import { createPublicClient, createWalletClient, http, parseUnits, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { sepolia } from "viem/chains";
-import { balances, WALLET, USDC } from "./wallet.js";
+import { balances, WALLET, USDC, RPC } from "./wallet.js";
+import { loadNetwork } from "./network.js";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 try { process.loadEnvFile(`${ROOT}.env`); } catch { /* env may already be set */ }
 
-const RPC = "https://ethereum-sepolia-rpc.publicnode.com";
+if (!loadNetwork().testnet) throw new Error("mint is for test tokens only and refuses to run on a non-testnet network");
 const MAX_USDC = 20; // hard ceiling per invocation
 const amount = Number(process.argv.find((a, i) => i > 1 && /^\d+(\.\d+)?$/.test(a)) ?? "15");
 if (!(amount > 0 && amount <= MAX_USDC)) throw new Error(`amount must be above 0 and at most ${MAX_USDC}`);

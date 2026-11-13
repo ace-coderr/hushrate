@@ -1,0 +1,53 @@
+{
+  "label": "probe-btc-32010",
+  "miner_id_requested": "32010",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"32010\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x0ae30aed58f547306816a9dcf2fb2229c2b8a2179283c6fddd7c045d74e18b22",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x50e67bc696bdacf42d61c2a93882f227881e22033a8eef6e303964cf2ae81dee",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "3172",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 2077,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0x0ae30aed58f547306816a9dcf2fb2229c2b8a2179283c6fddd7c045d74e18b22",
+    "timestamp": 1794522748
+  },
+  "response": {
+    "miner_id": "32010",
+    "miner_name": "KuCoin Crypto Price",
+    "endpoint": "/query",
+    "result": {
+      "code": "200000",
+      "data": null
+    },
+    "result_shape": "raw",
+    "shape_error": "no_fields_found",
+    "format_version": 1,
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 130,
+    "timestamp": "2026-11-12T22:32:28.200541325Z",
+    "reasoning": "Intent: miner crypto-kucoin given by the caller\nMiner: input schema v3 mapped in code to GET /query",
+    "intent": "CRYPTO_PRICE_USD",
+    "signal_hash": "0x56889c9b96cc4d788d6997142b0c8d41bfef19aa62bded19f906c74c16f2eae7"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "label": "probe-btc-190074",
+  "miner_id_requested": "190074",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"190074\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"}]",
+  "paid": false,
+  "http_status": 503,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "error": "no_compatible_miner",
+    "intent": "CRYPTO_PRICE_USD",
+    "message": "miner cp-gemini cannot take this request's params: /query has no field for required param(s) symbol",
+    "schema_version": 3
+  }
+}

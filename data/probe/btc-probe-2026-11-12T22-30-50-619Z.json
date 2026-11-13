@@ -1,0 +1,58 @@
+{
+  "ran_at": "2026-11-12T22:30:50.619Z",
+  "reference": {
+    "usd": 71440,
+    "source": "tape btc_usd (mempool.space) recorded 2026-11-12T22:17:23.669Z"
+  },
+  "paid_attempts": 2,
+  "results": [
+    {
+      "miner_requested": "94217604",
+      "http_status": 500,
+      "paid": true,
+      "miner_id": "94217604",
+      "price_usd": null,
+      "rel_diff_vs_reference": null,
+      "error": {
+        "error": "upstream error 400: {\"error\":\"invalid_pair\",\"message\":\"pair must use BASE-QUOTE format\"}",
+        "intent": "CRYPTO_PRICE_USD",
+        "miner_id": "94217604",
+        "payment": {
+          "status": "escrow_credit_pending",
+          "message": "Your payment settled but the request failed, so nothing was billed. The amount is being credited to your Telegraph escrow balance (on-chain, usually within a few minutes): it then pays for your next asks, or withdraw it with requestWithdraw then executeWithdraw. If your balance has not risen after a while, contact support with this transaction.",
+          "transaction": "0x8420c1c3ec1d004807e2086aa00314dafa844200f60c7c805969e4b0f2fdf0e8",
+          "network": "eip155:11155111",
+          "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e"
+        }
+      },
+      "receipt_file": "2026-11-12T22-30-30-351Z-probe-btc-94217604.json"
+    },
+    {
+      "miner_requested": "190074",
+      "http_status": 503,
+      "paid": false,
+      "price_usd": null,
+      "rel_diff_vs_reference": null,
+      "error": {
+        "error": "no_compatible_miner",
+        "intent": "CRYPTO_PRICE_USD",
+        "message": "miner cp-gemini cannot take this request's params: /query has no field for required param(s) symbol",
+        "schema_version": 3
+      },
+      "receipt_file": "2026-11-12T22-30-32-013Z-probe-btc-190074.json"
+    },
+    {
+      "miner_requested": "190075",
+      "http_status": 200,
+      "paid": true,
+      "miner_id": "190075",
+      "miner_name": "Cp Htx",
+      "endpoint": "/query",
+      "price_usd": null,
+      "cost_usd": 0.01,
+      "duration_ms": 124,
+      "rel_diff_vs_reference": null,
+      "receipt_file": "2026-11-12T22-30-50-613Z-probe-btc-190075.json"
+    }
+  ]
+}

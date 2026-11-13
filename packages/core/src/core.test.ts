@@ -1,7 +1,7 @@
 // Hand-computed checks. Run: npm test -w packages/core
 import test from "node:test";
 import assert from "node:assert/strict";
-import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, type Site, type PowerPrice } from "./index.js";
+import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
 
 const near = (a: number, b: number, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} vs ${b}`);
 
@@ -89,4 +89,36 @@ test("power selection: real-time first, then verified Telegraph day-ahead, then 
   assert.equal(selectPower({ ...base, telegraph: tg }).usd_per_mwh, 31);
   assert.equal(selectPower({ ...base, telegraph: { ...tg, accepted: false } }).usd_per_mwh, 30);
   assert.equal(selectPower({ ...base, day_ahead_usd_per_mwh: null }).usd_per_mwh, null);
+});
+
+const ok = { http_status: 200, field_status: { price_usd: "ok" }, value: 71407.4 };
+
+test("BTC purchase: accepted only inside 0.5% of the public price with an ok field", () => {
+  // 71,440 * 0.005 = 357.2, so 71,407.4 (32.6 away) passes and a 358 gap fails.
+  assert.equal(checkBtcPurchase(ok, 71440, 0.005).accepted, true);
+  assert.equal(checkBtcPurchase({ ...ok, value: 71440 + 357 }, 71440, 0.005).accepted, true);
+  const far = checkBtcPurchase({ ...ok, value: 71440 + 358 }, 71440, 0.005);
+  assert.equal(far.accepted, false);
+  assert.match(far.reason!, /differs 0.50% .*limit 0.5%/);
+});
+
+test("BTC purchase: every failure falls back to the public price with a reason", () => {
+  assert.match(checkBtcPurchase({ ...ok, http_status: 500 }, 71440, 0.005).reason!, /HTTP 500/);
+  assert.match(checkBtcPurchase({ ...ok, field_status: { price_usd: "missing" } }, 71440, 0.005).reason!, /field not ok/);
+  assert.match(checkBtcPurchase({ ...ok, field_status: null }, 71440, 0.005).reason!, /absent/);
+  assert.match(checkBtcPurchase({ ...ok, value: null }, 71440, 0.005).reason!, /no value/);
+  assert.match(checkBtcPurchase(ok, null, 0.005).reason!, /no public BTC/);
+  assert.match(checkBtcPurchase({ ...ok, reject_reason: "call failed: timeout" }, 71440, 0.005).reason!, /call failed/);
+});
+
+test("history entry records which purchases settled, and old tapes without btc stay readable", () => {
+  const call = (paid: boolean) => ({ intent: "i", requested_miner: "1", http_status: 200, paid, cost_usd: 0.01, value: 1, accepted: true, receipt_hash: "0xr", tx_hash: "0xt" });
+  const base = { schema: 1, interval_start: "2026-01-01T00:00:00Z", recorded_at: "x", block_height: 1, btc_usd: 100000, power: [], spend: { paid_calls: 2, cost_usd: 0.02 }, wallet_usdc_after: null, notes: [] };
+  const both = toHistoryEntry({ ...base, hashprice: { value_sats_per_ph_day: 1, source: "telegraph", label: "", public_144: null, telegraph: call(true), public_at_telegraph_height: null }, btc: { value_usd: 1, source: "telegraph", label: "", public_usd: 1, telegraph: call(true) } } as unknown as MarketTape);
+  assert.deepEqual(both.paid_kinds, ["hashprice", "btc"]);
+  assert.equal(both.tx_hashes.length, 2);
+  // An old tape has no btc block: public-only price, one paid kind.
+  const old = toHistoryEntry({ ...base, hashprice: { value_sats_per_ph_day: 1, source: "telegraph", label: "", public_144: null, telegraph: call(true), public_at_telegraph_height: null } } as unknown as MarketTape);
+  assert.deepEqual(old.paid_kinds, ["hashprice"]);
+  assert.equal(old.btc_source, "public");
 });

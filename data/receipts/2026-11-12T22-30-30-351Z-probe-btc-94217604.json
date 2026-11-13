@@ -1,0 +1,31 @@
+{
+  "label": "probe-btc-94217604",
+  "miner_id_requested": "94217604",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"94217604\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"}]",
+  "paid": true,
+  "http_status": 500,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x8420c1c3ec1d004807e2086aa00314dafa844200f60c7c805969e4b0f2fdf0e8",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": null,
+  "response": {
+    "error": "upstream error 400: {\"error\":\"invalid_pair\",\"message\":\"pair must use BASE-QUOTE format\"}",
+    "intent": "CRYPTO_PRICE_USD",
+    "miner_id": "94217604",
+    "payment": {
+      "status": "escrow_credit_pending",
+      "message": "Your payment settled but the request failed, so nothing was billed. The amount is being credited to your Telegraph escrow balance (on-chain, usually within a few minutes): it then pays for your next asks, or withdraw it with requestWithdraw then executeWithdraw. If your balance has not risen after a while, contact support with this transaction.",
+      "transaction": "0x8420c1c3ec1d004807e2086aa00314dafa844200f60c7c805969e4b0f2fdf0e8",
+      "network": "eip155:11155111",
+      "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e"
+    }
+  }
+}

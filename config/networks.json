@@ -1,0 +1,36 @@
+{
+  "_note": "Only Ethereum Sepolia is live. The mainnet entry is a disabled placeholder: Telegraph's docs publish testnet addresses only, so every mainnet value is null on purpose and nothing here may be filled in with a guess. See docs/mainnet.md.",
+  "active": "sepolia",
+  "networks": {
+    "sepolia": {
+      "label": "Ethereum Sepolia (testnet)",
+      "testnet": true,
+      "enabled": true,
+      "caip2": "eip155:11155111",
+      "chain_id": 11155111,
+      "rpc_url": "https://ethereum-sepolia-rpc.publicnode.com",
+      "usdc": { "address": "0xcc194e1a843B658526D0D5C431f670028582Ae17", "decimals": 6 },
+      "telegraph_node": "https://devnode.telegraphprotocol.com",
+      "expected_wallet": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+      "explorer_tx": "https://sepolia.etherscan.io/tx/",
+      "max_amount_per_payment": "30000",
+      "max_paid_calls_per_run": 3,
+      "min_balance_units": "200000"
+    },
+    "mainnet": {
+      "label": "Ethereum mainnet (NOT LIVE: disabled)",
+      "testnet": false,
+      "enabled": false,
+      "caip2": null,
+      "chain_id": null,
+      "rpc_url": null,
+      "usdc": { "address": null, "decimals": 6 },
+      "telegraph_node": null,
+      "expected_wallet": null,
+      "explorer_tx": null,
+      "max_amount_per_payment": null,
+      "max_paid_calls_per_run": null,
+      "min_balance_units": null
+    }
+  }
+}

@@ -46,6 +46,18 @@ export interface MarketTape {
     /** Public single-block hashprice at the block height we asked Telegraph about, for a same-block check. */
     public_at_telegraph_height: number | null;
   };
+  /**
+   * The BTC/USD price used for decisions. Absent on tapes recorded before the second paid intent existed: those used the
+   * public mempool.space price only, and btc_usd carries it.
+   */
+  btc?: {
+    value_usd: number | null;
+    source: "telegraph" | "public" | null;
+    label: string;
+    /** mempool.space price at record time, the reference the bought price is checked against. */
+    public_usd: number | null;
+    telegraph: TelegraphCall | null;
+  };
   power: PowerPrice[];
   spend: { paid_calls: number; cost_usd: number };
   wallet_usdc_after: string | null;
@@ -65,7 +77,12 @@ export interface HistoryEntry {
   cost_usd: number;
   tx_hashes: string[];
   receipt_hashes: string[];
+  /** Which purchases settled this hour: absent on old entries (they only ever bought hashprice). */
+  paid_kinds?: PurchaseKind[];
+  btc_source?: "telegraph" | "public" | null;
 }
+
+export type PurchaseKind = "hashprice" | "btc";
 
 /** Completeness of a tape or history entry: used to stop a degraded rerun from overwriting a better tape for the same hour. */
 export function tapeScore(t: { hashprice: number | null; btc: number | null; powerNodesWithPrice: number }): number {
@@ -83,7 +100,10 @@ export function selectPower(p: PowerPrice): { usd_per_mwh: number | null; basis:
 }
 
 export function toHistoryEntry(t: MarketTape): HistoryEntry {
-  const calls = [t.hashprice.telegraph, ...t.power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && c.paid);
+  const calls = [t.hashprice.telegraph, t.btc?.telegraph ?? null, ...t.power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && c.paid);
+  const paid_kinds: PurchaseKind[] = [];
+  if (t.hashprice.telegraph?.paid) paid_kinds.push("hashprice");
+  if (t.btc?.telegraph?.paid) paid_kinds.push("btc");
   return {
     interval_start: t.interval_start,
     block_height: t.block_height,
@@ -95,5 +115,28 @@ export function toHistoryEntry(t: MarketTape): HistoryEntry {
     cost_usd: t.spend.cost_usd,
     tx_hashes: calls.map((c) => c.tx_hash).filter((x): x is string => !!x),
     receipt_hashes: calls.map((c) => c.receipt_hash).filter((x): x is string => !!x),
+    paid_kinds,
+    btc_source: t.btc ? t.btc.source : "public",
   };
+}
+
+/**
+ * The acceptance rule for the bought BTC/USD price. Shared by the agent, the Proof page and the tests so they cannot
+ * disagree. Accepted only when the call succeeded, the used field is `ok`, and the value is within `tolerance`
+ * (relative, e.g. 0.005 = 0.5%) of the public price. Otherwise the public price is used and `reason` says why.
+ */
+export function checkBtcPurchase(
+  call: { http_status: number | null; field_status?: Record<string, string> | null; value: number | null; reject_reason?: string | null },
+  publicUsd: number | null,
+  tolerance: number,
+): { accepted: boolean; reason: string | null; rel: number | null } {
+  const rel = call.value !== null && publicUsd !== null && publicUsd > 0 ? Math.abs(call.value - publicUsd) / publicUsd : null;
+  let reason: string | null = null;
+  if (call.reject_reason) reason = call.reject_reason;
+  else if (call.http_status !== 200) reason = `HTTP ${call.http_status}`;
+  else if (call.field_status?.price_usd !== "ok") reason = `field not ok: price_usd is ${call.field_status?.price_usd ?? "absent"}`;
+  else if (publicUsd === null) reason = "no public BTC/USD price to verify against";
+  else if (rel === null) reason = "no value";
+  else if (rel > tolerance) reason = `differs ${(rel * 100).toFixed(2)}% from the public BTC/USD price (limit ${tolerance * 100}%)`;
+  return { accepted: reason === null, reason, rel };
 }

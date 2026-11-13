@@ -5,14 +5,17 @@ import { wrapFetchWithPaymentFromConfig } from "@x402/fetch";
 import { ExactEvmScheme } from "@x402/evm";
 import { privateKeyToAccount } from "viem/accounts";
 import { WALLET, USDC } from "./wallet.js";
+import { loadNetwork } from "./network.js";
+import { keyOf } from "./dedupe.js";
 
 export const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 try { process.loadEnvFile(`${ROOT}.env`); } catch { /* env may already be set */ }
 
-export const NODE = (process.env.TELEGRAPH_NODE ?? "https://devnode.telegraphprotocol.com").replace(/\/$/, "");
-export const NETWORK = "eip155:11155111";
-export const MAX_PER_PAYMENT = "30000"; // 3 cents in 6-decimal test USDC
-export const MAX_PAID_CALLS = 3;
+const net = loadNetwork();
+export const NODE = net.telegraph_node;
+export const NETWORK = net.caip2;
+export const MAX_PER_PAYMENT = net.max_amount_per_payment; // 30000 = 3 cents in 6-decimal USDC on Sepolia
+export const MAX_PAID_CALLS = net.max_paid_calls_per_run;
 const RECEIPTS = `${ROOT}data/receipts`;
 
 const key = process.env.EVM_PRIVATE_KEY;
@@ -50,9 +53,12 @@ function b64json(v: string | null): unknown {
   try { return JSON.parse(Buffer.from(v, "base64").toString("utf8")); } catch { return { undecodable: v }; }
 }
 
-export interface Call { label: string; intent: string; params?: Record<string, unknown>; query?: string; minerId?: string; }
+/**
+ * `dedupe` makes the duplicate-request key unique per period for requests whose params never change (the BTC price has
+ * params {symbol: "BTC"} forever, so without it the second purchase ever would be skipped as a duplicate of the first).
+ */
+export interface Call { label: string; intent: string; params?: Record<string, unknown>; query?: string; minerId?: string; dedupe?: string; }
 
-const keyOf = (c: Call) => JSON.stringify(c.query ? [c.minerId ?? null, c.intent, c.params ?? null, c.query] : [c.minerId ?? null, c.intent, c.params]);
 
 function alreadyDone(c: Call): string | null {
   mkdirSync(RECEIPTS, { recursive: true });

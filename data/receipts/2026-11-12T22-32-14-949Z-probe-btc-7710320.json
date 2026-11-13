@@ -1,0 +1,54 @@
+{
+  "label": "probe-btc-7710320",
+  "miner_id_requested": "7710320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7710320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0xde2191a9073ea5b6742abcb26a1082d828e4f1848c7e3201ba77553fdd982fe4",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x6c8a234418c7fb27341c6a583b684f082ee2c128e0b50622754437d6eeffc8e4",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "4914",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 2077,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0xde2191a9073ea5b6742abcb26a1082d828e4f1848c7e3201ba77553fdd982fe4",
+    "timestamp": 1794522734
+  },
+  "response": {
+    "miner_id": "7710320",
+    "miner_name": "ZK USD Spot Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 71402.7
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 152,
+    "timestamp": "2026-11-12T22:32:14.490190596Z",
+    "reasoning": "Intent: miner zk-usd-price given by the caller\nMiner: input schema v3 mapped in code to GET /price",
+    "intent": "CRYPTO_PRICE_USD",
+    "signal_hash": "0xa3fb19b569b3c9ff60eebb2013087bae38d42c793dc32ebb8e2534caa5570c36"
+  }
+}

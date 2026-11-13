@@ -1,0 +1,55 @@
+{
+  "ran_at": "2026-11-12T22:32:29.491Z",
+  "reference": {
+    "usd": 71440,
+    "source": "tape btc_usd (mempool.space) recorded 2026-11-12T22:17:23.669Z"
+  },
+  "paid_attempts": 3,
+  "results": [
+    {
+      "miner_requested": "7320",
+      "http_status": 200,
+      "paid": true,
+      "miner_id": "7320",
+      "miner_name": "FinWire Crypto Price",
+      "endpoint": "/price",
+      "field_status": {
+        "price_usd": "ok"
+      },
+      "price_usd": 71407.4,
+      "cost_usd": 0.01,
+      "duration_ms": 86,
+      "rel_diff_vs_reference": -0.00045632698768205236,
+      "receipt_file": "2026-11-12T22-31-41-982Z-probe-btc-7320.json"
+    },
+    {
+      "miner_requested": "7710320",
+      "http_status": 200,
+      "paid": true,
+      "miner_id": "7710320",
+      "miner_name": "ZK USD Spot Price",
+      "endpoint": "/price",
+      "field_status": {
+        "price_usd": "ok"
+      },
+      "price_usd": 71402.7,
+      "cost_usd": 0.01,
+      "duration_ms": 152,
+      "rel_diff_vs_reference": -0.0005221164613662221,
+      "receipt_file": "2026-11-12T22-32-14-949Z-probe-btc-7710320.json"
+    },
+    {
+      "miner_requested": "32010",
+      "http_status": 200,
+      "paid": true,
+      "miner_id": "32010",
+      "miner_name": "KuCoin Crypto Price",
+      "endpoint": "/query",
+      "price_usd": null,
+      "cost_usd": 0.01,
+      "duration_ms": 130,
+      "rel_diff_vs_reference": null,
+      "receipt_file": "2026-11-12T22-32-29-482Z-probe-btc-32010.json"
+    }
+  ]
+}
