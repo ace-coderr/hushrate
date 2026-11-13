@@ -80,6 +80,29 @@ Result: **still not usable.** The one miner that answers returns about the same 
 
 The agent requires `hashprice_sats_per_ph_day`, `block_height` and `hashrate_eh_s` to be `ok`, the returned height to equal the requested tip, and the value to be within 1% of the public 144-block mean. Miner 71083 returns `hashprice_usd_per_ph_day` as `missing`; this is not required because USD is computed locally from the public BTC price. Telegraph computes a single block, so its value and the 144-block mean can differ by the block's fee noise; when they differ by more than 1% the public value is used and the receipt says why.
 
+## Round 4: second paid intent, BTC/USD price (2026-11-12, 22:30 UTC)
+
+Why: the decision math needs a BTC price to turn sats into dollars, and until now that came only from mempool.space. Buying it too means paid data really feeds the decision, and checking it against mempool.space makes the purchase verifiable.
+
+**Discovery (free).** `GET /engine/v1/intents/CRYPTO_PRICE_USD`: one param (`symbol`, string, e.g. `BTC`), one on-chain field (`price_usd`, number). `GET /api/miners?intent=CRYPTO_PRICE_USD` lists **54 miners**, 48 of them with a rank for this intent (the node's own per-epoch scoring in each miner's `scores`). Raw output is in `data/discovery/CRYPTO_PRICE_USD.*.json`.
+
+**Probe (paid, 6 attempts, `agent/src/btc-probe.ts`).** Candidates by node rank first, then miners whose spec documents a `symbol` parameter. Raw output: `data/probe/btc-probe-*.json`, receipts in `data/receipts/*probe-btc-*`. Reference price: the BTC/USD recorded on the 22:17 UTC tape (mempool.space), 14 minutes old, because mempool.space was unreachable from the machine that ran the probe at that moment.
+
+| Rank | Miner | Result | Cost |
+|---|---|---|---|
+| 1 | 94217604 ProvenancePrice | HTTP 500 after payment: upstream `invalid_pair`, "pair must use BASE-QUOTE format". Credited to escrow. | $0 billed |
+| 2 | 190074 Cp Gemini | HTTP 503 before payment: its `/query` endpoint has no field for `symbol` | $0 |
+| 3 | 190075 Cp Htx | HTTP 200 but the exchange answered `invalid symbol`; `price_usd` null | $0.01 |
+| 11 | 32010 KuCoin Crypto Price | HTTP 200, `price_usd` null | $0.01 |
+| **18** | **7320 FinWire Crypto Price** | **HTTP 200, `price_usd: ok`, 71,407.4, 0.046% from the reference** | $0.01 |
+| 19 | 7710320 ZK USD Spot Price | HTTP 200, `price_usd: ok`, 71,402.7, 0.052% from the reference | $0.01 |
+
+**Pinned: miner 7320** (FinWire Crypto Price), the best-ranked miner that worked: ranks 1 to 3 and 11 failed or returned nothing for `symbol=BTC`. Its endpoint documents `?symbol=BTC` directly. 7710320 is a working alternative. This is one sample, so the runtime check is what protects decisions.
+
+**Runtime rule (every hour, $0.01).** The agent buys the BTC price from 7320 and compares it with the live mempool.space price. It is accepted only if the call succeeded, `price_usd` is `ok`, and it is within **0.5%** of the public price; otherwise the public price is used and the tape says why. The accepted price is the one decisions use (`btc_usd` on the tape). If mempool.space is unreachable there is nothing to verify against, so the purchase is skipped and no money is spent. The rule lives in `@hushrate/core` (`checkBtcPurchase`) and is shared by the agent, the Proof page and the tests.
+
+**Cost.** Two paid calls per run (hashprice and BTC price): $0.02 per run, $0.48 per day, $9.12 over 19 days to 1 December. The hard cap of 3 paid calls per run and 3 cents per payment stay.
+
 ## Recommendation
 
 On this evidence, Mission 12 data quality is **not good enough yet** to drive run or curtail decisions from the node alone. One sample per intent is thin, but both samples failed. Hushrate should:

@@ -6,6 +6,9 @@ import { decideWith, marketFromEntry } from "../lib/decisions";
 import { explorerTx, hourLabel, num, shortHash, usd } from "../lib/format";
 import { useStore } from "../lib/store";
 
+const PURPOSE: Record<string, string> = { MINING_HASHPRICE_VERIFY_GENERAL: "hashprice", CRYPTO_PRICE_USD: "BTC/USD price", GRID_POWER_PRICE_GENERAL: "power price" };
+const purpose = (r: { intent: string; label: string }) => `${PURPOSE[r.intent] ?? r.intent}${/^(probe|retest|Sd|A-|B-|agent-)/.test(r.label) ? " · research probe" : ""}`;
+
 export function Receipts() {
   const ledger = useLedger();
   const history = useHistory();
@@ -31,7 +34,7 @@ export function Receipts() {
   return (
     <>
       <PageHead kicker="Receipts" title="Every paid request, on the record.">
-        Each row is a request that settled a test-USDC payment on Ethereum Sepolia. Failed requests are credited back to escrow, so they show as paid but billed $0.
+        Each row is a request that settled a test-USDC payment on Ethereum Sepolia: the hourly hashprice and BTC price purchases, plus the research probes used to pick miners. Failed requests are credited back to escrow, so they show as paid but billed $0.
       </PageHead>
 
       <section className="stats">
@@ -50,7 +53,7 @@ export function Receipts() {
               {[...rows].reverse().map((r) => (
                 <tr key={r.file}>
                   <td>{hourLabel(r.at)}</td>
-                  <td className="mono">{r.intent.replace(/_GENERAL$/, "")}</td>
+                  <td><span className="mono">{r.intent.replace(/_GENERAL$/, "")}</span><br /><small className="muted">{purpose(r)}</small></td>
                   <td>{r.miner_id ?? r.miner_requested ?? "n/a"}{r.miner_name ? ` · ${r.miner_name}` : ""}</td>
                   <td className="mono">{usd(r.billed_usd, 2)}</td>
                   <td>{r.outcome}</td>

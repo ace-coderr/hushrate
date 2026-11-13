@@ -17,15 +17,72 @@ export function Docs() {
       </PageHead>
 
       <nav className="toc" aria-label="On this page">
+        <button type="button" onClick={() => { document.getElementById("commercial")?.scrollIntoView(); }}>Commercial case</button>
         <button type="button" onClick={() => { document.getElementById("read")?.scrollIntoView(); }}>Read the desk</button>
         <button type="button" onClick={() => { document.getElementById("site")?.scrollIntoView(); }}>Add your site</button>
         <button type="button" onClick={() => { document.getElementById("verify")?.scrollIntoView(); }}>Verify a receipt</button>
         <button type="button" onClick={() => { document.getElementById("run")?.scrollIntoView(); }}>Run your own agent</button>
         <button type="button" onClick={() => { document.getElementById("limits")?.scrollIntoView(); }}>Limits</button>
+        <button type="button" onClick={() => { document.getElementById("mainnet")?.scrollIntoView(); }}>Path to mainnet</button>
         <button type="button" onClick={() => { document.getElementById("mcp")?.scrollIntoView(); }}>MCP</button>
       </nav>
 
       <article className="prose">
+        <h2 id="commercial">The commercial case</h2>
+        <p>Five questions, answered plainly. Nothing below is a measured result, a customer claim or a promised saving: the product is a testnet prototype, and any dollar figure shown with the sample fleet is arithmetic on labelled demo assumptions.</p>
+
+        <h3>1 · Who is it for?</h3>
+        <p>Bitcoin miners and compute operators whose power is priced by the hour or by the five minutes at a wholesale node, and who decide each hour whether a site should run or curtail. Today that means sites that settle against a CAISO node, since that is the market the tape covers.</p>
+
+        <h3>2 · What does it improve?</h3>
+        <p>It replaces a manual, per-person check with one repeatable calculation per site, every hour: revenue from the current hashprice and BTC price, minus the energy bill at the current power price plus your own adder, giving RUN, CURTAIL or HOLD and the power price at which the answer flips (the breakeven). The improvement is consistency and auditability: every input has a source label, the paid inputs are checked against public data, and each purchase has a receipt anyone can look up. It does not claim a dollar saving.</p>
+
+        <h3>3 · What does it do today?</h3>
+        <ul>
+          <li>Records an hourly market tape: hashprice and BTC/USD bought from the Telegraph network (each accepted only if it verifies against mempool.space), plus CAISO real-time and day-ahead prices for three nodes.</li>
+          <li>Computes decisions in your browser from your own site inputs, with a what-if calculator, a 24-hour dispatch tape and a ledger of every paid request.</li>
+          <li>Lets you re-verify a tape yourself: recompute the 144-block hashprice, re-apply the BTC rule, check the payment transaction on Sepolia.</li>
+          <li>Exposes the same data and decision math to AI agents through an MCP server.</li>
+          <li>Runs hourly without anyone watching, and pauses itself if the test-USDC balance runs low.</li>
+        </ul>
+        <p>It runs on Ethereum Sepolia with test USDC only. It does not switch hardware, and it has no customers or measured savings to report.</p>
+
+        <h3>4 · Why would someone adopt it?</h3>
+        <ul>
+          <li><b>Your numbers stay yours.</b> Sites live in your browser's local storage; the published files hold market data only.</li>
+          <li><b>You do not have to trust it.</b> The Proof page recomputes the inputs and checks the payment on a public chain.</li>
+          <li><b>The data is cheap relative to the decision.</b> One tape serves any number of sites, so the data cost does not grow with your fleet (table below).</li>
+          <li><b>It is open and scriptable.</b> The decision math is a small tested package, and an MCP tool lets an agent ask the same question.</li>
+        </ul>
+        <p>The honest caveat: whether the economics hold for a real operator is untested here. The first step to find out is to enter your real sites and read a few days of decisions against what you actually did.</p>
+
+        <h3>5 · How can I try it?</h3>
+        <ol>
+          <li>Open <a href="#/sites">Sites</a>, replace the sample fleet with your load (MW), efficiency (J/TH), pricing node and power adder.</li>
+          <li>Open the <a href="#/desk">Desk</a> for this hour's decision and breakeven, and the 24-hour tape as it fills.</li>
+          <li>Move the inputs on <a href="#/whatif">What-if</a> to see where RUN turns into CURTAIL.</li>
+          <li>Check a tape on <a href="#/proof">Proof</a>, or run the agent yourself with a test wallet (see below).</li>
+        </ol>
+
+        <h3>What the intelligence costs</h3>
+        <p>Hushrate's only running cost is the data it buys. CAISO and mempool.space are free. Test-USDC figures at $0.01 per request:</p>
+        <div className="scroll">
+          <table>
+            <thead><tr><th>Item</th><th>Requests</th><th>Cost</th></tr></thead>
+            <tbody>
+              <tr><td>Hashprice (Telegraph, pinned miner)</td><td className="mono">1 per hour</td><td className="mono">$0.01</td></tr>
+              <tr><td>BTC/USD price (Telegraph, pinned miner)</td><td className="mono">1 per hour</td><td className="mono">$0.01</td></tr>
+              <tr><td>CAISO prices, mempool.space</td><td className="mono">free</td><td className="mono">$0.00</td></tr>
+              <tr><td><b>Per hourly run</b></td><td className="mono">2</td><td className="mono"><b>$0.02</b></td></tr>
+              <tr><td><b>Per day (24 runs)</b></td><td className="mono">48</td><td className="mono"><b>$0.48</b></td></tr>
+              <tr><td>To 1 December (19 days)</td><td className="mono">912</td><td className="mono">$9.12</td></tr>
+              <tr><td>Per 30 days</td><td className="mono">1,440</td><td className="mono">$14.40</td></tr>
+              <tr><td>Per extra site</td><td className="mono">0</td><td className="mono">$0.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Safety limits: at most 3 paid calls per run, at most 3 cents per payment, and the agent pauses below 0.20 test USDC. The live total is on <a href="#/receipts">Receipts</a>.</p>
+
         <h2 id="read">How to read the desk</h2>
         <ul>
           <li><b>Stat trio.</b> Hashprice (what one PH/s earns per day), the BTC price used to turn sats into dollars, and the Bitcoin block the tape was recorded at.</li>
@@ -74,9 +131,25 @@ npm run build -w packages/mcp`}</code></pre>
           <li><b>Hashprice is an average.</b> The public value is the mean over 144 blocks. A single block can be several percent higher or lower because of fees.</li>
           <li><b>Telegraph power price is not used.</b> It was tested and did not match CAISO, so CAISO OASIS supplies power prices. The probe report in the repository has the numbers.</li>
           <li><b>One node set.</b> The tape covers three CAISO trading hubs. A site on another node gets HOLD, not a guess.</li>
+          <li><b>One pinned miner per paid intent.</b> The BTC price and hashprice each come from one miner, chosen from a small probe. If it fails, the public value is used and labelled.</li>
+          <li><b>No backtest, no customers.</b> There is no measured saving and no adoption to report; the figures with the sample fleet are example arithmetic.</li>
           <li><b>It does not control hardware.</b> Hushrate reports RUN, CURTAIL or HOLD; acting on it is yours.</li>
           <li><b>Not advice.</b> This is a decision aid, not financial advice, and it ignores ramp, restart and contract costs.</li>
         </ul>
+
+        <h2 id="mainnet">Path to mainnet (not live)</h2>
+        <p><b>Hushrate is NOT live on mainnet.</b> Every payment today is Ethereum Sepolia test USDC. Telegraph's published documentation lists testnet addresses only, so this repository contains no mainnet addresses and none were invented.</p>
+        <p>What exists in code: network settings live in <code>config/networks.json</code>. <code>sepolia</code> is the active network. A <code>mainnet</code> entry exists but is <b>disabled</b>, with every value set to null on purpose. The loader (<code>agent/src/network.ts</code>) refuses to run a non-testnet network unless all three hold: it is switched on in the file, every address, node, limit and RPC value is filled in explicitly (nothing is defaulted), and the environment carries <code>HUSHRATE_MAINNET_ENABLE=I_UNDERSTAND_THIS_USES_REAL_MONEY</code>. Tests cover each refusal. The mint script refuses to run on any non-testnet network.</p>
+        <p>Checklist before anyone flips it:</p>
+        <ol>
+          <li><b>Addresses from Telegraph.</b> The mainnet node URL, the settlement asset address, the payee and the chain's CAIP-2 id, from Telegraph's own documentation or team, never from this repo or a guess.</li>
+          <li><b>A real USDC budget and caps.</b> Set a small total budget, <code>max_amount_per_payment</code> and <code>max_paid_calls_per_run</code> in the config, and a <code>min_balance_units</code> floor. Recompute the cost table at real prices.</li>
+          <li><b>Key custody.</b> A dedicated low-balance hot wallet used for this agent only. A repository secret is acceptable for a testnet key, not long term for a funded one: move to a secrets manager, a short-lived signing service or a smart wallet with a spending limit.</li>
+          <li><b>Alerts.</b> A notification when the hourly chain stalls (the Settings page already shows the ticker and last successful run) and when the balance falls near the floor, so a stalled agent does not silently serve stale data.</li>
+          <li><b>Re-verify everything.</b> Re-run the miner probes on mainnet (miner ids and scores differ per network), re-check the acceptance tolerances, re-test the same-hour and duplicate-payment guards with real settlement, confirm what happens to a payment whose request fails upstream, and re-read Telegraph's terms for production use.</li>
+          <li><b>Scope the claims.</b> Until all of the above is done and checked, keep the site labelled testnet only.</li>
+        </ol>
+        <p>The same list is in the repository as <code>docs/mainnet.md</code>.</p>
 
         <h2 id="mcp">MCP setup</h2>
         <p>The MCP server reads the published JSON on this site, so it needs no key and no wallet. Build it once, then point your MCP client at it.</p>

@@ -7,6 +7,15 @@ export function summarizeMarket(t: MarketTape) {
     recorded_at: t.recorded_at,
     block_height: t.block_height,
     btc_usd: t.btc_usd,
+    btc: {
+      usd: t.btc_usd,
+      // Tapes recorded before the paid BTC price existed carry the public mempool.space price only.
+      source: t.btc ? t.btc.source : "public",
+      label: t.btc ? t.btc.label : "public: mempool.space (tape predates the paid BTC price)",
+      public_usd: t.btc ? t.btc.public_usd : t.btc_usd,
+      telegraph_receipt_hash: t.btc?.telegraph?.receipt_hash ?? null,
+      telegraph_tx_hash: t.btc?.telegraph?.tx_hash ?? null,
+    },
     hashprice: {
       sats_per_ph_day: t.hashprice.value_sats_per_ph_day,
       source: t.hashprice.source,

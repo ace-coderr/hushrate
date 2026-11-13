@@ -33,10 +33,11 @@ export function Desk() {
           <section className="stats">
             <Stat value={settings.hashUnit === "sats" ? `${num(t.hashprice.value_sats_per_ph_day)}` : usd(((t.hashprice.value_sats_per_ph_day ?? 0) / 1e8) * (t.btc_usd ?? 0), 2)}
               label={settings.hashUnit === "sats" ? "hashprice, sats per PH/s per day" : "hashprice, USD per PH/s per day"} sub={t.hashprice.source === "telegraph" ? "bought from Telegraph, verified" : "public 144-block value"} />
-            <Stat value={usd(t.btc_usd)} label="BTC price" sub="mempool.space" />
+            <Stat value={usd(t.btc_usd)} label="BTC price" sub={t.btc ? (t.btc.source === "telegraph" ? "bought from Telegraph, verified against mempool.space" : t.btc.source === "public" ? "public mempool.space price (Telegraph value not used)" : "unavailable") : "public mempool.space price (tape from before BTC was bought)"} />
             <Stat value={num(t.block_height)} label="Bitcoin block" sub={`${hourLabel(t.interval_start)} · ${ago(t.recorded_at)}`} />
           </section>
           <p className="small muted src-line">Hashprice source: {t.hashprice.label}.</p>
+          <p className="small muted src-line">BTC price source: {t.btc ? t.btc.label : "public: mempool.space (this tape predates the paid BTC price; no Telegraph value was bought)"}.</p>
 
           <h2>Power prices by node</h2>
           <div className="scroll">

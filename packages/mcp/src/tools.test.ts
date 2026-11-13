@@ -45,3 +45,11 @@ test("receipts are newest first and the limit is clamped", () => {
   assert.deepEqual(receiptsView(rows, 2).map((r) => r.at), ["3", "2"]);
   assert.equal(receiptsView(rows, 0).length, 1);
 });
+
+test("market summary labels the BTC price source, and old tapes without btc read as public", () => {
+  const old = summarizeMarket(tape);
+  assert.equal(old.btc.source, "public");
+  assert.match(old.btc.label, /predates/);
+  const withBtc = summarizeMarket({ ...tape, btc: { value_usd: 100000, source: "telegraph", label: "x", public_usd: 99900, telegraph: { receipt_hash: "0xr", tx_hash: "0xt" } } } as unknown as MarketTape);
+  assert.deepEqual([withBtc.btc.source, withBtc.btc.telegraph_receipt_hash, withBtc.btc.telegraph_tx_hash], ["telegraph", "0xr", "0xt"]);
+});

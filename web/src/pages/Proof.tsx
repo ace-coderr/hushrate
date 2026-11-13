@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchBlocks, windowHashprice, type MarketTape } from "@hushrate/core";
+import { checkBtcPurchase, fetchBlocks, fetchBtcUsd, windowHashprice, type MarketTape } from "@hushrate/core";
 import { Empty, PageHead } from "../components/Layout";
 import { useLatest, useLedger, type LedgerRow } from "../lib/data";
 import { explorerTx, num, shortHash } from "../lib/format";
@@ -25,6 +25,7 @@ export function Proof() {
   const t = latest.data;
   const [hp, setHp] = useState<Result>(idle);
   const [cmp, setCmp] = useState<Result>(idle);
+  const [btc, setBtc] = useState<Result>(idle);
   const [pay, setPay] = useState<Result>(idle);
   const rows = (ledger.data ?? []).filter((r) => r.tx_hash && r.http_status === 200);
   const tapeTx = t?.hashprice.telegraph?.tx_hash ?? null;
@@ -59,6 +60,28 @@ export function Proof() {
         detail: would === recorded ? "The tape's choice matches the rule." : "The tape's choice does not match the rule.",
       });
     } catch (e) { setHp({ state: "error", text: `Could not recompute: ${(e as Error).message}` }); }
+  }
+
+  // Applies the agent's own BTC acceptance rule (shared code in @hushrate/core) to the values recorded on the tape.
+  async function checkBtc(tape: MarketTape) {
+    const b = tape.btc;
+    if (!b) { setBtc({ state: "error", text: "This tape predates the paid BTC price: it used the public mempool.space price only, so there is no bought value to check." }); return; }
+    if (!b.telegraph) { setBtc({ state: "error", text: `No Telegraph BTC price was bought for this hour (${b.label}).` }); return; }
+    const TOL = 0.005;
+    const r = checkBtcPurchase(b.telegraph, b.public_usd, TOL);
+    const recorded = b.source === "telegraph";
+    const rel = r.rel === null ? "n/a" : `${(r.rel * 100).toFixed(3)}%`;
+    let drift = "";
+    try {
+      const live = await fetchBtcUsd();
+      const mins = Math.round((Date.now() - new Date(tape.recorded_at).getTime()) / 60000);
+      drift = ` For context, mempool.space now says ${num(live, 2)} (${(((live - (b.public_usd ?? live)) / (b.public_usd ?? live)) * 100).toFixed(2)}% from the recorded public price, ${mins} min later; the market moves, so only the recorded pair is compared).`;
+    } catch { /* live price is context only */ }
+    setBtc({
+      state: r.accepted === recorded ? "pass" : "fail",
+      text: `Bought ${num(b.telegraph.value, 2)} vs public ${num(b.public_usd, 2)} recorded with it: ${rel} apart (limit ${TOL * 100}%). Rule says ${r.accepted ? "accept" : `reject (${r.reason})`}; the tape used the ${recorded ? "Telegraph" : "public"} price.`,
+      detail: (r.accepted === recorded ? "The tape's choice matches the rule." : "The tape's choice does not match the rule.") + drift,
+    });
   }
 
   async function checkPayment() {
@@ -108,7 +131,14 @@ export function Proof() {
           </section>
 
           <section className="card check">
-            <h3>3 · Check the payment on Sepolia</h3>
+            <h3>3 · Check the BTC price Hushrate bought</h3>
+            <p>Applies the agent's BTC rule (call succeeded, price field ok, within 0.5% of the public mempool.space price recorded at the same moment) and checks the tape chose accordingly.</p>
+            <button className="pill primary" onClick={() => checkBtc(t)} disabled={btc.state === "running"}>Check the BTC price</button>
+            <Verdict r={btc} />
+          </section>
+
+          <section className="card check">
+            <h3>4 · Check the payment on Sepolia</h3>
             <p>Looks up the settlement transaction through a public RPC and finds the test-USDC transfer from the payer.</p>
             {rows.length > 0 ? (
               <label className="field inline">Transaction
