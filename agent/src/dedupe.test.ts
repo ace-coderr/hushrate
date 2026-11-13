@@ -1,7 +1,7 @@
 // The duplicate-request key must not make a constant-params purchase (BTC price) a one-time event. Run: npm test -w agent
 import test from "node:test";
 import assert from "node:assert/strict";
-import { keyOf } from "./dedupe.js";
+import { keyOf, settledReceipt } from "./dedupe.js";
 
 const btc = (hour?: string) => keyOf({ minerId: "7320", intent: "CRYPTO_PRICE_USD", params: { symbol: "BTC" }, dedupe: hour });
 
@@ -24,4 +24,13 @@ test("requests with changing params keep the original key format, so old receipt
   assert.notEqual(
     keyOf({ minerId: "71083", intent: "MINING_HASHPRICE_VERIFY_GENERAL", params: { block_height: 1 } }),
     keyOf({ minerId: "71083", intent: "MINING_HASHPRICE_VERIFY_GENERAL", params: { block_height: 2 } }));
+});
+
+test("a receipt counts as settled only if it was paid and not refused with 402", () => {
+  assert.equal(settledReceipt({ paid: true, http_status: 200 }), true);
+  assert.equal(settledReceipt({ paid: true, http_status: 500 }), true, "settled then failed upstream: credited to escrow, but money moved, so never pay again this period");
+  assert.equal(settledReceipt({ paid: true, http_status: null }), true, "transport error after the payment was signed: treat as spent");
+  assert.equal(settledReceipt({ paid: true, http_status: 402 }), false, "payment not accepted: a retry is allowed");
+  assert.equal(settledReceipt({ paid: false, http_status: 503 }), false);
+  assert.equal(settledReceipt({}), false);
 });

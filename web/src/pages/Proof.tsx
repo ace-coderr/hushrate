@@ -67,7 +67,7 @@ export function Proof() {
     const b = tape.btc;
     if (!b) { setBtc({ state: "error", text: "This tape predates the paid BTC price: it used the public mempool.space price only, so there is no bought value to check." }); return; }
     if (!b.telegraph) { setBtc({ state: "error", text: `No Telegraph BTC price was bought for this hour (${b.label}).` }); return; }
-    const TOL = 0.005;
+    const TOL = b.tolerance_rel ?? 0.005; // the limit the agent recorded; 0.5% for tapes that predate recording it
     const r = checkBtcPurchase(b.telegraph, b.public_usd, TOL);
     const recorded = b.source === "telegraph";
     const rel = r.rel === null ? "n/a" : `${(r.rel * 100).toFixed(3)}%`;

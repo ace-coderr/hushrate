@@ -6,7 +6,7 @@ import { ExactEvmScheme } from "@x402/evm";
 import { privateKeyToAccount } from "viem/accounts";
 import { WALLET, USDC } from "./wallet.js";
 import { loadNetwork } from "./network.js";
-import { keyOf } from "./dedupe.js";
+import { keyOf, settledReceipt } from "./dedupe.js";
 
 export const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 try { process.loadEnvFile(`${ROOT}.env`); } catch { /* env may already be set */ }
@@ -68,7 +68,7 @@ function alreadyDone(c: Call): string | null {
       const r = JSON.parse(readFileSync(`${RECEIPTS}/${f}`, "utf8"));
       // Receipts written before direct calls existed have no miner id in the key.
       const legacy = JSON.stringify([c.intent, c.params]);
-      if (r.paid && (r.idempotency_key === keyOf(c) || (!c.minerId && r.idempotency_key === legacy))) return f;
+      if (settledReceipt(r) && (r.idempotency_key === keyOf(c) || (!c.minerId && r.idempotency_key === legacy))) return f;
     } catch { /* ignore unreadable file */ }
   }
   return null;

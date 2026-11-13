@@ -11,3 +11,9 @@ export const keyOf = (c: CallKeyInput) => JSON.stringify(
   c.dedupe ? [c.minerId ?? null, c.intent, c.params ?? null, c.query ?? null, `@${c.dedupe}`]
   : c.query ? [c.minerId ?? null, c.intent, c.params ?? null, c.query]
   : [c.minerId ?? null, c.intent, c.params]);
+
+/**
+ * Does a saved receipt count as a purchase that settled? A request refused with HTTP 402 means the node did not accept
+ * the payment: nothing settled, so it must neither block a retry nor appear as a paid request.
+ */
+export const settledReceipt = (r: { paid?: boolean; http_status?: number | null }) => r.paid === true && r.http_status !== 402;

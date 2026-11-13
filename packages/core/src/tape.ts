@@ -56,6 +56,8 @@ export interface MarketTape {
     label: string;
     /** mempool.space price at record time, the reference the bought price is checked against. */
     public_usd: number | null;
+    /** The relative tolerance the agent applied (from config), so a re-check uses the same limit. */
+    tolerance_rel?: number;
     telegraph: TelegraphCall | null;
   };
   power: PowerPrice[];

@@ -276,7 +276,7 @@ async function main(): Promise<void> {
     // btc_usd is the price decisions use: the verified Telegraph price when it passed the check, else the public price.
     btc_usd: btcValue,
     hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: tapePublic144, telegraph: hashCall, public_at_telegraph_height: tapeSingle },
-    btc: { value_usd: btcValue, source: btcSource, label: btcLabel, public_usd: btcPublic ?? reuseBtc?.public_usd ?? null, telegraph: btcCall },
+    btc: { value_usd: btcValue, source: btcSource, label: btcLabel, public_usd: btcPublic ?? reuseBtc?.public_usd ?? null, tolerance_rel: cfg.tolerance.btc_rel, telegraph: btcCall },
     power, spend: tapeSpend, wallet_usdc_after: usdcBalance, notes, degraded,
   };
   try { tape.wallet_usdc_after = (await balances()).usdc; } catch { /* keep the earlier reading, or null */ }
