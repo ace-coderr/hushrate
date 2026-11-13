@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "interval_start": "2026-11-13T17:00:00Z",
+  "recorded_at": "2026-11-13T17:17:21.190Z",
+  "block_height": 975696,
+  "btc_usd": 68553.8,
+  "hashprice": {
+    "value_sats_per_ph_day": 42718.40133156275,
+    "source": "public",
+    "label": "public: mempool.space, mean of the last 144 blocks (reward incl. fees, difficulty); Telegraph value not used: differs 1.78% from the public 144-block value (limit 1%)",
+    "public_144": {
+      "tip": 975696,
+      "blocks": 144,
+      "from_height": 975553,
+      "to_height": 975696,
+      "hashprice_sats_per_ph_day": 42718.40133156275,
+      "min_block": 42392.56948704094,
+      "max_block": 43479.72915450238
+    },
+    "telegraph": {
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "requested_miner": "71083",
+      "miner_id": "71083",
+      "miner_name": "Bitcoin Block Hashprice",
+      "http_status": 200,
+      "paid": true,
+      "cost_usd": 0.01,
+      "field_status": {
+        "hashprice_sats_per_ph_day": "ok",
+        "block_height": "ok",
+        "hashrate_eh_s": "ok",
+        "hashprice_usd_per_ph_day": "missing"
+      },
+      "value": 43479.729155,
+      "returned_height": 975696,
+      "signal_hash": "0x31d9cbdafc5678e5971a33d587e0c4d10bb345f113bc0544d858e7968d6416c6",
+      "receipt_hash": "0x5c66c89a58acb2e3138370b2345a099c34708525ca5c085ad23c510cd791565a",
+      "tx_hash": "0x76aaa8c627a0e532e7dad8dc7005e00cb9aad5db601d9c34609e71a3a94192ed",
+      "receipt_file": "2026-11-13T17-17-42-896Z-hashprice-975696.json",
+      "accepted": false,
+      "reject_reason": "differs 1.78% from the public 144-block value (limit 1%)"
+    },
+    "public_at_telegraph_height": 43479.72915450238
+  },
+  "btc": {
+    "value_usd": 68553.8,
+    "source": "telegraph",
+    "label": "Telegraph miner 7320, within 0.5% of the public mempool.space price",
+    "public_usd": 68688,
+    "tolerance_rel": 0.005,
+    "telegraph": {
+      "intent": "CRYPTO_PRICE_USD",
+      "requested_miner": "7320",
+      "miner_id": "7320",
+      "miner_name": "FinWire Crypto Price",
+      "http_status": 200,
+      "paid": true,
+      "cost_usd": 0.01,
+      "field_status": {
+        "price_usd": "ok"
+      },
+      "value": 68553.8,
+      "returned_height": null,
+      "signal_hash": "0x6abef15e76f1def76f9fea745e95b042493caaf9c3264cb619036b34ab846cb5",
+      "receipt_hash": "0x69cc50ff3bc61e452857b5ae3dc6cb7c34f0cde62b02043f31103bf62835ac5f",
+      "tx_hash": "0xea43afbe9369cead37bccb82da290f416e34d84b10354399262caaa4b10edb28",
+      "receipt_file": "2026-11-13T17-17-51-813Z-btc-2026-11-13T17-00-00Z.json",
+      "accepted": true
+    }
+  },
+  "power": [
+    {
+      "node": "TH_SP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 23.09788,
+      "day_ahead_interval": "2026-11-13T17:00:00.000Z",
+      "real_time_usd_per_mwh": 31.93478,
+      "real_time_interval": "2026-11-13T17:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_NP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 44.78873,
+      "day_ahead_interval": "2026-11-13T17:00:00.000Z",
+      "real_time_usd_per_mwh": 37.07811,
+      "real_time_interval": "2026-11-13T17:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_ZP26_GEN-APND",
+      "day_ahead_usd_per_mwh": 30.87484,
+      "day_ahead_interval": "2026-11-13T17:00:00.000Z",
+      "real_time_usd_per_mwh": 28.52327,
+      "real_time_interval": "2026-11-13T17:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    }
+  ],
+  "spend": {
+    "paid_calls": 2,
+    "cost_usd": 0.02
+  },
+  "wallet_usdc_after": "15.49",
+  "notes": [],
+  "degraded": []
+}
