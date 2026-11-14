@@ -1,0 +1,79 @@
+{
+  "ran_at": "2026-11-14T08:21:59.142Z",
+  "tip": 975769,
+  "mempool_base": "https://mempool.emzy.de",
+  "paid_attempts": 3,
+  "max_total_usd": 0.06,
+  "results": [
+    {
+      "miner_requested": "20260828",
+      "requested_height": 975769,
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "miner_requested": "74183",
+      "requested_height": 975769,
+      "http_status": 200,
+      "paid": true,
+      "miner_id": "74183",
+      "miner_name": "Bitcoin Coinbase-Proven Hashprice",
+      "endpoint": "/hashprice",
+      "value_sats_per_ph_day": 46846.666137,
+      "returned_height": 975769,
+      "hashrate_eh_s": 965.10662,
+      "field_status": {
+        "hashprice_sats_per_ph_day": "ok",
+        "block_height": "ok",
+        "hashrate_eh_s": "ok",
+        "hashprice_usd_per_ph_day": "missing"
+      },
+      "cost_usd": 0.01,
+      "duration_ms": 1655,
+      "receipt_file": "2026-11-14T08-21-07-496Z-probe-hashprice-74183.json",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "miner_requested": "9002",
+      "requested_height": 975769,
+      "http_status": 503,
+      "paid": false,
+      "value_sats_per_ph_day": null,
+      "returned_height": null,
+      "hashrate_eh_s": null,
+      "receipt_file": "2026-11-14T08-21-20-306Z-probe-hashprice-9002.json",
+      "error": {
+        "error": "no_compatible_miner",
+        "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+        "message": "miner txlens cannot take this request's params: /mining-hashprice has no field for required param(s) block_height",
+        "schema_version": 1
+      }
+    },
+    {
+      "miner_requested": "1900999013",
+      "requested_height": 975769,
+      "http_status": 200,
+      "paid": true,
+      "miner_id": "1900999013",
+      "miner_name": "MetricWire Mining Hashprice Verify",
+      "endpoint": "/hashprice",
+      "value_sats_per_ph_day": 46846.666137,
+      "returned_height": 975769,
+      "hashrate_eh_s": 965.10662,
+      "field_status": {
+        "hashprice_sats_per_ph_day": "ok",
+        "block_height": "ok",
+        "hashrate_eh_s": "ok",
+        "hashprice_usd_per_ph_day": "missing"
+      },
+      "cost_usd": 0.01,
+      "duration_ms": 1698,
+      "receipt_file": "2026-11-14T08-21-45-432Z-probe-hashprice-1900999013.json",
+      "error": "TypeError: fetch failed"
+    },
+    {
+      "miner_requested": "501",
+      "requested_height": 975769,
+      "error": "Error: Per-run limit of 3 paid calls reached"
+    }
+  ]
+}

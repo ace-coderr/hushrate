@@ -30,7 +30,12 @@ jobs:
     permissions:
       contents: write
     steps:
+      # Check out the tip of main as it is NOW, not the commit this run was triggered from. A run that waited in the
+      # concurrency queue would otherwise read data from before the previous run's commit, so the same-hour guard
+      # could not see that hour's purchases and the agent would buy the same data twice (this happened once).
       - uses: actions/checkout@v7
+        with:
+          ref: main
       - uses: actions/setup-node@v7
         with:
           node-version: 20

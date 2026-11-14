@@ -1,0 +1,60 @@
+{
+  "label": "probe-hashprice-74183",
+  "miner_id_requested": "74183",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 975769
+  },
+  "query": null,
+  "idempotency_key": "[\"74183\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":975769}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0xf152edd11b6384d3b2b2de93aa49ac3a7fdaeac3e77976c8f1745be080edefe2",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x71851bd9a66e85859d87cc7c8b30de2c659c22a13a5cb3ab03606d819f7d05fb",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "5042",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 2088,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0xf152edd11b6384d3b2b2de93aa49ac3a7fdaeac3e77976c8f1745be080edefe2",
+    "timestamp": 1794644467
+  },
+  "response": {
+    "miner_id": "74183",
+    "miner_name": "Bitcoin Coinbase-Proven Hashprice",
+    "endpoint": "/hashprice",
+    "result": {
+      "hashprice_sats_per_ph_day": 46846.666137,
+      "block_height": 975769,
+      "hashrate_eh_s": 965.10662,
+      "hashprice_usd_per_ph_day": null
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "hashprice_sats_per_ph_day": "ok",
+      "block_height": "ok",
+      "hashrate_eh_s": "ok",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "input": {
+      "block_height": 975769
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 1655,
+    "timestamp": "2026-11-14T08:21:06.729027918Z",
+    "reasoning": "Intent: miner zk-hp-proof given by the caller\nMiner: input schema v1 mapped in code to GET /hashprice",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "signal_hash": "0xc538b999499dfad79d501d81b3d87841cc0194de1841c8fca824f75829a6536c"
+  }
+}

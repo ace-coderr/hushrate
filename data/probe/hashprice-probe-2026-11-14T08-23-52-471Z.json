@@ -1,0 +1,24 @@
+{
+  "ran_at": "2026-11-14T08:23:52.471Z",
+  "tip": 975769,
+  "mempool_base": "https://mempool.emzy.de",
+  "paid_attempts": 1,
+  "max_total_usd": 0.06,
+  "results": [
+    {
+      "miner_requested": "501",
+      "requested_height": 975769,
+      "http_status": 200,
+      "paid": true,
+      "miner_id": "501",
+      "miner_name": "Telegraph Sentinel Risk Intelligence",
+      "endpoint": "/api/v1/miner/hashprice",
+      "value_sats_per_ph_day": null,
+      "returned_height": null,
+      "hashrate_eh_s": null,
+      "cost_usd": 0.01,
+      "duration_ms": 22363,
+      "receipt_file": "2026-11-14T08-23-52-456Z-probe-hashprice-501.json"
+    }
+  ]
+}

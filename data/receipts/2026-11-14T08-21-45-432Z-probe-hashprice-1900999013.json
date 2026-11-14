@@ -1,0 +1,60 @@
+{
+  "label": "probe-hashprice-1900999013",
+  "miner_id_requested": "1900999013",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 975769
+  },
+  "query": null,
+  "idempotency_key": "[\"1900999013\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":975769}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0xf8ecd9123d37f57df1df0de334ecb26516a4bbe57643eb9a538166d9f9d9d7e8",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0xd91fbf1cbd5332dca2ca3c1cb6740f78f4c5bd05ced9b31479b1578bb7e8adc4",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "4992",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 2088,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0xf8ecd9123d37f57df1df0de334ecb26516a4bbe57643eb9a538166d9f9d9d7e8",
+    "timestamp": 1794644505
+  },
+  "response": {
+    "miner_id": "1900999013",
+    "miner_name": "MetricWire Mining Hashprice Verify",
+    "endpoint": "/hashprice",
+    "result": {
+      "hashprice_sats_per_ph_day": 46846.666137,
+      "block_height": 975769,
+      "hashrate_eh_s": 965.10662,
+      "hashprice_usd_per_ph_day": null
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "hashprice_sats_per_ph_day": "ok",
+      "block_height": "ok",
+      "hashrate_eh_s": "ok",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "input": {
+      "block_height": 975769
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 1698,
+    "timestamp": "2026-11-14T08:21:42.956964906Z",
+    "reasoning": "Intent: miner metricwire-mining-hashprice-verify given by the caller\nMiner: The user is asking for information related to Bitcoin hashprice, and the intent has been classified as MINING_HASHPRICE_VERIFY_GENERAL. The MetricWire Mining Hashprice Verify miner has an endpoint at /hashprice that serves this intent. The endpoint description states that a whole question in ?question= or ?query= is accepted, and it takes no parameters. However, the provided parameters include 'block_height'. Since the endpoint description does not explicitly mention 'block_height' as a parameter, and it states 'Takes no parameter', I will include the 'block_height' in the query parameters as it is provided by the user and the miner config does not specify any other way to pass this information. The question is implicitly about the hashprice at a specific block height.",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "signal_hash": "0x06a84f9007d46f6be0e20c91e858e27eee686e491b496d6391d4328d03b8712b"
+  }
+}

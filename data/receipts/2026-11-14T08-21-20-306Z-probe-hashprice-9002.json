@@ -1,0 +1,20 @@
+{
+  "label": "probe-hashprice-9002",
+  "miner_id_requested": "9002",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 975769
+  },
+  "query": null,
+  "idempotency_key": "[\"9002\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":975769}]",
+  "paid": false,
+  "http_status": 503,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "error": "no_compatible_miner",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "message": "miner txlens cannot take this request's params: /mining-hashprice has no field for required param(s) block_height",
+    "schema_version": 1
+  }
+}

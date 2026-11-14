@@ -1,6 +1,7 @@
 {
   "url": "https://devnode.telegraphprotocol.com/api/miners?intent=MINING_HASHPRICE_VERIFY_GENERAL",
   "status": 200,
+  "fetched_at": "2026-11-14T08:18:26.873Z",
   "body": [
     {
       "id": "9002",
@@ -2319,724 +2320,759 @@
       "min_price_usdc": 10000,
       "yaml_url": "https://raw.githubusercontent.com/Sireadell/onchain-tx/3df427a2d05a4403730745847fae5758df80ff19/miner.yaml",
       "registered_at": "2026-11-12T10:41:51Z",
-      "total_requests_served": 1296,
+      "total_requests_served": 1324,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T15:31:44Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T06:41:14Z",
       "scores": [
         {
-          "intent_id": "AGENT_TASK_GENERAL",
-          "epoch_id": 2074,
+          "intent_id": "CARRIER_SERVICEABILITY_GENERAL",
+          "epoch_id": 2087,
           "rank": 1,
-          "score": 0.9998,
-          "scored_at": "2026-11-12T12:54:23.819619Z"
-        },
-        {
-          "intent_id": "CHAT_COMPLETION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9999,
-          "scored_at": "2026-11-12T13:24:51.826Z"
-        },
-        {
-          "intent_id": "DEEPFAKE_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9891,
-          "scored_at": "2026-11-12T15:20:34.253529Z"
-        },
-        {
-          "intent_id": "EMAIL_SECURITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T13:04:57.878052Z"
-        },
-        {
-          "intent_id": "LIVE_PORT_CONGESTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9962,
-          "scored_at": "2026-11-12T13:51:10.287995Z"
-        },
-        {
-          "intent_id": "PACKAGE_STATUS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9937,
-          "scored_at": "2026-11-12T12:55:32.880059Z"
-        },
-        {
-          "intent_id": "PRODUCT_AUTHENTICITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T15:16:55.728862Z"
-        },
-        {
-          "intent_id": "PURCHASE_ORDER_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9906,
-          "scored_at": "2026-11-12T14:00:05.295952Z"
-        },
-        {
-          "intent_id": "RESEARCH_QUERY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.989,
-          "scored_at": "2026-11-12T13:40:50.698237Z"
-        },
-        {
-          "intent_id": "SANCTIONS_SCREENING_MATCH_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T14:03:37.153304Z"
-        },
-        {
-          "intent_id": "SATELLITE_IMAGERY_ANALYSIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9963,
-          "scored_at": "2026-11-12T14:40:42.728638Z"
-        },
-        {
-          "intent_id": "SHIP_RATE_ETA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9988,
-          "scored_at": "2026-11-12T14:52:04.820613Z"
-        },
-        {
-          "intent_id": "TEXT_SUMMARIZATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9989,
-          "scored_at": "2026-11-12T14:02:06.825731Z"
-        },
-        {
-          "intent_id": "TRAVEL_DISRUPTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9982,
-          "scored_at": "2026-11-12T13:56:50.906622Z"
-        },
-        {
-          "intent_id": "VENDOR_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T14:44:37.12213Z"
-        },
-        {
-          "intent_id": "WASH_TRADING_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T13:02:30.19021Z"
-        },
-        {
-          "intent_id": "CURRENCY_EXCHANGE_CONVERT",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 1,
-          "scored_at": "2026-11-12T12:49:06.207416Z"
-        },
-        {
-          "intent_id": "EMBEDDING_GENERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9855,
-          "scored_at": "2026-11-12T15:00:00.277397Z"
-        },
-        {
-          "intent_id": "FACT_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9973,
-          "scored_at": "2026-11-12T15:07:01.364441Z"
-        },
-        {
-          "intent_id": "FLIGHT_AVAILABILITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9977,
-          "scored_at": "2026-11-12T13:46:25.417357Z"
-        },
-        {
-          "intent_id": "FRAUD_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.8621,
-          "scored_at": "2026-11-12T13:48:23.565119Z"
-        },
-        {
-          "intent_id": "ROUTE_ETA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.8998,
-          "scored_at": "2026-11-12T15:08:01.6222Z"
-        },
-        {
-          "intent_id": "SKU_IN_STOCK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.8221,
-          "scored_at": "2026-11-12T14:22:41.446824Z"
-        },
-        {
-          "intent_id": "STORM_ALERT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9939,
-          "scored_at": "2026-11-12T13:30:38.644343Z"
-        },
-        {
-          "intent_id": "TASK_EXECUTION_QUALITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 1,
-          "scored_at": "2026-11-12T13:31:14.573972Z"
-        },
-        {
-          "intent_id": "URL_SAFE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9998,
-          "scored_at": "2026-11-12T13:43:26.131539Z"
-        },
-        {
-          "intent_id": "AI_TEXT_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9976,
-          "scored_at": "2026-11-12T13:33:49.458421Z"
-        },
-        {
-          "intent_id": "B2B_IDENTITY_ENRICHMENT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9939,
-          "scored_at": "2026-11-12T15:25:25.073028Z"
-        },
-        {
-          "intent_id": "CODE_PATCH_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9967,
-          "scored_at": "2026-11-12T14:10:22.196538Z"
-        },
-        {
-          "intent_id": "DELIVERY_WINDOW_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9119,
-          "scored_at": "2026-11-12T14:58:56.424095Z"
-        },
-        {
-          "intent_id": "IMAGE_CAPTIONING_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9968,
-          "scored_at": "2026-11-12T14:19:22.36993Z"
-        },
-        {
-          "intent_id": "INVOICE_LEDGER_RECONCILE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.998,
-          "scored_at": "2026-11-12T14:40:45.658064Z"
-        },
-        {
-          "intent_id": "MALWARE_DETECTION_HASH",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9718,
-          "scored_at": "2026-11-12T15:31:44.601711Z"
-        },
-        {
-          "intent_id": "SOCIAL_BOT_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9985,
-          "scored_at": "2026-11-12T14:24:19.28312Z"
-        },
-        {
-          "intent_id": "VESSEL_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.97,
-          "scored_at": "2026-11-12T13:39:42.894087Z"
-        },
-        {
-          "intent_id": "WEATHER_FORECAST_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9566,
-          "scored_at": "2026-11-12T15:14:48.014269Z"
-        },
-        {
-          "intent_id": "CREDIT_SCORE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9449,
-          "scored_at": "2026-11-12T12:58:39.937806Z"
-        },
-        {
-          "intent_id": "CUSTOMER_TICKET_RESOLUTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 1,
-          "scored_at": "2026-11-12T14:53:11.142666Z"
-        },
-        {
-          "intent_id": "FINANCIAL_DATA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9711,
-          "scored_at": "2026-11-12T13:47:25.041638Z"
-        },
-        {
-          "intent_id": "GAME_RESULT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9811,
-          "scored_at": "2026-11-12T12:49:49.514539Z"
-        },
-        {
-          "intent_id": "IMAGE_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9894,
-          "scored_at": "2026-11-12T14:27:42.065538Z"
-        },
-        {
-          "intent_id": "KYC_BIOMETRIC_LIVENESS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9923,
-          "scored_at": "2026-11-12T14:49:26.248991Z"
-        },
-        {
-          "intent_id": "LIVE_SHELF_PRICE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.8713,
-          "scored_at": "2026-11-12T13:02:21.306389Z"
-        },
-        {
-          "intent_id": "MEDIA_FORENSIC_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9873,
-          "scored_at": "2026-11-12T15:23:57.834906Z"
-        },
-        {
-          "intent_id": "REGRESSION_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9573,
-          "scored_at": "2026-11-12T12:58:13.297438Z"
-        },
-        {
-          "intent_id": "SECURITY_REVIEW_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 1,
-          "scored_at": "2026-11-12T13:53:55.568599Z"
-        },
-        {
-          "intent_id": "SENSOR_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.929,
-          "scored_at": "2026-11-12T13:19:05.501605Z"
-        },
-        {
-          "intent_id": "SHIPMENT_DELAY_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9081,
-          "scored_at": "2026-11-12T13:19:02.769493Z"
-        },
-        {
-          "intent_id": "SSL_VERIFICATION_CERT",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9537,
-          "scored_at": "2026-11-12T15:28:00.450954Z"
-        },
-        {
-          "intent_id": "TASK_COMPLETION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9219,
-          "scored_at": "2026-11-12T14:22:56.712761Z"
-        },
-        {
-          "intent_id": "WEATHER_CHECK_TEMPERATURE",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.64166665,
-          "scored_at": "2026-11-12T12:47:21.857328Z"
-        },
-        {
-          "intent_id": "CLOUD_RESOURCE_USAGE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.97,
-          "scored_at": "2026-11-12T13:27:31.670371Z"
-        },
-        {
-          "intent_id": "CONTENT_MODERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9793,
-          "scored_at": "2026-11-12T13:13:33.802344Z"
-        },
-        {
-          "intent_id": "CONTRACT_OBLIGATION_AUDIT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9992,
-          "scored_at": "2026-11-12T12:50:31.35302Z"
-        },
-        {
-          "intent_id": "ENTITY_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.7189,
-          "scored_at": "2026-11-12T13:06:17.229378Z"
-        },
-        {
-          "intent_id": "FRAUD_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9933,
-          "scored_at": "2026-11-12T13:38:48.753747Z"
-        },
-        {
-          "intent_id": "ONCHAIN_TX_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.4051,
-          "scored_at": "2026-11-12T15:08:52.723458Z"
-        },
-        {
-          "intent_id": "TVL_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9803,
-          "scored_at": "2026-11-12T13:32:11.719139Z"
-        },
-        {
-          "intent_id": "AIR_QUALITY_INDEX_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.2373,
-          "scored_at": "2026-11-12T14:50:43.192173Z"
+          "score": 0.9981,
+          "scored_at": "2026-11-14T05:25:25.697765Z"
         },
         {
           "intent_id": "DATACENTER_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.5987,
-          "scored_at": "2026-11-12T13:51:44.949347Z"
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9886,
+          "scored_at": "2026-11-14T04:05:43.701833Z"
         },
         {
-          "intent_id": "FX_NOW_CAD",
-          "epoch_id": 2074,
-          "rank": 6,
+          "intent_id": "EMAIL_SECURITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
           "score": 1,
-          "scored_at": "2026-11-12T12:47:49.1928Z"
+          "scored_at": "2026-11-14T04:44:41.842682Z"
         },
         {
-          "intent_id": "FX_NOW_SEK",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 1,
-          "scored_at": "2026-11-12T12:45:40.383699Z"
+          "intent_id": "LIVE_PORT_CONGESTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9975,
+          "scored_at": "2026-11-14T06:22:13.402988Z"
         },
         {
-          "intent_id": "IP_GEOLOCATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.7719,
-          "scored_at": "2026-11-12T14:41:46.461576Z"
-        },
-        {
-          "intent_id": "LOAN_INTEREST_RATE_QUOTE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.864,
-          "scored_at": "2026-11-12T13:02:13.075925Z"
-        },
-        {
-          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.9592,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
-        },
-        {
-          "intent_id": "NEWS_HEADLINES_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.9713,
-          "scored_at": "2026-11-12T14:17:26.939924Z"
-        },
-        {
-          "intent_id": "REGULATORY_FILING_MONITOR_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0,
-          "scored_at": "2026-11-12T12:58:47.806805Z"
-        },
-        {
-          "intent_id": "TRANSACTION_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.8715,
-          "scored_at": "2026-11-12T14:50:40.257874Z"
-        },
-        {
-          "intent_id": "URL_SCAN_VERDICT",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.5344333,
-          "scored_at": "2026-11-12T13:19:21.928486Z"
-        },
-        {
-          "intent_id": "DOCUMENT_AUTHENTICITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9942,
-          "scored_at": "2026-11-12T15:16:06.339983Z"
-        },
-        {
-          "intent_id": "GRAMMAR_SPELL_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9781,
-          "scored_at": "2026-11-12T12:54:54.376101Z"
-        },
-        {
-          "intent_id": "KEYWORD_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9682,
-          "scored_at": "2026-11-12T14:47:29.730038Z"
-        },
-        {
-          "intent_id": "TOKEN_HOLDER_COUNT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.5111,
-          "scored_at": "2026-11-12T14:04:18.204662Z"
-        },
-        {
-          "intent_id": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9895,
-          "scored_at": "2026-11-12T13:31:46.56323Z"
-        },
-        {
-          "intent_id": "API_HEALTH_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.9747,
-          "scored_at": "2026-11-12T14:34:06.479845Z"
-        },
-        {
-          "intent_id": "TEXT_GENERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.8806,
-          "scored_at": "2026-11-12T14:19:07.14349Z"
-        },
-        {
-          "intent_id": "VIDEO_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.7585,
-          "scored_at": "2026-11-12T13:18:46.384458Z"
-        },
-        {
-          "intent_id": "ACADEMIC_SEARCH_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.8837,
-          "scored_at": "2026-11-12T14:53:26.464613Z"
-        },
-        {
-          "intent_id": "ASSET_RESERVE_ATTESTATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9359,
-          "scored_at": "2026-11-12T14:13:24.577322Z"
-        },
-        {
-          "intent_id": "CONTENT_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9873,
-          "scored_at": "2026-11-12T13:01:35.712789Z"
-        },
-        {
-          "intent_id": "CORPORATE_REGISTRY_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 1,
-          "scored_at": "2026-11-12T12:47:04.008983Z"
-        },
-        {
-          "intent_id": "FX_NOW_EUR",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.87,
-          "scored_at": "2026-11-12T12:48:15.336511Z"
-        },
-        {
-          "intent_id": "LLM_OUTPUT_EVALUATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.2605,
-          "scored_at": "2026-11-12T14:56:15.151578Z"
-        },
-        {
-          "intent_id": "MEDIA_AUTHENTICITY_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.8697,
-          "scored_at": "2026-11-12T14:00:54.420215Z"
-        },
-        {
-          "intent_id": "PLAGIARISM_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9744,
-          "scored_at": "2026-11-12T15:11:58.435865Z"
-        },
-        {
-          "intent_id": "QUESTION_ANSWERING_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9412,
-          "scored_at": "2026-11-12T14:54:16.146677Z"
+          "intent_id": "PACKAGE_STATUS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9999,
+          "scored_at": "2026-11-14T05:01:39.984779Z"
         },
         {
           "intent_id": "RESEARCH_SYNTHESIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.3798,
-          "scored_at": "2026-11-12T15:29:47.687906Z"
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9939,
+          "scored_at": "2026-11-14T06:26:05.447896Z"
         },
         {
-          "intent_id": "WEATHER_FORECAST_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.8948,
-          "scored_at": "2026-11-12T14:16:56.501384Z"
+          "intent_id": "SHIP_RATE_ETA_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9356,
+          "scored_at": "2026-11-14T04:52:28.179298Z"
         },
         {
-          "intent_id": "CVE_LOOKUP_CVSS",
-          "epoch_id": 2074,
-          "rank": 10,
+          "intent_id": "SPORTS_SCORE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9966,
+          "scored_at": "2026-11-14T04:16:26.024869Z"
+        },
+        {
+          "intent_id": "TASK_EXECUTION_QUALITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
           "score": 1,
-          "scored_at": "2026-11-12T12:47:50.583571Z"
+          "scored_at": "2026-11-14T06:23:56.480294Z"
         },
         {
-          "intent_id": "ONCHAIN_METRIC_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.8545,
-          "scored_at": "2026-11-12T14:41:41.758925Z"
+          "intent_id": "THREAT_INTELLIGENCE_INDICATOR",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.5988,
+          "scored_at": "2026-11-14T05:24:38.466317Z"
         },
         {
-          "intent_id": "TEXT_AUTHENTICITY_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.9796,
-          "scored_at": "2026-11-12T14:03:34.52103Z"
+          "intent_id": "TRAVEL_DISRUPTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9981,
+          "scored_at": "2026-11-14T04:37:11.288798Z"
         },
         {
-          "intent_id": "SEMANTIC_SIMILARITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
-          "score": 0.3165,
-          "scored_at": "2026-11-12T14:45:55.602887Z"
-        },
-        {
-          "intent_id": "TEXT_CLASSIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 12,
-          "score": 0.9565,
-          "scored_at": "2026-11-12T15:26:31.912965Z"
-        },
-        {
-          "intent_id": "CONTENT_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.9659,
-          "scored_at": "2026-11-12T15:00:39.788907Z"
-        },
-        {
-          "intent_id": "LANGUAGE_TRANSLATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 14,
-          "score": 0.7221,
-          "scored_at": "2026-11-12T13:54:21.480394Z"
-        },
-        {
-          "intent_id": "SENTIMENT_ANALYSIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 14,
-          "score": 0.5905,
-          "scored_at": "2026-11-12T13:15:14.751639Z"
-        },
-        {
-          "intent_id": "CRYPTO_TRANSFER_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 15,
-          "score": 0.142,
-          "scored_at": "2026-11-12T13:15:09.558596Z"
-        },
-        {
-          "intent_id": "CRYPTO_PRICE_USD",
-          "epoch_id": 2074,
-          "rank": 16,
-          "score": 0.97300005,
-          "scored_at": "2026-11-12T12:52:38.730147Z"
-        },
-        {
-          "intent_id": "EVENT_OUTCOME_RESOLUTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 16,
-          "score": 0.0001,
-          "scored_at": "2026-11-12T14:32:53.884518Z"
-        },
-        {
-          "intent_id": "CODE_REVIEW_GENERAL",
-          "epoch_id": 2074,
-          "rank": 17,
-          "score": 0,
-          "scored_at": "2026-11-12T14:41:50.939422Z"
-        },
-        {
-          "intent_id": "OPTIMAL_EXECUTION_ROUTE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 17,
-          "score": 0.9866,
-          "scored_at": "2026-11-12T14:32:38.204819Z"
+          "intent_id": "VENDOR_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T06:06:25.951049Z"
         },
         {
           "intent_id": "VULNERABILITY_TRIAGE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 30,
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9999,
+          "scored_at": "2026-11-14T03:50:33.21152Z"
+        },
+        {
+          "intent_id": "AGENT_TASK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9996,
+          "scored_at": "2026-11-14T04:25:20.581282Z"
+        },
+        {
+          "intent_id": "CODE_REVIEW_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 1,
+          "scored_at": "2026-11-14T03:53:55.678672Z"
+        },
+        {
+          "intent_id": "CURRENCY_EXCHANGE_CONVERT",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 1,
+          "scored_at": "2026-11-14T03:48:41.460203Z"
+        },
+        {
+          "intent_id": "CUSTOMER_TICKET_RESOLUTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 1,
+          "scored_at": "2026-11-14T05:52:25.514855Z"
+        },
+        {
+          "intent_id": "HOTEL_AVAILABILITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.7714,
+          "scored_at": "2026-11-14T04:13:36.824547Z"
+        },
+        {
+          "intent_id": "KYC_BIOMETRIC_LIVENESS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9938,
+          "scored_at": "2026-11-14T05:33:42.19385Z"
+        },
+        {
+          "intent_id": "OPTIMAL_EXECUTION_ROUTE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.57,
+          "scored_at": "2026-11-14T06:24:53.805776Z"
+        },
+        {
+          "intent_id": "ROUTE_ETA_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9305,
+          "scored_at": "2026-11-14T05:36:22.833471Z"
+        },
+        {
+          "intent_id": "SKU_IN_STOCK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9846,
+          "scored_at": "2026-11-14T06:06:56.8069Z"
+        },
+        {
+          "intent_id": "STOCK_PRICE_US_EQUITY",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9639,
+          "scored_at": "2026-11-14T05:38:07.693911Z"
+        },
+        {
+          "intent_id": "URL_SAFE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9996,
+          "scored_at": "2026-11-14T05:02:19.831748Z"
+        },
+        {
+          "intent_id": "WAREHOUSE_INVENTORY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9764,
+          "scored_at": "2026-11-14T05:40:50.760517Z"
+        },
+        {
+          "intent_id": "WASH_TRADING_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 1,
+          "scored_at": "2026-11-14T04:47:55.308496Z"
+        },
+        {
+          "intent_id": "B2B_IDENTITY_ENRICHMENT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9966,
+          "scored_at": "2026-11-14T04:00:11.57898Z"
+        },
+        {
+          "intent_id": "CODE_PATCH_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9877,
+          "scored_at": "2026-11-14T05:52:56.789027Z"
+        },
+        {
+          "intent_id": "COMMERCE_PURCHASE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9963,
+          "scored_at": "2026-11-14T04:02:56.705419Z"
+        },
+        {
+          "intent_id": "CREDIT_SCORE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9471,
+          "scored_at": "2026-11-14T05:26:43.335994Z"
+        },
+        {
+          "intent_id": "RESEARCH_QUERY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9791,
+          "scored_at": "2026-11-14T06:18:39.906169Z"
+        },
+        {
+          "intent_id": "TEXT_GENERATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9976,
+          "scored_at": "2026-11-14T05:15:21.199438Z"
+        },
+        {
+          "intent_id": "WALLET_BALANCE_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.854,
+          "scored_at": "2026-11-14T05:46:33.768963Z"
+        },
+        {
+          "intent_id": "WEATHER_FORECAST_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 1,
+          "scored_at": "2026-11-14T04:05:47.243012Z"
+        },
+        {
+          "intent_id": "CLOUD_RESOURCE_USAGE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9661,
+          "scored_at": "2026-11-14T06:14:18.153301Z"
+        },
+        {
+          "intent_id": "EMBEDDING_GENERATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9905,
+          "scored_at": "2026-11-14T04:50:23.937322Z"
+        },
+        {
+          "intent_id": "FACT_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9915,
+          "scored_at": "2026-11-14T06:10:11.984523Z"
+        },
+        {
+          "intent_id": "FLIGHT_AVAILABILITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9691,
+          "scored_at": "2026-11-14T04:10:52.13741Z"
+        },
+        {
+          "intent_id": "GAS_PRICE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9518,
+          "scored_at": "2026-11-14T04:01:37.172886Z"
+        },
+        {
+          "intent_id": "GRAMMAR_SPELL_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9918,
+          "scored_at": "2026-11-14T04:29:47.192962Z"
+        },
+        {
+          "intent_id": "IP_GEOLOCATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9258,
+          "scored_at": "2026-11-14T05:01:42.70355Z"
+        },
+        {
+          "intent_id": "LANGUAGE_GENERATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9757,
+          "scored_at": "2026-11-14T04:42:46.4966Z"
+        },
+        {
+          "intent_id": "LIVE_SHELF_PRICE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9392,
+          "scored_at": "2026-11-14T06:16:34.605774Z"
+        },
+        {
+          "intent_id": "NEWS_HEADLINES_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9811,
+          "scored_at": "2026-11-14T06:07:49.883046Z"
+        },
+        {
+          "intent_id": "REGRESSION_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9125,
+          "scored_at": "2026-11-14T04:43:35.969771Z"
+        },
+        {
+          "intent_id": "SENSOR_TELEMETRY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.98,
+          "scored_at": "2026-11-14T04:29:59.633152Z"
+        },
+        {
+          "intent_id": "SLA_COMPLIANCE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9668,
+          "scored_at": "2026-11-14T03:57:31.296615Z"
+        },
+        {
+          "intent_id": "STORM_ALERT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9884,
+          "scored_at": "2026-11-14T04:25:16.767198Z"
+        },
+        {
+          "intent_id": "TASK_COMPLETION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.842,
+          "scored_at": "2026-11-14T05:38:38.929004Z"
+        },
+        {
+          "intent_id": "TEXT_SUMMARIZATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9933,
+          "scored_at": "2026-11-14T06:36:35.481476Z"
+        },
+        {
+          "intent_id": "TRANSACTION_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.8356,
+          "scored_at": "2026-11-14T03:51:13.258428Z"
+        },
+        {
+          "intent_id": "WEATHER_CHECK_TEMPERATURE",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.8833334,
+          "scored_at": "2026-11-14T03:48:11.020523Z"
+        },
+        {
+          "intent_id": "AI_TEXT_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.992,
+          "scored_at": "2026-11-14T04:02:38.321018Z"
+        },
+        {
+          "intent_id": "CONTRACT_OBLIGATION_AUDIT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9996,
+          "scored_at": "2026-11-14T05:04:08.170032Z"
+        },
+        {
+          "intent_id": "FRAUD_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9645,
+          "scored_at": "2026-11-14T06:32:35.457519Z"
+        },
+        {
+          "intent_id": "FRAUD_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9949,
+          "scored_at": "2026-11-14T06:13:12.812727Z"
+        },
+        {
+          "intent_id": "IMAGE_CAPTIONING_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.979,
+          "scored_at": "2026-11-14T03:52:39.724468Z"
+        },
+        {
+          "intent_id": "MALWARE_DETECTION_HASH",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9167,
+          "scored_at": "2026-11-14T06:15:31.704779Z"
+        },
+        {
+          "intent_id": "PAYMENT_METHOD_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9452,
+          "scored_at": "2026-11-14T04:15:50.073467Z"
+        },
+        {
+          "intent_id": "PURCHASE_ORDER_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.927,
+          "scored_at": "2026-11-14T05:18:12.190309Z"
+        },
+        {
+          "intent_id": "RETURN_POLICY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9519,
+          "scored_at": "2026-11-14T06:41:14.558291Z"
+        },
+        {
+          "intent_id": "SHIPMENT_DELAY_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.8864,
+          "scored_at": "2026-11-14T04:13:10.429807Z"
+        },
+        {
+          "intent_id": "CHATBOT_CONVERSATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9594,
+          "scored_at": "2026-11-14T05:53:22.315147Z"
+        },
+        {
+          "intent_id": "FX_NOW_EUR",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 1,
+          "scored_at": "2026-11-14T03:45:50.266166Z"
+        },
+        {
+          "intent_id": "FX_NOW_SEK",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 1,
+          "scored_at": "2026-11-14T03:46:46.69985Z"
+        },
+        {
+          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9279,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
+        },
+        {
+          "intent_id": "REGULATORY_FILING_MONITOR_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
           "score": 0,
-          "scored_at": "2026-11-12T14:34:08.245991Z"
+          "scored_at": "2026-11-14T03:48:05.509298Z"
+        },
+        {
+          "intent_id": "SECURITY_REVIEW_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.0599,
+          "scored_at": "2026-11-14T05:12:40.295585Z"
+        },
+        {
+          "intent_id": "THREAT_IP_REPUTATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9842,
+          "scored_at": "2026-11-14T05:50:41.879622Z"
+        },
+        {
+          "intent_id": "TVL_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9709,
+          "scored_at": "2026-11-14T04:28:17.757003Z"
+        },
+        {
+          "intent_id": "URL_SCAN_VERDICT",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.53043336,
+          "scored_at": "2026-11-14T04:38:37.835455Z"
+        },
+        {
+          "intent_id": "WEB_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.987,
+          "scored_at": "2026-11-14T05:21:43.113704Z"
+        },
+        {
+          "intent_id": "AIR_QUALITY_INDEX_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.3323,
+          "scored_at": "2026-11-14T05:58:12.215983Z"
+        },
+        {
+          "intent_id": "ASSET_RESERVE_ATTESTATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9595,
+          "scored_at": "2026-11-14T05:19:22.039188Z"
+        },
+        {
+          "intent_id": "CRYPTO_YIELD_RATE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.8282,
+          "scored_at": "2026-11-14T05:56:58.622727Z"
+        },
+        {
+          "intent_id": "ENTITY_EXTRACTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9717,
+          "scored_at": "2026-11-14T06:03:39.857588Z"
+        },
+        {
+          "intent_id": "TOKEN_HOLDER_COUNT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.78,
+          "scored_at": "2026-11-14T05:39:54.969737Z"
+        },
+        {
+          "intent_id": "DEEPFAKE_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.7857,
+          "scored_at": "2026-11-14T04:46:22.523236Z"
+        },
+        {
+          "intent_id": "FX_NOW_CAD",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 1,
+          "scored_at": "2026-11-14T03:45:46.304427Z"
+        },
+        {
+          "intent_id": "LOAN_INTEREST_RATE_QUOTE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.8548,
+          "scored_at": "2026-11-14T06:31:55.183606Z"
+        },
+        {
+          "intent_id": "ONCHAIN_METRIC_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9073,
+          "scored_at": "2026-11-14T05:00:53.920383Z"
+        },
+        {
+          "intent_id": "ONCHAIN_TX_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.5777,
+          "scored_at": "2026-11-14T05:53:16.49043Z"
+        },
+        {
+          "intent_id": "QUESTION_ANSWERING_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9478,
+          "scored_at": "2026-11-14T06:18:59.407788Z"
+        },
+        {
+          "intent_id": "SMART_CONTRACT_AUDIT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.8538,
+          "scored_at": "2026-11-14T04:34:59.901643Z"
+        },
+        {
+          "intent_id": "CHAT_COMPLETION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.6845,
+          "scored_at": "2026-11-14T05:23:46.589268Z"
+        },
+        {
+          "intent_id": "CONTENT_EXTRACTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.9796,
+          "scored_at": "2026-11-14T04:09:59.411625Z"
+        },
+        {
+          "intent_id": "CORPORATE_REGISTRY_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 1,
+          "scored_at": "2026-11-14T03:48:44.410491Z"
+        },
+        {
+          "intent_id": "CROSS_CHAIN_STATE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.4933,
+          "scored_at": "2026-11-14T04:09:34.493385Z"
+        },
+        {
+          "intent_id": "CVE_LOOKUP_CVSS",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 1,
+          "scored_at": "2026-11-14T03:52:08.720643Z"
+        },
+        {
+          "intent_id": "SENTIMENT_ANALYSIS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.9915,
+          "scored_at": "2026-11-14T05:10:41.924707Z"
+        },
+        {
+          "intent_id": "TEXT_CLASSIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.9959,
+          "scored_at": "2026-11-14T04:58:10.168773Z"
+        },
+        {
+          "intent_id": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.5546,
+          "scored_at": "2026-11-14T04:41:57.40003Z"
+        },
+        {
+          "intent_id": "ACADEMIC_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9529,
+          "scored_at": "2026-11-14T06:37:05.071198Z"
+        },
+        {
+          "intent_id": "INVOICE_LEDGER_RECONCILE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9773,
+          "scored_at": "2026-11-14T06:35:47.725058Z"
+        },
+        {
+          "intent_id": "MEDIA_AUTHENTICITY_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.8148,
+          "scored_at": "2026-11-14T04:33:11.37389Z"
+        },
+        {
+          "intent_id": "PLAGIARISM_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.836,
+          "scored_at": "2026-11-14T05:33:15.68971Z"
+        },
+        {
+          "intent_id": "TELEGRAPH_KNOWLEDGE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9649,
+          "scored_at": "2026-11-14T04:39:12.925331Z"
+        },
+        {
+          "intent_id": "VIDEO_VERIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.8147,
+          "scored_at": "2026-11-14T05:10:27.013104Z"
+        },
+        {
+          "intent_id": "EVENT_OUTCOME_RESOLUTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.0047,
+          "scored_at": "2026-11-14T05:45:36.694166Z"
+        },
+        {
+          "intent_id": "IMAGE_VERIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.973,
+          "scored_at": "2026-11-14T06:23:11.775485Z"
+        },
+        {
+          "intent_id": "MEDIA_FORENSIC_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 12,
+          "score": 0.9188,
+          "scored_at": "2026-11-14T06:28:31.301511Z"
+        },
+        {
+          "intent_id": "SEMANTIC_SIMILARITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 13,
+          "score": 0.4086,
+          "scored_at": "2026-11-14T05:44:19.161608Z"
+        },
+        {
+          "intent_id": "LANGUAGE_TRANSLATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 14,
+          "score": 0.7384,
+          "scored_at": "2026-11-14T06:08:25.317292Z"
+        },
+        {
+          "intent_id": "TEXT_AUTHENTICITY_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 14,
+          "score": 0.8776,
+          "scored_at": "2026-11-14T04:26:55.106237Z"
+        },
+        {
+          "intent_id": "NEWS_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 16,
+          "score": 0.2494,
+          "scored_at": "2026-11-14T05:28:58.183768Z"
+        },
+        {
+          "intent_id": "WEATHER_FORECAST_GENERAL",
+          "epoch_id": 2087,
+          "rank": 17,
+          "score": 0.4993,
+          "scored_at": "2026-11-14T04:55:40.726287Z"
+        },
+        {
+          "intent_id": "CRYPTO_PRICE_USD",
+          "epoch_id": 2087,
+          "rank": 31,
+          "score": 0.75299996,
+          "scored_at": "2026-11-14T03:52:55.465948Z"
         }
       ]
     },
@@ -3819,640 +3855,654 @@
       "min_price_usdc": 10000,
       "yaml_url": "https://hub.shadrakbessanh.me/miner.yaml",
       "registered_at": "2026-11-02T22:19:26Z",
-      "total_requests_served": 733,
+      "total_requests_served": 835,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T15:29:47Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T06:37:05Z",
       "scores": [
         {
           "intent_id": "B2B_IDENTITY_ENRICHMENT_GENERAL",
-          "epoch_id": 2074,
+          "epoch_id": 2087,
           "rank": 1,
-          "score": 0.9998,
-          "scored_at": "2026-11-12T15:25:25.073028Z"
-        },
-        {
-          "intent_id": "CODE_REVIEW_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T14:41:50.939422Z"
+          "score": 0.9975,
+          "scored_at": "2026-11-14T04:00:11.57898Z"
         },
         {
           "intent_id": "CONTRACT_OBLIGATION_AUDIT_GENERAL",
-          "epoch_id": 2074,
+          "epoch_id": 2087,
           "rank": 1,
           "score": 1,
-          "scored_at": "2026-11-12T12:50:31.35302Z"
-        },
-        {
-          "intent_id": "CUSTOMER_TICKET_RESOLUTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T14:53:11.142666Z"
+          "scored_at": "2026-11-14T05:04:08.170032Z"
         },
         {
           "intent_id": "GRID_POWER_PRICE_GENERAL",
-          "epoch_id": 2074,
+          "epoch_id": 2087,
           "rank": 1,
           "score": 0,
-          "scored_at": "2026-11-12T12:48:32.268127Z"
+          "scored_at": "2026-11-14T03:47:09.730823Z"
         },
         {
-          "intent_id": "RESEARCH_SYNTHESIS_GENERAL",
-          "epoch_id": 2074,
+          "intent_id": "LANGUAGE_GENERATION_GENERAL",
+          "epoch_id": 2087,
           "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T15:29:47.687906Z"
-        },
-        {
-          "intent_id": "TASK_EXECUTION_QUALITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T13:31:14.573972Z"
-        },
-        {
-          "intent_id": "TVL_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9999,
-          "scored_at": "2026-11-12T13:32:11.719139Z"
-        },
-        {
-          "intent_id": "URL_SCAN_VERDICT",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.5879,
-          "scored_at": "2026-11-12T13:19:21.91892Z"
-        },
-        {
-          "intent_id": "CORPORATE_REGISTRY_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 1,
-          "scored_at": "2026-11-12T12:47:03.999027Z"
-        },
-        {
-          "intent_id": "CRYPTO_PRICE_USD",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.996,
-          "scored_at": "2026-11-12T12:52:38.708358Z"
+          "score": 0.9966,
+          "scored_at": "2026-11-14T04:42:46.4966Z"
         },
         {
           "intent_id": "LIVE_SHELF_PRICE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9993,
-          "scored_at": "2026-11-12T13:02:21.306389Z"
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.999,
+          "scored_at": "2026-11-14T06:16:34.605774Z"
         },
         {
-          "intent_id": "REGULATORY_FILING_MONITOR_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0,
-          "scored_at": "2026-11-12T12:58:47.799813Z"
+          "intent_id": "PAYMENT_METHOD_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9905,
+          "scored_at": "2026-11-14T04:15:50.073467Z"
         },
         {
-          "intent_id": "SHIPMENT_DELAY_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9978,
-          "scored_at": "2026-11-12T13:19:02.769493Z"
+          "intent_id": "TVL_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9998,
+          "scored_at": "2026-11-14T04:28:17.757003Z"
         },
         {
-          "intent_id": "SHIP_RATE_ETA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.8163,
-          "scored_at": "2026-11-12T14:52:04.820613Z"
-        },
-        {
-          "intent_id": "SOCIAL_BOT_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9994,
-          "scored_at": "2026-11-12T14:24:19.28312Z"
-        },
-        {
-          "intent_id": "AGENT_TASK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.996,
-          "scored_at": "2026-11-12T12:54:23.819619Z"
-        },
-        {
-          "intent_id": "CHAT_COMPLETION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9848,
-          "scored_at": "2026-11-12T13:24:51.826Z"
-        },
-        {
-          "intent_id": "CVE_LOOKUP_CVSS",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 1,
-          "scored_at": "2026-11-12T12:47:50.569417Z"
-        },
-        {
-          "intent_id": "DATACENTER_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9594,
-          "scored_at": "2026-11-12T13:51:44.949347Z"
-        },
-        {
-          "intent_id": "EMAIL_SECURITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 1,
-          "scored_at": "2026-11-12T13:04:57.878052Z"
-        },
-        {
-          "intent_id": "FX_NOW_EUR",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.94,
-          "scored_at": "2026-11-12T12:48:15.326565Z"
-        },
-        {
-          "intent_id": "IMAGE_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9953,
-          "scored_at": "2026-11-12T14:27:42.065538Z"
-        },
-        {
-          "intent_id": "KEYWORD_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9903,
-          "scored_at": "2026-11-12T14:47:29.730038Z"
-        },
-        {
-          "intent_id": "MEDIA_FORENSIC_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9978,
-          "scored_at": "2026-11-12T15:23:57.834906Z"
-        },
-        {
-          "intent_id": "ROUTE_ETA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.4376,
-          "scored_at": "2026-11-12T15:08:01.6222Z"
-        },
-        {
-          "intent_id": "SECURITY_REVIEW_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 1,
-          "scored_at": "2026-11-12T13:53:55.568599Z"
-        },
-        {
-          "intent_id": "TEXT_GENERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.988,
-          "scored_at": "2026-11-12T14:19:07.14349Z"
-        },
-        {
-          "intent_id": "WASH_TRADING_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 1,
-          "scored_at": "2026-11-12T13:02:30.19021Z"
-        },
-        {
-          "intent_id": "CODE_PATCH_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9942,
-          "scored_at": "2026-11-12T14:10:22.196538Z"
-        },
-        {
-          "intent_id": "CONTENT_MODERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9904,
-          "scored_at": "2026-11-12T13:13:33.802344Z"
-        },
-        {
-          "intent_id": "FRAUD_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9938,
-          "scored_at": "2026-11-12T13:38:48.753747Z"
-        },
-        {
-          "intent_id": "IP_GEOLOCATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.8628,
-          "scored_at": "2026-11-12T14:41:46.461576Z"
-        },
-        {
-          "intent_id": "LIQUIDITY_DEPTH_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0,
-          "scored_at": "2026-11-12T12:45:53.62664Z"
-        },
-        {
-          "intent_id": "LOAN_INTEREST_RATE_QUOTE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9409,
-          "scored_at": "2026-11-12T13:02:13.075925Z"
-        },
-        {
-          "intent_id": "NEWS_HEADLINES_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9858,
-          "scored_at": "2026-11-12T14:17:26.939924Z"
-        },
-        {
-          "intent_id": "PRODUCT_AUTHENTICITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 1,
-          "scored_at": "2026-11-12T15:16:55.728862Z"
-        },
-        {
-          "intent_id": "SANCTIONS_SCREENING_MATCH_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 1,
-          "scored_at": "2026-11-12T14:03:37.153304Z"
-        },
-        {
-          "intent_id": "TEXT_SUMMARIZATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9859,
-          "scored_at": "2026-11-12T14:02:06.825731Z"
-        },
-        {
-          "intent_id": "TRANSACTION_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9324,
-          "scored_at": "2026-11-12T14:50:40.257874Z"
-        },
-        {
-          "intent_id": "AIR_QUALITY_INDEX_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.5351,
-          "scored_at": "2026-11-12T14:50:43.192173Z"
-        },
-        {
-          "intent_id": "GRAMMAR_SPELL_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9885,
-          "scored_at": "2026-11-12T12:54:54.376101Z"
-        },
-        {
-          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.97,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
-        },
-        {
-          "intent_id": "PACKAGE_STATUS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.0522,
-          "scored_at": "2026-11-12T12:55:32.880059Z"
-        },
-        {
-          "intent_id": "VESSEL_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9309,
-          "scored_at": "2026-11-12T13:39:42.894087Z"
-        },
-        {
-          "intent_id": "ASSET_RESERVE_ATTESTATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.9822,
-          "scored_at": "2026-11-12T14:13:24.577322Z"
-        },
-        {
-          "intent_id": "ENTITY_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.4232,
-          "scored_at": "2026-11-12T13:06:17.229378Z"
-        },
-        {
-          "intent_id": "SSL_VERIFICATION_CERT",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.9404,
-          "scored_at": "2026-11-12T15:28:00.450954Z"
-        },
-        {
-          "intent_id": "TEXT_CLASSIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.995,
-          "scored_at": "2026-11-12T15:26:31.912965Z"
-        },
-        {
-          "intent_id": "TOKEN_HOLDER_COUNT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.8277,
-          "scored_at": "2026-11-12T14:04:18.204662Z"
-        },
-        {
-          "intent_id": "CONTENT_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.994,
-          "scored_at": "2026-11-12T13:01:35.712789Z"
-        },
-        {
-          "intent_id": "CURRENCY_EXCHANGE_CONVERT",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0,
-          "scored_at": "2026-11-12T12:49:06.215601Z"
-        },
-        {
-          "intent_id": "FINANCIAL_DATA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9591,
-          "scored_at": "2026-11-12T13:47:25.041638Z"
-        },
-        {
-          "intent_id": "LIVE_PORT_CONGESTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.3644,
-          "scored_at": "2026-11-12T13:51:10.287995Z"
-        },
-        {
-          "intent_id": "RESEARCH_QUERY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.8562,
-          "scored_at": "2026-11-12T13:40:50.698237Z"
-        },
-        {
-          "intent_id": "SENSOR_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.5967,
-          "scored_at": "2026-11-12T13:19:05.501605Z"
-        },
-        {
-          "intent_id": "SENTIMENT_ANALYSIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9709,
-          "scored_at": "2026-11-12T13:15:14.751639Z"
-        },
-        {
-          "intent_id": "WEATHER_CHECK_TEMPERATURE",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.51666665,
-          "scored_at": "2026-11-12T12:47:21.862339Z"
-        },
-        {
-          "intent_id": "CLOUD_RESOURCE_USAGE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.7434,
-          "scored_at": "2026-11-12T13:27:31.670371Z"
-        },
-        {
-          "intent_id": "DEEPFAKE_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.6574,
-          "scored_at": "2026-11-12T15:20:34.253529Z"
-        },
-        {
-          "intent_id": "FX_NOW_CAD",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.99,
-          "scored_at": "2026-11-12T12:47:49.195698Z"
-        },
-        {
-          "intent_id": "FX_NOW_SEK",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.89,
-          "scored_at": "2026-11-12T12:45:40.387866Z"
-        },
-        {
-          "intent_id": "MEDIA_AUTHENTICITY_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.9456,
-          "scored_at": "2026-11-12T14:00:54.420215Z"
-        },
-        {
-          "intent_id": "QUESTION_ANSWERING_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.9458,
-          "scored_at": "2026-11-12T14:54:16.146677Z"
-        },
-        {
-          "intent_id": "REGRESSION_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.6149,
-          "scored_at": "2026-11-12T12:58:13.297438Z"
-        },
-        {
-          "intent_id": "SEMANTIC_SIMILARITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.8914,
-          "scored_at": "2026-11-12T14:45:55.602887Z"
-        },
-        {
-          "intent_id": "API_HEALTH_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9715,
-          "scored_at": "2026-11-12T14:34:06.479845Z"
-        },
-        {
-          "intent_id": "FRAUD_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.4487,
-          "scored_at": "2026-11-12T13:48:23.565119Z"
-        },
-        {
-          "intent_id": "ONCHAIN_METRIC_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.8563,
-          "scored_at": "2026-11-12T14:41:41.758925Z"
-        },
-        {
-          "intent_id": "TEXT_AUTHENTICITY_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9881,
-          "scored_at": "2026-11-12T14:03:34.52103Z"
-        },
-        {
-          "intent_id": "TRAVEL_DISRUPTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9291,
-          "scored_at": "2026-11-12T13:56:50.906622Z"
-        },
-        {
-          "intent_id": "VENDOR_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.9801,
-          "scored_at": "2026-11-12T14:44:37.12213Z"
+          "intent_id": "URL_SCAN_VERDICT",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.5879,
+          "scored_at": "2026-11-14T04:38:37.828643Z"
         },
         {
           "intent_id": "VIDEO_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 9,
-          "score": 0.629,
-          "scored_at": "2026-11-12T13:18:46.384458Z"
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9976,
+          "scored_at": "2026-11-14T05:10:27.013104Z"
         },
         {
-          "intent_id": "ACADEMIC_SEARCH_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.87,
-          "scored_at": "2026-11-12T14:53:26.464613Z"
-        },
-        {
-          "intent_id": "CONTENT_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.989,
-          "scored_at": "2026-11-12T15:00:39.788907Z"
-        },
-        {
-          "intent_id": "IMAGE_CAPTIONING_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.6719,
-          "scored_at": "2026-11-12T14:19:22.36993Z"
-        },
-        {
-          "intent_id": "DOCUMENT_AUTHENTICITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
-          "score": 0.7048,
-          "scored_at": "2026-11-12T15:16:06.339983Z"
-        },
-        {
-          "intent_id": "FACT_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
-          "score": 0.5122,
-          "scored_at": "2026-11-12T15:07:01.364441Z"
-        },
-        {
-          "intent_id": "LLM_OUTPUT_EVALUATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
-          "score": 0.0772,
-          "scored_at": "2026-11-12T14:56:15.151578Z"
+          "intent_id": "WASH_TRADING_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T04:47:55.308496Z"
         },
         {
           "intent_id": "WEATHER_FORECAST_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
-          "score": 0.574,
-          "scored_at": "2026-11-12T15:14:48.014269Z"
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T04:05:47.243012Z"
         },
         {
-          "intent_id": "CRYPTO_TRANSFER_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 12,
-          "score": 0.1508,
-          "scored_at": "2026-11-12T13:15:09.558596Z"
+          "intent_id": "CHAT_COMPLETION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9794,
+          "scored_at": "2026-11-14T05:23:46.589268Z"
+        },
+        {
+          "intent_id": "CORPORATE_REGISTRY_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 1,
+          "scored_at": "2026-11-14T03:48:44.399567Z"
+        },
+        {
+          "intent_id": "IMAGE_VERIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9983,
+          "scored_at": "2026-11-14T06:23:11.775485Z"
+        },
+        {
+          "intent_id": "IP_GEOLOCATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.994,
+          "scored_at": "2026-11-14T05:01:42.70355Z"
+        },
+        {
+          "intent_id": "MEDIA_FORENSIC_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9989,
+          "scored_at": "2026-11-14T06:28:31.301511Z"
+        },
+        {
+          "intent_id": "REGULATORY_FILING_MONITOR_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0,
+          "scored_at": "2026-11-14T03:48:05.502423Z"
+        },
+        {
+          "intent_id": "SHIP_RATE_ETA_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.8639,
+          "scored_at": "2026-11-14T04:52:28.179298Z"
+        },
+        {
+          "intent_id": "TASK_EXECUTION_QUALITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 1,
+          "scored_at": "2026-11-14T06:23:56.480294Z"
+        },
+        {
+          "intent_id": "TEXT_SUMMARIZATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9954,
+          "scored_at": "2026-11-14T06:36:35.481476Z"
+        },
+        {
+          "intent_id": "AGENT_TASK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9845,
+          "scored_at": "2026-11-14T04:25:20.581282Z"
+        },
+        {
+          "intent_id": "CODE_REVIEW_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 1,
+          "scored_at": "2026-11-14T03:53:55.678672Z"
+        },
+        {
+          "intent_id": "DATACENTER_TELEMETRY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.957,
+          "scored_at": "2026-11-14T04:05:43.701833Z"
+        },
+        {
+          "intent_id": "EMAIL_SECURITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 1,
+          "scored_at": "2026-11-14T04:44:41.842682Z"
+        },
+        {
+          "intent_id": "FX_NOW_CAD",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 1,
+          "scored_at": "2026-11-14T03:45:46.295885Z"
+        },
+        {
+          "intent_id": "NEWS_HEADLINES_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.991,
+          "scored_at": "2026-11-14T06:07:49.883046Z"
+        },
+        {
+          "intent_id": "SKU_IN_STOCK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9242,
+          "scored_at": "2026-11-14T06:06:56.8069Z"
+        },
+        {
+          "intent_id": "AIR_QUALITY_INDEX_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.8809,
+          "scored_at": "2026-11-14T05:58:12.215983Z"
+        },
+        {
+          "intent_id": "CROSS_CHAIN_STATE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.8799,
+          "scored_at": "2026-11-14T04:09:34.493385Z"
+        },
+        {
+          "intent_id": "FRAUD_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9971,
+          "scored_at": "2026-11-14T06:13:12.812727Z"
+        },
+        {
+          "intent_id": "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0,
+          "scored_at": "2026-11-14T03:45:49.956508Z"
+        },
+        {
+          "intent_id": "MEDIA_AUTHENTICITY_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9828,
+          "scored_at": "2026-11-14T04:33:11.37389Z"
+        },
+        {
+          "intent_id": "NEWS_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9935,
+          "scored_at": "2026-11-14T05:28:58.183768Z"
+        },
+        {
+          "intent_id": "SHIPMENT_DELAY_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9093,
+          "scored_at": "2026-11-14T04:13:10.429807Z"
+        },
+        {
+          "intent_id": "THREAT_INTELLIGENCE_INDICATOR",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.59115,
+          "scored_at": "2026-11-14T05:24:38.470712Z"
+        },
+        {
+          "intent_id": "TOKEN_HOLDER_COUNT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.991,
+          "scored_at": "2026-11-14T05:39:54.969737Z"
+        },
+        {
+          "intent_id": "WEB_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9934,
+          "scored_at": "2026-11-14T05:21:43.113704Z"
+        },
+        {
+          "intent_id": "CRYPTO_YIELD_RATE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.8492,
+          "scored_at": "2026-11-14T05:56:58.622727Z"
+        },
+        {
+          "intent_id": "CUSTOMER_TICKET_RESOLUTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 1,
+          "scored_at": "2026-11-14T05:52:25.514855Z"
+        },
+        {
+          "intent_id": "LOAN_INTEREST_RATE_QUOTE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9125,
+          "scored_at": "2026-11-14T06:31:55.183606Z"
         },
         {
           "intent_id": "ONCHAIN_TX_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.2975,
-          "scored_at": "2026-11-12T15:08:52.723458Z"
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.7088,
+          "scored_at": "2026-11-14T05:53:16.49043Z"
         },
         {
-          "intent_id": "SATELLITE_IMAGERY_ANALYSIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.3278,
-          "scored_at": "2026-11-12T14:40:42.728638Z"
+          "intent_id": "PACKAGE_STATUS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.2049,
+          "scored_at": "2026-11-14T05:01:39.984779Z"
         },
         {
-          "intent_id": "STORM_ALERT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.9088,
-          "scored_at": "2026-11-12T13:30:38.644343Z"
+          "intent_id": "QUESTION_ANSWERING_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9781,
+          "scored_at": "2026-11-14T06:18:59.407788Z"
         },
         {
-          "intent_id": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.6542,
-          "scored_at": "2026-11-12T13:31:46.56323Z"
-        },
-        {
-          "intent_id": "WEATHER_FORECAST_GENERAL",
-          "epoch_id": 2074,
-          "rank": 14,
-          "score": 0.7238,
-          "scored_at": "2026-11-12T14:16:56.501384Z"
-        },
-        {
-          "intent_id": "URL_SAFE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 15,
-          "score": 0.9979,
-          "scored_at": "2026-11-12T13:43:26.131539Z"
-        },
-        {
-          "intent_id": "EVENT_OUTCOME_RESOLUTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 17,
-          "score": 0.0001,
-          "scored_at": "2026-11-12T14:32:53.884518Z"
-        },
-        {
-          "intent_id": "LANGUAGE_TRANSLATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 17,
-          "score": 0.3258,
-          "scored_at": "2026-11-12T13:54:21.480394Z"
+          "intent_id": "REGRESSION_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.2709,
+          "scored_at": "2026-11-14T04:43:35.969771Z"
         },
         {
           "intent_id": "VULNERABILITY_TRIAGE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 27,
-          "score": 0.0008,
-          "scored_at": "2026-11-12T14:34:08.245991Z"
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9983,
+          "scored_at": "2026-11-14T03:50:33.21152Z"
+        },
+        {
+          "intent_id": "ASSET_RESERVE_ATTESTATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9892,
+          "scored_at": "2026-11-14T05:19:22.039188Z"
+        },
+        {
+          "intent_id": "SENSOR_TELEMETRY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.3767,
+          "scored_at": "2026-11-14T04:29:59.633152Z"
+        },
+        {
+          "intent_id": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.7534,
+          "scored_at": "2026-11-14T04:41:57.40003Z"
+        },
+        {
+          "intent_id": "WAREHOUSE_INVENTORY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.5689,
+          "scored_at": "2026-11-14T05:40:50.760517Z"
+        },
+        {
+          "intent_id": "CARRIER_SERVICEABILITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.3244,
+          "scored_at": "2026-11-14T05:25:25.697765Z"
+        },
+        {
+          "intent_id": "CODE_PATCH_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9054,
+          "scored_at": "2026-11-14T05:52:56.789027Z"
+        },
+        {
+          "intent_id": "COMMERCE_PURCHASE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.5355,
+          "scored_at": "2026-11-14T04:02:56.705419Z"
+        },
+        {
+          "intent_id": "CONTENT_EXTRACTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9922,
+          "scored_at": "2026-11-14T04:09:59.411625Z"
+        },
+        {
+          "intent_id": "CURRENCY_EXCHANGE_CONVERT",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0,
+          "scored_at": "2026-11-14T03:48:41.468037Z"
+        },
+        {
+          "intent_id": "FRAUD_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9305,
+          "scored_at": "2026-11-14T06:32:35.457519Z"
+        },
+        {
+          "intent_id": "LIVE_PORT_CONGESTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.7747,
+          "scored_at": "2026-11-14T06:22:13.402988Z"
+        },
+        {
+          "intent_id": "TEXT_AUTHENTICITY_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9718,
+          "scored_at": "2026-11-14T04:26:55.106237Z"
+        },
+        {
+          "intent_id": "TEXT_GENERATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9939,
+          "scored_at": "2026-11-14T05:15:21.199438Z"
+        },
+        {
+          "intent_id": "VENDOR_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9902,
+          "scored_at": "2026-11-14T06:06:25.951049Z"
+        },
+        {
+          "intent_id": "CHATBOT_CONVERSATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9505,
+          "scored_at": "2026-11-14T05:53:22.315147Z"
+        },
+        {
+          "intent_id": "CLOUD_RESOURCE_USAGE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.4968,
+          "scored_at": "2026-11-14T06:14:18.153301Z"
+        },
+        {
+          "intent_id": "FX_NOW_SEK",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.93,
+          "scored_at": "2026-11-14T03:46:46.70294Z"
+        },
+        {
+          "intent_id": "GRAMMAR_SPELL_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9836,
+          "scored_at": "2026-11-14T04:29:47.192962Z"
+        },
+        {
+          "intent_id": "SENTIMENT_ANALYSIS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9943,
+          "scored_at": "2026-11-14T05:10:41.924707Z"
+        },
+        {
+          "intent_id": "WEATHER_CHECK_TEMPERATURE",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.55,
+          "scored_at": "2026-11-14T03:48:11.026715Z"
+        },
+        {
+          "intent_id": "DEEPFAKE_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.7336,
+          "scored_at": "2026-11-14T04:46:22.523236Z"
+        },
+        {
+          "intent_id": "FX_NOW_EUR",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.94,
+          "scored_at": "2026-11-14T03:45:50.269671Z"
+        },
+        {
+          "intent_id": "GAS_PRICE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.8312,
+          "scored_at": "2026-11-14T04:01:37.172886Z"
+        },
+        {
+          "intent_id": "ONCHAIN_METRIC_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.845,
+          "scored_at": "2026-11-14T05:00:53.920383Z"
+        },
+        {
+          "intent_id": "SECURITY_REVIEW_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.0001,
+          "scored_at": "2026-11-14T05:12:40.295585Z"
+        },
+        {
+          "intent_id": "SLA_COMPLIANCE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.5569,
+          "scored_at": "2026-11-14T03:57:31.296615Z"
+        },
+        {
+          "intent_id": "THREAT_IP_REPUTATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.8525,
+          "scored_at": "2026-11-14T05:50:41.879622Z"
+        },
+        {
+          "intent_id": "TRANSACTION_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.1066,
+          "scored_at": "2026-11-14T03:51:13.258428Z"
+        },
+        {
+          "intent_id": "TRAVEL_DISRUPTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.8665,
+          "scored_at": "2026-11-14T04:37:11.288798Z"
+        },
+        {
+          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.7993,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
+        },
+        {
+          "intent_id": "RESEARCH_QUERY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9367,
+          "scored_at": "2026-11-14T06:18:39.906169Z"
+        },
+        {
+          "intent_id": "RESEARCH_SYNTHESIS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9335,
+          "scored_at": "2026-11-14T06:26:05.447896Z"
+        },
+        {
+          "intent_id": "SMART_CONTRACT_AUDIT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.3139,
+          "scored_at": "2026-11-14T04:34:59.901643Z"
+        },
+        {
+          "intent_id": "ACADEMIC_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.9259,
+          "scored_at": "2026-11-14T06:37:05.071198Z"
+        },
+        {
+          "intent_id": "ENTITY_EXTRACTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.9022,
+          "scored_at": "2026-11-14T06:03:39.857588Z"
+        },
+        {
+          "intent_id": "IMAGE_CAPTIONING_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.4677,
+          "scored_at": "2026-11-14T03:52:39.724468Z"
+        },
+        {
+          "intent_id": "STOCK_PRICE_US_EQUITY",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.8137,
+          "scored_at": "2026-11-14T05:38:07.693911Z"
+        },
+        {
+          "intent_id": "TEXT_CLASSIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.9933,
+          "scored_at": "2026-11-14T04:58:10.168773Z"
+        },
+        {
+          "intent_id": "AI_TEXT_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 12,
+          "score": 0.4544,
+          "scored_at": "2026-11-14T04:02:38.321018Z"
+        },
+        {
+          "intent_id": "WALLET_BALANCE_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 12,
+          "score": 0.7008,
+          "scored_at": "2026-11-14T05:46:33.768963Z"
+        },
+        {
+          "intent_id": "WEATHER_FORECAST_GENERAL",
+          "epoch_id": 2087,
+          "rank": 12,
+          "score": 0.8007,
+          "scored_at": "2026-11-14T04:55:40.726287Z"
+        },
+        {
+          "intent_id": "STORM_ALERT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 13,
+          "score": 0.89,
+          "scored_at": "2026-11-14T04:25:16.767198Z"
+        },
+        {
+          "intent_id": "EVENT_OUTCOME_RESOLUTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 15,
+          "score": 0.0026,
+          "scored_at": "2026-11-14T05:45:36.694166Z"
+        },
+        {
+          "intent_id": "URL_SAFE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 15,
+          "score": 0.9959,
+          "scored_at": "2026-11-14T05:02:19.831748Z"
+        },
+        {
+          "intent_id": "FACT_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 16,
+          "score": 0.6135,
+          "scored_at": "2026-11-14T06:10:11.984523Z"
+        },
+        {
+          "intent_id": "LANGUAGE_TRANSLATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 16,
+          "score": 0.3766,
+          "scored_at": "2026-11-14T06:08:25.317292Z"
+        },
+        {
+          "intent_id": "CRYPTO_PRICE_USD",
+          "epoch_id": 2087,
+          "rank": 28,
+          "score": 0.76400006,
+          "scored_at": "2026-11-14T03:52:55.462331Z"
         }
       ]
     },
@@ -4998,6 +5048,26 @@
           "path": "/tts",
           "method": "GET",
           "description": "Text to speech: the given text spoken by a Gemini speech model, returned as a 16-bit mono WAV clip in base64 (audio_base64) with its duration, sample rate, voice and model. Up to 1,200 characters per clip; longer text is cut at a sentence end and the answer says so. Voices: Kore (default), Puck, Charon, Fenrir, Aoede, Leda, Orus, Zephyr."
+        },
+        {
+          "path": "/hotel-availability",
+          "method": "GET",
+          "description": "Room availability and the lowest nightly rate for a named hotel and dates, from the rates booking sites (Booking.com, Agoda, Trip.com, the hotel's own site) list for its TripAdvisor property through Xotelo's free hotel-prices API, covering 42 major cities. Offers listed means rooms are bookable on those sites; rates are before taxes and fees."
+        },
+        {
+          "path": "/flight-availability",
+          "method": "GET",
+          "description": "The route a flight number flies (adsbdb callsign database) and whether it is airborne now (adsb.lol live ADS-B). Seat inventory and fares are held in airline reservation systems with no public feed, so available and price are left empty and the reason says where to get them."
+        },
+        {
+          "path": "/transit-lock",
+          "method": "GET",
+          "description": "A fare, seat or booking lock lives only in the airline's or agency's reservation record, so it is never claimed as locked. For a route given by IATA airport codes, the current METAR flight category at each airport is reported from aviationweather.gov, flagging instrument conditions that threaten a tight connection."
+        },
+        {
+          "path": "/package-status",
+          "method": "GET",
+          "description": "The carrier a tracking number belongs to (UPS 1Z, USPS 20-22 digit, FedEx 12/15 digit, DHL Express 10 digit) and whether its check digit is correct (UPS, USPS and DHL rules), with the carrier's own tracking link. Live scan events are read only through each carrier's tracking API, so no status is claimed."
         },
         {
           "path": "/return-policy",
@@ -6207,6 +6277,10 @@
         "reason_field": "reason"
       },
       "supported_intents": [
+        "HOTEL_AVAILABILITY_GENERAL",
+        "FLIGHT_AVAILABILITY_GENERAL",
+        "TRAVEL_TRANSIT_LOCK_GENERAL",
+        "PACKAGE_STATUS_GENERAL",
         "CREDIT_SCORE_VERIFY_GENERAL",
         "DATACENTER_TELEMETRY_VERIFY_GENERAL",
         "WAREHOUSE_INVENTORY_GENERAL",
@@ -6348,832 +6422,1506 @@
       "fee_address": "0x5c4b38cf6adb8c5a30242c3fc9124ce0197d2d52",
       "activation_status": "active",
       "min_price_usdc": 10000,
-      "yaml_url": "https://raw.githubusercontent.com/shreshth006/preflight-miner-config/9d6fb52034aaedd99cec82406811e7277aea7c18/telegraph/miner.yaml",
-      "registered_at": "2026-11-10T08:46:26Z",
-      "total_requests_served": 622,
+      "yaml_url": "https://raw.githubusercontent.com/shreshth006/preflight-miner-config/4398376a4fc43ddc80ac096492baa056dcfd0f43/telegraph/miner.yaml",
+      "registered_at": "2026-11-13T10:09:51Z",
+      "total_requests_served": 684,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T15:29:47Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T06:41:14Z",
       "scores": [
         {
-          "intent_id": "CODE_PATCH_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T14:10:22.196538Z"
-        },
-        {
-          "intent_id": "CONTENT_MODERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T13:13:33.802344Z"
-        },
-        {
           "intent_id": "CORPORATE_REGISTRY_LOOKUP_GENERAL",
-          "epoch_id": 2074,
+          "epoch_id": 2087,
           "rank": 1,
           "score": 1,
-          "scored_at": "2026-11-12T12:47:03.997048Z"
+          "scored_at": "2026-11-14T03:48:44.397516Z"
         },
         {
-          "intent_id": "CREDIT_SCORE_VERIFY_GENERAL",
-          "epoch_id": 2074,
+          "intent_id": "CROSS_CHAIN_STATE_VERIFY_GENERAL",
+          "epoch_id": 2087,
           "rank": 1,
-          "score": 0.9904,
-          "scored_at": "2026-11-12T12:58:39.937806Z"
-        },
-        {
-          "intent_id": "CRYPTO_PRICE_USD",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.99799997,
-          "scored_at": "2026-11-12T12:52:38.706068Z"
-        },
-        {
-          "intent_id": "CVE_LOOKUP_CVSS",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T12:47:50.564843Z"
-        },
-        {
-          "intent_id": "ENTITY_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9983,
-          "scored_at": "2026-11-12T13:06:17.229378Z"
-        },
-        {
-          "intent_id": "FX_NOW_CAD",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T12:47:49.184122Z"
-        },
-        {
-          "intent_id": "FX_NOW_SEK",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T12:45:40.37395Z"
-        },
-        {
-          "intent_id": "KYC_BIOMETRIC_LIVENESS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9999,
-          "scored_at": "2026-11-12T14:49:26.248991Z"
-        },
-        {
-          "intent_id": "LIQUIDITY_DEPTH_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T12:45:53.621913Z"
-        },
-        {
-          "intent_id": "REGRESSION_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9966,
-          "scored_at": "2026-11-12T12:58:13.297438Z"
-        },
-        {
-          "intent_id": "REGULATORY_FILING_MONITOR_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0,
-          "scored_at": "2026-11-12T12:58:47.797681Z"
-        },
-        {
-          "intent_id": "ROUTE_ETA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9249,
-          "scored_at": "2026-11-12T15:08:01.6222Z"
-        },
-        {
-          "intent_id": "SECURITY_REVIEW_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T13:53:55.568599Z"
-        },
-        {
-          "intent_id": "SENTIMENT_ANALYSIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9958,
-          "scored_at": "2026-11-12T13:15:14.751639Z"
-        },
-        {
-          "intent_id": "SHIPMENT_DELAY_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9988,
-          "scored_at": "2026-11-12T13:19:02.769493Z"
-        },
-        {
-          "intent_id": "SKU_IN_STOCK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9737,
-          "scored_at": "2026-11-12T14:22:41.446824Z"
-        },
-        {
-          "intent_id": "SOCIAL_BOT_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T14:24:19.28312Z"
-        },
-        {
-          "intent_id": "TEXT_AUTHENTICITY_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9996,
-          "scored_at": "2026-11-12T14:03:34.52103Z"
-        },
-        {
-          "intent_id": "TRANSACTION_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.998,
-          "scored_at": "2026-11-12T14:50:40.257874Z"
-        },
-        {
-          "intent_id": "URL_SAFE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 1,
-          "scored_at": "2026-11-12T13:43:26.131539Z"
-        },
-        {
-          "intent_id": "VESSEL_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9984,
-          "scored_at": "2026-11-12T13:39:42.894087Z"
-        },
-        {
-          "intent_id": "VIDEO_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.9838,
-          "scored_at": "2026-11-12T13:18:46.384458Z"
-        },
-        {
-          "intent_id": "WEATHER_CHECK_TEMPERATURE",
-          "epoch_id": 2074,
-          "rank": 1,
-          "score": 0.64166665,
-          "scored_at": "2026-11-12T12:47:21.85286Z"
-        },
-        {
-          "intent_id": "AI_TEXT_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9994,
-          "scored_at": "2026-11-12T13:33:49.458421Z"
-        },
-        {
-          "intent_id": "DEEPFAKE_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9683,
-          "scored_at": "2026-11-12T15:20:34.253529Z"
-        },
-        {
-          "intent_id": "FRAUD_RISK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9984,
-          "scored_at": "2026-11-12T13:38:48.753747Z"
-        },
-        {
-          "intent_id": "IMAGE_CAPTIONING_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9968,
-          "scored_at": "2026-11-12T14:19:22.36993Z"
-        },
-        {
-          "intent_id": "IMAGE_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9972,
-          "scored_at": "2026-11-12T14:27:42.065538Z"
-        },
-        {
-          "intent_id": "LIVE_PORT_CONGESTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9839,
-          "scored_at": "2026-11-12T13:51:10.287995Z"
-        },
-        {
-          "intent_id": "LOAN_INTEREST_RATE_QUOTE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.958,
-          "scored_at": "2026-11-12T13:02:13.075925Z"
-        },
-        {
-          "intent_id": "MEDIA_AUTHENTICITY_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9954,
-          "scored_at": "2026-11-12T14:00:54.420215Z"
-        },
-        {
-          "intent_id": "MEDIA_FORENSIC_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9992,
-          "scored_at": "2026-11-12T15:23:57.834906Z"
-        },
-        {
-          "intent_id": "PLAGIARISM_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9995,
-          "scored_at": "2026-11-12T15:11:58.435865Z"
-        },
-        {
-          "intent_id": "PORT_SCAN_AUDIT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9959,
-          "scored_at": "2026-11-12T15:00:18.812025Z"
-        },
-        {
-          "intent_id": "PURCHASE_ORDER_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9885,
-          "scored_at": "2026-11-12T14:00:05.295952Z"
-        },
-        {
-          "intent_id": "QUESTION_ANSWERING_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.986,
-          "scored_at": "2026-11-12T14:54:16.146677Z"
-        },
-        {
-          "intent_id": "SSL_VERIFICATION_CERT",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9959,
-          "scored_at": "2026-11-12T15:28:00.450954Z"
-        },
-        {
-          "intent_id": "VENDOR_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9972,
-          "scored_at": "2026-11-12T14:44:37.12213Z"
-        },
-        {
-          "intent_id": "CONTENT_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9992,
-          "scored_at": "2026-11-12T13:01:35.712789Z"
-        },
-        {
-          "intent_id": "GAME_RESULT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9824,
-          "scored_at": "2026-11-12T12:49:49.514539Z"
-        },
-        {
-          "intent_id": "LIVE_SHELF_PRICE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.995,
-          "scored_at": "2026-11-12T13:02:21.306389Z"
-        },
-        {
-          "intent_id": "ONCHAIN_TX_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.6409,
-          "scored_at": "2026-11-12T15:08:52.723458Z"
-        },
-        {
-          "intent_id": "PRODUCT_AUTHENTICITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 1,
-          "scored_at": "2026-11-12T15:16:55.728862Z"
-        },
-        {
-          "intent_id": "SANCTIONS_SCREENING_MATCH_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 1,
-          "scored_at": "2026-11-12T14:03:37.153304Z"
-        },
-        {
-          "intent_id": "SEMANTIC_SIMILARITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9789,
-          "scored_at": "2026-11-12T14:45:55.602887Z"
-        },
-        {
-          "intent_id": "TVL_LOOKUP_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9937,
-          "scored_at": "2026-11-12T13:32:11.719139Z"
-        },
-        {
-          "intent_id": "AIR_QUALITY_INDEX_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.6913,
-          "scored_at": "2026-11-12T14:50:43.192173Z"
-        },
-        {
-          "intent_id": "CONTRACT_OBLIGATION_AUDIT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9999,
-          "scored_at": "2026-11-12T12:50:31.35302Z"
-        },
-        {
-          "intent_id": "DATACENTER_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9337,
-          "scored_at": "2026-11-12T13:51:44.949347Z"
-        },
-        {
-          "intent_id": "DELIVERY_WINDOW_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.3372,
-          "scored_at": "2026-11-12T14:58:56.424095Z"
-        },
-        {
-          "intent_id": "EMAIL_SECURITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9992,
-          "scored_at": "2026-11-12T13:04:57.878052Z"
-        },
-        {
-          "intent_id": "FX_NOW_EUR",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.87,
-          "scored_at": "2026-11-12T12:48:15.328062Z"
-        },
-        {
-          "intent_id": "GRAMMAR_SPELL_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9904,
-          "scored_at": "2026-11-12T12:54:54.376101Z"
-        },
-        {
-          "intent_id": "KEYWORD_EXTRACTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9842,
-          "scored_at": "2026-11-12T14:47:29.730038Z"
-        },
-        {
-          "intent_id": "SHIP_RATE_ETA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.7067,
-          "scored_at": "2026-11-12T14:52:04.820613Z"
-        },
-        {
-          "intent_id": "SPEECH_TO_TEXT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.8559,
-          "scored_at": "2026-11-12T15:04:58.149534Z"
-        },
-        {
-          "intent_id": "STORM_ALERT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9915,
-          "scored_at": "2026-11-12T13:30:38.644343Z"
-        },
-        {
-          "intent_id": "TEXT_GENERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9833,
-          "scored_at": "2026-11-12T14:19:07.14349Z"
-        },
-        {
-          "intent_id": "VULNERABILITY_TRIAGE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.0144,
-          "scored_at": "2026-11-12T14:34:08.245991Z"
-        },
-        {
-          "intent_id": "WEATHER_FORECAST_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 4,
-          "score": 0.9499,
-          "scored_at": "2026-11-12T15:14:48.014269Z"
-        },
-        {
-          "intent_id": "API_HEALTH_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9953,
-          "scored_at": "2026-11-12T14:34:06.479845Z"
-        },
-        {
-          "intent_id": "ASSET_RESERVE_ATTESTATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9991,
-          "scored_at": "2026-11-12T14:13:24.577322Z"
-        },
-        {
-          "intent_id": "B2B_IDENTITY_ENRICHMENT_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9884,
-          "scored_at": "2026-11-12T15:25:25.073028Z"
-        },
-        {
-          "intent_id": "CODE_REVIEW_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 1,
-          "scored_at": "2026-11-12T14:41:50.939422Z"
-        },
-        {
-          "intent_id": "CRYPTO_TRANSFER_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.198,
-          "scored_at": "2026-11-12T13:15:09.558596Z"
-        },
-        {
-          "intent_id": "CURRENCY_EXCHANGE_CONVERT",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.8633334,
-          "scored_at": "2026-11-12T12:49:06.212056Z"
-        },
-        {
-          "intent_id": "FACT_CHECK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.976,
-          "scored_at": "2026-11-12T15:07:01.364441Z"
-        },
-        {
-          "intent_id": "FRAUD_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.804,
-          "scored_at": "2026-11-12T13:48:23.565119Z"
-        },
-        {
-          "intent_id": "INVOICE_LEDGER_RECONCILE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9974,
-          "scored_at": "2026-11-12T14:40:45.658064Z"
-        },
-        {
-          "intent_id": "LLM_OUTPUT_EVALUATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.8258,
-          "scored_at": "2026-11-12T14:56:15.151578Z"
-        },
-        {
-          "intent_id": "NEWS_HEADLINES_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9803,
-          "scored_at": "2026-11-12T14:17:26.939924Z"
-        },
-        {
-          "intent_id": "TEXT_CLASSIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9957,
-          "scored_at": "2026-11-12T15:26:31.912965Z"
-        },
-        {
-          "intent_id": "TEXT_TO_SPEECH_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.305,
-          "scored_at": "2026-11-12T14:23:48.440633Z"
-        },
-        {
-          "intent_id": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9986,
-          "scored_at": "2026-11-12T13:31:46.56323Z"
-        },
-        {
-          "intent_id": "URL_SCAN_VERDICT",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.56093335,
-          "scored_at": "2026-11-12T13:19:21.926791Z"
-        },
-        {
-          "intent_id": "WASH_TRADING_DETECTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
           "score": 0.9998,
-          "scored_at": "2026-11-12T13:02:30.19021Z"
-        },
-        {
-          "intent_id": "WEATHER_FORECAST_GENERAL",
-          "epoch_id": 2074,
-          "rank": 5,
-          "score": 0.9638,
-          "scored_at": "2026-11-12T14:16:56.501384Z"
-        },
-        {
-          "intent_id": "CLOUD_RESOURCE_USAGE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.9668,
-          "scored_at": "2026-11-12T13:27:31.670371Z"
-        },
-        {
-          "intent_id": "SENSOR_TELEMETRY_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.7663,
-          "scored_at": "2026-11-12T13:19:05.501605Z"
-        },
-        {
-          "intent_id": "TASK_COMPLETION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.6931,
-          "scored_at": "2026-11-12T14:22:56.712761Z"
-        },
-        {
-          "intent_id": "TEXT_SUMMARIZATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 6,
-          "score": 0.9725,
-          "scored_at": "2026-11-12T14:02:06.825731Z"
-        },
-        {
-          "intent_id": "AGENT_TASK_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.6973,
-          "scored_at": "2026-11-12T12:54:23.819619Z"
-        },
-        {
-          "intent_id": "ONCHAIN_METRIC_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9076,
-          "scored_at": "2026-11-12T14:41:41.758925Z"
-        },
-        {
-          "intent_id": "OPTIMAL_EXECUTION_ROUTE_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 1,
-          "scored_at": "2026-11-12T14:32:38.204819Z"
-        },
-        {
-          "intent_id": "TRAVEL_DISRUPTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.9493,
-          "scored_at": "2026-11-12T13:56:50.906622Z"
-        },
-        {
-          "intent_id": "CHAT_COMPLETION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.8964,
-          "scored_at": "2026-11-12T13:24:51.826Z"
-        },
-        {
-          "intent_id": "CONTENT_VERIFICATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.9942,
-          "scored_at": "2026-11-12T15:00:39.788907Z"
+          "scored_at": "2026-11-14T04:09:34.493385Z"
         },
         {
           "intent_id": "CUSTOMER_TICKET_RESOLUTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
+          "epoch_id": 2087,
+          "rank": 1,
           "score": 1,
-          "scored_at": "2026-11-12T14:53:11.142666Z"
+          "scored_at": "2026-11-14T05:52:25.514855Z"
+        },
+        {
+          "intent_id": "CVE_LOOKUP_CVSS",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T03:52:08.70806Z"
+        },
+        {
+          "intent_id": "ENTITY_EXTRACTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.999,
+          "scored_at": "2026-11-14T06:03:39.857588Z"
+        },
+        {
+          "intent_id": "FX_NOW_CAD",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T03:45:46.292011Z"
+        },
+        {
+          "intent_id": "FX_NOW_EUR",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T03:45:50.259507Z"
+        },
+        {
+          "intent_id": "FX_NOW_SEK",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T03:46:46.691304Z"
+        },
+        {
+          "intent_id": "GRAMMAR_SPELL_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.999,
+          "scored_at": "2026-11-14T04:29:47.192962Z"
+        },
+        {
+          "intent_id": "HOTEL_AVAILABILITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.956,
+          "scored_at": "2026-11-14T04:13:36.824547Z"
+        },
+        {
+          "intent_id": "KYC_BIOMETRIC_LIVENESS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9995,
+          "scored_at": "2026-11-14T05:33:42.19385Z"
+        },
+        {
+          "intent_id": "MACRO_ECONOMIC_INDICATOR_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T03:47:44.045925Z"
+        },
+        {
+          "intent_id": "OPTIMAL_EXECUTION_ROUTE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.7063,
+          "scored_at": "2026-11-14T06:24:53.805776Z"
+        },
+        {
+          "intent_id": "PURCHASE_ORDER_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9927,
+          "scored_at": "2026-11-14T05:18:12.190309Z"
+        },
+        {
+          "intent_id": "REGULATORY_FILING_MONITOR_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0,
+          "scored_at": "2026-11-14T03:48:05.500056Z"
+        },
+        {
+          "intent_id": "RETURN_POLICY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9996,
+          "scored_at": "2026-11-14T06:41:14.558291Z"
+        },
+        {
+          "intent_id": "ROUTE_ETA_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9951,
+          "scored_at": "2026-11-14T05:36:22.833471Z"
+        },
+        {
+          "intent_id": "SHIPMENT_DELAY_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9986,
+          "scored_at": "2026-11-14T04:13:10.429807Z"
+        },
+        {
+          "intent_id": "SKU_IN_STOCK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9991,
+          "scored_at": "2026-11-14T06:06:56.8069Z"
+        },
+        {
+          "intent_id": "TRANSACTION_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.998,
+          "scored_at": "2026-11-14T03:51:13.258428Z"
+        },
+        {
+          "intent_id": "URL_SAFE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 1,
+          "scored_at": "2026-11-14T05:02:19.831748Z"
+        },
+        {
+          "intent_id": "WAREHOUSE_INVENTORY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9961,
+          "scored_at": "2026-11-14T05:40:50.760517Z"
+        },
+        {
+          "intent_id": "AI_TEXT_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9999,
+          "scored_at": "2026-11-14T04:02:38.321018Z"
+        },
+        {
+          "intent_id": "CARRIER_SERVICEABILITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9624,
+          "scored_at": "2026-11-14T05:25:25.697765Z"
+        },
+        {
+          "intent_id": "CONTRACT_OBLIGATION_AUDIT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 1,
+          "scored_at": "2026-11-14T05:04:08.170032Z"
+        },
+        {
+          "intent_id": "CREDIT_SCORE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9989,
+          "scored_at": "2026-11-14T05:26:43.335994Z"
+        },
+        {
+          "intent_id": "DEEPFAKE_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9729,
+          "scored_at": "2026-11-14T04:46:22.523236Z"
+        },
+        {
+          "intent_id": "FRAUD_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9997,
+          "scored_at": "2026-11-14T06:13:12.812727Z"
+        },
+        {
+          "intent_id": "LIVE_PORT_CONGESTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9827,
+          "scored_at": "2026-11-14T06:22:13.402988Z"
+        },
+        {
+          "intent_id": "MALWARE_DETECTION_HASH",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.995,
+          "scored_at": "2026-11-14T06:15:31.704779Z"
+        },
+        {
+          "intent_id": "MEDIA_AUTHENTICITY_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9941,
+          "scored_at": "2026-11-14T04:33:11.37389Z"
+        },
+        {
+          "intent_id": "PACKAGE_STATUS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9889,
+          "scored_at": "2026-11-14T05:01:39.984779Z"
+        },
+        {
+          "intent_id": "PAYMENT_METHOD_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9891,
+          "scored_at": "2026-11-14T04:15:50.073467Z"
+        },
+        {
+          "intent_id": "PORT_SCAN_AUDIT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9507,
+          "scored_at": "2026-11-14T05:44:53.806547Z"
+        },
+        {
+          "intent_id": "TELEGRAPH_KNOWLEDGE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9957,
+          "scored_at": "2026-11-14T04:39:12.925331Z"
+        },
+        {
+          "intent_id": "TEXT_AUTHENTICITY_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9985,
+          "scored_at": "2026-11-14T04:26:55.106237Z"
+        },
+        {
+          "intent_id": "WALLET_BALANCE_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9309,
+          "scored_at": "2026-11-14T05:46:33.768963Z"
+        },
+        {
+          "intent_id": "WEATHER_CHECK_TEMPERATURE",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.8833334,
+          "scored_at": "2026-11-14T03:48:11.017643Z"
+        },
+        {
+          "intent_id": "WEATHER_FORECAST_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9799,
+          "scored_at": "2026-11-14T04:55:40.726287Z"
+        },
+        {
+          "intent_id": "CLOUD_RESOURCE_USAGE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9804,
+          "scored_at": "2026-11-14T06:14:18.153301Z"
+        },
+        {
+          "intent_id": "CONTENT_EXTRACTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9975,
+          "scored_at": "2026-11-14T04:09:59.411625Z"
+        },
+        {
+          "intent_id": "FACT_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9938,
+          "scored_at": "2026-11-14T06:10:11.984523Z"
+        },
+        {
+          "intent_id": "FLIGHT_AVAILABILITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9723,
+          "scored_at": "2026-11-14T04:10:52.13741Z"
+        },
+        {
+          "intent_id": "IMAGE_CAPTIONING_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9884,
+          "scored_at": "2026-11-14T03:52:39.724468Z"
+        },
+        {
+          "intent_id": "IMAGE_VERIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9946,
+          "scored_at": "2026-11-14T06:23:11.775485Z"
+        },
+        {
+          "intent_id": "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9966,
+          "scored_at": "2026-11-14T03:45:49.955117Z"
+        },
+        {
+          "intent_id": "LIVE_SHELF_PRICE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9915,
+          "scored_at": "2026-11-14T06:16:34.605774Z"
+        },
+        {
+          "intent_id": "MEDIA_FORENSIC_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9926,
+          "scored_at": "2026-11-14T06:28:31.301511Z"
+        },
+        {
+          "intent_id": "REGRESSION_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.97,
+          "scored_at": "2026-11-14T04:43:35.969771Z"
+        },
+        {
+          "intent_id": "SENTIMENT_ANALYSIS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9986,
+          "scored_at": "2026-11-14T05:10:41.924707Z"
+        },
+        {
+          "intent_id": "SHIP_RATE_ETA_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.8205,
+          "scored_at": "2026-11-14T04:52:28.179298Z"
+        },
+        {
+          "intent_id": "TVL_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9918,
+          "scored_at": "2026-11-14T04:28:17.757003Z"
+        },
+        {
+          "intent_id": "VENDOR_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.998,
+          "scored_at": "2026-11-14T06:06:25.951049Z"
+        },
+        {
+          "intent_id": "WEB_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9959,
+          "scored_at": "2026-11-14T05:21:43.113704Z"
+        },
+        {
+          "intent_id": "INVOICE_LEDGER_RECONCILE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9977,
+          "scored_at": "2026-11-14T06:35:47.725058Z"
+        },
+        {
+          "intent_id": "LOAN_INTEREST_RATE_QUOTE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.938,
+          "scored_at": "2026-11-14T06:31:55.183606Z"
+        },
+        {
+          "intent_id": "ONCHAIN_TX_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.7781,
+          "scored_at": "2026-11-14T05:53:16.49043Z"
+        },
+        {
+          "intent_id": "QUESTION_ANSWERING_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9878,
+          "scored_at": "2026-11-14T06:18:59.407788Z"
+        },
+        {
+          "intent_id": "AIR_QUALITY_INDEX_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.8176,
+          "scored_at": "2026-11-14T05:58:12.215983Z"
+        },
+        {
+          "intent_id": "ASSET_RESERVE_ATTESTATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9994,
+          "scored_at": "2026-11-14T05:19:22.039188Z"
+        },
+        {
+          "intent_id": "B2B_IDENTITY_ENRICHMENT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9412,
+          "scored_at": "2026-11-14T04:00:11.57898Z"
+        },
+        {
+          "intent_id": "CODE_PATCH_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9747,
+          "scored_at": "2026-11-14T05:52:56.789027Z"
+        },
+        {
+          "intent_id": "COMMERCE_PURCHASE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9743,
+          "scored_at": "2026-11-14T04:02:56.705419Z"
+        },
+        {
+          "intent_id": "CURRENCY_EXCHANGE_CONVERT",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9066667,
+          "scored_at": "2026-11-14T03:48:41.464704Z"
+        },
+        {
+          "intent_id": "DATACENTER_TELEMETRY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.8863,
+          "scored_at": "2026-11-14T04:05:43.701833Z"
+        },
+        {
+          "intent_id": "SENSOR_TELEMETRY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.7845,
+          "scored_at": "2026-11-14T04:29:59.633152Z"
+        },
+        {
+          "intent_id": "SPORTS_SCORE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9772,
+          "scored_at": "2026-11-14T04:16:26.024869Z"
+        },
+        {
+          "intent_id": "TEXT_CLASSIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9977,
+          "scored_at": "2026-11-14T04:58:10.168773Z"
+        },
+        {
+          "intent_id": "THREAT_IP_REPUTATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9932,
+          "scored_at": "2026-11-14T05:50:41.879622Z"
+        },
+        {
+          "intent_id": "TRAVEL_DISRUPTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9696,
+          "scored_at": "2026-11-14T04:37:11.288798Z"
+        },
+        {
+          "intent_id": "URL_SCAN_VERDICT",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.5602333,
+          "scored_at": "2026-11-14T04:38:37.834442Z"
+        },
+        {
+          "intent_id": "VIDEO_VERIFICATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9533,
+          "scored_at": "2026-11-14T05:10:27.013104Z"
+        },
+        {
+          "intent_id": "WASH_TRADING_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9996,
+          "scored_at": "2026-11-14T04:47:55.308496Z"
+        },
+        {
+          "intent_id": "AGENT_TASK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.5869,
+          "scored_at": "2026-11-14T04:25:20.581282Z"
+        },
+        {
+          "intent_id": "CRYPTO_YIELD_RATE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.8392,
+          "scored_at": "2026-11-14T05:56:58.622727Z"
+        },
+        {
+          "intent_id": "EMAIL_SECURITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 1,
+          "scored_at": "2026-11-14T04:44:41.842682Z"
+        },
+        {
+          "intent_id": "FRAUD_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9628,
+          "scored_at": "2026-11-14T06:32:35.457519Z"
+        },
+        {
+          "intent_id": "GAS_PRICE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9284,
+          "scored_at": "2026-11-14T04:01:37.172886Z"
+        },
+        {
+          "intent_id": "LANGUAGE_GENERATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9487,
+          "scored_at": "2026-11-14T04:42:46.4966Z"
+        },
+        {
+          "intent_id": "PLAGIARISM_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9848,
+          "scored_at": "2026-11-14T05:33:15.68971Z"
+        },
+        {
+          "intent_id": "SPEECH_TO_TEXT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.9543,
+          "scored_at": "2026-11-14T05:35:04.864844Z"
+        },
+        {
+          "intent_id": "TASK_COMPLETION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 0.3303,
+          "scored_at": "2026-11-14T05:38:38.929004Z"
+        },
+        {
+          "intent_id": "CHAT_COMPLETION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9547,
+          "scored_at": "2026-11-14T05:23:46.589268Z"
+        },
+        {
+          "intent_id": "CODE_REVIEW_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 1,
+          "scored_at": "2026-11-14T03:53:55.678672Z"
         },
         {
           "intent_id": "IP_GEOLOCATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.7171,
-          "scored_at": "2026-11-12T14:41:46.461576Z"
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.783,
+          "scored_at": "2026-11-14T05:01:42.70355Z"
         },
         {
-          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.9383,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "intent_id": "SECURITY_REVIEW_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.0126,
+          "scored_at": "2026-11-14T05:12:40.295585Z"
         },
         {
-          "intent_id": "RESEARCH_QUERY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.8216,
-          "scored_at": "2026-11-12T13:40:50.698237Z"
+          "intent_id": "SLA_COMPLIANCE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.8862,
+          "scored_at": "2026-11-14T03:57:31.296615Z"
         },
         {
-          "intent_id": "RESEARCH_SYNTHESIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.9284,
-          "scored_at": "2026-11-12T15:29:47.687906Z"
+          "intent_id": "SMART_CONTRACT_AUDIT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9237,
+          "scored_at": "2026-11-14T04:34:59.901643Z"
         },
         {
-          "intent_id": "TASK_EXECUTION_QUALITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 8,
-          "score": 0.0063,
-          "scored_at": "2026-11-12T13:31:14.573972Z"
-        },
-        {
-          "intent_id": "DOCUMENT_AUTHENTICITY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.8114,
-          "scored_at": "2026-11-12T15:16:06.339983Z"
-        },
-        {
-          "intent_id": "FINANCIAL_DATA_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.9481,
-          "scored_at": "2026-11-12T13:47:25.041638Z"
-        },
-        {
-          "intent_id": "SATELLITE_IMAGERY_ANALYSIS_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
-          "score": 0.9148,
-          "scored_at": "2026-11-12T14:40:42.728638Z"
-        },
-        {
-          "intent_id": "EMBEDDING_GENERATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 12,
-          "score": 0.831,
-          "scored_at": "2026-11-12T15:00:00.277397Z"
-        },
-        {
-          "intent_id": "ACADEMIC_SEARCH_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.7181,
-          "scored_at": "2026-11-12T14:53:26.464613Z"
+          "intent_id": "TEXT_TO_SPEECH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.2124,
+          "scored_at": "2026-11-14T03:56:21.299609Z"
         },
         {
           "intent_id": "LANGUAGE_TRANSLATION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.968,
-          "scored_at": "2026-11-12T13:54:21.480394Z"
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9785,
+          "scored_at": "2026-11-14T06:08:25.317292Z"
+        },
+        {
+          "intent_id": "TASK_EXECUTION_QUALITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0,
+          "scored_at": "2026-11-14T06:23:56.480294Z"
+        },
+        {
+          "intent_id": "TEXT_GENERATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9817,
+          "scored_at": "2026-11-14T05:15:21.199438Z"
+        },
+        {
+          "intent_id": "TEXT_SUMMARIZATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9676,
+          "scored_at": "2026-11-14T06:36:35.481476Z"
+        },
+        {
+          "intent_id": "THREAT_INTELLIGENCE_INDICATOR",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.44832504,
+          "scored_at": "2026-11-14T05:24:38.475975Z"
+        },
+        {
+          "intent_id": "TOKEN_HOLDER_COUNT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.3591,
+          "scored_at": "2026-11-14T05:39:54.969737Z"
+        },
+        {
+          "intent_id": "VULNERABILITY_TRIAGE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9757,
+          "scored_at": "2026-11-14T03:50:33.21152Z"
+        },
+        {
+          "intent_id": "WEATHER_FORECAST_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.9801,
+          "scored_at": "2026-11-14T04:05:47.243012Z"
+        },
+        {
+          "intent_id": "ONCHAIN_METRIC_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.7554,
+          "scored_at": "2026-11-14T05:00:53.920383Z"
+        },
+        {
+          "intent_id": "SEMANTIC_SIMILARITY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9586,
+          "scored_at": "2026-11-14T05:44:19.161608Z"
+        },
+        {
+          "intent_id": "STOCK_PRICE_US_EQUITY",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.8651,
+          "scored_at": "2026-11-14T05:38:07.693911Z"
+        },
+        {
+          "intent_id": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.5372,
+          "scored_at": "2026-11-14T04:41:57.40003Z"
+        },
+        {
+          "intent_id": "CHATBOT_CONVERSATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.785,
+          "scored_at": "2026-11-14T05:53:22.315147Z"
+        },
+        {
+          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.7633,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
+        },
+        {
+          "intent_id": "STORM_ALERT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.9301,
+          "scored_at": "2026-11-14T04:25:16.767198Z"
+        },
+        {
+          "intent_id": "RESEARCH_QUERY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 12,
+          "score": 0.8407,
+          "scored_at": "2026-11-14T06:18:39.906169Z"
+        },
+        {
+          "intent_id": "RESEARCH_SYNTHESIS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 12,
+          "score": 0.6331,
+          "scored_at": "2026-11-14T06:26:05.447896Z"
+        },
+        {
+          "intent_id": "ACADEMIC_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 14,
+          "score": 0.7711,
+          "scored_at": "2026-11-14T06:37:05.071198Z"
+        },
+        {
+          "intent_id": "EMBEDDING_GENERATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 15,
+          "score": 0.8149,
+          "scored_at": "2026-11-14T04:50:23.937322Z"
         },
         {
           "intent_id": "EVENT_OUTCOME_RESOLUTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 19,
-          "score": 0.0001,
-          "scored_at": "2026-11-12T14:32:53.884518Z"
+          "epoch_id": 2087,
+          "rank": 17,
+          "score": 0.0018,
+          "scored_at": "2026-11-14T05:45:36.694166Z"
+        },
+        {
+          "intent_id": "NEWS_HEADLINES_GENERAL",
+          "epoch_id": 2087,
+          "rank": 17,
+          "score": 0.0727,
+          "scored_at": "2026-11-14T06:07:49.883046Z"
+        },
+        {
+          "intent_id": "NEWS_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 17,
+          "score": 0.2474,
+          "scored_at": "2026-11-14T05:28:58.183768Z"
+        },
+        {
+          "intent_id": "CRYPTO_PRICE_USD",
+          "epoch_id": 2087,
+          "rank": 25,
+          "score": 0.772,
+          "scored_at": "2026-11-14T03:52:55.458906Z"
         }
       ]
     },
     {
-      "id": "1900999013",
-      "slug": "metricwire-mining-hashprice-verify",
+      "id": "501",
+      "slug": "sentinel-risk-oracle",
       "kind": "miner",
       "protocol": "generic",
-      "name": "MetricWire Mining Hashprice Verify",
-      "description": "Bitcoin hashprice, the daily USD revenue per unit of hashrate. It is derived from live public Bitcoin network stats (mempool.space, with blockstream.info as a fallback) and the Kraken BTC price: daily network revenue, the block subsidy plus fees over the last 144 blocks, times the BTC price, divided by the network hashrate. The hashprice is reported per TH/s and per PH/s per day, with the hashrate, difficulty and BTC price. Answers the MINING_HASHPRICE_VERIFY intent. No API key.\n",
+      "name": "Telegraph Sentinel Risk Intelligence",
+      "description": "Autonomous pre-flight DeFi risk intelligence with live crypto pricing, protocol TVL, transaction risk, sanctions screening, onchain telemetry, and real-time web intelligence.",
       "endpoints": [
         {
-          "path": "/hashprice",
-          "method": "GET",
-          "description": "The current Bitcoin hashprice, a single network-wide figure. Takes no parameter. A whole question in ?question= or ?query= is accepted.\n"
+          "path": "/api/v1/miner/risk-assessment",
+          "method": "POST",
+          "description": "CRYPTO_PRICE_USD. Real-time cryptocurrency spot price and market valuation oracle with multi-exchange fallback verification."
+        },
+        {
+          "path": "/api/v1/miner/tvl",
+          "method": "POST",
+          "description": "TVL_LOOKUP_GENERAL. Real-time protocol and chain Total Value Locked (TVL) intelligence oracle backed by DefiLlama data."
+        },
+        {
+          "path": "/api/v1/miner/web-search",
+          "method": "POST",
+          "description": "WEB_SEARCH_GENERAL. Real-time web intelligence and security event search engine powered by live grounding and web feeds."
+        },
+        {
+          "path": "/api/v1/miner/fraud-risk",
+          "method": "POST",
+          "description": "FRAUD_RISK_GENERAL. Pre-flight fraud risk assessment engine scoring addresses, transactions, contracts, and threat signatures."
+        },
+        {
+          "path": "/api/v1/miner/yield",
+          "method": "POST",
+          "description": "CRYPTO_YIELD_RATE_GENERAL. Real-time DeFi yield rate oracle reporting APY, APR, and basis points across major liquidity pools."
+        },
+        {
+          "path": "/api/v1/miner/transaction-risk",
+          "method": "POST",
+          "description": "TRANSACTION_RISK_GENERAL. Autonomous transaction simulation and calldata risk evaluation scoring approval attacks, drainer contracts, and exploit indicators."
+        },
+        {
+          "path": "/api/v1/miner/sanctions-screening",
+          "method": "POST",
+          "description": "SANCTIONS_SCREENING_MATCH_GENERAL. Real-time sanctions and compliance screening oracle matching addresses and entities against OFAC SDN, EU, and UN registries."
+        },
+        {
+          "path": "/api/v1/miner/gas-price",
+          "method": "POST",
+          "description": "GAS_PRICE_GENERAL. Real-time blockchain network gas price oracle reporting base fee, priority fee in Gwei, and estimated transfer fees."
+        },
+        {
+          "path": "/api/v1/miner/wallet-balance",
+          "method": "POST",
+          "description": "WALLET_BALANCE_CHECK_GENERAL. On-chain balance verification oracle reporting native coin and ERC-20 token holdings across EVM chains."
+        },
+        {
+          "path": "/api/v1/miner/total-supply",
+          "method": "POST",
+          "description": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL. On-chain token total supply verification oracle reporting whole token supplies with decimals applied."
+        },
+        {
+          "path": "/api/v1/miner/token-holders",
+          "method": "POST",
+          "description": "TOKEN_HOLDER_COUNT_GENERAL. Blockchain token distribution oracle reporting distinct holder count and ownership spread across networks."
+        },
+        {
+          "path": "/api/v1/miner/tx-lookup",
+          "method": "POST",
+          "description": "ONCHAIN_TX_LOOKUP_GENERAL. On-chain transaction status and execution receipt verification oracle reporting confirmation status, block height, and value."
+        },
+        {
+          "path": "/api/v1/miner/financial-data",
+          "method": "POST",
+          "description": "FINANCIAL_DATA_GENERAL. Comprehensive market capitalisation, 24h trading volume, and liquidity oracle for crypto assets and markets."
+        },
+        {
+          "path": "/api/v1/miner/fraud-detection",
+          "method": "POST",
+          "description": "FRAUD_DETECTION_GENERAL. High-precision fraud and security detection oracle scoring scam schemes, malicious addresses, and suspicious protocols."
+        },
+        {
+          "path": "/api/v1/miner/liquidity-depth",
+          "method": "POST",
+          "description": "LIQUIDITY_DEPTH_VERIFY_GENERAL. DEX pool total liquidity depth verification oracle reporting reserve liquidity in US dollars across chains."
+        },
+        {
+          "path": "/api/v1/miner/threat-intel",
+          "method": "POST",
+          "description": "THREAT_INTELLIGENCE_INDICATOR. Real-time threat intelligence indicator oracle evaluating IP addresses, domains, contract hashes, and malicious indicators."
+        },
+        {
+          "path": "/api/v1/miner/currency-exchange",
+          "method": "POST",
+          "description": "CURRENCY_EXCHANGE_CONVERT. Global foreign exchange conversion oracle backed by European Central Bank reference rates."
+        },
+        {
+          "path": "/api/v1/miner/cve-lookup",
+          "method": "POST",
+          "description": "CVE_LOOKUP_CVSS. Cybersecurity vulnerability intelligence oracle reporting CVSS base scores, severity, descriptions, and citations."
+        },
+        {
+          "path": "/api/v1/miner/ip-reputation",
+          "method": "POST",
+          "description": "THREAT_IP_REPUTATION_GENERAL. IP address threat reputation and abuse confidence scoring oracle backed by multi-source threat feeds."
+        },
+        {
+          "path": "/api/v1/miner/news-search",
+          "method": "POST",
+          "description": "NEWS_SEARCH_GENERAL. Real-time news article search and aggregation engine with source provenance and recency controls."
+        },
+        {
+          "path": "/api/v1/miner/academic-search",
+          "method": "POST",
+          "description": "ACADEMIC_SEARCH_GENERAL. Scholarly literature and peer-reviewed paper search oracle via Crossref and Semantic Scholar."
+        },
+        {
+          "path": "/api/v1/miner/sentiment-analysis",
+          "method": "POST",
+          "description": "SENTIMENT_ANALYSIS_GENERAL. Text and market sentiment polarity analysis engine for crypto, financial, and general content."
+        },
+        {
+          "path": "/api/v1/miner/weather-forecast",
+          "method": "POST",
+          "description": "WEATHER_FORECAST_VERIFY_GENERAL. Location-based meteorological forecast intelligence and verification oracle backed by Open-Meteo data."
+        },
+        {
+          "path": "/api/v1/miner/hashprice",
+          "method": "POST",
+          "description": "MINING_HASHPRICE_VERIFY_GENERAL. Bitcoin mining hashprice, difficulty, and network profitability metrics oracle."
+        },
+        {
+          "path": "/api/v1/miner/grid-power-price",
+          "method": "POST",
+          "description": "GRID_POWER_PRICE_GENERAL. Regional electricity grid nodal locational marginal pricing and spot rate oracle."
+        },
+        {
+          "path": "/api/v1/miner/chat-completion",
+          "method": "POST",
+          "description": "CHAT_COMPLETION_GENERAL. General reasoning, conversational answering, and knowledge completion engine."
+        },
+        {
+          "path": "/api/v1/miner/research-query",
+          "method": "POST",
+          "description": "RESEARCH_QUERY_GENERAL. Deep research query intelligence and evidence synthesis oracle across verified sources."
+        },
+        {
+          "path": "/api/v1/miner/fact-check",
+          "method": "POST",
+          "description": "FACT_CHECK_GENERAL. Claim verification, truthfulness evaluation, and factual accuracy check oracle."
+        },
+        {
+          "path": "/api/v1/miner/smart-contract-audit",
+          "method": "POST",
+          "description": "SMART_CONTRACT_AUDIT_GENERAL. Smart contract verification, ABI lookup, and bytecode security posture assessment oracle."
+        },
+        {
+          "path": "/api/v1/miner/corporate-registry",
+          "method": "POST",
+          "description": "CORPORATE_REGISTRY_LOOKUP_GENERAL. Official corporate registry lookup reporting jurisdiction, status, and registration details."
+        },
+        {
+          "path": "/api/v1/miner/code-review",
+          "method": "POST",
+          "description": "CODE_REVIEW_GENERAL. Source code static analysis, security evaluation, and quality audit oracle."
         }
       ],
       "input_schema": {
         "properties": {
+          "address": {
+            "description": "EVM or blockchain address for fraud or balance evaluation.",
+            "type": "string"
+          },
+          "amount": {
+            "description": "Numerical currency amount to convert.",
+            "type": "number"
+          },
+          "asset": {
+            "description": "Cryptocurrency ticker or symbol (e.g. BTC, ETH, SOL).",
+            "type": "string"
+          },
+          "chain": {
+            "description": "Blockchain network name (e.g. ethereum, base, arbitrum).",
+            "type": "string"
+          },
+          "cve_id": {
+            "description": "Common Vulnerabilities and Exposures identifier (e.g. CVE-2024-3094).",
+            "type": "string"
+          },
+          "from_currency": {
+            "description": "Three-letter fiat currency code to convert from (e.g. USD).",
+            "type": "string"
+          },
+          "indicator": {
+            "description": "Threat intelligence indicator (IP, domain, hash, or address).",
+            "type": "string"
+          },
+          "name": {
+            "description": "Entity, person name, or address for sanctions screening.",
+            "type": "string"
+          },
+          "pool": {
+            "description": "DeFi yield pool identifier or token symbol.",
+            "type": "string"
+          },
+          "project": {
+            "description": "Lending protocol or venue name for yield lookups.",
+            "type": "string"
+          },
+          "protocol": {
+            "description": "DeFi protocol slug or name (e.g. aave, uniswap, lido).",
+            "type": "string"
+          },
+          "query": {
+            "description": "Search query or natural-language intelligence question.",
+            "type": "string"
+          },
           "question": {
-            "description": "The full natural-language question, verbatim, for example \"What is the current Bitcoin hashprice?\". No parameter is needed; the figure is network-wide.\n",
+            "description": "Natural-language question from Telegraph evaluators.",
+            "type": "string"
+          },
+          "subject": {
+            "description": "Entity, action, or address for fraud risk evaluation.",
+            "type": "string"
+          },
+          "symbol": {
+            "description": "Trading symbol or market pair alias (e.g. BTCUSDT, ETH-USD).",
+            "type": "string"
+          },
+          "to_currency": {
+            "description": "Three-letter fiat currency code to convert into (e.g. EUR).",
+            "type": "string"
+          },
+          "token": {
+            "description": "Token symbol or contract address for supply or holder queries.",
+            "type": "string"
+          },
+          "transaction": {
+            "description": "Transaction hash, calldata, or description for risk evaluation.",
+            "type": "string"
+          },
+          "tx_hash": {
+            "description": "On-chain transaction hash for status lookup.",
             "type": "string"
           }
         },
+        "required": [],
         "type": "object"
       },
       "output_schema": {
         "properties": {
-          "as_of": {
-            "description": "ISO 8601 timestamp of the read.",
+          "answer": {
+            "description": "Human-readable authoritative answer string.",
             "type": "string"
           },
-          "btc_price_usd": {
-            "description": "BTC price in USD used in the calculation.",
-            "type": "number"
+          "as_of": {
+            "description": "ISO 8601 timestamp representing data freshness.",
+            "type": "string"
+          },
+          "balance": {
+            "description": "Account balance in whole token/coin units.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "brief": {
+            "description": "Ultra-concise sentence response under 80 characters for web search.",
+            "type": "string"
           },
           "confidence": {
-            "description": "0.95 with live fees, 0.85 on the subsidy-only fallback.",
+            "description": "Calibrated confidence score between 0.0 and 1.0.",
             "type": "number"
           },
-          "daily_revenue_btc": {
-            "description": "Daily network revenue in BTC, subsidy plus fees over the last 144 blocks.",
+          "confidence_score": {
+            "description": "Backward-compatible confidence score field.",
             "type": "number"
           },
-          "difficulty": {
-            "description": "Current mining difficulty.",
-            "type": "number"
+          "converted_amount": {
+            "description": "Converted fiat currency amount for foreign exchange queries.",
+            "type": [
+              "number",
+              "null"
+            ]
           },
-          "hashprice_usd_ph_day": {
-            "description": "Hashprice in USD per PH/s per day.",
-            "type": "number"
+          "cvss_score": {
+            "description": "CVSS base vulnerability severity score (0.0 to 10.0).",
+            "type": [
+              "number",
+              "null"
+            ]
           },
-          "hashprice_usd_th_day": {
-            "description": "Hashprice in USD per TH/s per day.",
-            "type": "number"
+          "gas_price_gwei": {
+            "description": "Current gas price in Gwei.",
+            "type": [
+              "number",
+              "null"
+            ]
           },
-          "network_hashrate_ehs": {
-            "description": "Network hashrate in EH/s.",
-            "type": "number"
+          "holders_count": {
+            "description": "Number of distinct holding addresses.",
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "intent": {
+            "description": "Canonical intent evaluated by the node router.",
+            "type": "string"
+          },
+          "liquidity_usd": {
+            "description": "Total liquidity depth in USD for DEX pool queries.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "lists": {
+            "description": "Sanctions registries evaluated.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "malicious": {
+            "description": "Whether indicator is confirmed malicious in threat intelligence feeds.",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "market_cap_usd": {
+            "description": "Total market capitalisation in US dollars.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "matched": {
+            "description": "Whether the entity matched a sanctions registry list.",
+            "type": "boolean"
+          },
+          "matches": {
+            "description": "Specific sanctions matching entries.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "miner_id": {
+            "description": "Registered Telegraph miner identifier (501).",
+            "type": "integer"
+          },
+          "price": {
+            "description": "Spot price in USD for crypto price queries.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "price_usd": {
+            "description": "Spot price in USD for CRYPTO_PRICE_USD queries.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "protocol_or_chain": {
+            "description": "The protocol or chain TVL is reported for.",
+            "type": "string"
+          },
+          "rate": {
+            "description": "Applied currency exchange conversion rate.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "risk_level": {
+            "description": "Risk classification grade (LOW, MEDIUM, HIGH, CRITICAL).",
+            "type": "string"
+          },
+          "risk_score": {
+            "description": "Risk score calibrated between 0.0 and 1.0.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "severity": {
+            "description": "Vulnerability severity rating (NONE, LOW, MEDIUM, HIGH, CRITICAL).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "signals": {
+            "description": "Detected telemetry or attack risk signals.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "sources": {
+            "description": "Authoritative source citations or references.",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "status": {
+            "description": "Execution status of the oracle query (success, unavailable, error).",
+            "type": "string"
           },
           "summary": {
-            "description": "One sentence with the hashprice per TH/s and per PH/s at several grains.",
+            "description": "Concise evaluation summary.",
             "type": "string"
+          },
+          "supply_apy": {
+            "description": "Supply APY in basis points for CRYPTO_YIELD_RATE_GENERAL queries.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "timestamp": {
+            "description": "ISO 8601 timestamp of response generation.",
+            "type": "string"
+          },
+          "total_supply": {
+            "description": "Total token supply in whole units.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "transfer_fee_usd": {
+            "description": "Estimated transfer fee in US dollars.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "tvl_usd": {
+            "description": "Total value locked in USD for TVL queries.",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "verdict": {
+            "description": "Fraud classification verdict.",
+            "type": "string"
+          },
+          "volume_24h_usd": {
+            "description": "24-hour trading volume in US dollars.",
+            "type": [
+              "number",
+              "null"
+            ]
           }
         },
+        "required": [
+          "status",
+          "answer",
+          "confidence_score"
+        ],
         "type": "object"
       },
       "signal_mapping": {
-        "confidence_field": "confidence",
-        "label_field": "summary",
-        "reason_field": "summary"
+        "confidence_field": "confidence_score",
+        "label_field": "answer",
+        "reason_field": "answer"
       },
       "supported_intents": [
-        "MINING_HASHPRICE_VERIFY_GENERAL"
+        "CRYPTO_PRICE_USD",
+        "TVL_LOOKUP_GENERAL",
+        "WEB_SEARCH_GENERAL",
+        "FRAUD_RISK_GENERAL",
+        "CRYPTO_YIELD_RATE_GENERAL",
+        "TRANSACTION_RISK_GENERAL",
+        "SANCTIONS_SCREENING_MATCH_GENERAL",
+        "GAS_PRICE_GENERAL",
+        "WALLET_BALANCE_CHECK_GENERAL",
+        "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+        "TOKEN_HOLDER_COUNT_GENERAL",
+        "ONCHAIN_TX_LOOKUP_GENERAL",
+        "FINANCIAL_DATA_GENERAL",
+        "FRAUD_DETECTION_GENERAL",
+        "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+        "THREAT_INTELLIGENCE_INDICATOR",
+        "CURRENCY_EXCHANGE_CONVERT",
+        "CVE_LOOKUP_CVSS",
+        "THREAT_IP_REPUTATION_GENERAL",
+        "NEWS_SEARCH_GENERAL",
+        "ACADEMIC_SEARCH_GENERAL",
+        "SENTIMENT_ANALYSIS_GENERAL",
+        "WEATHER_FORECAST_VERIFY_GENERAL",
+        "MINING_HASHPRICE_VERIFY_GENERAL",
+        "GRID_POWER_PRICE_GENERAL",
+        "SMART_CONTRACT_AUDIT_GENERAL",
+        "CHAT_COMPLETION_GENERAL",
+        "RESEARCH_QUERY_GENERAL",
+        "FACT_CHECK_GENERAL",
+        "CORPORATE_REGISTRY_LOOKUP_GENERAL",
+        "CODE_REVIEW_GENERAL"
       ],
       "docs": {
-        "documentation": "https://telegraph-metric.margyn.workers.dev/"
+        "website": "https://telegraph-sentinel-ql8d.onrender.com"
       },
-      "limitations": [
-        {
-          "code": "MAX_PARAM_VALUE",
-          "message": "No parameter is required. The hashprice is a single network-wide figure for Bitcoin, derived live. A whole question is accepted and ignored beyond confirming it asks about Bitcoin hashprice.",
-          "param": "question",
-          "property": "length",
-          "value_num": 256,
-          "operator": "lte"
-        }
-      ],
-      "base_url": "https://telegraph-metric.margyn.workers.dev",
-      "wallet_address": "0x8b224783fe5b3c52b7db0cb9b1754f8812b75287",
-      "fee_address": "0x8b224783fe5b3c52b7db0cb9b1754f8812b75287",
+      "base_url": "https://telegraph-sentinel-ql8d.onrender.com",
+      "wallet_address": "0x6811a9e33ce68fbdf6e07dfacab317072c287596",
+      "fee_address": "0x6811a9e33ce68fbdf6e07dfacab317072c287596",
       "activation_status": "active",
       "min_price_usdc": 10000,
-      "yaml_url": "https://raw.githubusercontent.com/zkasuran/telegraph-catalog-miners/0cdd93280cd187a5aeb54f669df448f9b6ef8be7/s2/metricwire-mining-hashprice-verify.yaml",
-      "registered_at": "2026-11-04T04:05:16Z",
-      "total_requests_served": 37,
+      "yaml_url": "https://telegraph-sentinel-ql8d.onrender.com/sentinel-miner.yaml",
+      "registered_at": "2026-11-14T02:35:15Z",
+      "total_requests_served": 113,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T06:37:05Z",
       "scores": [
         {
-          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
+          "intent_id": "CRYPTO_YIELD_RATE_GENERAL",
+          "epoch_id": 2087,
           "rank": 1,
-          "score": 0.9981,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "score": 0.998,
+          "scored_at": "2026-11-14T05:56:58.622727Z"
+        },
+        {
+          "intent_id": "SMART_CONTRACT_AUDIT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9965,
+          "scored_at": "2026-11-14T04:34:59.901643Z"
+        },
+        {
+          "intent_id": "WEB_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9982,
+          "scored_at": "2026-11-14T05:21:43.113704Z"
+        },
+        {
+          "intent_id": "FACT_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.995,
+          "scored_at": "2026-11-14T06:10:11.984523Z"
+        },
+        {
+          "intent_id": "ONCHAIN_TX_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9086,
+          "scored_at": "2026-11-14T05:53:16.49043Z"
+        },
+        {
+          "intent_id": "THREAT_IP_REPUTATION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9971,
+          "scored_at": "2026-11-14T05:50:41.879622Z"
+        },
+        {
+          "intent_id": "TOKEN_TOTAL_SUPPLY_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9659,
+          "scored_at": "2026-11-14T04:41:57.40003Z"
+        },
+        {
+          "intent_id": "FRAUD_DETECTION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9977,
+          "scored_at": "2026-11-14T06:32:35.457519Z"
+        },
+        {
+          "intent_id": "FRAUD_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9986,
+          "scored_at": "2026-11-14T06:13:12.812727Z"
+        },
+        {
+          "intent_id": "TRANSACTION_RISK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9889,
+          "scored_at": "2026-11-14T03:51:13.258428Z"
+        },
+        {
+          "intent_id": "TVL_LOOKUP_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.9883,
+          "scored_at": "2026-11-14T04:28:17.757003Z"
+        },
+        {
+          "intent_id": "WALLET_BALANCE_CHECK_GENERAL",
+          "epoch_id": 2087,
+          "rank": 4,
+          "score": 0.8533,
+          "scored_at": "2026-11-14T05:46:33.768963Z"
+        },
+        {
+          "intent_id": "LIQUIDITY_DEPTH_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0,
+          "scored_at": "2026-11-14T03:45:49.957921Z"
+        },
+        {
+          "intent_id": "TOKEN_HOLDER_COUNT_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9151,
+          "scored_at": "2026-11-14T05:39:54.969737Z"
+        },
+        {
+          "intent_id": "CODE_REVIEW_GENERAL",
+          "epoch_id": 2087,
+          "rank": 6,
+          "score": 1,
+          "scored_at": "2026-11-14T03:53:55.678672Z"
+        },
+        {
+          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 7,
+          "score": 0.9258,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
+        },
+        {
+          "intent_id": "GAS_PRICE_GENERAL",
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.8769,
+          "scored_at": "2026-11-14T04:01:37.172886Z"
+        },
+        {
+          "intent_id": "NEWS_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 9,
+          "score": 0.955,
+          "scored_at": "2026-11-14T05:28:58.183768Z"
+        },
+        {
+          "intent_id": "CHAT_COMPLETION_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.6054,
+          "scored_at": "2026-11-14T05:23:46.589268Z"
+        },
+        {
+          "intent_id": "SENTIMENT_ANALYSIS_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9893,
+          "scored_at": "2026-11-14T05:10:41.924707Z"
+        },
+        {
+          "intent_id": "THREAT_INTELLIGENCE_INDICATOR",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.1498,
+          "scored_at": "2026-11-14T05:24:38.478512Z"
+        },
+        {
+          "intent_id": "WEATHER_FORECAST_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 10,
+          "score": 0.9537,
+          "scored_at": "2026-11-14T04:05:47.243012Z"
+        },
+        {
+          "intent_id": "CVE_LOOKUP_CVSS",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.6666667,
+          "scored_at": "2026-11-14T03:52:08.723164Z"
+        },
+        {
+          "intent_id": "RESEARCH_QUERY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 11,
+          "score": 0.8806,
+          "scored_at": "2026-11-14T06:18:39.906169Z"
+        },
+        {
+          "intent_id": "CURRENCY_EXCHANGE_CONVERT",
+          "epoch_id": 2087,
+          "rank": 15,
+          "score": 0,
+          "scored_at": "2026-11-14T03:48:41.481442Z"
+        },
+        {
+          "intent_id": "ACADEMIC_SEARCH_GENERAL",
+          "epoch_id": 2087,
+          "rank": 17,
+          "score": 0.6816,
+          "scored_at": "2026-11-14T06:37:05.071198Z"
+        },
+        {
+          "intent_id": "CRYPTO_PRICE_USD",
+          "epoch_id": 2087,
+          "rank": 46,
+          "score": 0,
+          "scored_at": "2026-11-14T03:52:55.485168Z"
         }
       ]
     },
@@ -7339,7 +8087,7 @@
       "min_price_usdc": 10000,
       "yaml_url": "https://raw.githubusercontent.com/zkasuran/telegraph-catalog-miners/91525904fb4095433a2f4b28f07a6fb50af5fc24/s2/zk-hashprice.yaml",
       "registered_at": "2026-11-01T00:20:54Z",
-      "total_requests_served": 19,
+      "total_requests_served": 61,
       "scored": true,
       "last_scored_epoch": 2038,
       "last_scored_at": "2026-11-07T23:38:54Z",
@@ -7354,61 +8102,108 @@
       ]
     },
     {
-      "id": "67010",
-      "slug": "mine-mempool-pools-1m",
+      "id": "1900999013",
+      "slug": "metricwire-mining-hashprice-verify",
       "kind": "miner",
       "protocol": "generic",
-      "name": "Mempool Pools 1m",
-      "description": "BTC mining pools monthly share. Intent MINING_HASHPRICE_VERIFY.\n",
+      "name": "MetricWire Mining Hashprice Verify",
+      "description": "Bitcoin hashprice, the daily USD revenue per unit of hashrate. It is derived from live public Bitcoin network stats (mempool.space, with blockstream.info as a fallback) and the Kraken BTC price: daily network revenue, the block subsidy plus fees over the last 144 blocks, times the BTC price, divided by the network hashrate. The hashprice is reported per TH/s and per PH/s per day, with the hashrate, difficulty and BTC price. Answers the MINING_HASHPRICE_VERIFY intent. No API key.\n",
       "endpoints": [
         {
-          "path": "/query",
+          "path": "/hashprice",
           "method": "GET",
-          "description": "Query for intent MINING_HASHPRICE_VERIFY via Mempool Pools 1m."
+          "description": "The current Bitcoin hashprice, a single network-wide figure. Takes no parameter. A whole question in ?question= or ?query= is accepted.\n"
         }
       ],
       "input_schema": {
         "properties": {
-          "timePeriod": {
-            "default": "1m",
-            "description": "Period",
+          "question": {
+            "description": "The full natural-language question, verbatim, for example \"What is the current Bitcoin hashprice?\". No parameter is needed; the figure is network-wide.\n",
             "type": "string"
           }
         },
-        "required": [
-          "timePeriod"
-        ],
         "type": "object"
       },
-      "output_schema": null,
+      "output_schema": {
+        "properties": {
+          "as_of": {
+            "description": "ISO 8601 timestamp of the read.",
+            "type": "string"
+          },
+          "btc_price_usd": {
+            "description": "BTC price in USD used in the calculation.",
+            "type": "number"
+          },
+          "confidence": {
+            "description": "0.95 with live fees, 0.85 on the subsidy-only fallback.",
+            "type": "number"
+          },
+          "daily_revenue_btc": {
+            "description": "Daily network revenue in BTC, subsidy plus fees over the last 144 blocks.",
+            "type": "number"
+          },
+          "difficulty": {
+            "description": "Current mining difficulty.",
+            "type": "number"
+          },
+          "hashprice_usd_ph_day": {
+            "description": "Hashprice in USD per PH/s per day.",
+            "type": "number"
+          },
+          "hashprice_usd_th_day": {
+            "description": "Hashprice in USD per TH/s per day.",
+            "type": "number"
+          },
+          "network_hashrate_ehs": {
+            "description": "Network hashrate in EH/s.",
+            "type": "number"
+          },
+          "summary": {
+            "description": "One sentence with the hashprice per TH/s and per PH/s at several grains.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
       "signal_mapping": {
-        "label_field": "pools"
+        "confidence_field": "confidence",
+        "label_field": "summary",
+        "reason_field": "summary"
       },
       "supported_intents": [
         "MINING_HASHPRICE_VERIFY_GENERAL"
       ],
       "docs": {
-        "website": "https://mempool.space/",
-        "documentation": "https://mempool.space/docs/api/rest"
+        "documentation": "https://telegraph-metric.margyn.workers.dev/"
       },
-      "base_url": "https://mempool.space",
-      "wallet_address": "0xbd6f696096cceeaff7406d802ba04500eeaf6976",
-      "fee_address": "0xbd6f696096cceeaff7406d802ba04500eeaf6976",
+      "limitations": [
+        {
+          "code": "MAX_PARAM_VALUE",
+          "message": "No parameter is required. The hashprice is a single network-wide figure for Bitcoin, derived live. A whole question is accepted and ignored beyond confirming it asks about Bitcoin hashprice.",
+          "param": "question",
+          "property": "length",
+          "value_num": 256,
+          "operator": "lte"
+        }
+      ],
+      "base_url": "https://telegraph-metric.margyn.workers.dev",
+      "wallet_address": "0x8b224783fe5b3c52b7db0cb9b1754f8812b75287",
+      "fee_address": "0x8b224783fe5b3c52b7db0cb9b1754f8812b75287",
       "activation_status": "active",
       "min_price_usdc": 10000,
-      "yaml_url": "https://paste.rs/ojlhV",
-      "registered_at": "2026-10-24T23:58:38Z",
-      "total_requests_served": 16,
+      "yaml_url": "https://raw.githubusercontent.com/zkasuran/telegraph-catalog-miners/0cdd93280cd187a5aeb54f669df448f9b6ef8be7/s2/metricwire-mining-hashprice-verify.yaml",
+      "registered_at": "2026-11-04T04:05:16Z",
+      "total_requests_served": 37,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 3,
-          "score": 0.9854,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 2,
+          "score": 0.9934,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -7540,24 +8335,83 @@
       "min_price_usdc": 10000,
       "yaml_url": "https://gauge.2-29-171-24.sslip.io/gauge.yaml",
       "registered_at": "2026-11-11T18:28:51Z",
-      "total_requests_served": 15,
+      "total_requests_served": 18,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:51:10Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T06:22:13Z",
       "scores": [
         {
           "intent_id": "LIVE_PORT_CONGESTION_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
+          "epoch_id": 2087,
+          "rank": 12,
           "score": 0,
-          "scored_at": "2026-11-12T13:51:10.287995Z"
+          "scored_at": "2026-11-14T06:22:13.402988Z"
         },
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 16,
+          "epoch_id": 2087,
+          "rank": 18,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
+        }
+      ]
+    },
+    {
+      "id": "67010",
+      "slug": "mine-mempool-pools-1m",
+      "kind": "miner",
+      "protocol": "generic",
+      "name": "Mempool Pools 1m",
+      "description": "BTC mining pools monthly share. Intent MINING_HASHPRICE_VERIFY.\n",
+      "endpoints": [
+        {
+          "path": "/query",
+          "method": "GET",
+          "description": "Query for intent MINING_HASHPRICE_VERIFY via Mempool Pools 1m."
+        }
+      ],
+      "input_schema": {
+        "properties": {
+          "timePeriod": {
+            "default": "1m",
+            "description": "Period",
+            "type": "string"
+          }
+        },
+        "required": [
+          "timePeriod"
+        ],
+        "type": "object"
+      },
+      "output_schema": null,
+      "signal_mapping": {
+        "label_field": "pools"
+      },
+      "supported_intents": [
+        "MINING_HASHPRICE_VERIFY_GENERAL"
+      ],
+      "docs": {
+        "website": "https://mempool.space/",
+        "documentation": "https://mempool.space/docs/api/rest"
+      },
+      "base_url": "https://mempool.space",
+      "wallet_address": "0xbd6f696096cceeaff7406d802ba04500eeaf6976",
+      "fee_address": "0xbd6f696096cceeaff7406d802ba04500eeaf6976",
+      "activation_status": "active",
+      "min_price_usdc": 10000,
+      "yaml_url": "https://paste.rs/ojlhV",
+      "registered_at": "2026-10-24T23:58:38Z",
+      "total_requests_served": 17,
+      "scored": true,
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
+      "scores": [
+        {
+          "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
+          "epoch_id": 2087,
+          "rank": 5,
+          "score": 0.9742,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -7606,17 +8460,17 @@
       "min_price_usdc": 10000,
       "yaml_url": "https://paste.rs/OA4Rb",
       "registered_at": "2026-10-24T23:58:35Z",
-      "total_requests_served": 14,
+      "total_requests_served": 15,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
+          "epoch_id": 2087,
           "rank": 4,
-          "score": 0.9847,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "score": 0.9749,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -7659,15 +8513,15 @@
       "registered_at": "2026-10-25T00:44:41Z",
       "total_requests_served": 3,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 7,
-          "score": 0.944,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 8,
+          "score": 0.9122,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -7710,15 +8564,15 @@
       "registered_at": "2026-10-24T23:58:05Z",
       "total_requests_served": 2,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 2,
-          "score": 0.9915,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 3,
+          "score": 0.9894,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -7761,15 +8615,15 @@
       "registered_at": "2026-10-24T23:58:08Z",
       "total_requests_served": 2,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 17,
-          "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 14,
+          "score": 0.5039,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -7820,15 +8674,15 @@
       "registered_at": "2026-10-24T23:27:59Z",
       "total_requests_served": 1,
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 26,
+          "epoch_id": 2087,
+          "rank": 27,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -7983,15 +8837,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/hash-blockchain-stats-2db220fa.yaml",
       "registered_at": "2026-10-25T00:44:39Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 10,
-          "score": 0.8237,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 12,
+          "score": 0.7601,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8041,15 +8895,15 @@
       "yaml_url": "https://paste.rs/6h45y",
       "registered_at": "2026-10-24T23:58:03Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 11,
-          "score": 0.8237,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 1,
+          "score": 0.9989,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8105,15 +8959,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-blockstream-c.yaml",
       "registered_at": "2026-10-24T23:58:09Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 18,
+          "epoch_id": 2087,
+          "rank": 19,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8169,15 +9023,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-blockstream-d.yaml",
       "registered_at": "2026-10-24T23:58:10Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 19,
+          "epoch_id": 2087,
+          "rank": 20,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8233,15 +9087,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-blockstream-hashprice.yaml",
       "registered_at": "2026-10-24T23:58:10Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 20,
+          "epoch_id": 2087,
+          "rank": 21,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8297,15 +9151,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-btc-mempool-space.yaml",
       "registered_at": "2026-10-24T23:58:11Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 21,
+          "epoch_id": 2087,
+          "rank": 22,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8361,15 +9215,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-mempool-c.yaml",
       "registered_at": "2026-10-24T23:58:12Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 22,
+          "epoch_id": 2087,
+          "rank": 23,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8425,15 +9279,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-mempool-d.yaml",
       "registered_at": "2026-10-24T23:58:13Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 23,
+          "epoch_id": 2087,
+          "rank": 24,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8475,15 +9329,15 @@
       "yaml_url": "https://paste.rs/REKhd",
       "registered_at": "2026-10-24T23:58:17Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 13,
-          "score": 0.4732,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 16,
+          "score": 0.3198,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8539,15 +9393,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-mempool-e.yaml",
       "registered_at": "2026-10-24T23:58:17Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 24,
+          "epoch_id": 2087,
+          "rank": 25,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8603,15 +9457,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-mempool-emzy.yaml",
       "registered_at": "2026-10-24T23:58:18Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 25,
+          "epoch_id": 2087,
+          "rank": 26,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8653,15 +9507,15 @@
       "yaml_url": "https://paste.rs/JptF6",
       "registered_at": "2026-10-24T23:58:21Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 15,
-          "score": 0.4093,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 17,
+          "score": 0.1392,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8711,15 +9565,15 @@
       "yaml_url": "https://paste.rs/sBYv7",
       "registered_at": "2026-10-24T23:58:23Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
+          "epoch_id": 2087,
           "rank": 9,
-          "score": 0.8876,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "score": 0.8759,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8769,15 +9623,15 @@
       "yaml_url": "https://paste.rs/mM1aF",
       "registered_at": "2026-10-24T23:58:27Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 12,
-          "score": 0.4817,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 13,
+          "score": 0.5825,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8827,15 +9681,15 @@
       "yaml_url": "https://paste.rs/jX9Yt",
       "registered_at": "2026-10-24T23:58:31Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 14,
-          "score": 0.4339,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "epoch_id": 2087,
+          "rank": 15,
+          "score": 0.423,
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     },
@@ -8891,15 +9745,15 @@
       "yaml_url": "https://omni-chat.13.237.89.59.sslip.io/miner-yamls/mine-mempool-ninja.yaml",
       "registered_at": "2026-10-24T23:58:32Z",
       "scored": true,
-      "last_scored_epoch": 2074,
-      "last_scored_at": "2026-11-12T13:16:42Z",
+      "last_scored_epoch": 2087,
+      "last_scored_at": "2026-11-14T05:15:56Z",
       "scores": [
         {
           "intent_id": "MINING_HASHPRICE_VERIFY_GENERAL",
-          "epoch_id": 2074,
-          "rank": 27,
+          "epoch_id": 2087,
+          "rank": 28,
           "score": 0,
-          "scored_at": "2026-11-12T13:16:42.685039Z"
+          "scored_at": "2026-11-14T05:15:56.857818Z"
         }
       ]
     }

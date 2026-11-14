@@ -1,0 +1,70 @@
+{
+  "label": "probe-hashprice-501",
+  "miner_id_requested": "501",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 975769
+  },
+  "query": null,
+  "idempotency_key": "[\"501\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":975769}]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x10d6cb3192dd4d9b131e3a62dca7aa0a9db9490f66454b73b12a3968312e6c99",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x3c083525e3de6e048dd465da33dee72f00fffd12a21d820559fa0e244471d47a",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "5226",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 2088,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0x10d6cb3192dd4d9b131e3a62dca7aa0a9db9490f66454b73b12a3968312e6c99",
+    "timestamp": 1794644632
+  },
+  "response": {
+    "miner_id": "501",
+    "miner_name": "Telegraph Sentinel Risk Intelligence",
+    "endpoint": "/api/v1/miner/hashprice",
+    "result": {
+      "answer": "Bitcoin mining hashprice is approximately $0.0480 USD per TH/day. Current network difficulty: 134.82T. Network hashrate: 717.1 EH/s. Block reward: 3.125 BTC (post-halving).",
+      "as_of": "2026-11-14T08:23:51.486Z",
+      "block_reward": 3.125,
+      "confidence": 0.85,
+      "confidence_score": 0.85,
+      "difficulty": 134823837323273,
+      "hashprice_usd_th_day": 0.048,
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "intents": [
+        "MINING_HASHPRICE_VERIFY_GENERAL",
+        "MINING_HASHPRICE_VERIFY"
+      ],
+      "miner_id": 501,
+      "network_hashrate_ehs": 717.127835725,
+      "signal": "Bitcoin mining hashprice is approximately $0.0480 USD per TH/day. Current network difficulty: 134.82T. Network hashrate: 717.1 EH/s. Block reward: 3.125 BTC (post-halving).",
+      "source": "sentinel-mining-oracle",
+      "status": "success",
+      "summary": "Bitcoin mining hashprice is approximately $0.0480 USD per TH/day. Current network difficulty: 134.82T. Network hashrate: 717.1 EH/s. Block reward: 3.125 BTC (post-halving).",
+      "timestamp": "2026-11-14T08:23:51.486Z"
+    },
+    "result_shape": "raw",
+    "shape_error": "no_fields_found",
+    "format_version": 1,
+    "input": {
+      "block_height": 975769
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 22363,
+    "timestamp": "2026-11-14T08:23:52.57365068Z",
+    "reasoning": "Intent: miner sentinel-risk-oracle given by the caller\nMiner: The user wants to verify Bitcoin mining hashprice, difficulty, and network profitability metrics for a specific block height. The Telegraph Sentinel Risk Intelligence miner has an endpoint `/api/v1/miner/hashprice` that is specifically designed for the `MINING_HASHPRICE_VERIFY_GENERAL` intent and accepts `block_height` as a parameter, which matches the provided information.",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "signal_hash": "0x256b96d07c091625429fe6a81dd7aec4883968223601f8b6ceb1f7a42fb1aea5"
+  }
+}
