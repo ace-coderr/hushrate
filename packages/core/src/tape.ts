@@ -45,6 +45,16 @@ export interface MarketTape {
     telegraph: TelegraphCall | null;
     /** Public single-block hashprice at the block height we asked Telegraph about, for a same-block check. */
     public_at_telegraph_height: number | null;
+    /**
+     * What the Telegraph value was checked against. "single_block_at_returned_height": the public hashprice of the one block
+     * the miner returned, which is the quantity the miner computes. Absent or "public_144_mean": tapes recorded before
+     * 2026-11-14 compared it with the public 144-block mean, a different quantity (see docs/hashprice-drift.md).
+     */
+    comparison?: "single_block_at_returned_height" | "public_144_mean";
+    /** The relative tolerance applied, so a re-check uses the same limit. */
+    tolerance_rel?: number;
+    /** Which pinned miner produced the accepted or rejected value. */
+    miner_role?: "primary" | "fallback" | null;
   };
   /**
    * The BTC/USD price used for decisions. Absent on tapes recorded before the second paid intent existed: those used the
@@ -142,3 +152,38 @@ export function checkBtcPurchase(
   else if (rel > tolerance) reason = `differs ${(rel * 100).toFixed(2)}% from the public BTC/USD price (limit ${tolerance * 100}%)`;
   return { accepted: reason === null, reason, rel };
 }
+
+export const HASHPRICE_REQUIRED_FIELDS = ["hashprice_sats_per_ph_day", "block_height", "hashrate_eh_s"] as const;
+
+/**
+ * The acceptance rule for a bought hashprice. Shared by the agent, the Proof page and the tests.
+ * Accepted only when the call succeeded, the fields the agent uses are ok, the miner answered for the block that was
+ * requested (not a stale one), and the value is within `tolerance` of `publicValue`. For tapes from 2026-11-14 on,
+ * `publicValue` is the public single-block hashprice at the returned height, the same quantity the miner computes.
+ * The tolerance is never widened to make a value pass.
+ */
+export function checkHashpricePurchase(
+  call: { http_status: number | null; field_status?: Record<string, string> | null; value: number | null; returned_height?: number | null; reject_reason?: string | null },
+  requestedHeight: number | null,
+  publicValue: number | null,
+  tolerance: number,
+): { accepted: boolean; reason: string | null; rel: number | null } {
+  const rel = call.value !== null && publicValue !== null && publicValue > 0 ? Math.abs(call.value - publicValue) / publicValue : null;
+  const bad = HASHPRICE_REQUIRED_FIELDS.filter((k) => call.field_status?.[k] !== "ok");
+  let reason: string | null = null;
+  if (call.reject_reason) reason = call.reject_reason;
+  else if (call.http_status !== 200) reason = `HTTP ${call.http_status}`;
+  else if (bad.length) reason = `field not ok: ${bad.join(", ")}`;
+  else if (requestedHeight !== null && call.returned_height !== requestedHeight) reason = `stale height: miner answered for block ${call.returned_height}, requested ${requestedHeight}`;
+  else if (publicValue === null) reason = "no public value to verify against";
+  else if (rel === null) reason = "no value";
+  else if (rel > tolerance) reason = `differs ${(rel * 100).toFixed(2)}% from the public single-block value at the returned height (limit ${tolerance * 100}%)`;
+  return { accepted: reason === null, reason, rel };
+}
+
+/**
+ * May the fallback miner be tried after the primary? Only if the primary did NOT sign a payment (a miner that was
+ * removed, or refused the request before payment). If a payment was signed it may have settled, so we never pay a
+ * second time for the same intent in the same hour.
+ */
+export const mayTryFallback = (primary: { paid: boolean }) => !primary.paid;

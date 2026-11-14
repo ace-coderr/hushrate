@@ -1,7 +1,7 @@
 // Hand-computed checks. Run: npm test -w packages/core
 import test from "node:test";
 import assert from "node:assert/strict";
-import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
+import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
 
 const near = (a: number, b: number, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} vs ${b}`);
 
@@ -121,4 +121,56 @@ test("history entry records which purchases settled, and old tapes without btc s
   const old = toHistoryEntry({ ...base, hashprice: { value_sats_per_ph_day: 1, source: "telegraph", label: "", public_144: null, telegraph: call(true), public_at_telegraph_height: null } } as unknown as MarketTape);
   assert.deepEqual(old.paid_kinds, ["hashprice"]);
   assert.equal(old.btc_source, "public");
+});
+
+// ---- hashprice acceptance: Telegraph value against the public single-block value at the returned height -----------
+const FIELDS_OK = { hashprice_sats_per_ph_day: "ok", block_height: "ok", hashrate_eh_s: "ok", hashprice_usd_per_ph_day: "missing" };
+const hp = (over: Record<string, unknown> = {}) => ({ http_status: 200, field_status: FIELDS_OK, value: 46660.8, returned_height: 975758, ...over }) as Parameters<typeof checkHashpricePurchase>[0];
+
+test("hashprice: the recorded 2026-11-14 07:17 purchase is accepted against its matching single-block value", () => {
+  // Telegraph 46,660.8 and the public single-block value at block 975758 (recomputed from reward and difficulty) are equal.
+  const r = checkHashpricePurchase(hp(), 975758, 46660.8, 0.01);
+  assert.equal(r.accepted, true);
+  assert.equal(r.reason, null);
+});
+
+test("hashprice: the same value is REJECTED when compared with the wrong quantity (the 144-block mean spanning a difficulty step)", () => {
+  // 46,660.8 against the 43,251.1 mean recorded that hour is 7.88% apart: the old comparison, kept here to show why it failed.
+  const r = checkHashpricePurchase(hp(), 975758, 43251.1, 0.01);
+  assert.equal(r.accepted, false);
+  assert.match(r.reason!, /differs 7\.88%/);
+});
+
+test("hashprice: the 1% limit is exact and is not widened", () => {
+  assert.equal(checkHashpricePurchase(hp({ value: 10100 }), 975758, 10000, 0.01).accepted, true, "exactly 1% passes");
+  assert.equal(checkHashpricePurchase(hp({ value: 10101 }), 975758, 10000, 0.01).accepted, false, "1.01% fails");
+  assert.equal(checkHashpricePurchase(hp({ value: 9899 }), 975758, 10000, 0.01).accepted, false, "also below");
+});
+
+test("hashprice: stale height is rejected even when the value matches", () => {
+  const r = checkHashpricePurchase(hp({ returned_height: 975757 }), 975758, 46660.8, 0.01);
+  assert.equal(r.accepted, false);
+  assert.match(r.reason!, /stale height.*975757.*975758/);
+});
+
+test("hashprice: a field that is not ok, an HTTP error and a missing value are rejected with a reason", () => {
+  assert.match(checkHashpricePurchase(hp({ field_status: { ...FIELDS_OK, hashrate_eh_s: "missing" } }), 975758, 46660.8, 0.01).reason!, /field not ok: hashrate_eh_s/);
+  assert.match(checkHashpricePurchase(hp({ http_status: 500 }), 975758, 46660.8, 0.01).reason!, /HTTP 500/);
+  assert.match(checkHashpricePurchase(hp({ value: null }), 975758, 46660.8, 0.01).reason!, /no value/);
+  assert.match(checkHashpricePurchase(hp(), 975758, null, 0.01).reason!, /no public value/);
+  assert.match(checkHashpricePurchase(hp({ reject_reason: "call failed: timeout" }), 975758, 46660.8, 0.01).reason!, /call failed/);
+});
+
+test("hashprice: the missing USD field is not required", () => {
+  assert.equal(checkHashpricePurchase(hp(), 975758, 46660.8, 0.01).accepted, true); // hashprice_usd_per_ph_day is "missing" in FIELDS_OK
+});
+
+test("pinning: the fallback miner may be tried only when the primary signed no payment (miner removed, refused before payment)", () => {
+  // Miner removed or refused before payment: HTTP 404/503/400, paid false.
+  assert.equal(mayTryFallback({ paid: false }), true);
+  const removed = checkHashpricePurchase({ http_status: 404, value: null, returned_height: null, field_status: null }, 975758, 46660.8, 0.01);
+  assert.equal(removed.accepted, false);
+  assert.match(removed.reason!, /HTTP 404/);
+  // A payment was signed (even if the response was lost or the request failed after payment): never pay again this hour.
+  assert.equal(mayTryFallback({ paid: true }), false);
 });

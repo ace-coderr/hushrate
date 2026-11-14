@@ -13,7 +13,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import {
-  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase,
+  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase, checkHashpricePurchase, mayTryFallback,
   type MarketTape, type PowerPrice, type TelegraphCall, type HistoryEntry,
 } from "@hushrate/core";
 import { balances } from "./wallet.js";
@@ -134,11 +134,17 @@ async function main(): Promise<void> {
   try { tip = await fetchTipHeight(); } catch (e) { degraded.push(`mempool.space tip height: ${msg(e)}`); }
   try { btcPublic = await fetchBtcUsd(); } catch (e) { degraded.push(`mempool.space BTC/USD price: ${msg(e)}`); }
   if (tip !== null) {
-    try {
-      const rows = await fetchBlocks(tip, 144);
-      w = { tip, ...windowHashprice(rows) };
-      singleAtTip = blockHashprice(rows[0].reward_sats, rows[0].difficulty);
-    } catch (e) { degraded.push(`mempool.space last 144 blocks: ${msg(e)}`); }
+    let rows: Awaited<ReturnType<typeof fetchBlocks>> | null = null;
+    try { rows = await fetchBlocks(tip, 144); } catch (e) {
+      degraded.push(`mempool.space last 144 blocks: ${msg(e)}`);
+      // Verification needs only the single block at the tip; the 144-block mean is context.
+      try { rows = await fetchBlocks(tip, 1); } catch (e2) { degraded.push(`mempool.space latest block: ${msg(e2)}`); }
+    }
+    if (rows) {
+      const v = blockHashprice(rows[0].reward_sats, rows[0].difficulty);
+      if (Number.isFinite(v)) singleAtTip = v; else degraded.push("mempool.space latest block: reward or difficulty missing");
+      if (rows.length === 144) { try { w = { tip, ...windowHashprice(rows) }; } catch (e) { degraded.push(`mempool.space 144-block window: ${msg(e)}`); } }
+    }
   }
 
   // ---- Telegraph calls ----------------------------------------------------------------------------------
@@ -172,10 +178,18 @@ async function main(): Promise<void> {
   }
 
   // ---- hashprice ----
+  // The number used is the hashprice of ONE block: the reward (subsidy plus fees) of the latest block at that block's own
+  // difficulty. That is exactly what the Telegraph miner computes, so it is verified against the same quantity: the public
+  // value at the height the miner returned. Until 2026-11-14 the check compared it with the 144-block mean, a different
+  // quantity that also mixes difficulty regimes after a retarget (see docs/hashprice-drift.md). The 1% limit is unchanged.
   let hashCall: TelegraphCall | null = null;
-  let hashValue: number | null = w ? w.hashprice_sats_per_ph_day : null;
-  let hashSource: "telegraph" | "public" | null = w ? "public" : null;
-  let hashLabel = w ? "public: mempool.space, mean of the last 144 blocks (reward incl. fees, difficulty)" : "unavailable: mempool.space blocks could not be read this run";
+  let hashRole: "primary" | "fallback" | null = null;
+  let hashValue: number | null = singleAtTip;
+  let hashSource: "telegraph" | "public" | null = singleAtTip !== null ? "public" : null;
+  let hashLabel = singleAtTip !== null
+    ? `public: mempool.space, single block ${tip} (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes`
+    : "unavailable: mempool.space latest block could not be read this run";
+  let hashComparison: NonNullable<MarketTape["hashprice"]["comparison"]> = "single_block_at_returned_height";
   let tapeBlock = tip, tapePublic144 = w, tapeSingle = singleAtTip;
 
   const reuseHash = bought.hashprice && prior?.hashprice.telegraph?.paid ? prior : null;
@@ -183,31 +197,32 @@ async function main(): Promise<void> {
     // Already bought (and verified) earlier this hour: keep that purchase exactly as recorded, with its own block and public check.
     hashCall = reuseHash.hashprice.telegraph; hashValue = reuseHash.hashprice.value_sats_per_ph_day; hashSource = reuseHash.hashprice.source;
     hashLabel = `${reuseHash.hashprice.label} (kept from the earlier run this hour)`;
+    hashRole = reuseHash.hashprice.miner_role ?? null; hashComparison = reuseHash.hashprice.comparison ?? "public_144_mean";
     tapeBlock = reuseHash.block_height; tapePublic144 = reuseHash.hashprice.public_144; tapeSingle = reuseHash.hashprice.public_at_telegraph_height;
-  } else if (canPay && !bought.hashprice && tip !== null && w !== null) {
-    hashCall = await paid(`hashprice-${tip}`, cfg.telegraph.hashprice_miner, "MINING_HASHPRICE_VERIFY_GENERAL", { block_height: tip }, "hashprice_sats_per_ph_day");
-    const fs = hashCall.field_status ?? {};
-    // Fields this agent relies on must be ok. hashprice_usd_per_ph_day is not required: USD is computed locally.
-    const bad = ["hashprice_sats_per_ph_day", "block_height", "hashrate_eh_s"].filter((k) => fs[k] !== "ok");
-    const rel = hashCall.value !== null ? Math.abs(hashCall.value - w.hashprice_sats_per_ph_day) / w.hashprice_sats_per_ph_day : null;
-    let reason: string | null = null;
-    if (hashCall.reject_reason) reason = hashCall.reject_reason;
-    else if (hashCall.http_status !== 200) reason = `HTTP ${hashCall.http_status}`;
-    else if (bad.length) reason = `field not ok: ${bad.join(", ")}`;
-    else if (hashCall.returned_height !== tip) reason = `block height ${hashCall.returned_height} != requested ${tip}`;
-    else if (rel === null) reason = "no value";
-    else if (rel > cfg.tolerance.hashprice_rel) reason = `differs ${(rel * 100).toFixed(2)}% from the public 144-block value (limit ${cfg.tolerance.hashprice_rel * 100}%)`;
-    if (reason === null) {
-      hashCall.accepted = true; hashValue = hashCall.value as number; hashSource = "telegraph";
-      hashLabel = `Telegraph miner ${hashCall.miner_id}, within ${cfg.tolerance.hashprice_rel * 100}% of the public 144-block value`;
-    } else {
-      hashCall.reject_reason = reason;
-      hashLabel += `; Telegraph value not used: ${reason}`;
+  } else if (canPay && !bought.hashprice && tip !== null && singleAtTip !== null) {
+    // Pinned primary miner, then a labelled fallback that is tried only if the primary signed no payment (removed, or
+    // refused before payment). If a payment was signed it may have settled, so we never pay twice for hashprice in an hour.
+    const miners: string[] = [cfg.telegraph.hashprice_miner, cfg.telegraph.hashprice_fallback_miner].filter(Boolean);
+    const rejected: string[] = [];
+    for (let i = 0; i < miners.length; i++) {
+      const role = i === 0 ? "primary" : "fallback";
+      const call = await paid(`hashprice-${tip}`, miners[i], "MINING_HASHPRICE_VERIFY_GENERAL", { block_height: tip }, "hashprice_sats_per_ph_day");
+      const { accepted, reason, rel } = checkHashpricePurchase(call, tip, singleAtTip, cfg.tolerance.hashprice_rel);
+      hashCall = call; hashRole = role;
+      if (accepted) {
+        call.accepted = true; hashValue = call.value as number; hashSource = "telegraph";
+        hashLabel = `Telegraph miner ${call.miner_id}${role === "fallback" ? " (fallback)" : ""}: equals the public single-block value at block ${call.returned_height} within ${cfg.tolerance.hashprice_rel * 100}% (${((rel ?? 0) * 100).toFixed(3)}% apart)`;
+        break;
+      }
+      call.reject_reason = reason ?? "rejected";
+      rejected.push(`miner ${miners[i]} (${role}): ${call.reject_reason}`);
       // A value merely outside tolerance is a normal outcome. A call that failed is an upstream failure.
-      if (hashCall.http_status !== 200) degraded.push(`Telegraph miner ${cfg.telegraph.hashprice_miner} (hashprice): ${reason}`);
+      if (call.http_status !== 200) degraded.push(`Telegraph miner ${miners[i]} (${role}) hashprice: ${call.reject_reason}`);
+      if (!mayTryFallback(call)) break;
     }
+    if (rejected.length) hashLabel += hashSource === "telegraph" ? `; earlier attempt not used: ${rejected.join("; ")}` : `; Telegraph value not used: ${rejected.join("; ")}`;
   } else if (!noPay) {
-    const why = bought.hashprice ? "a purchase for this hour exists but its tape was not found" : !canPay ? "wallet balance could not be checked" : tip === null ? "no Bitcoin block height" : "no public 144-block value to verify against";
+    const why = bought.hashprice ? "a purchase for this hour exists but its tape was not found" : !canPay ? "wallet balance could not be checked" : tip === null ? "no Bitcoin block height" : "no public single-block value to verify against";
     notes.push(`Telegraph hashprice not bought this run: ${why}`);
     hashLabel += `; Telegraph value not bought: ${why}`;
   }
@@ -275,7 +290,7 @@ async function main(): Promise<void> {
     schema: 1, interval_start: hourIso, recorded_at: now.toISOString(), block_height: tapeBlock,
     // btc_usd is the price decisions use: the verified Telegraph price when it passed the check, else the public price.
     btc_usd: btcValue,
-    hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: tapePublic144, telegraph: hashCall, public_at_telegraph_height: tapeSingle },
+    hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: tapePublic144, telegraph: hashCall, public_at_telegraph_height: tapeSingle, comparison: hashComparison, tolerance_rel: cfg.tolerance.hashprice_rel, miner_role: hashRole },
     btc: { value_usd: btcValue, source: btcSource, label: btcLabel, public_usd: btcPublic ?? reuseBtc?.public_usd ?? null, tolerance_rel: cfg.tolerance.btc_rel, telegraph: btcCall },
     power, spend: tapeSpend, wallet_usdc_after: usdcBalance, notes, degraded,
   };
@@ -308,7 +323,7 @@ async function main(): Promise<void> {
 
   console.log(`\ninterval ${hourIso} | block ${tapeBlock ?? "n/a"} | BTC ${btcValue !== null ? `$${btcValue}` : "n/a"} (${btcSource ?? "none"})`);
   console.log(`  btc: ${btcLabel}`);
-  console.log(hashValue !== null && tapePublic144 ? `hashprice ${hashValue.toFixed(1)} sats/PH/day (${hashSource}); single block ${tapeSingle?.toFixed(1)}, 144-block range ${tapePublic144.min_block.toFixed(0)}..${tapePublic144.max_block.toFixed(0)}` : "hashprice unavailable this run");
+  console.log(hashValue !== null ? `hashprice ${hashValue.toFixed(1)} sats/PH/day (${hashSource}, single block ${tapeBlock ?? "n/a"})${tapePublic144 ? `; 144-block mean for context ${tapePublic144.hashprice_sats_per_ph_day.toFixed(1)}, range ${tapePublic144.min_block.toFixed(0)}..${tapePublic144.max_block.toFixed(0)}` : ""}` : "hashprice unavailable this run");
   console.log(`  ${hashLabel}`);
   for (const p of power) console.log(`${p.node}: real-time ${p.real_time_usd_per_mwh ?? "n/a"}  day-ahead ${p.day_ahead_usd_per_mwh ?? "n/a"} $/MWh`);
   console.log(`spent this run: ${spendCalls} call(s), $${spendUsd.toFixed(2)}; tape accounts for ${tapeSpend.paid_calls} paid call(s), $${tapeSpend.cost_usd.toFixed(2)}; wallet ${tape.wallet_usdc_after ?? "unknown"} USDC${dry ? " [dry run: nothing written]" : ""}`);

@@ -8,7 +8,8 @@
     "hashprice_miner": "71083",
     "power_miner": null,
     "power_nodes_max": 2,
-    "btc_miner": "7320"
+    "btc_miner": "7320",
+    "hashprice_fallback_miner": "1900999013"
   },
   "tolerance": {
     "hashprice_rel": 0.01,
