@@ -1,7 +1,7 @@
 {
-  "last_trigger": "ticker",
-  "last_trigger_at": "2026-11-14T02:17:21.986Z",
+  "last_trigger": "schedule",
+  "last_trigger_at": "2026-11-14T03:11:50.413Z",
   "last_manual_at": "2026-11-12T21:40:33.410Z",
   "last_ticker_at": "2026-11-14T02:17:21.986Z",
-  "last_schedule_at": "2026-11-13T22:35:44.706Z"
+  "last_schedule_at": "2026-11-14T03:11:50.413Z"
 }
