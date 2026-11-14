@@ -78,7 +78,7 @@ Result: **still not usable.** The one miner that answers returns about the same 
 
 ## Hashprice acceptance rule
 
-The agent requires `hashprice_sats_per_ph_day`, `block_height` and `hashrate_eh_s` to be `ok`, the returned height to equal the requested tip, and the value to be within 1% of the public 144-block mean. Miner 71083 returns `hashprice_usd_per_ph_day` as `missing`; this is not required because USD is computed locally from the public BTC price. Telegraph computes a single block, so its value and the 144-block mean can differ by the block's fee noise; when they differ by more than 1% the public value is used and the receipt says why.
+The agent requires `hashprice_sats_per_ph_day`, `block_height` and `hashrate_eh_s` to be `ok`, the returned height to equal the requested tip, and the value to be within 1% of the public hashprice of that same block (the quantity the miner computes). Miner 71083 returns `hashprice_usd_per_ph_day` as `missing`; this is not required because USD is computed locally from the public BTC price. Until 2026-11-14 the comparison was against the public 144-block mean, which wrongly rejected accurate values (see [hashprice-drift.md](hashprice-drift.md)).
 
 ## Round 4: second paid intent, BTC/USD price (2026-11-12, 22:30 UTC)
 
@@ -111,3 +111,17 @@ On this evidence, Mission 12 data quality is **not good enough yet** to drive ru
 3. Pin specific miners (`/engine/v1/ask/{minerId}`) instead of router choice; round 2 showed this fixes hashprice but not CAISO power price.
 
 Next step: build the decision loop with hashprice from a pinned, verified miner (71083) cross-checked against mempool.space, and grid price from public CAISO OASIS data, recording any Telegraph power-price answer on the receipt as an unverified cross-check.
+
+## Round 5: other hashprice miners (2026-11-14, 08:20 UTC)
+
+Context: [hashprice-drift.md](hashprice-drift.md). Discovery (free): `data/discovery/MINING_HASHPRICE_VERIFY_GENERAL.*.json` (30 miners; intent param `block_height`). Five other miners were probed with one paid call each at tip 975769 (script `agent/src/hashprice-probe.ts`, cap 5 calls and $0.06, per-payment cap 3 cents). Values are compared with the public single-block value at the height each miner returned.
+
+| Rank | Miner | Result | Billed |
+|---|---|---|---|
+| 2 | 1900999013 MetricWire Mining Hashprice Verify | HTTP 200, all fields we use ok, 46,846.666137 at block 975769: **0.0000%** from the public value | $0.01 |
+| 14 | 74183 Bitcoin Coinbase-Proven Hashprice | HTTP 200, all fields we use ok, 46,846.666137 at block 975769: **0.0000%** | $0.01 |
+| 6 | 9002 TxLens | HTTP 503 before payment: its endpoint has no field for `block_height` | $0 |
+| 7 | 501 Telegraph Sentinel Risk Intelligence | HTTP 200 but a free-text answer, no fields (`no_fields_found`) | $0.01 |
+| 11 | 20260828 PREFLIGHT Infrastructure Signals | transport error after the payment was signed; response lost, treated as spent | $0.01 assumed |
+
+Probe spend: at most $0.04 of the $0.06 cap. The two exact matches share an operator's host and returned identical numbers, so they are one source, not two. Nothing agreed better than 71083, which matched exactly in 38 of 38 recorded purchases. Pinning: primary stays 71083; 1900999013 (ranked 2) is the labelled fallback, tried only when the primary signed no payment.

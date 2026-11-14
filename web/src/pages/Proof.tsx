@@ -148,7 +148,7 @@ export function Proof() {
       {t && (
         <div className="proof-steps">
           <section className="card check">
-            <h3>1 · Recompute the 144-block hashprice</h3>
+            <h3>1 · Recompute the 144-block mean (context)</h3>
             <p>Reads the last 144 blocks ending at block {num(t.block_height)} from mempool.space and averages reward-and-difficulty hashprice per block.</p>
             <button className="pill primary" onClick={() => recompute(t)} disabled={hp.state === "running"}>Recompute in my browser</button>
             <Verdict r={hp} />
@@ -156,7 +156,7 @@ export function Proof() {
 
           <section className="card check">
             <h3>2 · Compare with the value Hushrate bought</h3>
-            <p>Applies the agent's acceptance rule (fields ok, same block, within 1%) to your own recomputation and checks the tape chose accordingly. Runs after step 1.</p>
+            <p>Applies the agent's acceptance rule (fields ok, same block, within 1% of the public hashprice of that block) and checks the tape chose accordingly. Tapes from before 2026-11-14 are re-checked with the older 144-block rule and labelled legacy. Runs after step 1.</p>
             <Verdict r={cmp} />
           </section>
 

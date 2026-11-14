@@ -95,7 +95,7 @@ export function Landing() {
             {[
               ["01", "Buy", "The agent pays $0.01 in test USDC over x402 for a hashprice reading from the Telegraph network, and pulls public power prices from CAISO for each pricing node."],
               ["02", "Decide", "Your site's load, efficiency and power adder meet the market in your own browser. Revenue minus power cost gives a margin, and the margin gives RUN or CURTAIL."],
-              ["03", "Receipt", "The paid reading is checked against a public 144-block calculation. The receipt hash and the Sepolia payment are filed so anyone can repeat the check."],
+              ["03", "Receipt", "The paid reading is checked against the same quantity computed from public chain data. The receipt hash and the Sepolia payment are filed so anyone can repeat the check."],
             ].map(([n, h, p], i) => (
               <Reveal key={n} delay={i * 90}><article className="card step"><span className="mono step-n">{n}</span><h3>{h}</h3><p>{p}</p></article></Reveal>
             ))}
@@ -108,7 +108,7 @@ export function Landing() {
           <h2>Proof you can check</h2>
           <div className="grid6">
             {[
-              ["#/proof", "Recompute the hashprice", "Your browser re-reads the last 144 blocks from mempool.space and compares them with the bought value."],
+              ["#/proof", "Recompute the hashprice", "Your browser re-reads the block from mempool.space, recomputes its hashprice and compares it with the bought value."],
               ["#/proof", "Read the payment on chain", "Each paid request points to a Sepolia transaction. Look it up on a public RPC and see the USDC transfer."],
               ["#/receipts", "Every paid request, listed", "Cost, miner, receipt hash and transaction hash for each request, with explorer links."],
               ["#/desk", "Two power prices, labelled", "Real-time CAISO when it exists, day-ahead otherwise, and the label says which one decided."],

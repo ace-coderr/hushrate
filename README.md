@@ -12,7 +12,7 @@ Hushrate buys real market data from the [Telegraph](https://anjoman.ai/docs/intr
 
 ```
 GitHub Actions (hourly)
-  agent  ── mempool.space ──▶ 144-block hashprice, BTC/USD (public references)
+  agent  ── mempool.space ──▶ latest block's hashprice, BTC/USD (public references)
          ── Telegraph (x402) ▶ hashprice (miner 71083) and BTC/USD (miner 7320), $0.01 test USDC each
          ── CAISO OASIS ─────▶ day-ahead and real-time LMP per node (public)
          └─▶ data/market/<time>.json, latest.json, history.json, ledger.json, status.json
@@ -22,8 +22,8 @@ GitHub Actions (hourly)
 
 Rules the agent follows each run:
 
-1. Compute the public hashprice as the mean over the last 144 blocks (block reward including fees, difficulty), with BTC/USD from mempool.space.
-2. Buy the hashprice from Telegraph miner 71083. Accept it only if `hashprice_sats_per_ph_day`, `block_height` and `hashrate_eh_s` are `ok`, the returned height equals the requested tip, and the value is within 1% of the public value. Otherwise use the public value and label why on the tape.
+1. Compute the public hashprice of the latest block (its reward including fees, at its own difficulty) and read BTC/USD from mempool.space. The 144-block mean is kept on the tape as context only.
+2. Buy the hashprice from Telegraph miner 71083 (fallback: 1900999013, tried only if the primary signed no payment). Accept it only if `hashprice_sats_per_ph_day`, `block_height` and `hashrate_eh_s` are `ok`, the returned height equals the requested tip, and the value is within **1%** of the public hashprice of **that same block**, recomputed by the agent. Otherwise use the public single-block value and label why on the tape. See Data acceptance below.
 3. Buy the BTC/USD price from Telegraph miner 7320 (`CRYPTO_PRICE_USD`, `symbol=BTC`). Accept it only if the call succeeded, `price_usd` is `ok`, and it is within **0.5%** of the live mempool.space price; otherwise use the public price and label why on the tape. The accepted price is the one decisions use, so the paid data really feeds the decision. If mempool.space is unreachable there is nothing to verify against, so nothing is bought.
 4. Fetch CAISO day-ahead and latest real-time (5-minute) prices for each configured node. Decisions use real-time when available, day-ahead otherwise, and the label says which.
 5. Write the tape. The tape contains **market data only**; sites and decisions never leave the user's browser.
@@ -50,6 +50,21 @@ The default fleet is a **sample fleet of demo assumptions**, labelled as such in
 
 The agent never retries after a payment settled, buys each intent at most once per UTC hour (a per-intent same-hour guard: a run that already paid for hashprice buys only the missing BTC price, and an hour that paid for both is a no-op), skips an identical request it already paid for, and pauses (writes `data/status.json`, buys nothing) if the test-USDC balance is below 0.20. A request that settles and then fails upstream is credited back to escrow by the node and shows in the ledger as billed $0.
 
+## Data acceptance
+
+Measured on every recorded Telegraph hashprice purchase (miner 71083), from `data/market/`, with the public value recomputed from block data. The full table and method are in [docs/hashprice-drift.md](docs/hashprice-drift.md).
+
+| Period | Purchases | Accepted by the rule in force until 2026-11-14 (within 1% of the public 144-block mean) | Within 1% of the public value of the block the miner returned |
+|---|---|---|---|
+| 2026-11-12 16:10 to 2026-11-14 07:17 UTC | 38 | 29 of 38 (76.3%) | 38 of 38 (100%) |
+| Last 24 hours (2026-11-13 07:17 to 2026-11-14 07:17 UTC) | 26 | 17 of 26 (65.4%) | 26 of 26 (100%) |
+
+- **What the diagnosis found.** The miner computes the hashprice of one block, the latest, and matches the public value of that block exactly (median difference 0.00% over 38 purchases). The old rule compared it with a 144-block mean. After the difficulty adjustment at block 975744 (-9.13%) that mean mixed two difficulty regimes and sat about 9% low for a day, so three accurate purchases were rejected; the other six rejections were single-block fee noise of 1.05% to 1.78%. Nothing was wrong with the miner's data.
+- **The fix.** From 2026-11-14 the value is checked against the public hashprice of the same block, with the same required fields, the same stale-height check and the **same 1% limit**. The right-hand column is that rule applied to the recorded data (a replay, not a new live measurement). The live rate will be reported here once more hours have run under the new rule.
+- **The fallback.** If the Telegraph value is unavailable or fails the check, the agent uses the public single-block value of the latest block, the same definition, and the tape says why. A second miner (1900999013) is tried only if the first signed no payment, so hashprice is never bought twice in an hour.
+- **Old tapes** keep the rule they were recorded under, and the Proof page re-applies that rule to them.
+- **A separate finding.** Two hourly runs on 2026-11-13 at 16:17 and 16:20 UTC both bought data for the same hour (four payments, $0.04); the cause and fix are in the diagnosis section of the drift document.
+
 ## Failure handling
 
 The agent exits non-zero only for real failures: a missing or wrong wallet key, unreadable config, a failed file write, or an unexpected bug (it also writes `status: error`). A failed upstream source (mempool.space, CAISO OASIS, Telegraph, the Sepolia RPC) is a **degraded run**: the run still finishes with exit code 0, the failure is listed in the tape's `degraded` field and in `data/status.json` (`state: degraded`), it shows as a warning in the Actions run, and the affected inputs are left empty so sites that need them decide HOLD. Specifics:
@@ -68,7 +83,7 @@ The Settings page shows the state, the last successful run (a degraded run count
 - **Testnet.** Sepolia test USDC only.
 - **Sample fleet.** Default sites are demo assumptions. Decisions are only as good as your load, efficiency and power adder.
 - **Day-ahead versus real-time.** Real-time moves every five minutes. Hushrate uses the latest published interval, not a forecast.
-- **Hashprice** is a 144-block mean; single blocks vary with fees. Telegraph's miner returns one block, so its value is accepted only inside 1% of the mean.
+- **Hashprice is one block.** The value used (Telegraph's, or the public fallback) is the hashprice of the latest block, so it includes that block's fees and moves with them (within 1.78% of the 144-block mean in the recorded data when no difficulty adjustment was in the window). The tape keeps the 144-block mean beside it for context.
 - **One pinned miner per paid intent.** Hashprice (71083) and BTC price (7320) each come from one miner, chosen from a small probe ([docs/probe-report.md](docs/probe-report.md), round 4). If it fails the public value is used and labelled.
 - **Old tapes** recorded before the BTC purchase have no `btc` block: they carry the public mempool.space price, and the app labels them that way.
 - **Telegraph power price is not used.** `GRID_POWER_PRICE_GENERAL` was tested in params and query mode: miner 302 returned about 42.7 for SP15 while CAISO showed 13.27, and the CAISO-specific miners refuse the standard params. CAISO OASIS supplies power prices. Details and raw outputs are in [docs/probe-report.md](docs/probe-report.md).
@@ -110,7 +125,7 @@ npm run build -w web   # static site in web/dist (VITE_BASE=/hushrate/ for Pages
 npm run build -w packages/mcp
 ```
 
-To reproduce the proof by hand, open the Proof page, or recompute the mean of `reward * 1e15 * 86400 / (difficulty * 2^32)` over the 144 blocks ending at `block_height` in `data/latest.json`, and look up any `tx_hash` from `data/ledger.json` on Sepolia.
+To reproduce the proof by hand, open the Proof page, or recompute `reward * 1e15 * 86400 / (difficulty * 2^32)` for the block at `returned_height` in `data/latest.json` (the quantity the Telegraph miner computes), and its mean over the 144 blocks ending at `block_height` for context, and look up any `tx_hash` from `data/ledger.json` on Sepolia.
 
 ## Hourly workflow
 
@@ -165,4 +180,5 @@ Tools: `hushrate_market` (latest tape), `hushrate_decide` (site parameters in, d
 - `config/networks.json` network settings (Sepolia active, mainnet disabled)
 - `data/` published tape (`market/`, `latest.json`, `history.json`, `ledger.json`, `status.json`), `receipts/` (decoded payment and Telegraph receipts), `discovery/` and `probe/` (raw research output), `verification/`
 - `docs/probe-report.md` what Telegraph returned, with verdicts
+- `docs/hashprice-drift.md` why 71083 was rejected so often, how it was diagnosed, and what changed (regenerate with `npx tsx scripts/hashprice-drift.mts`)
 - `docs/mainnet.md` the path to mainnet and its checklist
