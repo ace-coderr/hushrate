@@ -1,0 +1,57 @@
+{
+  "label": "btc-2026-11-14T14-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-14T14:00:00Z\"]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0xaff75e78699e7a7aa679e3e8331e600b453243af0b7a65a155e3d0a90de8accf",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0xe68740e561ac03878e715936d6980c3a1d862a2d96e7e4eff47aa5163d7b60f7",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "354",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 2090,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0xaff75e78699e7a7aa679e3e8331e600b453243af0b7a65a155e3d0a90de8accf",
+    "timestamp": 1794665878
+  },
+  "response": {
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 66508.7
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 374,
+    "timestamp": "2026-11-14T14:17:54.010734317Z",
+    "reasoning": "Intent: miner finwire-crypto-price given by the caller\nMiner: The user is asking for the price of a cryptocurrency (BTC), which directly matches the CRYPTO_PRICE_USD intent. The FinWire Crypto Price miner has an endpoint at /price that accepts a 'symbol' query parameter, which is provided in the request parameters. This endpoint is suitable for fulfilling the request.",
+    "intent": "CRYPTO_PRICE_USD",
+    "signal_hash": "0x309a2ed394b9bd2fca488fbbb4c918b67d6bfbe12b07f8186a4ef84b361c76cc",
+    "warnings": [
+      "parameter \"symbol\" length 0 violates the miner's declared limit (lte 60): symbol is a ticker such as BTC, ETH, SOL or a CoinGecko id such as bitcoin. A whole question is accepted too. Defaults to BTC when unfilled."
+    ]
+  }
+}
