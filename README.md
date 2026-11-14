@@ -114,7 +114,7 @@ npm run agent                  # buys one hashprice reading and writes data/
 npm run dev -w web             # local web app (serves ../data at /data)
 ```
 
-Other scripts: `npm run probe` (free discovery), `npx tsx agent/src/btc-probe.ts <minerId>...` (BTC price miner probe, up to 3 paid calls), `npm run retest -w agent` (power-price retest, up to 3 paid calls), `npm run ledger -w agent`, and `npm run mint -w agent` (dry run unless `--confirm`; mints Sepolia test USDC via `mint(address,uint256)`).
+Other scripts: `npm run probe` (free discovery), `npx tsx agent/src/btc-probe.ts <minerId>...` (BTC price miner probe, up to 3 paid calls), `MEMPOOL_BASE=<mirror> npx tsx agent/src/hashprice-probe.ts <minerId>...` (hashprice miner probe, up to 5 paid calls and $0.06, each answer compared with the public value at the height it returned), `npx tsx scripts/hashprice-drift.mts` (free; regenerates docs/hashprice-drift.md from the recorded tapes), `npm run retest -w agent` (power-price retest, up to 3 paid calls), `npm run ledger -w agent`, and `npm run mint -w agent` (dry run unless `--confirm`; mints Sepolia test USDC via `mint(address,uint256)`).
 
 ## Reproduce the build and checks
 
