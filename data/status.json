@@ -1,9 +1,9 @@
 {
   "state": "ok",
-  "updated_at": "2026-11-14T06:18:28.059Z",
-  "last_success_at": "2026-11-14T06:18:28.059Z",
-  "usdc_balance": "15.23",
-  "last_tape": "data/market/2026-11-14T06-17-24Z.json",
+  "updated_at": "2026-11-14T07:18:25.723Z",
+  "last_success_at": "2026-11-14T07:18:25.723Z",
+  "usdc_balance": "15.21",
+  "last_tape": "data/market/2026-11-14T07-17-21Z.json",
   "paid_calls_last_run": 2,
   "cost_usd_last_run": 0.02,
   "hashprice_source": "public",
