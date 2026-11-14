@@ -1,9 +1,9 @@
 {
   "state": "ok",
-  "updated_at": "2026-11-14T15:18:27.164Z",
-  "last_success_at": "2026-11-14T15:18:27.164Z",
-  "usdc_balance": "15.02",
-  "last_tape": "data/market/2026-11-14T15-17-19Z.json",
+  "updated_at": "2026-11-14T16:18:27.513Z",
+  "last_success_at": "2026-11-14T16:18:27.513Z",
+  "usdc_balance": "15",
+  "last_tape": "data/market/2026-11-14T16-17-20Z.json",
   "paid_calls_last_run": 2,
   "cost_usd_last_run": 0.02,
   "hashprice_source": "telegraph",
