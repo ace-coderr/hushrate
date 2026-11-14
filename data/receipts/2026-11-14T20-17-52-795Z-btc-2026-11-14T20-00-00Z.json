@@ -1,0 +1,57 @@
+{
+  "label": "btc-2026-11-14T20-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-14T20:00:00Z\"]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0xe80d9981b2d2d9e5edcdb8af6097b7f05135f7d18285d7a942ac770382a391c9",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x93971069b0ebccf3707c9151ba4caed08945f15cacb4d06bdb8b2d3c350c6c27",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "354",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 2092,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0xe80d9981b2d2d9e5edcdb8af6097b7f05135f7d18285d7a942ac770382a391c9",
+    "timestamp": 1794687472
+  },
+  "response": {
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 65378.3
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 87,
+    "timestamp": "2026-11-14T20:17:51.6181166Z",
+    "reasoning": "Intent: miner finwire-crypto-price given by the caller\nMiner: The user is asking for the price of a cryptocurrency (BTC), which falls under the CRYPTO_PRICE_USD intent. The FinWire Crypto Price miner has a /price endpoint that accepts a 'symbol' query parameter, matching the provided parameter.",
+    "intent": "CRYPTO_PRICE_USD",
+    "signal_hash": "0xe10e6a667b5a8d3f9ebff1c45a2a70bdbae6482477835eaac1ee97d9d9489eea",
+    "warnings": [
+      "parameter \"symbol\" length 0 violates the miner's declared limit (lte 60): symbol is a ticker such as BTC, ETH, SOL or a CoinGecko id such as bitcoin. A whole question is accepted too. Defaults to BTC when unfilled."
+    ]
+  }
+}
