@@ -2374,5 +2374,41 @@
     "amount_uusdc": "10000",
     "signal_hash": "0xf41deb6d57602894fa9051c3ac6d2652a74c27ca32ae67b949ecb580ac28767a",
     "outcome": "served"
+  },
+  {
+    "file": "2026-11-15T09-17-30-100Z-hashprice-975931.json",
+    "at": "2026-11-15T09:17:30.100Z",
+    "label": "hashprice-975931",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_requested": "71083",
+    "miner_id": "71083",
+    "miner_name": "Bitcoin Block Hashprice",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0x2c80c042ad4a7ff03438f9062df7ab98d16cb64bbbbdc7f080180b1573724dda",
+    "tx_hash": "0x53a1d4cc95c07bc7dcd004213c50ca35d699ec4ff7f06d48724483831a852080",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "amount_uusdc": "10000",
+    "signal_hash": "0xe13ad8bde63d8a5f256df4f3771f17a89ad7d8f52e5af68b0aaf626f117bff66",
+    "outcome": "served"
+  },
+  {
+    "file": "2026-11-15T09-17-39-640Z-btc-2026-11-15T09-00-00Z.json",
+    "at": "2026-11-15T09:17:39.640Z",
+    "label": "btc-2026-11-15T09-00-00Z",
+    "intent": "CRYPTO_PRICE_USD",
+    "miner_requested": "7320",
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0xeac9b037fab98a3f4828e8bc5f539fa10332277665c40eafcf744e141869b964",
+    "tx_hash": "0xc86501d8100712b46abca1f8be5f471b2c402027b5e870d31a5b4f74c46e3735",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "amount_uusdc": "10000",
+    "signal_hash": "0x33fd60d2ef881f0fd06bd4a8119dab45818753f1444a156dec05acec263479ef",
+    "outcome": "served"
   }
 ]
