@@ -1,0 +1,34 @@
+{
+  "label": "hashprice-976096",
+  "miner_id_requested": "71083",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 976096
+  },
+  "query": null,
+  "idempotency_key": "[\"71083\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":976096}]",
+  "paid": true,
+  "http_status": 500,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0xaab3836451caf9832164843fe985ed4e01b99c2659cc65fe7edbd30b3ba5fdfb",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": null,
+  "response": {
+    "error": "miner error unavailable [upstream_timeout]: Hashprice for Bitcoin block 976096 is unavailable because the public sources could not be verified; no value is estimated.",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_id": "71083",
+    "warnings": [
+      "parameter \"block_height\" value 976096.00 violates the miner's declared limit (lte 100000000.00): Bitcoin block_height must be an integer from 0 to 100000000; the exact block must exist and its result must fit the intent range."
+    ],
+    "payment": {
+      "status": "escrow_credit_pending",
+      "message": "Your payment settled but the request failed, so nothing was billed. The amount is being credited to your Telegraph escrow balance (on-chain, usually within a few minutes): it then pays for your next asks, or withdraw it with requestWithdraw then executeWithdraw. If your balance has not risen after a while, contact support with this transaction.",
+      "transaction": "0xaab3836451caf9832164843fe985ed4e01b99c2659cc65fe7edbd30b3ba5fdfb",
+      "network": "eip155:11155111",
+      "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e"
+    }
+  }
+}
