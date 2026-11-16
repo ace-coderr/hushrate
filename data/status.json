@@ -1,9 +1,9 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-16T08:18:30.682Z",
-  "last_success_at": "2026-11-16T08:18:30.682Z",
-  "usdc_balance": "14.2",
-  "last_tape": "data/market/2026-11-16T08-17-15Z.json",
+  "updated_at": "2026-11-16T09:18:26.544Z",
+  "last_success_at": "2026-11-16T09:18:26.544Z",
+  "usdc_balance": "14.18",
+  "last_tape": "data/market/2026-11-16T09-17-17Z.json",
   "paid_calls_last_run": 2,
   "cost_usd_last_run": 0.01,
   "hashprice_source": "public",
