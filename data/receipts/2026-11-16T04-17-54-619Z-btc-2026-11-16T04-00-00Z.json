@@ -1,0 +1,57 @@
+{
+  "label": "btc-2026-11-16T04-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-16T04:00:00Z\"]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0x222a608c3c0bcb3986981e6eea18d8db99465850a107ae3d8863ea0366906f4f",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0x3042d12c1c4b4d103799e5f207d497363556ff750871f1a572dac2648c8bdc16",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "354",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 2103,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0x222a608c3c0bcb3986981e6eea18d8db99465850a107ae3d8863ea0366906f4f",
+    "timestamp": 1794802674
+  },
+  "response": {
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 64869
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 42,
+    "timestamp": "2026-11-16T04:17:53.543865995Z",
+    "reasoning": "Intent: miner finwire-crypto-price given by the caller\nMiner: The user is asking for the price of a cryptocurrency (BTC) in USD. The FinWire Crypto Price miner has an endpoint `/price` that accepts a `symbol` query parameter and is described as providing the spot price for one asset. This endpoint is suitable for the CRYPTO_PRICE_USD intent.",
+    "intent": "CRYPTO_PRICE_USD",
+    "signal_hash": "0x8f33f3686f578bd22a296657843ada969e94aef0a2ba625bfc12ba5be967d713",
+    "warnings": [
+      "parameter \"symbol\" length 0 violates the miner's declared limit (lte 60): symbol is a ticker such as BTC, ETH, SOL or a CoinGecko id such as bitcoin. A whole question is accepted too. Defaults to BTC when unfilled."
+    ]
+  }
+}
