@@ -1,15 +1,11 @@
 {
-  "state": "degraded",
-  "updated_at": "2026-11-16T05:18:38.771Z",
-  "last_success_at": "2026-11-16T05:18:38.771Z",
-  "usdc_balance": "14.26",
-  "last_tape": "data/market/2026-11-16T05-17-23Z.json",
+  "state": "ok",
+  "updated_at": "2026-11-16T06:18:29.856Z",
+  "last_success_at": "2026-11-16T06:18:29.856Z",
+  "usdc_balance": "14.24",
+  "last_tape": "data/market/2026-11-16T06-17-22Z.json",
   "paid_calls_last_run": 2,
   "cost_usd_last_run": 0.02,
   "hashprice_source": "telegraph",
-  "btc_source": "telegraph",
-  "degraded": [
-    "CAISO OASIS real-time TH_ZP26_GEN-APND: fetch failed"
-  ],
-  "reason": "1 upstream problem(s); see degraded list"
+  "btc_source": "telegraph"
 }
