@@ -1,15 +1,11 @@
 {
-  "state": "degraded",
-  "updated_at": "2026-11-16T09:18:26.544Z",
-  "last_success_at": "2026-11-16T09:18:26.544Z",
-  "usdc_balance": "14.18",
-  "last_tape": "data/market/2026-11-16T09-17-17Z.json",
+  "state": "ok",
+  "updated_at": "2026-11-16T10:18:30.997Z",
+  "last_success_at": "2026-11-16T10:18:30.997Z",
+  "usdc_balance": "14.16",
+  "last_tape": "data/market/2026-11-16T10-17-21Z.json",
   "paid_calls_last_run": 2,
-  "cost_usd_last_run": 0.01,
-  "hashprice_source": "public",
-  "btc_source": "telegraph",
-  "degraded": [
-    "Telegraph miner 71083 (primary) hashprice: HTTP 500"
-  ],
-  "reason": "1 upstream problem(s); see degraded list"
+  "cost_usd_last_run": 0.02,
+  "hashprice_source": "telegraph",
+  "btc_source": "telegraph"
 }
