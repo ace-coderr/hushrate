@@ -3745,5 +3745,44 @@
       "btc"
     ],
     "btc_source": "telegraph"
+  },
+  {
+    "interval_start": "2026-11-16T22:00:00Z",
+    "block_height": 976191,
+    "btc_usd": 65367.7,
+    "hashprice_sats_per_ph_day": 46876.146917,
+    "hashprice_source": "telegraph",
+    "power": [
+      {
+        "node": "TH_SP15_GEN-APND",
+        "usd_per_mwh": 60.02463,
+        "basis": "real-time"
+      },
+      {
+        "node": "TH_NP15_GEN-APND",
+        "usd_per_mwh": 62.2108,
+        "basis": "real-time"
+      },
+      {
+        "node": "TH_ZP26_GEN-APND",
+        "usd_per_mwh": 63.20923,
+        "basis": "real-time"
+      }
+    ],
+    "paid_calls": 2,
+    "cost_usd": 0.02,
+    "tx_hashes": [
+      "0x95d5b6889710766c128c78a7ce4b4002f306d07f31fd085b744e56ef07f45b09",
+      "0xea3ba177aa02c76da4dadf4c67a33f0ee53e263ae55558563eea6ac25b17c6d5"
+    ],
+    "receipt_hashes": [
+      "0xcd1508cffca892680006be3ba94147c23595cd86402c2e3f94a6f6acc5a747bc",
+      "0xe8d095cac391b4d52d8500901d87ab28e771720bf712dbd53159a3874800a22f"
+    ],
+    "paid_kinds": [
+      "hashprice",
+      "btc"
+    ],
+    "btc_source": "telegraph"
   }
 ]
