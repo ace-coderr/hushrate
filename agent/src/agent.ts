@@ -13,10 +13,10 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import {
-  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, fundingStatus,
+  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, assessPayment,
   type MarketTape, type PowerPrice, type TelegraphCall, type HistoryEntry,
 } from "@hushrate/core";
-import { balances } from "./wallet.js";
+import { balances, unitsByAsset } from "./wallet.js";
 import { dayAhead, realTime } from "./caiso.js";
 import { writeLedger } from "./ledger.js";
 import { allBought, purchasesThisHourFromDisk } from "./guard.js";
@@ -79,6 +79,7 @@ async function main(): Promise<void> {
   const degraded: string[] = [];
   const notes: string[] = [];
   let spendCalls = 0, spendUsd = 0;
+  let refusedUp = false; // the node's payment terms were refused by the allow-list before any call
 
   const now = new Date();
   const hour = new Date(now); hour.setUTCMinutes(0, 0, 0);
@@ -110,28 +111,52 @@ async function main(): Promise<void> {
   console.log(`  to 1 Dec (${DAYS} days)        $${(perRun * HOURS * DAYS).toFixed(2)}`);
   console.log(`  planned this run          ${plannedCalls} call(s)`);
 
-  // ---- funding guard ------------------------------------------------------------------------------------
-  // Compares the balance of the PINNED payment asset with what this run would spend. If the wallet cannot pay, no miner is
-  // called (a call that cannot be paid only produces a refusal): the run records labelled public values and says so.
+  // ---- payment assessment (before any miner is called) ----------------------------------------------------
+  // Telegraph may change the asset it asks for, so Hushrate pays from an explicit allow-list (config/networks.json) and the NODE
+  // picks which allowed asset it asks for. So: read the node's payment terms for free (a request without payment returns the
+  // 402 challenge), refuse anything not on the allow-list loudly, and check the wallet balance of the asset actually requested.
+  // If the wallet cannot pay, or the terms are refused, no miner is called and the run records labelled public values.
   // An RPC outage means we cannot prove the balance, so we do not pay either.
   let canPay = !noPay;
   let unfunded = false;
-  let usdcBalance: string | null = null;
+  let requestedAsset: string | null = null;
+  let balanceRows: { asset: string; symbol: string; role: string; balance: string }[] = [];
+  let unfundedAsset: string | null = null;
   const runCostUnits = BigInt(plannedCalls) * 10000n; // 10000 units = $0.01 per call
+  let usdcBalance: string | null = null; // balance of the requested asset (or of the first allowed asset when none was requested)
   try {
     const bal = await balances();
-    usdcBalance = bal.usdc;
-    console.log(`wallet: ${bal.eth} ETH, ${bal.usdc} ${net.usdc.symbol} (${net.usdc.address})`);
+    balanceRows = bal.assets.map((x) => ({ asset: x.asset, symbol: x.symbol, role: x.role, balance: x.formatted }));
+    console.log(`wallet: ${bal.eth} ETH`);
+    for (const x of bal.assets) console.log(`  ${x.symbol} ${x.formatted}  ${x.asset} (${x.role})`);
+    usdcBalance = bal.assets[0]?.formatted ?? null;
     if (canPay && plannedCalls > 0) {
-      const fund = fundingStatus(BigInt(bal.usdcRaw), runCostUnits);
-      if (!fund.funded) {
-        canPay = false; unfunded = true;
-        degraded.push(`unfunded: needs ${net.usdc.symbol} ${net.usdc.address} on ${net.label} (balance ${bal.usdc}, this run costs ${Number(runCostUnits) / 10 ** net.usdc.decimals}). No miner was called; values below are public and labelled.`);
-      } else if (BigInt(bal.usdcRaw) < net.min_balance_units) {
-        notes.push(`low balance: ${bal.usdc} ${net.usdc.symbol} is under the ${Number(net.min_balance_units) / 10 ** net.usdc.decimals} floor`);
+      let challenge: Awaited<ReturnType<typeof import("./x402.js").previewChallenge>> = null;
+      const x402 = await import("./x402.js"); // loads the signing key; a missing or wrong key is a real failure
+      const first = !bought.hashprice
+        ? { miner: cfg.telegraph.hashprice_miner, intent: "MINING_HASHPRICE_VERIFY_GENERAL", params: { block_height: await fetchTipHeight().catch(() => 0) } }
+        : { miner: cfg.telegraph.btc_miner, intent: "CRYPTO_PRICE_USD", params: { symbol: "BTC" } };
+      try { challenge = await x402.previewChallenge(first.miner, first.intent, first.params); } catch (e) { degraded.push(`payment terms: the 402 challenge could not be fetched (${msg(e)})`); }
+      const verdict = assessPayment(challenge, x402.PINS, unitsByAsset(bal), runCostUnits);
+      if (verdict.state === "ok") {
+        requestedAsset = verdict.pin.asset;
+        usdcBalance = bal.assets.find((x) => x.asset.toLowerCase() === verdict.pin.asset.toLowerCase())?.formatted ?? usdcBalance;
+        console.log(`payment terms: the node asks for ${verdict.pin.symbol} ${verdict.pin.asset} (${verdict.pin.network}); funded`);
+        if (verdict.balanceUnits < net.min_balance_units) notes.push(`low balance: ${Number(verdict.balanceUnits) / 10 ** (verdict.pin.decimals ?? 6)} of ${verdict.pin.asset} is under the ${Number(net.min_balance_units) / 10 ** (verdict.pin.decimals ?? 6)} floor`);
+      } else if (verdict.state === "unfunded") {
+        canPay = false; unfunded = true; requestedAsset = verdict.pin.asset; unfundedAsset = verdict.pin.asset;
+        usdcBalance = bal.assets.find((x) => x.asset.toLowerCase() === verdict.pin.asset.toLowerCase())?.formatted ?? usdcBalance;
+        degraded.push(`${verdict.reason}. No miner was called; values below are public and labelled.`);
+      } else if (verdict.state === "refused") {
+        canPay = false; refusedUp = true;
+        degraded.push(verdict.reason);
+      } else {
+        canPay = false;
+        degraded.push(`payment terms: ${verdict.reason}. No miner was called; values below are public and labelled.`);
       }
     }
   } catch (e) {
+    if (isFatal(e)) throw e;
     degraded.push(`${net.label} RPC: balance check failed (${msg(e)})`);
     if (canPay) { canPay = false; notes.push("paid calls skipped: the wallet balance could not be checked"); }
   }
@@ -235,7 +260,7 @@ async function main(): Promise<void> {
     }
     if (rejected.length) hashLabel += hashSource === "telegraph" ? `; earlier attempt not used: ${rejected.join("; ")}` : `; Telegraph value not used: ${rejected.join("; ")}`;
   } else if (!noPay) {
-    const why = bought.hashprice ? "a purchase for this hour exists but its tape was not found" : !canPay ? (unfunded ? "wallet unfunded for the pinned asset" : "wallet balance could not be checked") : tip === null ? "no Bitcoin block height" : "no public single-block value to verify against";
+    const why = bought.hashprice ? "a purchase for this hour exists but its tape was not found" : !canPay ? (refusedUp ? "the node's payment terms are not on the allow-list (see degraded)" : unfunded ? "wallet unfunded for the requested asset (see degraded)" : "wallet balance could not be checked") : tip === null ? "no Bitcoin block height" : "no public single-block value to verify against";
     notes.push(`Telegraph hashprice not bought this run: ${why}`);
     hashLabel += `; Telegraph value not bought: ${why}`;
   }
@@ -261,7 +286,7 @@ async function main(): Promise<void> {
       if (btcCall.http_status !== 200) degraded.push(`Telegraph miner ${cfg.telegraph.btc_miner} (BTC price): ${reasonB}`);
     }
   } else if (!noPay) {
-    const why = bought.btc ? "a purchase for this hour exists but its tape was not found" : !canPay ? (refused ? "the miner's payment terms were refused (see degraded)" : unfunded ? "wallet unfunded for the pinned asset" : "wallet balance could not be checked") : "no public BTC/USD price to verify against";
+    const why = bought.btc ? "a purchase for this hour exists but its tape was not found" : !canPay ? (refused || refusedUp ? "the node's payment terms are not on the allow-list (see degraded)" : unfunded ? "wallet unfunded for the requested asset (see degraded)" : "wallet balance could not be checked") : "no public BTC/USD price to verify against";
     notes.push(`Telegraph BTC price not bought this run: ${why}`);
     btcLabel += `; Telegraph price not bought: ${why}`;
   }
@@ -306,9 +331,13 @@ async function main(): Promise<void> {
     hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: tapePublic144, telegraph: hashCall, public_at_telegraph_height: tapeSingle, comparison: hashComparison, tolerance_rel: cfg.tolerance.hashprice_rel, miner_role: hashRole },
     btc: { value_usd: btcValue, source: btcSource, label: btcLabel, public_usd: btcPublic ?? reuseBtc?.public_usd ?? null, tolerance_rel: cfg.tolerance.btc_rel, telegraph: btcCall },
     power, spend: tapeSpend, wallet_usdc_after: usdcBalance, notes, degraded,
-    payment: { asset: net.usdc.address, network: net.caip2, pay_to: net.pay_to },
+    payment: { asset: requestedAsset ?? net.assets[0].address, network: net.caip2, pay_to: (net.assets.find((x) => x.address === (requestedAsset ?? net.assets[0].address)) ?? net.assets[0]).pay_to, requested: requestedAsset, allowed: net.assets.map((x) => x.address) },
   };
-  try { tape.wallet_usdc_after = (await balances()).usdc; } catch { /* keep the earlier reading, or null */ }
+  try {
+    const after = await balances();
+    balanceRows = after.assets.map((x) => ({ asset: x.asset, symbol: x.symbol, role: x.role, balance: x.formatted }));
+    tape.wallet_usdc_after = after.assets.find((x) => x.asset.toLowerCase() === (requestedAsset ?? net.assets[0].address).toLowerCase())?.formatted ?? null;
+  } catch { /* keep the earlier reading, or null */ }
 
   const tapeQuality = (t: MarketTape) => tapeScore({ hashprice: t.hashprice.value_sats_per_ph_day, btc: t.btc_usd, powerNodesWithPrice: t.power.filter((p) => selectPower(p).usd_per_mwh !== null).length });
   const entryQuality = (h: HistoryEntry) => tapeScore({ hashprice: h.hashprice_sats_per_ph_day, btc: h.btc_usd, powerNodesWithPrice: h.power.filter((p) => p.usd_per_mwh !== null).length });
@@ -330,7 +359,7 @@ async function main(): Promise<void> {
 
   const state: State = degraded.length ? "degraded" : "ok";
   status(state, {
-    usdc_balance: tape.wallet_usdc_after, payment_asset: net.usdc.address, payment_network: net.caip2, payment_symbol: net.usdc.symbol, unfunded, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls,
+    usdc_balance: tape.wallet_usdc_after, balances: balanceRows, payment_asset: requestedAsset, payment_network: net.caip2, allowed_assets: net.assets.map((x) => x.address), unfunded, unfunded_asset: unfundedAsset, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls,
     cost_usd_last_run: Number(spendUsd.toFixed(2)), hashprice_source: hashSource, btc_source: btcSource,
     ...(degraded.length ? { degraded, reason: `${degraded.length} upstream problem(s); see degraded list` } : {}),
   });

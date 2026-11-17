@@ -11,13 +11,13 @@
   2. every value above is supplied explicitly (nothing is defaulted, addresses must be valid, `caip2` must match `chain_id`, the per-payment cap must be a positive integer);
   3. the environment carries `HUSHRATE_MAINNET_ENABLE=I_UNDERSTAND_THIS_USES_REAL_MONEY`.
 - The refusal is a real failure: the agent exits non-zero and writes `status: error`.
-- `agent/src/mint.ts` refuses to run on any non-testnet network, and on any asset not marked `mintable` (the current Sepolia asset is Circle's faucet token, which is funded from the faucet, not minted).
+- `agent/src/mint.ts` refuses to run on any non-testnet network, and only mints an allow-listed asset marked `mintable` (Circle's Sepolia token is funded from the faucet, not minted).
 - `agent/src/network.test.ts` covers each refusal. The tests use obviously fake fixture values, not real ones.
 - The web app (Receipts, Proof) still points at Sepolia and its explorer; it would need the same change.
 
 ## Checklist before anyone flips it
 
-0. **Learn from 2026-11-17.** Telegraph changed the testnet payment asset and payee without notice ([payment-asset-change.md](payment-asset-change.md)). On mainnet the same could happen with real money at stake: keep the asset and payee pinned, keep the refusal loud, and decide in advance who updates the config and funds the wallet when it does.
+0. **Learn from 2026-11-17.** Telegraph changed the testnet payment asset and payee without notice ([payment-asset-change.md](payment-asset-change.md)). On mainnet the same could happen with real money at stake: keep an explicit allow-list of assets with a pinned payee for each, keep the refusal loud, and decide in advance who updates the config and funds the wallet when it does.
 1. **Addresses from Telegraph.** The mainnet node URL, the settlement asset address, the payee and the chain's CAIP-2 id, taken from Telegraph's own documentation or team, never from this repository or a guess.
 2. **A real USDC budget and caps.** Pick a small total budget. Set `max_amount_per_payment`, `max_paid_calls_per_run` and a `min_balance_units` floor in the config. Recompute the cost table at real prices (today: 2 paid calls per run).
 3. **Key custody.** A dedicated low-balance hot wallet used by this agent only. A repository secret is acceptable for a testnet key, not long term for a funded one: move to a secrets manager, a short-lived signing service, or a smart wallet with a spending limit.

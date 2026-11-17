@@ -11,10 +11,15 @@ export interface Status {
   reason?: string;
   usdc_balance?: string | null;
   /** The asset the balance is in and the agent is allowed to pay with. Absent on status files from before 2026-11-17. */
-  payment_asset?: string;
+  /** The asset the node's 402 asked for this run (null when it could not be read or nothing needed buying). */
+  payment_asset?: string | null;
   payment_network?: string;
-  payment_symbol?: string;
+  /** The allow-list: the only assets Hushrate pays. */
+  allowed_assets?: string[];
+  /** The balance of each allowed asset. */
+  balances?: { asset: string; symbol: string; role: string; balance: string }[];
   unfunded?: boolean;
+  unfunded_asset?: string | null;
   last_tape?: string;
   paid_calls_last_run?: number;
   cost_usd_last_run?: number;

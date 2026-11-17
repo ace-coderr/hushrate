@@ -1,7 +1,7 @@
 // Hand-computed checks. Run: npm test -w packages/core
 import test from "node:test";
 import assert from "node:assert/strict";
-import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, isAllowedPayment, describeRefusal, fundingStatus, paymentAssetOf, paidDataHealth, LEGACY_PAYMENT_ASSET, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
+import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, isAllowedPayment, describeRefusal, selectPayment, assessPayment, fundingStatus, paymentAssetOf, paidDataHealth, LEGACY_PAYMENT_ASSET, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
 
 const near = (a: number, b: number, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} vs ${b}`);
 
@@ -175,49 +175,93 @@ test("pinning: the fallback miner may be tried only when the primary signed no p
   assert.equal(mayTryFallback({ paid: true }), false);
 });
 
-// ---- payment asset pinning (the 2026-11-17 change) ------------------------------------------------------------------
-// The values below are the real challenge Telegraph returned on 2026-11-17 (see docs/payment-asset-change.md).
+// ---- payment allow-list: exactly two Sepolia assets, each with its own exact payee --------------------------------------
+// Values: the real challenge Telegraph returned on 2026-11-17 (new asset), and the asset and payee used until then (the
+// payee of the old asset was read from the Transfer logs of settled payments).
 const NEW_ASSET = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
 const NEW_PAYTO = "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b";
-const PIN = { network: "eip155:11155111", asset: NEW_ASSET, payTo: NEW_PAYTO };
-const offer = { scheme: "exact", network: "eip155:11155111", asset: NEW_ASSET, amount: "10000", payTo: NEW_PAYTO };
+const OLD_PAYTO = "0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b";
+const SEPOLIA = "eip155:11155111";
+const PINS = [
+  { network: SEPOLIA, asset: NEW_ASSET, payTo: NEW_PAYTO, symbol: "USDC", decimals: 6 },
+  { network: SEPOLIA, asset: LEGACY_PAYMENT_ASSET, payTo: OLD_PAYTO, symbol: "USDC", decimals: 6 },
+];
+const askNew = { scheme: "exact", network: SEPOLIA, asset: NEW_ASSET, amount: "10000", payTo: NEW_PAYTO };
+const askOld = { scheme: "exact", network: SEPOLIA, asset: LEGACY_PAYMENT_ASSET, amount: "10000", payTo: OLD_PAYTO };
+const COST = 20000n; // two requests at 10000 units ($0.01 each)
+const bal = (newUnits: bigint | null, oldUnits: bigint | null) => ({ [NEW_ASSET.toLowerCase()]: newUnits, [LEGACY_PAYMENT_ASSET.toLowerCase()]: oldUnits });
 
-test("payment: the new asset on the pinned network to the pinned payee is accepted (case-insensitive addresses)", () => {
-  assert.equal(isAllowedPayment(offer, PIN), true);
-  assert.equal(isAllowedPayment({ ...offer, asset: NEW_ASSET.toLowerCase(), payTo: NEW_PAYTO.toLowerCase() }, PIN), true);
+test("allow-list: the NEW asset is accepted (case-insensitive addresses)", () => {
+  assert.equal(isAllowedPayment(askNew, PINS), true);
+  assert.equal(isAllowedPayment({ ...askNew, asset: NEW_ASSET.toLowerCase(), payTo: NEW_PAYTO.toLowerCase() }, PINS), true);
+  assert.equal(selectPayment([askNew], PINS)?.pin.asset, NEW_ASSET);
 });
 
-test("payment: ASSET MISMATCH is refused (the previous test USDC, which Telegraph no longer asks for, is not on the allow list)", () => {
-  assert.equal(isAllowedPayment({ ...offer, asset: LEGACY_PAYMENT_ASSET }, PIN), false);
-  assert.equal(isAllowedPayment({ ...offer, asset: "0x036CbD53842c5426634e7929541eC2318f3dCF7e" }, PIN), false, "an unknown token");
+test("allow-list: the OLD asset is accepted too, to its own payee", () => {
+  assert.equal(isAllowedPayment(askOld, PINS), true);
+  assert.equal(selectPayment([askOld], PINS)?.pin.payTo, OLD_PAYTO);
 });
 
-test("payment: a different network, payee or scheme is refused", () => {
-  assert.equal(isAllowedPayment({ ...offer, network: "eip155:84532" }, PIN), false, "Base Sepolia");
-  assert.equal(isAllowedPayment({ ...offer, payTo: "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e" }, PIN), false, "payee changed");
-  assert.equal(isAllowedPayment({ scheme: "escrow", network: "eip155:11155111", payTo: NEW_PAYTO }, PIN), false, "escrow has no asset");
+test("allow-list: the node picks the asset, and the first allowed option of its challenge is the one paid", () => {
+  assert.equal(selectPayment([askOld, askNew], PINS)?.pin.asset, LEGACY_PAYMENT_ASSET);
+  assert.equal(selectPayment([askNew, askOld], PINS)?.pin.asset, NEW_ASSET);
+  assert.equal(selectPayment([{ scheme: "escrow", network: SEPOLIA, payTo: NEW_PAYTO }, askNew], PINS)?.pin.asset, NEW_ASSET, "escrow (no asset) is skipped");
 });
 
-test("payment: a refusal names the asset and network the miner asked for", () => {
-  // Pinned to the OLD asset while the miner asks for the new one: the situation of the incident.
-  const oldPin = { network: "eip155:11155111", asset: LEGACY_PAYMENT_ASSET, payTo: "0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b" };
-  const msg = describeRefusal([offer, { scheme: "escrow", network: "eip155:11155111", payTo: NEW_PAYTO }], oldPin);
-  assert.match(msg, /asset 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238 on eip155:11155111/);
-  assert.match(msg, /only pays asset 0xcc194e1a843B658526D0D5C431f670028582Ae17/);
-  assert.match(msg, /asset on eip155:11155111 is not the pinned one/);
-  assert.doesNotMatch(msg, /escrow asset/, "an option without an asset is not listed as an asset");
-  assert.match(describeRefusal([{ ...offer, network: "eip155:84532" }], PIN), /None is on eip155:11155111/);
-  assert.match(describeRefusal([offer], { ...PIN, payTo: "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e" }), /payee \(payTo\) is not the pinned one/);
-  assert.match(describeRefusal(null, PIN), /no payment option could be read/);
+test("allow-list: an UNKNOWN asset is refused, loudly, naming the asset and network", () => {
+  const unknown = { scheme: "exact", network: SEPOLIA, asset: "0x1111111111111111111111111111111111111111", amount: "10000", payTo: NEW_PAYTO };
+  assert.equal(isAllowedPayment(unknown, PINS), false);
+  assert.equal(selectPayment([unknown], PINS), null);
+  const a = assessPayment([unknown], PINS, bal(15_000_000n, 15_000_000n), COST);
+  assert.equal(a.state, "refused");
+  const reason = (a as { reason: string }).reason;
+  assert.match(reason, /asset 0x1111111111111111111111111111111111111111 on eip155:11155111/);
+  assert.match(reason, /not on the allow-list/);
+  assert.match(reason, new RegExp(NEW_ASSET) );
+  assert.match(reason, new RegExp(LEGACY_PAYMENT_ASSET));
 });
 
-test("funding: an unfunded wallet is detected against the cost of the run, in the pinned token's base units", () => {
-  const cost = 20000n; // two requests at 10000 units ($0.01 each)
-  assert.deepEqual(fundingStatus(0n, cost), { funded: false, reason: "balance below the cost of the run" });
-  assert.equal(fundingStatus(19999n, cost).funded, false);
-  assert.equal(fundingStatus(20000n, cost).funded, true, "exactly the cost is enough");
-  assert.equal(fundingStatus(15_000_000n, cost).funded, true);
-  assert.match(fundingStatus(null, cost).reason!, /could not be read/);
+test("allow-list: a known asset to a different payee, another network, or the escrow scheme is refused", () => {
+  assert.equal(isAllowedPayment({ ...askNew, payTo: OLD_PAYTO }, PINS), false, "new asset, old asset's payee");
+  assert.equal(isAllowedPayment({ ...askOld, payTo: NEW_PAYTO }, PINS), false, "old asset, new asset's payee");
+  assert.equal(isAllowedPayment({ ...askNew, network: "eip155:84532" }, PINS), false, "Base Sepolia");
+  assert.equal(isAllowedPayment({ scheme: "escrow", network: SEPOLIA, payTo: NEW_PAYTO }, PINS), false);
+  assert.match(describeRefusal([{ ...askNew, payTo: OLD_PAYTO }], PINS), /payee \(payTo\) is not the one pinned for it/);
+  assert.match(describeRefusal([{ ...askNew, network: "eip155:84532" }], PINS), /None is on eip155:11155111/);
+  assert.match(describeRefusal(null, PINS), /no payment option could be read/);
+});
+
+test("pay: the requested asset is funded, so the run pays (whichever of the two it is)", () => {
+  const n = assessPayment([askNew], PINS, bal(20_000_000n, 0n), COST);
+  assert.equal(n.state, "ok");
+  assert.equal(n.state === "ok" && n.pin.asset, NEW_ASSET);
+  const o = assessPayment([askOld], PINS, bal(0n, 13_780_000n), COST);
+  assert.equal(o.state, "ok");
+  assert.equal(o.state === "ok" && o.pin.asset, LEGACY_PAYMENT_ASSET);
+});
+
+test("unfunded: the REQUESTED asset's balance decides, not the other asset's (labelled 'unfunded for <asset>')", () => {
+  // The incident: the node asks for the new asset, the wallet holds only the old one.
+  const a = assessPayment([askNew], PINS, bal(0n, 13_780_000n), COST);
+  assert.equal(a.state, "unfunded");
+  assert.match((a as { reason: string }).reason, /^unfunded for USDC 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238 on eip155:11155111: balance 0, this run costs 0.02$/);
+  // And the other way round: the node asks for the old asset, the wallet holds only the new one.
+  assert.equal(assessPayment([askOld], PINS, bal(20_000_000n, 0n), COST).state, "unfunded");
+  // Boundary: exactly the cost is enough, one unit less is not.
+  assert.equal(assessPayment([askNew], PINS, bal(20_000n, null), COST).state, "ok");
+  assert.equal(assessPayment([askNew], PINS, bal(19_999n, null), COST).state, "unfunded");
+});
+
+test("unreadable: no challenge, or no balance for the requested asset, never pays", () => {
+  assert.equal(assessPayment(null, PINS, bal(1n, 1n), COST).state, "unreadable");
+  assert.equal(assessPayment([], PINS, bal(1n, 1n), COST).state, "unreadable");
+  assert.equal(assessPayment([askNew], PINS, bal(null, 1n), COST).state, "unreadable");
+});
+
+test("funding: base rule against the cost of the run", () => {
+  assert.deepEqual(fundingStatus(0n, COST), { funded: false, reason: "balance below the cost of the run" });
+  assert.equal(fundingStatus(COST, COST).funded, true);
+  assert.match(fundingStatus(null, COST).reason!, /could not be read/);
 });
 
 test("old tapes, receipts and ledger rows without an asset are read as the legacy asset", () => {

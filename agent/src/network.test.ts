@@ -1,4 +1,5 @@
-// The network loader: Sepolia runs, anything else refuses unless fully and explicitly configured. Run: npm test -w agent
+// The network loader: Sepolia runs with an explicit allow-list of two assets, anything else refuses unless fully and
+// explicitly configured. Run: npm test -w agent
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
@@ -6,36 +7,52 @@ import { MAINNET_ACK_ENV, MAINNET_ACK_VALUE, resolveNetwork, type NetworkConfig 
 
 const repoConfig = JSON.parse(readFileSync(new URL("../../config/networks.json", import.meta.url), "utf8"));
 
-test("the committed config runs Sepolia", () => {
+const NEW_ASSET = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
+const OLD_ASSET = "0xcc194e1a843B658526D0D5C431f670028582Ae17";
+
+test("the committed config runs Sepolia with an allow-list of exactly two assets", () => {
   const n = resolveNetwork(repoConfig, {});
   assert.equal(n.name, "sepolia");
   assert.equal(n.testnet, true);
   assert.equal(n.caip2, "eip155:11155111");
   assert.equal(n.max_amount_per_payment, "30000");
   assert.equal(n.max_paid_calls_per_run, 3);
-  // The asset Telegraph asked for on 2026-11-17, pinned together with its payee. The previous asset is not accepted.
-  assert.equal(n.usdc.address, "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238");
-  assert.equal(n.pay_to, "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b");
-  assert.notEqual(n.usdc.address.toLowerCase(), "0xcc194e1a843b658526d0d5c431f670028582ae17");
-  assert.equal(n.usdc.decimals, 6);
-  assert.equal(n.usdc.mintable, false);
+  assert.equal(n.assets.length, 2);
+  assert.deepEqual(n.assets.map((a) => a.address), [NEW_ASSET, OLD_ASSET]);
+  assert.ok(n.assets.every((a) => a.decimals === 6 && a.symbol === "USDC"));
+});
+
+test("each allowed asset has its own exact payee, and no other asset is allowed", () => {
+  const n = resolveNetwork(repoConfig, {});
+  const by = Object.fromEntries(n.assets.map((a) => [a.address, a.pay_to]));
+  assert.equal(by[NEW_ASSET], "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b");
+  assert.equal(by[OLD_ASSET], "0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b");
+  assert.notEqual(by[NEW_ASSET].toLowerCase(), by[OLD_ASSET].toLowerCase());
+});
+
+test("only the previous test USDC is mintable here; Circle's token is funded from the faucet", () => {
+  const n = resolveNetwork(repoConfig, {});
+  assert.equal(n.assets.find((a) => a.address === NEW_ASSET)!.mintable, false);
+  assert.equal(n.assets.find((a) => a.address === OLD_ASSET)!.mintable, true);
 });
 
 test("the committed mainnet entry is disabled, empty and refuses to run", () => {
   const m = repoConfig.networks.mainnet as NetworkConfig;
   assert.equal(m.enabled, false);
-  for (const k of ["caip2", "chain_id", "rpc_url", "telegraph_node", "pay_to", "expected_wallet", "explorer_tx", "max_amount_per_payment", "max_paid_calls_per_run", "min_balance_units"] as const) assert.equal(m[k], null, `${k} must stay null`);
-  assert.equal(m.usdc.address, null);
+  for (const k of ["caip2", "chain_id", "rpc_url", "telegraph_node", "expected_wallet", "explorer_tx", "max_amount_per_payment", "max_paid_calls_per_run", "min_balance_units"] as const) assert.equal(m[k], null, `${k} must stay null`);
+  assert.deepEqual(m.assets, [], "no mainnet asset is invented");
   assert.throws(() => resolveNetwork({ ...repoConfig, active: "mainnet" }, { [MAINNET_ACK_ENV]: MAINNET_ACK_VALUE }), /disabled/);
 });
 
 // Obviously fake test values, used only to exercise the validation rules. They are not Telegraph or mainnet addresses.
+const fakeAsset = (over: Record<string, unknown> = {}) => ({ address: "0x" + "11".repeat(20), symbol: "USDC", decimals: 6, pay_to: "0x" + "33".repeat(20), ...over });
 const fake = (over: Partial<NetworkConfig> = {}): NetworkConfig => ({
   label: "fixture", testnet: false, enabled: true, caip2: "eip155:1", chain_id: 1, rpc_url: "https://rpc.invalid",
-  usdc: { address: "0x" + "11".repeat(20), decimals: 6 }, pay_to: "0x" + "33".repeat(20), telegraph_node: "https://node.invalid", expected_wallet: "0x" + "22".repeat(20),
+  assets: [fakeAsset()], telegraph_node: "https://node.invalid", expected_wallet: "0x" + "22".repeat(20),
   explorer_tx: "https://explorer.invalid/tx/", max_amount_per_payment: "30000", max_paid_calls_per_run: 3, min_balance_units: "200000", ...over,
 });
 const cfgWith = (n: NetworkConfig) => ({ active: "x", networks: { x: n } });
+const ack = { [MAINNET_ACK_ENV]: MAINNET_ACK_VALUE };
 
 test("an enabled non-testnet still refuses without the explicit acknowledgement", () => {
   assert.throws(() => resolveNetwork(cfgWith(fake()), {}), /not a testnet.*HUSHRATE_MAINNET_ENABLE/);
@@ -43,21 +60,28 @@ test("an enabled non-testnet still refuses without the explicit acknowledgement"
 });
 
 test("an enabled non-testnet with every value and the acknowledgement is accepted", () => {
-  const n = resolveNetwork(cfgWith(fake()), { [MAINNET_ACK_ENV]: MAINNET_ACK_VALUE });
-  assert.equal(n.testnet, false);
+  assert.equal(resolveNetwork(cfgWith(fake()), ack).testnet, false);
 });
 
 test("a single missing value refuses, and nothing is defaulted", () => {
-  for (const over of [{ rpc_url: null }, { telegraph_node: null }, { expected_wallet: null }, { pay_to: null }, { max_amount_per_payment: null }, { min_balance_units: null }, { usdc: { address: null, decimals: 6 } }] as Partial<NetworkConfig>[]) {
-    assert.throws(() => resolveNetwork(cfgWith(fake(over)), { [MAINNET_ACK_ENV]: MAINNET_ACK_VALUE }), /missing/);
+  for (const over of [{ rpc_url: null }, { telegraph_node: null }, { expected_wallet: null }, { max_amount_per_payment: null }, { min_balance_units: null }, { assets: [] }] as Partial<NetworkConfig>[]) {
+    assert.throws(() => resolveNetwork(cfgWith(fake(over)), ack), /missing/);
   }
 });
 
+test("an empty allow-list refuses: nothing may be paid", () => {
+  assert.throws(() => resolveNetwork(cfgWith(fake({ assets: [] })), ack), /allow-list is empty/);
+});
+
+test("an asset without a payee, with a malformed address or listed twice refuses", () => {
+  assert.throws(() => resolveNetwork(cfgWith(fake({ assets: [fakeAsset({ pay_to: null })] })), ack), /pay_to is not a valid address/);
+  assert.throws(() => resolveNetwork(cfgWith(fake({ assets: [fakeAsset({ pay_to: "0x12" })] })), ack), /pay_to is not a valid address/);
+  assert.throws(() => resolveNetwork(cfgWith(fake({ assets: [fakeAsset({ address: "0x1234" })] })), ack), /address is not a valid address/);
+  assert.throws(() => resolveNetwork(cfgWith(fake({ assets: [fakeAsset(), fakeAsset()] })), ack), /listed twice/);
+});
+
 test("malformed addresses, a mismatched chain id and a zero payment cap refuse", () => {
-  const ack = { [MAINNET_ACK_ENV]: MAINNET_ACK_VALUE };
-  assert.throws(() => resolveNetwork(cfgWith(fake({ usdc: { address: "0x1234", decimals: 6 } })), ack), /valid address/);
   assert.throws(() => resolveNetwork(cfgWith(fake({ expected_wallet: "not-an-address" })), ack), /valid address/);
-  assert.throws(() => resolveNetwork(cfgWith(fake({ pay_to: "0x12" })), ack), /pay_to is not a valid address/);
   assert.throws(() => resolveNetwork(cfgWith(fake({ caip2: "eip155:5" })), ack), /does not match/);
   assert.throws(() => resolveNetwork(cfgWith(fake({ max_amount_per_payment: "0" })), ack), /positive/);
 });

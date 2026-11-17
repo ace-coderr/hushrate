@@ -1,13 +1,13 @@
-// Shared capped x402 client. Pays only the pinned asset on the pinned network to the pinned payee (config/networks.json).
+// Shared capped x402 client. Pays only assets on an explicit allow-list (config/networks.json), each to its own pinned payee.
 import { mkdirSync, writeFileSync, readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { wrapFetchWithPaymentFromConfig } from "@x402/fetch";
 import { ExactEvmScheme } from "@x402/evm";
 import { privateKeyToAccount } from "viem/accounts";
-import { WALLET, USDC } from "./wallet.js";
+import { WALLET, ASSETS } from "./wallet.js";
 import { loadNetwork } from "./network.js";
 import { keyOf, settledReceipt } from "./dedupe.js";
-import { describeRefusal, isAllowedPayment, type PaymentChallengeOption } from "@hushrate/core";
+import { describeRefusal, isAllowedPayment, selectPayment, type PaymentChallengeOption, type PaymentPin } from "@hushrate/core";
 
 export const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 try { process.loadEnvFile(`${ROOT}.env`); } catch { /* env may already be set */ }
@@ -32,8 +32,11 @@ let paidAttempts = 0;
 let currentCallPaid = false;
 export const paidCount = () => paidAttempts;
 
-/** What Hushrate will pay: exactly this asset, on this network, to this payee. Anything else is refused before signing. */
-export const PINNED = { network: net.caip2 as string, asset: USDC as string, payTo: net.pay_to as string };
+/**
+ * What Hushrate will pay: exactly these (network, asset, payee) triples. The node decides which of them it asks for;
+ * any other asset, payee, network or scheme is refused before anything is signed.
+ */
+export const PINS: PaymentPin[] = ASSETS.map((a) => ({ network: net.caip2 as string, asset: a.address as string, payTo: a.pay_to as string, symbol: a.symbol, decimals: a.decimals }));
 
 // The last 402 challenge the node sent. Kept so a refusal can say what the miner asked for (asset and network).
 let lastChallenge: PaymentChallengeOption[] | null = null;
@@ -57,19 +60,39 @@ const guardedFetch: typeof fetch = async (input, init) => {
 
 const fetchWithPayment = wrapFetchWithPaymentFromConfig(guardedFetch, {
   schemes: [{ network: NETWORK, client: new ExactEvmScheme(account) }],
-  // Spend controls: only the pinned asset, capped per payment. Never allowedAssets: true and never spendControls: false.
+  // Spend controls: only the allow-listed assets, each capped per payment. Never allowedAssets: true and never spendControls: false.
   spendControls: {
-    allowedAssets: [{ network: NETWORK, asset: USDC, maxAmountPerPayment: MAX_PER_PAYMENT }],
+    allowedAssets: PINS.map((p) => ({ network: NETWORK, asset: p.asset, maxAmountPerPayment: MAX_PER_PAYMENT })),
   },
-  // Policy (runs after spend controls): also pin the payee, the network and the scheme.
-  policies: [(_version, reqs) => reqs.filter((r) => isAllowedPayment(r as unknown as PaymentChallengeOption, PINNED))],
+  // Policy (runs after spend controls): also require the payee pinned for that asset, the network and the scheme.
+  policies: [(_version, reqs) => reqs.filter((r) => isAllowedPayment(r as unknown as PaymentChallengeOption, PINS))],
 });
+
+/** The asset, network and payee the payment client selects from the last challenge (null if none is allowed). */
+function selectedPayment(): { asset: string; network: string; pay_to: string } | null {
+  const sel = selectPayment(lastChallenge, PINS);
+  return sel ? { asset: sel.pin.asset, network: sel.pin.network, pay_to: sel.pin.payTo } : null;
+}
+
+/**
+ * Read the node's payment terms WITHOUT paying: a request with no payment header returns the 402 challenge. Used before
+ * a run so the funding check applies to the asset the node actually asks for.
+ */
+export async function previewChallenge(minerId: string, intent: string, params: Record<string, unknown>): Promise<PaymentChallengeOption[] | null> {
+  const res = await fetch(`${NODE}/engine/v1/ask/${encodeURIComponent(minerId)}`, {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ intent, params }), signal: AbortSignal.timeout(30000),
+  });
+  if (res.status !== 402) return null; // refused before payment (400, 404, 503) or not payable: nothing to read
+  const h = res.headers.get("payment-required");
+  if (!h) return null;
+  try { return (JSON.parse(Buffer.from(h, "base64").toString("utf8")).accepts ?? []) as PaymentChallengeOption[]; } catch { return null; }
+}
 
 /** Turn the client's generic refusal into a specific one that names the asset and network the miner asked for. */
 function loudRefusal(e: unknown): Error | null {
   const m = e instanceof Error ? e.message : String(e);
   if (!/Failed to create payment payload|rejected by spendControls|No payment requirements/i.test(m)) return null;
-  return new Error(describeRefusal(lastChallenge, PINNED));
+  return new Error(describeRefusal(lastChallenge, PINS));
 }
 
 function b64json(v: string | null): unknown {
@@ -122,7 +145,7 @@ export async function run(c: Call): Promise<Outcome> {
       writeFileSync(`${RECEIPTS}/${stamp()}-${c.label}.json`, JSON.stringify({
         label: c.label, miner_id_requested: c.minerId ?? null, intent: c.intent, params: c.params ?? null, query: c.query ?? null,
         idempotency_key: keyOf(c), paid: true, http_status: null, error: String(e),
-        payment: { asset: PINNED.asset, network: PINNED.network, pay_to: PINNED.payTo },
+        payment: selectedPayment(),
       }, null, 2));
     }
     throw e;
@@ -135,7 +158,7 @@ export async function run(c: Call): Promise<Outcome> {
     label: c.label, miner_id_requested: c.minerId ?? null, intent: c.intent, params: c.params ?? null, query: c.query ?? null,
     idempotency_key: keyOf(c), paid: currentCallPaid, http_status: res.status,
     // The asset this call was allowed to pay with. Receipts written before 2026-11-17 have no such field (the previous asset).
-    payment: { asset: PINNED.asset, network: PINNED.network, pay_to: PINNED.payTo },
+    payment: selectedPayment(),
     payment_response: b64json(res.headers.get("payment-response")),
     telegraph_receipt: b64json(res.headers.get("x-telegraph-receipt")),
     response: body,

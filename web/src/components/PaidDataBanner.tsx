@@ -13,7 +13,7 @@ export function PaidDataBanner() {
   const h = paidDataHealth(history.data);
   if (!h.paused) return null;
   const s = status.data;
-  const asset = s?.payment_asset;
+  const asset = s?.unfunded_asset ?? s?.payment_asset;
   const lastPaid = h.lastPaidHour ? h.lastPaidHour.slice(0, 16).replace("T", " ") : null;
   return (
     <div className="notice warn" role="alert">
@@ -21,7 +21,7 @@ export function PaidDataBanner() {
       {h.publicOnlyHours24} of the last {h.tapes24} hourly tapes in the past 24 hours were public-only.{" "}
       {lastPaid ? `The last paid hour was ${lastPaid} UTC.` : "No paid hour is on record."}
       {s?.unfunded && asset ? (
-        <> The wallet needs <b>{s.payment_symbol ?? "USDC"}</b> at <a className="mono" href={explorerAsset(asset)} target="_blank" rel="noopener noreferrer">{asset}</a> on Ethereum Sepolia (Circle's faucet).</>
+        <> The wallet is unfunded for <b>USDC</b> at <a className="mono" href={explorerAsset(asset)} target="_blank" rel="noopener noreferrer">{asset}</a> on Ethereum Sepolia, the asset the node asked for (Circle's faucet for the current one).</>
       ) : null}
       {s?.degraded?.length ? <ul>{s.degraded.slice(0, 3).map((x) => <li key={x}>{x}</li>)}</ul> : null}
     </div>

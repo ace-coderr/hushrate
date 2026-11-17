@@ -77,7 +77,16 @@ export interface MarketTape {
    * The payment asset this run was allowed to pay with (pinned in config/networks.json). Absent on tapes recorded before
    * 2026-11-17: those were paid in the previous test USDC, LEGACY_PAYMENT_ASSET.
    */
-  payment?: { asset: string; network: string; pay_to: string };
+  payment?: {
+    /** The asset this run paid (or would pay) in: the one the node's 402 asked for, when it could be read. */
+    asset: string;
+    network: string;
+    pay_to: string;
+    /** What the node's 402 asked for this run (null when the challenge could not be read or no call was needed). */
+    requested?: string | null;
+    /** The allow-list in force: the only assets Hushrate pays. */
+    allowed?: string[];
+  };
   notes: string[];
   /** Upstream sources that failed this run (mempool.space, CAISO, Telegraph, Sepolia RPC). Empty or absent when clean. */
   degraded?: string[];
@@ -210,30 +219,44 @@ export const sameAddress = (a: string | null | undefined, b: string | null | und
 
 export interface PaymentChallengeOption { scheme?: string; network?: string; asset?: string; amount?: string; payTo?: string; }
 
+/** One allowed payment: an exact (network, asset, payee) triple. Hushrate pays only the entries of an explicit allow-list. */
+export interface PaymentPin { network: string; asset: string; payTo: string; symbol?: string; decimals?: number; }
+
 /**
- * Is this payment requirement one Hushrate is allowed to pay? Exactly the pinned scheme, network, asset and payee.
- * Used by the payment client's policy and by the tests, so the rule cannot drift from what is enforced.
+ * Is this payment requirement one Hushrate is allowed to pay? Scheme "exact" and an exact (network, asset, payee) match
+ * with one entry of the allow-list. Used by the payment client's policy and by the tests, so the rule cannot drift from
+ * what is enforced. An unknown asset, a known asset to a different payee, another network, or the escrow scheme: refused.
  */
-export function isAllowedPayment(opt: PaymentChallengeOption, pinned: { network: string; asset: string; payTo: string }): boolean {
-  return opt.scheme === "exact" && opt.network === pinned.network && sameAddress(opt.asset, pinned.asset) && sameAddress(opt.payTo, pinned.payTo);
+export function isAllowedPayment(opt: PaymentChallengeOption, pins: PaymentPin[]): boolean {
+  return opt.scheme === "exact" && pins.some((p) => opt.network === p.network && sameAddress(opt.asset, p.asset) && sameAddress(opt.payTo, p.payTo));
+}
+
+/** The first option of a challenge that is allowed, with the pin it matched (that is what the payment client will pay). */
+export function selectPayment(challenge: PaymentChallengeOption[] | null, pins: PaymentPin[]): { option: PaymentChallengeOption; pin: PaymentPin } | null {
+  for (const o of challenge ?? []) {
+    const pin = pins.find((p) => o.scheme === "exact" && o.network === p.network && sameAddress(o.asset, p.asset) && sameAddress(o.payTo, p.payTo));
+    if (pin) return { option: o, pin };
+  }
+  return null;
 }
 
 /**
- * A loud, specific reason for a refused payment: what the miner asked for (asset and network) against what is pinned.
- * Options without an asset (the escrow scheme) are listed by scheme only.
+ * A loud, specific reason for a refused payment: what the miner asked for (asset and network) against the allow-list.
+ * Options without an asset (the escrow scheme) are not listed as assets.
  */
-export function describeRefusal(
-  challenge: PaymentChallengeOption[] | null,
-  pinned: { network: string; asset: string; payTo: string },
-): string {
+export function describeRefusal(challenge: PaymentChallengeOption[] | null, pins: PaymentPin[]): string {
   const want = (challenge ?? []).filter((o) => o.asset);
   const asked = want.length
     ? want.map((o) => `${o.scheme ?? "?"} asset ${o.asset} on ${o.network ?? "?"} (payTo ${o.payTo ?? "?"}, amount ${o.amount ?? "?"})`).join("; ")
     : "no payment option could be read from the challenge";
-  const matchNet = want.filter((o) => o.network === pinned.network);
-  const why = !want.length ? "" : !matchNet.length ? ` None is on ${pinned.network}.` : matchNet.some((o) => !sameAddress(o.asset, pinned.asset)) && !matchNet.some((o) => sameAddress(o.asset, pinned.asset))
-    ? ` The asset on ${pinned.network} is not the pinned one.` : matchNet.some((o) => sameAddress(o.asset, pinned.asset) && !sameAddress(o.payTo, pinned.payTo)) ? " The asset matches but the payee (payTo) is not the pinned one." : "";
-  return `payment refused by spend controls: the miner asked for ${asked}. Hushrate only pays asset ${pinned.asset} on ${pinned.network} to ${pinned.payTo}.${why}`;
+  const allowed = pins.map((p) => `${p.asset} on ${p.network} to ${p.payTo}`).join("; ");
+  const networks = new Set(pins.map((p) => p.network));
+  const onNet = want.filter((o) => o.network && networks.has(o.network));
+  let why = "";
+  if (want.length && !onNet.length) why = ` None is on ${[...networks].join(" or ")}.`;
+  else if (onNet.length && onNet.every((o) => !pins.some((p) => sameAddress(o.asset, p.asset)))) why = " The asset on the allowed network is not on the allow-list.";
+  else if (onNet.length && !selectPayment(onNet, pins)) why = " The asset is allowed but the payee (payTo) is not the one pinned for it.";
+  return `payment refused by spend controls: the miner asked for ${asked}. Hushrate only pays: ${allowed}.${why}`;
 }
 
 /** Can the wallet pay for this run? Compares the balance of the PINNED asset (in base units) with the run's cost. */
@@ -241,6 +264,38 @@ export function fundingStatus(balanceUnits: bigint | null, runCostUnits: bigint)
   if (balanceUnits === null) return { funded: false, reason: "the wallet balance could not be read" };
   if (balanceUnits < runCostUnits) return { funded: false, reason: "balance below the cost of the run" };
   return { funded: true, reason: null };
+}
+
+export type PaymentAssessment =
+  | { state: "ok"; pin: PaymentPin; balanceUnits: bigint }
+  | { state: "refused"; reason: string }
+  | { state: "unfunded"; pin: PaymentPin; balanceUnits: bigint; reason: string }
+  | { state: "unreadable"; reason: string };
+
+/**
+ * Decide, before any miner is paid: what did the node's 402 ask for, is that on the allow-list, and does the wallet hold
+ * enough of THAT asset for the run? The balance of the other allowed asset is irrelevant: the node, not us, picks the asset.
+ *  - refused:    the requested asset or payee is not allowed (loud reason naming asset and network)
+ *  - unfunded:   allowed, but the balance of the requested asset is below the run's cost ("unfunded for <asset>")
+ *  - unreadable: no challenge, or the wallet balance could not be read
+ */
+export function assessPayment(
+  challenge: PaymentChallengeOption[] | null,
+  pins: PaymentPin[],
+  balances: Record<string, bigint | null>,
+  runCostUnits: bigint,
+): PaymentAssessment {
+  if (!challenge || !challenge.length) return { state: "unreadable", reason: "the node's payment terms (402 challenge) could not be read" };
+  const sel = selectPayment(challenge, pins);
+  if (!sel) return { state: "refused", reason: describeRefusal(challenge, pins) };
+  const bal = balances[sel.pin.asset.toLowerCase()] ?? null;
+  const f = fundingStatus(bal, runCostUnits);
+  if (bal === null) return { state: "unreadable", reason: `the wallet balance of ${sel.pin.asset} could not be read` };
+  if (!f.funded) {
+    const dec = sel.pin.decimals ?? 6;
+    return { state: "unfunded", pin: sel.pin, balanceUnits: bal, reason: `unfunded for ${sel.pin.symbol ?? "token"} ${sel.pin.asset} on ${sel.pin.network}: balance ${Number(bal) / 10 ** dec}, this run costs ${Number(runCostUnits) / 10 ** dec}` };
+  }
+  return { state: "ok", pin: sel.pin, balanceUnits: bal };
 }
 
 // ---- paid-data health (the "Paid data paused" banner) -------------------------------------------------------------------
