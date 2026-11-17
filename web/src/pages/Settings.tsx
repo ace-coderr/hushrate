@@ -1,6 +1,7 @@
 import { PageHead } from "../components/Layout";
 import { BASE, useHistory, useLatest, useLedger, useStatus, useTicker } from "../lib/data";
-import { ago, hourLabel } from "../lib/format";
+import { ago, hourLabel, explorerAsset, shortHash } from "../lib/format";
+import { PaidDataBanner } from "../components/PaidDataBanner";
 import { useStore } from "../lib/store";
 
 export function Settings() {
@@ -28,6 +29,7 @@ export function Settings() {
     <>
       <PageHead kicker="Settings" title="Display and data status.">Preferences stay in this browser. The status panel reads the agent's own status file.</PageHead>
 
+      <PaidDataBanner />
       <div className="grid-cards">
         <section className="card">
           <h3>Theme</h3>
@@ -59,7 +61,9 @@ export function Settings() {
               <dd className={tickerAlive ? undefined : "stall"}>{tickerAlive ? `alive · last tick ${new Date(lastTick!).toISOString().slice(11, 16)} UTC · ${ago(lastTick!)}` : lastTick ? `not seen for ${ago(lastTick).replace(" ago", "")} · restart it` : "not started yet · start it once"}</dd>
               <dt>Last status update</dt><dd>{ago(s.updated_at)}</dd>
               {s.reason && <><dt>Reason</dt><dd>{s.reason}</dd></>}
-              {s.usdc_balance && <><dt>Test-USDC balance</dt><dd className="mono">{s.usdc_balance}</dd></>}
+              {s.usdc_balance != null && <><dt>{s.payment_symbol ?? "USDC"} balance (pinned asset)</dt><dd className="mono">{s.usdc_balance}</dd></>}
+              {s.payment_asset && <><dt>Pays only</dt><dd><a className="mono" href={explorerAsset(s.payment_asset)} target="_blank" rel="noopener noreferrer">{shortHash(s.payment_asset, 8, 6)}</a> on Ethereum Sepolia</dd></>}
+              {s.unfunded && <><dt>Funding</dt><dd className="stall">unfunded: fund {s.payment_symbol ?? "USDC"} at {shortHash(s.payment_asset, 8, 6)} on Sepolia (Circle's faucet)</dd></>}
               {s.paid_calls_last_run !== undefined && <><dt>Last run</dt><dd className="mono">{s.paid_calls_last_run} paid call(s), ${(s.cost_usd_last_run ?? 0).toFixed(2)}</dd></>}
               {s.hashprice_source && <><dt>Hashprice source</dt><dd>{s.hashprice_source}</dd></>}
             </dl>

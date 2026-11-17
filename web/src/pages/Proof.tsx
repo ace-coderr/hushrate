@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { blockHashprice, checkBtcPurchase, checkHashpricePurchase, fetchBlocks, fetchBtcUsd, windowHashprice, type MarketTape } from "@hushrate/core";
+import { blockHashprice, checkBtcPurchase, checkHashpricePurchase, fetchBlocks, fetchBtcUsd, paymentAssetOf, sameAddress, windowHashprice, type MarketTape } from "@hushrate/core";
 import { Empty, PageHead } from "../components/Layout";
 import { useLatest, useLedger, type LedgerRow } from "../lib/data";
 import { explorerTx, num, shortHash } from "../lib/format";
 
 const RPC = "https://ethereum-sepolia-rpc.publicnode.com";
-const USDC = "0xcc194e1a843b658526d0d5c431f670028582ae17";
 const TRANSFER = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 
 type Result = { state: "idle" | "running" | "pass" | "fail" | "error"; text: string; detail?: string };
@@ -121,16 +120,18 @@ export function Proof() {
       const r = await rpc("eth_getTransactionReceipt", [tx]);
       if (!r) { setPay({ state: "fail", text: "Transaction not found on Sepolia." }); return; }
       const ok = r.status === "0x1";
+      // The asset comes from the ledger row (or the tape), not from a constant: rows without one are the previous asset.
+      const asset = paymentAssetOf(row ?? (t && tx === tapeTx ? t : null));
       const payer = (row?.payer ?? "").toLowerCase().replace(/^0x/, "");
       let total = 0n;
       for (const l of r.logs as { address: string; topics: string[]; data: string }[]) {
-        if (l.address.toLowerCase() === USDC && l.topics[0] === TRANSFER && (!payer || l.topics[1]?.toLowerCase().endsWith(payer))) total += BigInt(l.data);
+        if (sameAddress(l.address, asset) && l.topics[0] === TRANSFER && (!payer || l.topics[1]?.toLowerCase().endsWith(payer))) total += BigInt(l.data);
       }
       const need = BigInt(row?.amount_uusdc ?? "10000");
       const covered = total >= need;
       setPay({
         state: ok && covered ? "pass" : "fail",
-        text: `Transaction ${ok ? "succeeded" : "failed"} in block ${parseInt(r.blockNumber, 16)}. Test-USDC transferred from the payer in this transaction: ${Number(total) / 1e6} (this request needed ${Number(need) / 1e6}).`,
+        text: `Transaction ${ok ? "succeeded" : "failed"} in block ${parseInt(r.blockNumber, 16)}. Transferred from the payer in this transaction in token ${asset.slice(0, 8)}…${asset.slice(-6)}: ${Number(total) / 1e6} (this request needed ${Number(need) / 1e6}).`,
         detail: "Several requests from one wallet can share a settlement transaction, so the total can exceed one request's cost.",
       });
     } catch (e) { setPay({ state: "error", text: `RPC check failed: ${(e as Error).message}` }); }
@@ -169,7 +170,7 @@ export function Proof() {
 
           <section className="card check">
             <h3>4 · Check the payment on Sepolia</h3>
-            <p>Looks up the settlement transaction through a public RPC and finds the test-USDC transfer from the payer.</p>
+            <p>Looks up the settlement transaction through a public RPC and finds the transfer of the payment asset recorded for that request (the asset is taken from the ledger, so requests paid in the previous test USDC and in the current one both check).</p>
             {rows.length > 0 ? (
               <label className="field inline">Transaction
                 <select value={tx} onChange={(e) => { setPick(e.target.value); setPay(idle); }}>

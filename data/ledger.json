@@ -14,6 +14,8 @@
     "tx_hash": "0x23cddb59b347ad60cd18366e04f6a819e1060b2c89a526b29c815b30284b19e6",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xce9ec8b87697ce537c4b2b2d6c5750b9177b6e59d5f66ed5eb777c12397724e6",
     "outcome": "served"
   },
@@ -32,6 +34,8 @@
     "tx_hash": "0x5996dee50049cf45ab68851c229e52d569aeb7840b0be6f4c4d1b4f51a647fbe",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xef1a9752d84f3a31076c912e1e868197b0a26f2056442d74cd176eed1e35f8d4",
     "outcome": "served"
   },
@@ -50,6 +54,8 @@
     "tx_hash": "0xbf22b2c4cf51bb56b37e8e2ab61d91b0ed51e9988bdfe880feea3b10e06f67e4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf3fd8dde6cdf47cba828e09820d5e9d751dc6a56c64050c35ed2d480c3f6e9c6",
     "outcome": "served"
   },
@@ -68,6 +74,8 @@
     "tx_hash": "0x1d1d139b37e8183d9e390fc826ff3d0e95586cf8e1399b1bd687a2b986026cb7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -86,6 +94,8 @@
     "tx_hash": "0xb83075bb014ffadb7b33bd06becb60e63cd3724c7b22db86ebd9efe532a96de1",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2e47a02b2ce38c6c64f970a67c6c7537f96722749e72f0aedaa702e8da6cec2b",
     "outcome": "served"
   },
@@ -104,6 +114,8 @@
     "tx_hash": "0x3402ab0da37e47f3bc7eb3975281855cdfcda8c38f75cfd19a124e05567a681a",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe5c391277b28511d593356d7a95a3d04212d3faf319e5a5d2aab9623f16cd188",
     "outcome": "served"
   },
@@ -122,6 +134,8 @@
     "tx_hash": "0x8ace4a595cfa09f40e57d5aa431e95036c9228bcf47178b6e09a7c47bf33635b",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xcc8787b42cce92aedf6f322cab5263d9851d58aa4df09aa4efb5ffba295da6aa",
     "outcome": "served"
   },
@@ -140,6 +154,8 @@
     "tx_hash": "0x12d94c3eb5a4fe506cc260a7f2c2be727cb698a15a4318132a1ba486eb98add2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8e5657835fb5d152bac710256563f4d6cf5f75471b448cf3740581d232c3b28b",
     "outcome": "served"
   },
@@ -158,6 +174,8 @@
     "tx_hash": "0x0e6d08e649c5a57b67962304815176d329f0b84888f8b1e70f5c32ea8660918a",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa2bd8a46c46dfced926228c2e9bfa73321d04a7c65459fd47c5d253dc1a3a3b3",
     "outcome": "served"
   },
@@ -176,6 +194,8 @@
     "tx_hash": "0xff4e2cba382d70fdad9efb6c56f0faa98f70fe033f38700f1324e912bbf49a39",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x0d158eb1d412e9e00102d0611979db716b33782b3d6e5f743430f2513a1d7ee9",
     "outcome": "served"
   },
@@ -194,6 +214,8 @@
     "tx_hash": "0xcf17c7fd7f69d66b8183446eb7fec75e299c0fa7ccc36a705864e5842ea3cc01",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa9a3aaf278d10e76d021f1365303edb3aecec537f5fc06546f717cfa93acf6da",
     "outcome": "served"
   },
@@ -212,6 +234,8 @@
     "tx_hash": "0x8420c1c3ec1d004807e2086aa00314dafa844200f60c7c805969e4b0f2fdf0e8",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -230,6 +254,8 @@
     "tx_hash": "0x32ba90c799013125a676d5a4ec1d793e20a7810556e7861a0a8ebdf1d6d55546",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x88d75fb046826bdef4d4973e51674c055a856e8e06c0ea27202818c519a02aca",
     "outcome": "served"
   },
@@ -248,6 +274,8 @@
     "tx_hash": "0x9ff1b7d6607511afcbdd542bf935413cae8eac2967f721a9fe6d2b90585380df",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x04a4a7b844abe1e9d3c1e6084c76c9b9aae11594ef32bd478dd11f2866110148",
     "outcome": "served"
   },
@@ -266,6 +294,8 @@
     "tx_hash": "0xde2191a9073ea5b6742abcb26a1082d828e4f1848c7e3201ba77553fdd982fe4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa3fb19b569b3c9ff60eebb2013087bae38d42c793dc32ebb8e2534caa5570c36",
     "outcome": "served"
   },
@@ -284,6 +314,8 @@
     "tx_hash": "0x0ae30aed58f547306816a9dcf2fb2229c2b8a2179283c6fddd7c045d74e18b22",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x56889c9b96cc4d788d6997142b0c8d41bfef19aa62bded19f906c74c16f2eae7",
     "outcome": "served"
   },
@@ -302,6 +334,8 @@
     "tx_hash": "0x07b2587e7a0709aa4cce1dbe042990704b1628b4f1ddad2d0930c736fee2634a",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x884feba1f9d21270e1712a2fc2abc97422308932479c505dd450945b8e306240",
     "outcome": "served"
   },
@@ -320,6 +354,8 @@
     "tx_hash": "0x726ebad4ceb73bf74ac3722eb8fbdc45d6315fcbda3884307b8191b938e8b49d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9c5b0b18742d826d28c71720daa42071de788bd06aaeb5d101a7907ec99145c6",
     "outcome": "served"
   },
@@ -338,6 +374,8 @@
     "tx_hash": "0x7e83bd7fbdcb54940cfe9244164891f6201596d4ec32b2ee47c70f169f137ea0",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2fe418474477b813591690235230f4f82d811b7012c60be2c7e639be33006b2a",
     "outcome": "served"
   },
@@ -356,6 +394,8 @@
     "tx_hash": "0x43d6c5c9db054a2da242b0c6bbb0f044d723ac9858ddfc4cd8fcb436ba2657f0",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa2c180cf3dc8115e046d4636dd1a99ce51142abba1b90315ca79f3a6a43132f5",
     "outcome": "served"
   },
@@ -374,6 +414,8 @@
     "tx_hash": "0x30314b53ee378849992e2df3a2354c240825ef725e564741c1dcb32f9483846d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6a7a34027cf0be463d7da1af51d5ed8900e0e18c74739bb766ba03cfaea02617",
     "outcome": "served"
   },
@@ -392,6 +434,8 @@
     "tx_hash": "0x13d0b168c107c39f935023900c99d679f019aab9e1452d77b516e4c9dcbecf48",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x77d7e29aa055bbac332bdc003b57947b013995a4aaa8b63e47eff900fef1a900",
     "outcome": "served"
   },
@@ -410,6 +454,8 @@
     "tx_hash": "0x9d203098c32e1c2a11712b5e9798f045553f31d5845c17ebc50f0f1341de31cc",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x43442a31e8c1cc20347bb6cb591bfca6df850bbd7cd5bc2ae1d91f05dd09db8c",
     "outcome": "served"
   },
@@ -428,6 +474,8 @@
     "tx_hash": "0x90737bf267079cc629f9cae54c9ecbbefcdef2bca060480593eb0b7413655577",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x04a634b7dd2f0c3d053664d36ab7617a038a677fb01aee08c8d019af5dd4fc93",
     "outcome": "served"
   },
@@ -446,6 +494,8 @@
     "tx_hash": "0xdf0261e503790bdb55b9571ed77933d061fe55c134b3555192ddc89bff6477c8",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x260b4451ca3df9762065bc17589437c045a4a7813f6203d12912894717dcf936",
     "outcome": "served"
   },
@@ -464,6 +514,8 @@
     "tx_hash": "0xaa50563bfdcde429d30f1b5eef9e1be7e905f953c5118be7610fdd6ec0fc8928",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x60fafaead39896e2121c7ccdc16d1ba80df210c2745b6850d8ab59ed371d6d94",
     "outcome": "served"
   },
@@ -482,6 +534,8 @@
     "tx_hash": "0x6c62220aed521d3de204eeea5de19eb7fa5be7117cbc86dea7353db656cf355c",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x7882d2e0d869d10a16ec02971d96a1dfbc4417740eeed4e947367073dcced0c2",
     "outcome": "served"
   },
@@ -500,6 +554,8 @@
     "tx_hash": "0xd3070e2e1bb7e952bc17c33c8668e9a3f158888f7ff5a0ba724e79106974cf85",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x4e3cc0ccf9fe5d6baeee7aff6ae45c0389ed6ea6e92c7806dc2b0990faf3cbee",
     "outcome": "served"
   },
@@ -518,6 +574,8 @@
     "tx_hash": "0x74686eeae080f77a5c3825e8836566fd48d2123b534586920fab6db62e956829",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf0a6a3504db6ead726f5d0feebfde41ff1a5ee38b192f770bc412b48a4dba2a1",
     "outcome": "served"
   },
@@ -536,6 +594,8 @@
     "tx_hash": "0x465f0457be8b29ade4d6d6ca99fc0e8b61387fa051edfcdf8e1a479fdf34eda7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf2e5e127bd1c2c924578e5770ce273925e545ac6b688850563f728a85da68ea5",
     "outcome": "served"
   },
@@ -554,6 +614,8 @@
     "tx_hash": "0xdde889dd74258579612702568724f08e0108b1cab8776865b0dff991d74430c2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x4a3c3d80b28a5ac1bcf88f2c29e7e5d71386ca0d983c051cfe17a710f89d8d43",
     "outcome": "served"
   },
@@ -572,6 +634,8 @@
     "tx_hash": "0xd07885f4420e142b1872e25efc6678950cbe62236a2ededb6faa625b5ca9786b",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x837c5c5cc96fe15d255ffcbf0e70632ea0055cb884d51b86b56c5ffe5c9d4ab3",
     "outcome": "served"
   },
@@ -590,6 +654,8 @@
     "tx_hash": "0x1a8196e1775af2f873bc3c806ef71f64af9c6ac82b10ddd444209c4a822d8af0",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe917fb100a83494947ea33d7d30a2d36ce1e73b2f49e4ec841a0ab528c9d27e3",
     "outcome": "served"
   },
@@ -608,6 +674,8 @@
     "tx_hash": "0x78dc30a6c57a724f8e3875729021c80b4ecce91ea9eb8f9c28b56c96c8e627cf",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x351213101da8cb86feaccbad39370570c012d9922d7916ac6ad05fa3a302a310",
     "outcome": "served"
   },
@@ -626,6 +694,8 @@
     "tx_hash": "0xf91825bd00ba0940ba6af7cee57fbb1596ba7950dd6e548242f6201a72e801a6",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2d9dccc40f9113bd1bbd5dea2e9ee5d9400045b5208e987b3edfc681548a3125",
     "outcome": "served"
   },
@@ -644,6 +714,8 @@
     "tx_hash": "0x12d0c581e621eb0afe7037915d31a11315f5c3277b8b1e8ba19736ae6d297872",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x92602cd3cfd691441157c206f0d26366375b55208a76dba7fa4945ad93908151",
     "outcome": "served"
   },
@@ -662,6 +734,8 @@
     "tx_hash": "0x9e62ce14cc96af728754a0a8a0ee054c12f84181df392dbdac235ae9fdbf7143",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd1563855d3ea60b52eeb7a937d4c424514f2cbff8958302fb612cb16b6c52306",
     "outcome": "served"
   },
@@ -680,6 +754,8 @@
     "tx_hash": "0x203326861c6a38d0237ca4153d280b851a104ac42ba0c1bd0b4a086f7506983d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xccf5f8b2bf80ab6363fe59190715f8df231989097ee1553e1761af08ae7e46c0",
     "outcome": "served"
   },
@@ -698,6 +774,8 @@
     "tx_hash": "0xeb93e016c70cfaca6a1bfee2b23aac6362d2f21a28bfd717b98ff35b9898b856",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8f9e2eff48701c88d003cc4d73a33012bbcd784a0df12c9de03020db99d8f6df",
     "outcome": "served"
   },
@@ -716,6 +794,8 @@
     "tx_hash": "0xafdf31a64c0af3db7a0363e65f81fd74750f74734747e190a9673cb986bc4213",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8cdca6fd661a7758d305ea7a43de7e5182ed1d2ff441226d6821ec47f81a3043",
     "outcome": "served"
   },
@@ -734,6 +814,8 @@
     "tx_hash": "0xcd97fbbea29acf18cb309eb13ebfa44e08dee9b506d7e277fc84475b538608c7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5fcf2f02303a5e68df5623f8d48d00f0c4be20c47f7ef5847dddbcf6ffc8f0e4",
     "outcome": "served"
   },
@@ -752,6 +834,8 @@
     "tx_hash": "0xabd9b19023bd7e226ed19f6c14e760dfbd4aec3000e87f853e30161c1168cd30",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x26aa5dd4e3d7b6bfb97441bf1f19e02f6aee63d727e97edea1a02674e012a2fd",
     "outcome": "served"
   },
@@ -770,6 +854,8 @@
     "tx_hash": "0x7d012276f24d8b135f30be9182536c1cfca7fd28abec0ff3c8a4e098e8ee49ec",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x287b861742e8cb9b265f5da67a9167a32d2f8763c3777e9a89075f073e7543c2",
     "outcome": "served"
   },
@@ -788,6 +874,8 @@
     "tx_hash": "0x39a7e29456caa9652fde387b8aff16955d2da22764641aa1caf4bbf55adb8957",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xc39659e03c54051aebba474f9f87a5db1c8d6a1cb3440a331a26ff272144b8fa",
     "outcome": "served"
   },
@@ -806,6 +894,8 @@
     "tx_hash": "0xbd7e51ebda0c7b0d2b13277bdb4f8400083c1238892587b9631f04bbecb9ca16",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb413a52af84d6fea1d7920e3cd0410cbcaa064432885fcb3f6251f2f41374351",
     "outcome": "served"
   },
@@ -824,6 +914,8 @@
     "tx_hash": "0xacb0ba4816bbd378ccc18728774f58867ca40c2e8f77431ab05e80fbf24d331e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x45c46e7c082309997a630d76a0e2b98d18bb7275c9a7cc8b1d8e694bc5904fae",
     "outcome": "served"
   },
@@ -842,6 +934,8 @@
     "tx_hash": "0xbb8111ebb23dea3b835912b67596241ffed244fa9932862d6667478f0346eaa1",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x1dc7b108474081452670d0a9c3e28a616d78da8a7c16eb38c54b65295ab8c545",
     "outcome": "served"
   },
@@ -860,6 +954,8 @@
     "tx_hash": "0xaa274ade6efd4547085ea6d0aa2fbc202e22415dc30b634d46baad49116fe01c",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x1574072c432bc167ced4692e9fbefc583e6f3ccb1cbede236683a9e7c9ae8db4",
     "outcome": "served"
   },
@@ -878,6 +974,8 @@
     "tx_hash": "0x76aaa8c627a0e532e7dad8dc7005e00cb9aad5db601d9c34609e71a3a94192ed",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x31d9cbdafc5678e5971a33d587e0c4d10bb345f113bc0544d858e7968d6416c6",
     "outcome": "served"
   },
@@ -896,6 +994,8 @@
     "tx_hash": "0xea43afbe9369cead37bccb82da290f416e34d84b10354399262caaa4b10edb28",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6abef15e76f1def76f9fea745e95b042493caaf9c3264cb619036b34ab846cb5",
     "outcome": "served"
   },
@@ -914,6 +1014,8 @@
     "tx_hash": "0x92bf16b855a20471c02c115bcd65e16edb69ec416b8bf978ad97e8787f90241d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xbf348b2d9a4d822465fb92f94160dde6da42c98a56f4f4785ae75201c8014a62",
     "outcome": "served"
   },
@@ -932,6 +1034,8 @@
     "tx_hash": "0x63b632480b30f03567dc4c9512f6991e2f2f019bfee95c96d8eb83f150bfc31c",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8f2e95f26ddc8eaa25a96a2f707b8a21ab4140f0a7a04d6d5510ad4e56b5e7f5",
     "outcome": "served"
   },
@@ -950,6 +1054,8 @@
     "tx_hash": "0x5888299771ed3d328fb9e994e744c347c1eb68a64201f66af27780725a4863b5",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x96d1d5fb607008f23a1badf5c3b4687eefcdbf189b1fb9cb1a837dce0978cc1f",
     "outcome": "served"
   },
@@ -968,6 +1074,8 @@
     "tx_hash": "0x41c4a44530781fddcb8bb5c46340bf6bbb3eac3505c9cf8f1a5c6fb9bd9a579d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x28c9b47f4723ae6ebe182b79501e97687a9864fcb27ea64cd20a0a855397079b",
     "outcome": "served"
   },
@@ -986,6 +1094,8 @@
     "tx_hash": "0xc96fbec1203fe255231f33efca60480e8dad43389669cc4f762a1cd3bd9355c7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x36d20158b6b4d1b58a499c56f440e277ce401d3e8c273f667734686dcf3b5341",
     "outcome": "served"
   },
@@ -1004,6 +1114,8 @@
     "tx_hash": "0x9d5e07921c177448b7a0aa5c8cebfc09857e40e930c43f54683b56dd326714de",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x19b9a4167d9d50c05e69b5615458eaa156dbb951f4c3347d15dc69531390740d",
     "outcome": "served"
   },
@@ -1022,6 +1134,8 @@
     "tx_hash": "0xf077b6b8087a843f8a34ece964bc6b808e664ac3f49b10f2407c0d65106d102e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa548d9cb5c2e1de09026b5068c94c4b13da6c88dc40d29984523222c7eb0684e",
     "outcome": "served"
   },
@@ -1040,6 +1154,8 @@
     "tx_hash": "0x4acb29df5cb48437ae09abfef8e18d057d515db0bc25acf12a0f89d14d3ea789",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa170bddb7083a626bd49e1cdbea32eb5eef554c7b42a7d8381edb8169b36c717",
     "outcome": "served"
   },
@@ -1058,6 +1174,8 @@
     "tx_hash": "0x00ab9101efcda0ac9ad6c51bb012699868b41b649adeda26944d6950bcd4027c",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x1df3c0bdcf17ccebaed220da7ba13d39cf46d8a164ef3c83f968b5c32f290f21",
     "outcome": "served"
   },
@@ -1076,6 +1194,8 @@
     "tx_hash": "0xec33233cc342eb85ab13d34120abb0a2ed3867ee16296957b82975981c92ae78",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x028b736425b83c14bb89149627522f79bf17903eeee583a708201a01d0017ec1",
     "outcome": "served"
   },
@@ -1094,6 +1214,8 @@
     "tx_hash": "0x829d5753b713940b0c2e33bd1f77bea7fadb4aa645811a58144dcc715efef61d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb3a9cbc7bbe03ccd1e72c945b005aa27811abe5edb086ab75fd9bf5bb216cfc4",
     "outcome": "served"
   },
@@ -1112,6 +1234,8 @@
     "tx_hash": "0x40e05d0164024d011a044f896fca269f90ce875fb493afdf129013d5a43e4e14",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe83f5d41097354fdb57e94de4024bd1e9f07a7e4abb9567604188efd4a0a9528",
     "outcome": "served"
   },
@@ -1130,6 +1254,8 @@
     "tx_hash": "0x1628708488ce1f4db6f5f808544a4f491f6115b0e905df3d6f721394755806d9",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xdfa75ce41c254bb17b10b7d50d6a807096378d23aed2ffd4d6a2139fa20601d9",
     "outcome": "served"
   },
@@ -1148,6 +1274,8 @@
     "tx_hash": "0xc66ca9c694345defcfcf07a84c6f91dc5adff52d9b3d4a6532a3d9089bdaf044",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5522d3eb6c8fb483072f5232bdf87e22ecf3fc875f08635d8cc4d835566d8ffd",
     "outcome": "served"
   },
@@ -1166,6 +1294,8 @@
     "tx_hash": "0xa52b6c80eb3e1f1098af4ac6f6651f7d39864113f35189125d5a52f3ed537ac1",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xdd254a9abe529eba33feb710e8e8daba5947deac2f413f5ceaa734777a5b7bf5",
     "outcome": "served"
   },
@@ -1184,6 +1314,8 @@
     "tx_hash": "0x76b5fa086e613dfbac7a712d244f2f77139d8728dd5f4c58b77e444e0186d66f",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb533d10d65564dfdba1fc2d9f314b9cb6b050c8e7a6ca643dd8c017ef2c3e5db",
     "outcome": "served"
   },
@@ -1202,6 +1334,8 @@
     "tx_hash": "0x0280b4b13f9ea6d9b054ec833e4076b2d36a380bac9be2a6557eaf40888bef56",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xc161e04726902abd1534d4cf7ea5861f79736f056c1740af23d27a9cbcbe2f16",
     "outcome": "served"
   },
@@ -1220,6 +1354,8 @@
     "tx_hash": "0x3af5eebfce4298b101565a322ba1545d0a831154f190c28ce5f3c633ee218862",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x81c1f259775f4f1fe995d895a5fd18bb0f5d63241b4200ff088d8b4045bc3ba1",
     "outcome": "served"
   },
@@ -1238,6 +1374,8 @@
     "tx_hash": "0x0927b6c91145504ea2aad9ac8e125ae887a6512796fad1a043e88439cb4b2d06",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x374f0a7b6354ac35417bc26a346943dd9dc017052c0593ace9aa54c8b45eb40e",
     "outcome": "served"
   },
@@ -1256,6 +1394,8 @@
     "tx_hash": "0xd65bbb40e9dd342f1203ddc85d149cb99e6811b499dbecfea2e607bd6f385a50",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x564ec9b979b4af89cd753bee079fd772215553c435b3b72118069bff210b0c24",
     "outcome": "served"
   },
@@ -1274,6 +1414,8 @@
     "tx_hash": "0x5042eb0e965a28981c3fc8ee946ad888c2cd1e586a635b91558b381e481d24d7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb53958fadc4524492ee5855b71ca7e78fd701fb5b7f6f775b93bb087d44fb09c",
     "outcome": "served"
   },
@@ -1292,6 +1434,8 @@
     "tx_hash": "0x1017af0fbe087287bee5f36356b27a8ce3f498dd7c92d60a62f1821664dab800",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb4c8c5aae00af42bf2279bd523a96b0f1cb0fea9b1989160dd0b52d2d8322bbf",
     "outcome": "served"
   },
@@ -1310,6 +1454,8 @@
     "tx_hash": "0x56e8b33bbd3b7df0ea3485d37f6c438c109701273ac67b4f3e4aa509ba9031a6",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x7ad7462e246917ddc9389359de93d4d8537125cc84574e94c5b0f733ecd8c9c6",
     "outcome": "served"
   },
@@ -1328,6 +1474,8 @@
     "tx_hash": "0xf1410518e6bbade5e67c5167e1fdf11df9566b4fb872437f2802ef52555b6a98",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5aa007a68f503b997523634cf38ebe5365f810db3df096e329194d4dc1547143",
     "outcome": "served"
   },
@@ -1346,6 +1494,8 @@
     "tx_hash": "0xb46f967d162ad90f511c26309e18978fa20147f36f1d13a90ee988fd55067429",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x4a9df1c1cb0e90cf5a84f370d46232d42b5e2702f8b420c83d61ad007bebf46d",
     "outcome": "served"
   },
@@ -1364,6 +1514,8 @@
     "tx_hash": "0xe9ebee8f6659b437c2de82b678e014c2b46bc5ae9be36e9d94a6297feec140f6",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9e44654f15db06001c4cc134e17b7842553684569c99735478251e1759a5c4b0",
     "outcome": "served"
   },
@@ -1382,6 +1534,8 @@
     "tx_hash": "0x02487319a3c6bfa7e9ca10a33ee42778d6a976199363961cc4a2ef4b40506be4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf65e8d924f950272a1decf67fbf6f5313733cbf446d5c7e894975568f2e432e2",
     "outcome": "served"
   },
@@ -1400,6 +1554,8 @@
     "tx_hash": "0x63ac7eaa1659fe682d2162dfe04f7354361822bfada44b5fc1be369cd761a322",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x3894055d2159d79564b66b8d02d37bbfb8f0ea2e4c54ce43afc14cb9d6954fe2",
     "outcome": "served"
   },
@@ -1418,6 +1574,8 @@
     "tx_hash": "0xa4a4cc685f7d8fa8cb29769dd4e909fedb46bb6ea99a44ef8ef19e33cd30ee11",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xffb6c8db906968825f199d75fed394239883baf646e60669b0a0f8bc58a50007",
     "outcome": "served"
   },
@@ -1436,6 +1594,8 @@
     "tx_hash": "0xaf8a0bac51267d03e4d1027fc74249f51e05fd701b2ad15c5891d167fd7c0b25",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x33296d61b1e0f280b002323bb6cbc4901e085850940d2c569557dd09be9578ec",
     "outcome": "served"
   },
@@ -1454,6 +1614,8 @@
     "tx_hash": null,
     "payer": null,
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "transport error after payment was signed; status unknown, check the wallet"
   },
@@ -1472,6 +1634,8 @@
     "tx_hash": "0xf152edd11b6384d3b2b2de93aa49ac3a7fdaeac3e77976c8f1745be080edefe2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xc538b999499dfad79d501d81b3d87841cc0194de1841c8fca824f75829a6536c",
     "outcome": "served"
   },
@@ -1490,6 +1654,8 @@
     "tx_hash": "0xf8ecd9123d37f57df1df0de334ecb26516a4bbe57643eb9a538166d9f9d9d7e8",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x06a84f9007d46f6be0e20c91e858e27eee686e491b496d6391d4328d03b8712b",
     "outcome": "served"
   },
@@ -1508,6 +1674,8 @@
     "tx_hash": "0x10d6cb3192dd4d9b131e3a62dca7aa0a9db9490f66454b73b12a3968312e6c99",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x256b96d07c091625429fe6a81dd7aec4883968223601f8b6ceb1f7a42fb1aea5",
     "outcome": "served"
   },
@@ -1526,6 +1694,8 @@
     "tx_hash": "0x739d33b764f029145d80c667b4dc0f508438240c91ffbaeac7f169ebfde7ebdb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xfe8797dd7732670f4d9fbcac4a213402b58500acaa13a28f71d95a6240ab6dec",
     "outcome": "served"
   },
@@ -1544,6 +1714,8 @@
     "tx_hash": "0x19d3ad1f1850bbab90561d53e5fd7aaa437418ef9d144922c2b8d8dd92485f91",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9bd9c105dded3e5fb63e492a74c14ff1c2a8321ecfbb627d33555ed8b8d6da36",
     "outcome": "served"
   },
@@ -1562,6 +1734,8 @@
     "tx_hash": "0x343f86116d53027cc23210da355a71d7fa0da844415b476b4aa04be9e12e8efb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2721fc214984af064250cda206ebc5b3b6f8a4a9a2680eceaf00c9166d0429a6",
     "outcome": "served"
   },
@@ -1580,6 +1754,8 @@
     "tx_hash": "0x14152c18d4ee1eead83a4e68dc789c6e54b10a0b14d15507e9c4cca6dcd72d6d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6cd59454821220380454080bf2efe285e863f009b0eaab420604feec130c731c",
     "outcome": "served"
   },
@@ -1598,6 +1774,8 @@
     "tx_hash": "0x3fa10c65db2a0c034c0c273e339fc5f1c8f0796d6e8bfb9508513c0bbccd15a9",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9b65c38612030a81e09bdc60bbfc87374e83fa5d34b94d2c71429f446102e98c",
     "outcome": "served"
   },
@@ -1616,6 +1794,8 @@
     "tx_hash": "0x1b1e8da5c7c684bb208e59051c5b5cb2361eed5c03f7ef4ea5719cc8c4e81f68",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x93d1ce97b5970228a749492a181eb11ec66e45a7d77801cbc09823158bffb8ae",
     "outcome": "served"
   },
@@ -1634,6 +1814,8 @@
     "tx_hash": "0x371f96bd76738e89889d3801d7cf0f4406dc90552b1ef1434d554be4245219bb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xbbc0f4a153122a3f87c0145bc24175644bbba3dfcb8e39bc4cdea438b1315a08",
     "outcome": "served"
   },
@@ -1652,6 +1834,8 @@
     "tx_hash": "0xfcdfb81a8fdddf5eedfdcf0d29099ebbbf82233a16df047e02ddcef4d407fb61",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe577446cdb89adacb7aa9b60da68af138c27f5cbec58f047ffb8165061505c35",
     "outcome": "served"
   },
@@ -1670,6 +1854,8 @@
     "tx_hash": "0x60ee6c04958f4b16bfb3b0720632e1c995b2635749b7cca9eb92da8c39c24866",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x875f5fe910fe7f6a0e79d05c7132c89d562d590fd5f07d6bfa004c2c67057e5e",
     "outcome": "served"
   },
@@ -1688,6 +1874,8 @@
     "tx_hash": "0x964222038a351914e3dc1f4098e349d5732bf9655de36b5a53a6c7898ad194e7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd932ec255c6ac420876e99962a1e57ebeab0b356fcb8c5287a072f954b40583f",
     "outcome": "served"
   },
@@ -1706,6 +1894,8 @@
     "tx_hash": "0x83f305abfc5dbc3096d33378c6cbb1d58a45c91e0fdbe578ac1d6a0d563a5685",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x3852b0225d0bc42bb70690e9f6a15518a1f30e8146dff2a49d899c60157b5c65",
     "outcome": "served"
   },
@@ -1724,6 +1914,8 @@
     "tx_hash": "0xaff75e78699e7a7aa679e3e8331e600b453243af0b7a65a155e3d0a90de8accf",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x309a2ed394b9bd2fca488fbbb4c918b67d6bfbe12b07f8186a4ef84b361c76cc",
     "outcome": "served"
   },
@@ -1742,6 +1934,8 @@
     "tx_hash": "0x884cc431063757b996a08decaa4e62f6d0e10905e00bd956169970426bc9d30e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x54efd029a701249694b0511a730ea6a035b1cb6c215cf88c2f5575841590e308",
     "outcome": "served"
   },
@@ -1760,6 +1954,8 @@
     "tx_hash": "0x713cc11b13c10fb2dd8140abd22853ef0111cab4a379f125fe9e3ce37dabc88d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x76f2ff5c7752889b204c8f11d621af57755d6d0fbb591809dd3de1bd42327d33",
     "outcome": "served"
   },
@@ -1778,6 +1974,8 @@
     "tx_hash": "0xefb33570a4a21345d8a38a7184d2d0fd1c2503e12a4cdda7306c40b33926745a",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xcf91be0d1774c832c3db86568dc865897a483187377de7a327447324864bce89",
     "outcome": "served"
   },
@@ -1796,6 +1994,8 @@
     "tx_hash": "0x555f8132a8586a60b63671c0fd2e40df4d77c2de3d618218baf97b16623f4b98",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x21c90309e843d6c0de17688fe6abeaba2f8501e6333c7bde065edc602c275a99",
     "outcome": "served"
   },
@@ -1814,6 +2014,8 @@
     "tx_hash": "0x695ae93786529cc4bf2474ae4c33439ccf40a14186988db8c0a359cb7aec71cf",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6e8d64060038fe1afae84b13d7f759a3d7f461ba9e8c636e8823dc5c5bca899f",
     "outcome": "served"
   },
@@ -1832,6 +2034,8 @@
     "tx_hash": "0x2957d265f5d0ab4e7ccd846b33251dcea2887b5a820b15b91c19b4c5850acda2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x30f3d310836a434b93d0c3bacd8b7b5fda4bf3ea05913ee1cc722a5d186861f0",
     "outcome": "served"
   },
@@ -1850,6 +2054,8 @@
     "tx_hash": "0xddf8bc2f7a57d4eb748930a9a07950b5aae792cba7c68d26c2f36e8b9dd48f0d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2656f61dd1c0c6d94adfc9377693dd7366bf5f6cf1d7a8d3578d47ce0bb7e4f4",
     "outcome": "served"
   },
@@ -1868,6 +2074,8 @@
     "tx_hash": "0xb227f3f3e9e8c6a345ab1ff0aeea52469ed67e5188921ac719378196698063d7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x0ff95366571debd7e04e6ce2373f1d0db20ec0c3b757b27307fee6860100f51d",
     "outcome": "served"
   },
@@ -1886,6 +2094,8 @@
     "tx_hash": "0xe92ffe1351b849fffcb88c38f61e9c7ccfbc52314492f57cbec7b0f65fb3fd8f",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x03cb62442b698fd9f38c667fadc4f35938c424fbe2b0d04d02c77ad9b6d5ffe2",
     "outcome": "served"
   },
@@ -1904,6 +2114,8 @@
     "tx_hash": "0x3f039476d8359fa3d36b7aff51f65cd06cb1ef84208c432989983ade1f8a2a99",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xdf635aef492ff1d0a55db6a71d38cbd0f41152d3ad05dab9c69a605ba2212d56",
     "outcome": "served"
   },
@@ -1922,6 +2134,8 @@
     "tx_hash": "0xdc5c8c6db437bebeaf62b3845bd307eebc30b4e302c3d8916af69e67b2abe6dd",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6ef66a11d219b7102591b54054de389358118930ca0cb98d8f4adf506ad8e240",
     "outcome": "served"
   },
@@ -1940,6 +2154,8 @@
     "tx_hash": "0xe80d9981b2d2d9e5edcdb8af6097b7f05135f7d18285d7a942ac770382a391c9",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe10e6a667b5a8d3f9ebff1c45a2a70bdbae6482477835eaac1ee97d9d9489eea",
     "outcome": "served"
   },
@@ -1958,6 +2174,8 @@
     "tx_hash": "0xe8ea5ca7b7a9d9ade9dbefb1e67c8a3fc1337e76a59c9d70523936fec0dff129",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xbb69456560bbbc461daf8b19c0d6105b3198db9ffad8a790b4d41e32bbd2c2e8",
     "outcome": "served"
   },
@@ -1976,6 +2194,8 @@
     "tx_hash": "0x8ebcac18d62be58fb44f9c85a8859f512a27eaf883b00c165d2ec03d68770c37",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5ba089b94c526c7e17fa0d9d1f43278581077b9257498552c099baec3ea5ec8b",
     "outcome": "served"
   },
@@ -1994,6 +2214,8 @@
     "tx_hash": "0xbfb7e02a81ebd1d2a7866c43b1c3ef495803b19207a1213ea75b650771d63051",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xc15e795d44006503eb2bdbed70ad95edcb843598d90e61f05116025e91d91cdd",
     "outcome": "served"
   },
@@ -2012,6 +2234,8 @@
     "tx_hash": "0x7929ef009ca11ebdac336e742f724b09e8ab36147ec8800fbc7b849fed0e80ab",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xacb41fc3813979f11252e685374399cf175389e24ef141737276c17a707e06e2",
     "outcome": "served"
   },
@@ -2030,6 +2254,8 @@
     "tx_hash": "0xf6e7de897445c0fab5c06874868cec0cada899f9fe4e262ab349a6b86ce19465",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x617fdaed14c7aeac336cfb70bb6ab51ec19060f832b9d4a1b6bf0a5820a6b4e1",
     "outcome": "served"
   },
@@ -2048,6 +2274,8 @@
     "tx_hash": "0x4342fd2fc72fcf85eb01af7c5505f1d65a22e9524dd7c90c8482a9314edd86a2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x515bb96eb79fe1bb06c12904acc75a6eff24638550391f55f32524789d585a1e",
     "outcome": "served"
   },
@@ -2066,6 +2294,8 @@
     "tx_hash": "0x9330becc507c11946e07775d1330ef5df2c5a5ba847adc28301f63e8453898f5",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xca125855ba55da42b500348703305fc97a09a86e4c4cbbcd131c500a1cf56550",
     "outcome": "served"
   },
@@ -2084,6 +2314,8 @@
     "tx_hash": "0xde4814f06575e91abdce47b8144914a704cc9ca10e1cf9233b506f31c81a35d3",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6efe537b2a7ec16fe3c7b13e37aafce285061dcd4ab7059923e49bd7f44d996c",
     "outcome": "served"
   },
@@ -2102,6 +2334,8 @@
     "tx_hash": "0xd8f16df8957b3db7c7fe734f5159fb76f01218183aa7b5f2bc8692cdd5c73732",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe62a4329ae9198aef83a5e27c1398722b9bc78620531d04f5e3513b2d40cfe7f",
     "outcome": "served"
   },
@@ -2120,6 +2354,8 @@
     "tx_hash": "0xa79c56089e95dcfcc9ded5133679754ab7f4e64d8044b4f5b12b89780423c402",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa1e505f78ae0af9e0f385cd7453c613f04b8c7effa5d421cf19a484b9f51fd56",
     "outcome": "served"
   },
@@ -2138,6 +2374,8 @@
     "tx_hash": "0x78164f81a68818cab493a913786dcfae479e0f5db73946e703fee53d164c29bf",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xfff713b1f28bed094c95e681364394fabccb6ebd5e5ea3c5be8fcc4a06207aef",
     "outcome": "served"
   },
@@ -2156,6 +2394,8 @@
     "tx_hash": "0xbc4267763c817ec56dd1afab9c322d66fd8542cd93bcb219bce5277d5d8c8889",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9edb35aec8fa2dba391d740c505fc0ca41122105a1fe076bacd87bf44bba12ed",
     "outcome": "served"
   },
@@ -2174,6 +2414,8 @@
     "tx_hash": "0xe3173aefe9af4847faa68dcb9d08320d73a659bbbc7664fb5d606a5e3f1aa8a2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x289c71f0dbb28b059c8fddd02040140b65a4838902a29ed58151b969ca67d230",
     "outcome": "served"
   },
@@ -2192,6 +2434,8 @@
     "tx_hash": "0xc1ca058f27b26a8d23687e6c89d535f45d7f5d275f6a3a1f83050e3f103817a9",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9f797d72b33b2113f4b3c8a07884a13d3ff423b024b2efa889d71e010d09c4ea",
     "outcome": "served"
   },
@@ -2210,6 +2454,8 @@
     "tx_hash": "0xc30348b9cb41ccf6e1fc12d5ba2742e1a0183fc6be5b98abe34e54e2b2500386",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xfe4e0674ba18e5f8a69cc6137e204ea654246aa75edab267464a52f665189a75",
     "outcome": "served"
   },
@@ -2228,6 +2474,8 @@
     "tx_hash": "0x86dedf951ae375e3d3d7af9e11ca9af83172bd981e8b3523788212e2a52ada86",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x26c45eae15c2cb7a161335c7bc37e6d49126af5ed517f7408a6e479c7a014cc2",
     "outcome": "served"
   },
@@ -2246,6 +2494,8 @@
     "tx_hash": "0xbb511ee7dce5691ce9c7441aaee52b4f81c4305b76b0de55a2a0bdafbce779c6",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x1b0093a0897a4c813a73812337d5badd248380509367de72ac03da0ea837819d",
     "outcome": "served"
   },
@@ -2264,6 +2514,8 @@
     "tx_hash": "0x99314e4cf369b8ecf7d799f658e4c5163794d14999b4789337404bdb5fa79922",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x41767e710da4af8a705a6d77f6b52a83c7b200c5463c6fc4e9c268aff1221e89",
     "outcome": "served"
   },
@@ -2282,6 +2534,8 @@
     "tx_hash": "0xf672eee2cc3e591a584bcefcaa1079d87e3f9410ae85f74d407f76cc80f77b91",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa3cdce15fb5f9bceb84332a9dbad18cddf8cb8c29e9c38f20c54a03d70572a0e",
     "outcome": "served"
   },
@@ -2300,6 +2554,8 @@
     "tx_hash": "0x273157b7340bc86e10a1820df4a882c8b6295f8ab3a8d2d73982cab3db6b093e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x0d76738e07823b6a102d2257b7df4e4108fecff8bf8d8617fce89b367052ec90",
     "outcome": "served"
   },
@@ -2318,6 +2574,8 @@
     "tx_hash": "0x7b5e46db5abc10a47debc75ca197177d03b5ed7251d6b9e4932c4f0e47fee2b6",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -2336,6 +2594,8 @@
     "tx_hash": "0xc35d296e6e0c8903a2811c0e1a568b3ee4e62dc355022cf352540e5a60e168cd",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8fab1ee233d6de798c32189eb46b19eaf9f24a5a668e51c29f1586f4c3df7603",
     "outcome": "served"
   },
@@ -2354,6 +2614,8 @@
     "tx_hash": "0x3736b2c90fc5fbed3d095960e0ffc493b357a5564517878cdee60f2ec77f7aff",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x41d34ec4e896dbe6e1dbe66ca90d051049e9a2e4a9ec4a92cfd047be60e14320",
     "outcome": "served"
   },
@@ -2372,6 +2634,8 @@
     "tx_hash": "0x44f1d50ceb4b7c168c3fd899d184434c03774682f7327a504d14be8fc66803e4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf41deb6d57602894fa9051c3ac6d2652a74c27ca32ae67b949ecb580ac28767a",
     "outcome": "served"
   },
@@ -2390,6 +2654,8 @@
     "tx_hash": "0x53a1d4cc95c07bc7dcd004213c50ca35d699ec4ff7f06d48724483831a852080",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe13ad8bde63d8a5f256df4f3771f17a89ad7d8f52e5af68b0aaf626f117bff66",
     "outcome": "served"
   },
@@ -2408,6 +2674,8 @@
     "tx_hash": "0xc86501d8100712b46abca1f8be5f471b2c402027b5e870d31a5b4f74c46e3735",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x33fd60d2ef881f0fd06bd4a8119dab45818753f1444a156dec05acec263479ef",
     "outcome": "served"
   },
@@ -2426,6 +2694,8 @@
     "tx_hash": "0x010718e86254e1e9f1da51072b3c4dbc9b230e8f8fb52ea4962d103311de1ac9",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x92a3295c0688ce6e7c903a7b632dc3c9a2e9ecd0000ca46a8986cdd500b5f9a1",
     "outcome": "served"
   },
@@ -2444,6 +2714,8 @@
     "tx_hash": "0xbd5a058bce8a22c9427de6ad6ce268e011cf8244f640ffca401b7163fee4cd23",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x4ca570de9e2143ef829be7ab5985e772ed9dc7f4d1bf1432faadfb7d9d0c5333",
     "outcome": "served"
   },
@@ -2462,6 +2734,8 @@
     "tx_hash": "0xbe9225869378dd040dd2976355752350c90a0a63d7851b2c2efd4468811547e2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2f3a8cd584cf7b7d14421fc5d6deed6339541111ebbb1e5b559d6451d4aeb38d",
     "outcome": "served"
   },
@@ -2480,6 +2754,8 @@
     "tx_hash": "0xccca4b34bb4ed37964c406be9d83a8053ef78854d067a74250450597b5acfc46",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8720df1f3066164a4739c3b2122a82aaa2a73cf7d810f4ae9cf3047f71f729fa",
     "outcome": "served"
   },
@@ -2498,6 +2774,8 @@
     "tx_hash": "0x5420d254ab6576ec83f2d3686ceef122ed4e7bb271d26bb1f2f7d6228e5d5032",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe27c539377841f73e493e694eb5faf93943220e2d9134d2d3e6223af1c802e72",
     "outcome": "served"
   },
@@ -2516,6 +2794,8 @@
     "tx_hash": "0x27a8142725722b56117e715475d6edc9f7f77db3307a4f58046d56e8d5f6e7ad",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x864d44ada7dcd43aa19541bf3321ed0695a37f54357b047f052ea3e642d536b6",
     "outcome": "served"
   },
@@ -2534,6 +2814,8 @@
     "tx_hash": "0x455cfb2d5ebf6157ace2f38d6551a93a2cde52d473f1d55e414d97f56f906af8",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -2552,6 +2834,8 @@
     "tx_hash": "0x536c5de6032c7a0e39bc395256daf7ac7acda0914185461f34950e53e3dc3210",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x11b3f3ebd50d9d075afb754a1b214945e6e142c71bac3b61b0d3a24fe9e9e2d7",
     "outcome": "served"
   },
@@ -2570,6 +2854,8 @@
     "tx_hash": "0x94c8d3a02ee13ebc30d6560370d55a9ea4a2714390934b35a13b8f8238be6e01",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe3ec93719317e761e044964ba8332bd3c69c37cc51a6a7e24966ca3c69eff18c",
     "outcome": "served"
   },
@@ -2588,6 +2874,8 @@
     "tx_hash": "0xf540adcbcb78b8f871bb0830ccd8ad3b51ec2d9969fd45b73ffed98c1b927d60",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x7d34e9cc1ac4c675bb5cd7ceb0dbadc5948ca093b9afe96bb1a3c0786700d6d8",
     "outcome": "served"
   },
@@ -2606,6 +2894,8 @@
     "tx_hash": "0x603817937c3c2c93adba18a5bc565516170e636779a99cc9e091400167bb4e1d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf32ce39fe0f5a8187daa78ff7c8c328363c22401a83873c42f02494d0c0c67da",
     "outcome": "served"
   },
@@ -2624,6 +2914,8 @@
     "tx_hash": "0xf53420623906eb0c33698bb9c3b25537884b0d567743dca5e606e16edf8754b1",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x1c09999b08492992aa481f31557e41bbd80a580a6205d736e43b5346ac611d2c",
     "outcome": "served"
   },
@@ -2642,6 +2934,8 @@
     "tx_hash": "0xdfb5ce205f794a34b9e8858199e58891844e147d21570beb30d6a762fc66d4b2",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf158d0f0759657ba8c05568c5fd1aab52b14c210ee8a9f3ba65c239b989f5e80",
     "outcome": "served"
   },
@@ -2660,6 +2954,8 @@
     "tx_hash": "0xbddf421ff6f3ea71b408a1b000a4add32563805c85e71da5d3f6071fb65b7cff",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x87facbbb3b7c0e7bad92a2981485d4e13324637702d1280a2c2a1d81d3754959",
     "outcome": "served"
   },
@@ -2678,6 +2974,8 @@
     "tx_hash": "0x1cc263cff5f4fdaa667e9716434b462057c3e61a62d9657c23717c61c0ecb419",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x1e690838444cf594d296c78fc7c35123118e9e5ea1d78053854d9201484925f6",
     "outcome": "served"
   },
@@ -2696,6 +2994,8 @@
     "tx_hash": "0xd60443fcf384a15de811f30f967c0d9ecaabed4e96412e649ba209fef268b8fe",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe9bc70ebe961256e424eb65ee87575fc9c604b08ccd67fb6364e2e4c180f1138",
     "outcome": "served"
   },
@@ -2714,6 +3014,8 @@
     "tx_hash": "0xee340dddd133e119416b005f6c5fdf6b1711cb8c049779052791342aca0c4721",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8ab17a2be3e0b291c9219273101c22a694e6827e3655680dbb070a60813ea260",
     "outcome": "served"
   },
@@ -2732,6 +3034,8 @@
     "tx_hash": "0x2c5b3dee80cb5bedc88630e7e41ca93f92fed302a53df74b4d786cdff8c8d09b",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb6f86bec51a7fc84c980156c7155e57f8f7522585290b84331efeb6c973a3ef5",
     "outcome": "served"
   },
@@ -2750,6 +3054,8 @@
     "tx_hash": "0x0996a37b3669d89c4050caf3d6424e42d4fed9c96d89e1a9ddacd8b4d10700f0",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xdd72840eafa1ba20b4df489e27442f98e34a763514ad51f1665d94dfd42817bf",
     "outcome": "served"
   },
@@ -2768,6 +3074,8 @@
     "tx_hash": "0x4cfb057c7a8417e3bd3d8573649988af6c160754e7e73dccdb06f1a2bb7f76a7",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x7ca1ab325781799efc0a50ff9ae88287f6b8feec6c0d86f3fdd2f4545efc5e8e",
     "outcome": "served"
   },
@@ -2786,6 +3094,8 @@
     "tx_hash": "0x6220120b200a72cc7c4acbd7191bffb46964076e5954478791754cdc5a5ce301",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xbb14bffad2fe146cd7dbcbe0eaa7d165f402124ec353f969d984788a97facfdf",
     "outcome": "served"
   },
@@ -2804,6 +3114,8 @@
     "tx_hash": "0x7d1d6fb0f857de11f1c7b95d9a424eae368d646707958705092fd22269644a0a",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9d605af326c6f7437ca06e421e05b386bc92d930587d7b6d5a1ac256c4f0fcb2",
     "outcome": "served"
   },
@@ -2822,6 +3134,8 @@
     "tx_hash": "0x553975cfe57a241118a4cf57dd8148f394da9edc8ed4ef2dc605b0e2aff0d888",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x93b5188dce379d2e684d64a150503829371d91f79c68d18ee7f35d1cb0efa73e",
     "outcome": "served"
   },
@@ -2840,6 +3154,8 @@
     "tx_hash": "0x0c4f54e7066f4417481c93490a30103b34754ce32b791a80a34b8292fe7116ba",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x365b1ab5af6f50f87bf2e55567122595f4d6187eb808d0421795f0fbcac840c3",
     "outcome": "served"
   },
@@ -2858,6 +3174,8 @@
     "tx_hash": "0xdd38b424522be988556a3e3210aba00b89db34f7d236a9d48fdd84d627e53973",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd7f028ad726a9cfe38255002a26ce3d50a2b99468e4f53e315232c677554fa68",
     "outcome": "served"
   },
@@ -2876,6 +3194,8 @@
     "tx_hash": "0x4df8cf17aa088806d2f504e9e924f8683ea1f2a05c1f3115a43f1b3baf78ae94",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x98a4f37937ff1225cee49dcc1a90ab292ccde4acae047d9ffa0e90fb283b56d6",
     "outcome": "served"
   },
@@ -2894,6 +3214,8 @@
     "tx_hash": "0xeda5f7164050a4efbf200c744501f792d4b6d29fbf4f5da13cd7bbb8b32ba8f4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x556b7f1764603e0698831465fbf54bd0971834713c0bfad5fd00d0e5ae0aeae5",
     "outcome": "served"
   },
@@ -2912,6 +3234,8 @@
     "tx_hash": "0x124908d9fc1f0902144b90d3e6761df6cf9ce242f96f9d7e492a740f14a4b7aa",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8d2c7bb5d61921fad4d42fcbc0fed9dbfe264ebbdc5cadc075c31ac3e5a1f71b",
     "outcome": "served"
   },
@@ -2930,6 +3254,8 @@
     "tx_hash": "0x7a9cd2b4218e9ed3e61742d810c537a822ca11e975909ef4741f6386140c5adf",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x64fd09d25c5769b821ec20872390192ef41bdb8d3160e10d70444d47254f0c04",
     "outcome": "served"
   },
@@ -2948,6 +3274,8 @@
     "tx_hash": "0x6f0c82eaecf29e4cb7cba92f1025db576e24d1811a60ea128de15fff8ac1d56e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8b58fc6ffbe18282c312bbd3a6c8a740eec82cd42e19552bd957ec116ee0f67a",
     "outcome": "served"
   },
@@ -2966,6 +3294,8 @@
     "tx_hash": "0x4c0681d53dd59916ae19be38dffcf54bea36410e6ed30952a9b1f74fad14f092",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5467f557bbfb5c48abfa0755b7674482ee29f6d579e4aefe800b6f887e01d9c9",
     "outcome": "served"
   },
@@ -2984,6 +3314,8 @@
     "tx_hash": "0x9e4ab322d26d015a512d557eb4ac923e13042705ddc60fcb03d89411d757f3c1",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd138859d4f7cdfeb57e6372cceb0a079447a85c52e9731aba895c8599fe66986",
     "outcome": "served"
   },
@@ -3002,6 +3334,8 @@
     "tx_hash": "0x9f984654aea1c4c9d77fc89130f40271387766a0a5e613821d931e6a68bda15d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb967b2408005f721752e7595eae8d2629c341ffb708e4676fb6c5f37ac85b7d2",
     "outcome": "served"
   },
@@ -3020,6 +3354,8 @@
     "tx_hash": "0xf751bce528ee9fce3e07c35870c298f0a4d5e6f7416f303f3f6fa7bcd9a7bc96",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x3d0937c0aec4b968bd4437dfd9bff3709311204d667fb7e51e6d1e88e29f62b0",
     "outcome": "served"
   },
@@ -3038,6 +3374,8 @@
     "tx_hash": "0x43815e0eab93dfded6b54a7b9e1b9e155a6b44df17e4d4a14a95fb53e4a760f6",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x9e6d511c98d0ca888b60a003e59af68c3b3186c0f883710e03df703bd2d3033c",
     "outcome": "served"
   },
@@ -3056,6 +3394,8 @@
     "tx_hash": "0x352a945b6441da44eceef0598afac992489e8e598d6fc67b91c0f55b6c8cec7e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x0026279490a0d970f353536b2637765d31a887dfcfc84bf4a468023b904ae4cf",
     "outcome": "served"
   },
@@ -3074,6 +3414,8 @@
     "tx_hash": "0x34476635397bb0e716d923f166d34c2a31e129d62a3eeb840033fd36f9e15f61",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xbdaea0e524868367df06bb292b29dc701d79c3dfe06ef5c77a30c53e2f328f54",
     "outcome": "served"
   },
@@ -3092,6 +3434,8 @@
     "tx_hash": "0x222a608c3c0bcb3986981e6eea18d8db99465850a107ae3d8863ea0366906f4f",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8f33f3686f578bd22a296657843ada969e94aef0a2ba625bfc12ba5be967d713",
     "outcome": "served"
   },
@@ -3110,6 +3454,8 @@
     "tx_hash": "0xb565e7d9dce431c804bfacf98197c16a5b025938a68eb0c82ca1c9f21fe71e54",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x0877c98bff6e0b5bb6a4e90c4781d7f9c942cf279e17d4e7ddaca48a0e2e5b6d",
     "outcome": "served"
   },
@@ -3128,6 +3474,8 @@
     "tx_hash": "0x783d58f45fb3d714645576ecb363e402a181ef0b198d90dd83daca58bc148147",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf3129ae1a5c8d1942a0383a7b4af99c1bc253fcc551b3f6d352ed791ccbd7f84",
     "outcome": "served"
   },
@@ -3146,6 +3494,8 @@
     "tx_hash": "0x0346be43f9f52036ea07a9b6ebc68cb9ad053563d0464f33d310a9bc022e10fb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x61f21cf9e78248dad4cec7f580fe6ae18a6c5dc76e78b36e7377cd1414845f5b",
     "outcome": "served"
   },
@@ -3164,6 +3514,8 @@
     "tx_hash": "0xb514a4b963bd54202167c41a10e818b87a10941e327a17573bc7555f2e2d5668",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2f960cde76fab69183e868eccc1df373f98d3f2431c017a528c18433f8d0a490",
     "outcome": "served"
   },
@@ -3182,6 +3534,8 @@
     "tx_hash": "0x2763a9ef018b80fff79b4b115cfc7938a08cdbb372d545dccda18ca063477f63",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x0cef3281909434ca93ca0f50e9e321bef7e5281f5c726f968f94b4d3584a131a",
     "outcome": "served"
   },
@@ -3200,6 +3554,8 @@
     "tx_hash": "0x4fe8ffe32d973ff52f0b4e0d27427855cdb6046f9abfaed867ef3bd5952f55c4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x948322b399e7e90a9ae8b5a05e36454b9833b8186c691ed1aaec1bb65c126bbe",
     "outcome": "served"
   },
@@ -3218,6 +3574,8 @@
     "tx_hash": "0xaab3836451caf9832164843fe985ed4e01b99c2659cc65fe7edbd30b3ba5fdfb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -3236,6 +3594,8 @@
     "tx_hash": "0x654ae338dcc34908f780b9cf457442df25375ee9ee44ae36b6db69e5980f91b1",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8e663b32729777a28fa9cadf7b60562468e3d1a1731c7cbb1d2c198dc8081982",
     "outcome": "served"
   },
@@ -3254,6 +3614,8 @@
     "tx_hash": "0x09cfb8a59db315e53281fff0683dee0d0613478bae485529d6a856b164cdafde",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -3272,6 +3634,8 @@
     "tx_hash": "0x90f83c5a06e8cf52076b1c0eee76ef566fcf9251faa18cec8ac46affa00b0b0f",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8db6f6e0a945b05db8814e7e7b4dcfe008ab15eedc421cc240a92ffca2c997d2",
     "outcome": "served"
   },
@@ -3290,6 +3654,8 @@
     "tx_hash": "0x265d5c68cdac0e56a40f71272a671614efcf485ae3f5eba777ca69df14ee16c4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xfafb4dd25566059e1f9f3e762d91ee601871f8d49de98b2e73a8e176633936ce",
     "outcome": "served"
   },
@@ -3308,6 +3674,8 @@
     "tx_hash": "0x78dc31ec1d25ead307ef9eb33bdb814577bb2a0dd6a2822e0e5a2815435a7638",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xeadcc6d489422d2c6ecfdacd9e339549a80570c1d4a304f0457cdf2168498d1e",
     "outcome": "served"
   },
@@ -3326,6 +3694,8 @@
     "tx_hash": "0xb836a2144dec53a9344f8194719e09d170d056ac25c987650af68984831d3d22",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x2f6f64a61feb88c5e8380037afa634bde0d0fd66d4e07eb35090e4497238b52a",
     "outcome": "served"
   },
@@ -3344,6 +3714,8 @@
     "tx_hash": "0x6f379a94432af0c8b39add8a12872547ce7664ac691d28c12320dec18d09a727",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x4bb3152b228a674b7af6b422968afea6af79bf47c78d8b6b5ddb3329d3a34df7",
     "outcome": "served"
   },
@@ -3362,6 +3734,8 @@
     "tx_hash": "0x714268ee9d0f5a611e5513dab13bfafa6cebc81e7f34ea5cfb821b7a4da8d410",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -3380,6 +3754,8 @@
     "tx_hash": "0xa86fba91942d1b3bf1942e64d0ead1dded33a65678e64d82ddb24b5718ad7888",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xa0b1c1758d3a40b8a0203c74d5583f46782d2271aa19632b693c79702ac5b2e8",
     "outcome": "served"
   },
@@ -3398,6 +3774,8 @@
     "tx_hash": "0xd9e1b8eb6f031e7530aa607160b32f553f760c0757a6957d41be396a5b7e6f8f",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd61e0f59840c47b9a59a92535c18232371d1ac1e185ff4728bb466a22a9fc8bd",
     "outcome": "served"
   },
@@ -3416,6 +3794,8 @@
     "tx_hash": "0x025551806cdc4e1a6f362b733ef87d5f89a611dc34096e9cccd368d11fba3cdf",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xba00fcee1f2c452a32fb400117479a135584e732eb8525dc527b3f8a2c0b9ead",
     "outcome": "served"
   },
@@ -3434,6 +3814,8 @@
     "tx_hash": "0x5769de959dea83bf4d14b75b340f922a5699e02bc44cc93ef7297b0bd835a325",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd0734dc8814b4cf3f71334c2479ef99e8ac60f30f97afb6d007e623620856145",
     "outcome": "served"
   },
@@ -3452,6 +3834,8 @@
     "tx_hash": "0x1034f305f3cd9824e880bc6ee524082d68de5977627b3c83498647341676eb78",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x3767bb40c8b19f1be46dba3d2e3035e61221a569abcbb1883010c3d2a7d5c3e3",
     "outcome": "served"
   },
@@ -3470,6 +3854,8 @@
     "tx_hash": "0x0999b33aa4f958e02e3a723cd19a7890ca91d474c36a40aa149047453891059d",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x95ef2ca869220bed1e7cf7a40227ef5d39e0f417d535464f82e92a9a1eb39563",
     "outcome": "served"
   },
@@ -3488,6 +3874,8 @@
     "tx_hash": "0xc61a636584b5c5bd91ba50673feb941b34dfef08ff35e2d433fa51fddb57a09e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xfc2e525dd32bdadfcca2fc9b20491b859bcffcd0ff24d54e7ba2986724923dc3",
     "outcome": "served"
   },
@@ -3506,6 +3894,8 @@
     "tx_hash": "0x20070a9bd95f191d224d911590d2dcf7ca5de5ef958ede826294851b86fc9fbb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6598b9b2ccbe275293c852d0561eb9601fea8a2754704876b1e80d7e2a7d68b4",
     "outcome": "served"
   },
@@ -3524,6 +3914,8 @@
     "tx_hash": "0xa4a5d4158252d7c300edd0d9c857657c6230b77ae1d4329ae99d0f0eaa161343",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x7336faf96a0cb3d101d45d18d417d1ec60a730fa3e67602b4685c5c6e1a0479a",
     "outcome": "served"
   },
@@ -3542,6 +3934,8 @@
     "tx_hash": "0x51b5a2720bb76b2ddb8f5e738ecaa8b5e7f4430fd8b832cf3ff6f57e24e5329c",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x09fb94cea8295df24ee2aa174d187e84de65693894f8a491735daec22a33e7d8",
     "outcome": "served"
   },
@@ -3560,6 +3954,8 @@
     "tx_hash": "0x2438b745e0d72aa78358ce31f61ccf417c8b3a4ad06a9f0c0f022f065afeeb42",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd67e2d4976f2cc2c5b849f1a07d09eeb27aadc174f9f3cdb6023b0e7edb9f3be",
     "outcome": "served"
   },
@@ -3578,6 +3974,8 @@
     "tx_hash": "0xcd066a28b1dd0b5d8fcbb782bf34a31608e9e7c3d594fa007c796559ed5c6517",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x07893765a5f819467a791a2ddcd4bce5fe6a277c3b69d99a2db51f23ef934899",
     "outcome": "served"
   },
@@ -3596,6 +3994,8 @@
     "tx_hash": "0x1157e9430d12d7d1058cd8a8bf255f9e3805418a2105be8d47ed3cab5809ae12",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x004437394ede57255306eb4ecd4f7dcb1ef66fae37e9313d423fb9ab81fd9e91",
     "outcome": "served"
   },
@@ -3614,6 +4014,8 @@
     "tx_hash": "0x30f2e8dede35323c064a067bc5324d09586a20512d79ad1686cc004b65fa945b",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x22d553c6a9b98686e5f406693817caca4301c1022944fd5bb5ff41ca59095691",
     "outcome": "served"
   },
@@ -3632,6 +4034,8 @@
     "tx_hash": "0xddcecdf9065c4014d98468015982858b07e673a48ccf874d43fd53b56ea6dfd9",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x44e9064c8d5e83982308f8bce8f576171cead9fbb35da3c5bb11a38166f4ff7c",
     "outcome": "served"
   },
@@ -3650,6 +4054,8 @@
     "tx_hash": "0x12600309d823d75a26bb1dc08a30ce38ea6e45620f7ed29201f5c973b2365be4",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x6d6e1237f24ce6707a70b8d560c853c357eac0048ecadd0a99b2835fa64d9c66",
     "outcome": "served"
   },
@@ -3668,6 +4074,8 @@
     "tx_hash": "0x5a2d2aebe44148e40886d95e5604e81801f89f2f2b81a9aaf15c60f626acdb71",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xb8797cb87dabced24861962fadf5796e9421b384f9c92c78424ee3fd35b6e943",
     "outcome": "served"
   },
@@ -3686,6 +4094,8 @@
     "tx_hash": "0x95d5b6889710766c128c78a7ce4b4002f306d07f31fd085b744e56ef07f45b09",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5e19dce0247e4b49e4c5d8eec18ad2ac65b650dde50516a7ae8381c8fe9a5636",
     "outcome": "served"
   },
@@ -3704,6 +4114,8 @@
     "tx_hash": "0xea3ba177aa02c76da4dadf4c67a33f0ee53e263ae55558563eea6ac25b17c6d5",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xf2f53c6d19a589570ea3e054ec82e41a939f1248b367398c4d076218ca6c5723",
     "outcome": "served"
   },
@@ -3722,6 +4134,8 @@
     "tx_hash": "0xd63329471bd2490455b81c5212dded1920b2cb254f5ac6f998dca136e825ceec",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x757c551e419ecddc8865eda77999906424b5a23bf5ccb22c8a05689dbf097610",
     "outcome": "served"
   },
@@ -3740,6 +4154,8 @@
     "tx_hash": "0x37c7fa760753c62242825ff7d2a62755a46e94222b2231d8a4b3aeff5856cf5a",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x32b962477524716921f394ba613efc874f128d763f1c272f06ef0555ac523b93",
     "outcome": "served"
   },
@@ -3758,6 +4174,8 @@
     "tx_hash": "0x5d3d280a6d24c8d99a212efb112753702747a03449446e15ea553971e4c735e0",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x0c240b1fc96301d86c27117187ded7879a04770b1b4e29e85679baec3bf7f3d3",
     "outcome": "served"
   },
@@ -3776,6 +4194,8 @@
     "tx_hash": "0x05bba3394319f0f1b7fe29913d7744f10c8cc797eb6cb557576e8a3590d8573c",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xc36ca14113c5b9426039dee3fcd71ff70b8b7a5afd6fbca78b97255482f17c2d",
     "outcome": "served"
   },
@@ -3794,6 +4214,8 @@
     "tx_hash": "0x27eb23aa888594e94e4b1b423da7b459d200af106ce5fe4a55904855cad7358e",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": null,
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": null,
     "outcome": "failed after payment; credited to escrow"
   },
@@ -3812,6 +4234,8 @@
     "tx_hash": "0x10ceffb548e24a4182631f999be9b1ab4bbbbf33efc3b31bd879555f01db69c9",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xee58aa8283e51c9351f79fefdf32b799089ca11fd53332e18a70ce57c56b3195",
     "outcome": "served"
   },
@@ -3830,6 +4254,8 @@
     "tx_hash": "0x5685864e7ae6c478d5b419324086147db474c409054a12f48deb38cea87c0128",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5eef2c2f690d587ccb63a1fb92b17f5bd9c10ef39f97c16ee5683d09b9f6dca5",
     "outcome": "served"
   },
@@ -3848,6 +4274,8 @@
     "tx_hash": "0x382450c86fa1e60087fbfa3306fe943b8e1bb31637d43d9d286e4744ba0b63fb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe1c78b687e29bbe1190c55fb20d1d688567c03e9e9783df9a5f2ce03eb8c16fc",
     "outcome": "served"
   },
@@ -3866,6 +4294,8 @@
     "tx_hash": "0xa772f125a8b90d79e47c71a8cb9db9ba6a33fc93f904641233d1d7b0b62b4e63",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x8bc75cddcee74d8916af2ae61afb3e14fc8f7e2ac9320cbde349a527a34991f2",
     "outcome": "served"
   },
@@ -3884,6 +4314,8 @@
     "tx_hash": "0xce222079036d4dc28af043d9d6cf99b4b207fed7fdbb0b88646d6403efdacb17",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x756c5feb90fd7498ced28a5257aa9345bd020833054f4128af8550dd03e315ca",
     "outcome": "served"
   },
@@ -3902,6 +4334,8 @@
     "tx_hash": "0x06e1a7c1d23e559af2ce021980770392df637c71d090bc4c81d51445232923b1",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xd0f89deda4a30dba5a5e8666181062676496ee0665707fec412afad41ffac89c",
     "outcome": "served"
   },
@@ -3920,6 +4354,8 @@
     "tx_hash": "0xe19373959f484828f1348bf00b23ae912293e70e180ea14ddcc58f932d874371",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x06a91de6a85455f6185181efd0afdfe368055425c49a1c7897047d9ae50a7903",
     "outcome": "served"
   },
@@ -3938,6 +4374,8 @@
     "tx_hash": "0x2bc1b4edc27001329ebef25bb02935e4d65b2cb9022c9d84c1fceee16fc3fd96",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x7c5006dc7f7b37b4f78a7c170f6d5c3fc74ae06fc184811b9539c322a7dad78b",
     "outcome": "served"
   },
@@ -3956,6 +4394,8 @@
     "tx_hash": "0x215bda4355e91c6ae03408c25826196b3e3b3321af72d7ce54b78b90aaeddacb",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x5df94a0cf38297c50c8444584798cda182a7a2df5353a93fb51b7690cd114668",
     "outcome": "served"
   },
@@ -3974,6 +4414,8 @@
     "tx_hash": "0x4cd8bf79d7534875758f288bbb7a157b7abc80a36c8c00473d7ae1cb3523968a",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0x60f393ebf85c4b51afa500c2f6b1189f1951db2104e95b8b3996bcdeaa909cec",
     "outcome": "served"
   },
@@ -3992,6 +4434,8 @@
     "tx_hash": "0xe1b714acc78e78c7fbf6adf4a0aa5204084e3c233cf9640a48bd3b5d6e313aa0",
     "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
     "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
     "signal_hash": "0xe0c505e36b2eb25d5286afd86efaaf8bb4552baffe9dd884909e17ea6093532c",
     "outcome": "served"
   }

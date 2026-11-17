@@ -73,6 +73,11 @@ export interface MarketTape {
   power: PowerPrice[];
   spend: { paid_calls: number; cost_usd: number };
   wallet_usdc_after: string | null;
+  /**
+   * The payment asset this run was allowed to pay with (pinned in config/networks.json). Absent on tapes recorded before
+   * 2026-11-17: those were paid in the previous test USDC, LEGACY_PAYMENT_ASSET.
+   */
+  payment?: { asset: string; network: string; pay_to: string };
   notes: string[];
   /** Upstream sources that failed this run (mempool.space, CAISO, Telegraph, Sepolia RPC). Empty or absent when clean. */
   degraded?: string[];
@@ -187,3 +192,86 @@ export function checkHashpricePurchase(
  * second time for the same intent in the same hour.
  */
 export const mayTryFallback = (primary: { paid: boolean }) => !primary.paid;
+
+// ---- payment asset ------------------------------------------------------------------------------------------------
+
+/**
+ * The test USDC Telegraph accepted until 2026-11-17 07:00 UTC. Tapes, receipts and ledger rows written before the asset
+ * was recorded carry no asset field and are treated as this one.
+ */
+export const LEGACY_PAYMENT_ASSET = "0xcc194e1a843B658526D0D5C431f670028582Ae17";
+
+/** The asset a tape, receipt or ledger row was paid in: its recorded asset, or the legacy one when none was recorded. */
+export const paymentAssetOf = (x?: { asset?: string | null; payment?: { asset?: string | null } | null } | null): string =>
+  x?.asset ?? x?.payment?.asset ?? LEGACY_PAYMENT_ASSET;
+
+export const sameAddress = (a: string | null | undefined, b: string | null | undefined) =>
+  !!a && !!b && a.toLowerCase() === b.toLowerCase();
+
+export interface PaymentChallengeOption { scheme?: string; network?: string; asset?: string; amount?: string; payTo?: string; }
+
+/**
+ * Is this payment requirement one Hushrate is allowed to pay? Exactly the pinned scheme, network, asset and payee.
+ * Used by the payment client's policy and by the tests, so the rule cannot drift from what is enforced.
+ */
+export function isAllowedPayment(opt: PaymentChallengeOption, pinned: { network: string; asset: string; payTo: string }): boolean {
+  return opt.scheme === "exact" && opt.network === pinned.network && sameAddress(opt.asset, pinned.asset) && sameAddress(opt.payTo, pinned.payTo);
+}
+
+/**
+ * A loud, specific reason for a refused payment: what the miner asked for (asset and network) against what is pinned.
+ * Options without an asset (the escrow scheme) are listed by scheme only.
+ */
+export function describeRefusal(
+  challenge: PaymentChallengeOption[] | null,
+  pinned: { network: string; asset: string; payTo: string },
+): string {
+  const want = (challenge ?? []).filter((o) => o.asset);
+  const asked = want.length
+    ? want.map((o) => `${o.scheme ?? "?"} asset ${o.asset} on ${o.network ?? "?"} (payTo ${o.payTo ?? "?"}, amount ${o.amount ?? "?"})`).join("; ")
+    : "no payment option could be read from the challenge";
+  const matchNet = want.filter((o) => o.network === pinned.network);
+  const why = !want.length ? "" : !matchNet.length ? ` None is on ${pinned.network}.` : matchNet.some((o) => !sameAddress(o.asset, pinned.asset)) && !matchNet.some((o) => sameAddress(o.asset, pinned.asset))
+    ? ` The asset on ${pinned.network} is not the pinned one.` : matchNet.some((o) => sameAddress(o.asset, pinned.asset) && !sameAddress(o.payTo, pinned.payTo)) ? " The asset matches but the payee (payTo) is not the pinned one." : "";
+  return `payment refused by spend controls: the miner asked for ${asked}. Hushrate only pays asset ${pinned.asset} on ${pinned.network} to ${pinned.payTo}.${why}`;
+}
+
+/** Can the wallet pay for this run? Compares the balance of the PINNED asset (in base units) with the run's cost. */
+export function fundingStatus(balanceUnits: bigint | null, runCostUnits: bigint): { funded: boolean; reason: string | null } {
+  if (balanceUnits === null) return { funded: false, reason: "the wallet balance could not be read" };
+  if (balanceUnits < runCostUnits) return { funded: false, reason: "balance below the cost of the run" };
+  return { funded: true, reason: null };
+}
+
+// ---- paid-data health (the "Paid data paused" banner) -------------------------------------------------------------------
+
+export interface PaidDataHealth {
+  /** Trailing hourly tapes, newest first, that bought nothing. */
+  consecutiveMisses: number;
+  /** True when 2 or more of the most recent hourly tapes in a row bought nothing. */
+  paused: boolean;
+  /** Hourly tapes in the last 24 hours that were public-only (nothing bought), and how many tapes there were. */
+  publicOnlyHours24: number;
+  tapes24: number;
+  lastPaidHour: string | null;
+}
+
+/**
+ * Derived from the hourly history only. A tape "bought nothing" when it settled no paid call. Two in a row means the
+ * paid data is paused: decisions are running on labelled public values.
+ */
+export function paidDataHealth(history: Pick<HistoryEntry, "interval_start" | "paid_calls">[], now: Date = new Date()): PaidDataHealth {
+  const sorted = [...history].sort((a, b) => a.interval_start.localeCompare(b.interval_start));
+  let misses = 0;
+  for (let i = sorted.length - 1; i >= 0 && sorted[i].paid_calls === 0; i--) misses++;
+  const cutoff = now.getTime() - 24 * 3600_000;
+  const recent = sorted.filter((h) => new Date(h.interval_start).getTime() > cutoff);
+  const lastPaid = [...sorted].reverse().find((h) => h.paid_calls > 0);
+  return {
+    consecutiveMisses: misses,
+    paused: misses >= 2,
+    publicOnlyHours24: recent.filter((h) => h.paid_calls === 0).length,
+    tapes24: recent.length,
+    lastPaidHour: lastPaid ? lastPaid.interval_start : null,
+  };
+}

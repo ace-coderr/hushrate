@@ -3,7 +3,8 @@ import { Empty, PageHead } from "../components/Layout";
 import { Stat } from "../components/Widgets";
 import { useHistory, useLedger } from "../lib/data";
 import { decideWith, marketFromEntry } from "../lib/decisions";
-import { explorerTx, hourLabel, num, shortHash, usd } from "../lib/format";
+import { explorerAsset, explorerTx, hourLabel, num, shortHash, usd } from "../lib/format";
+import { paymentAssetOf, sameAddress, LEGACY_PAYMENT_ASSET } from "@hushrate/core";
 import { useStore } from "../lib/store";
 
 const PURPOSE: Record<string, string> = { MINING_HASHPRICE_VERIFY_GENERAL: "hashprice", CRYPTO_PRICE_USD: "BTC/USD price", GRID_POWER_PRICE_GENERAL: "power price" };
@@ -58,7 +59,7 @@ export function Receipts() {
                   <td className="mono">{usd(r.billed_usd, 2)}</td>
                   <td>{r.outcome}</td>
                   <td className="mono" title={r.receipt_hash ?? ""}>{shortHash(r.receipt_hash)}</td>
-                  <td className="mono">{r.tx_hash ? <a href={explorerTx(r.tx_hash)} target="_blank" rel="noopener noreferrer">{shortHash(r.tx_hash)}</a> : "n/a"}</td>
+                  <td className="mono">{r.tx_hash ? <a href={explorerTx(r.tx_hash)} target="_blank" rel="noopener noreferrer">{shortHash(r.tx_hash)}</a> : "n/a"}<br /><small className="muted"><a href={explorerAsset(paymentAssetOf(r))} target="_blank" rel="noopener noreferrer">{sameAddress(paymentAssetOf(r), LEGACY_PAYMENT_ASSET) ? "previous USDC" : "USDC"} {shortHash(paymentAssetOf(r), 6, 4)}</a></small></td>
                 </tr>
               ))}
             </tbody>

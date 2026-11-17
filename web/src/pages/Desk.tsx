@@ -5,6 +5,7 @@ import { useHistory, useLatest, useStatus } from "../lib/data";
 import { decideWith, hourSlots, marketFromTape } from "../lib/decisions";
 import { ago, hourLabel, num, usd } from "../lib/format";
 import { useStore } from "../lib/store";
+import { PaidDataBanner } from "../components/PaidDataBanner";
 
 export function Desk() {
   const latest = useLatest();
@@ -19,6 +20,7 @@ export function Desk() {
         Live market from the latest tape, a 24-hour dispatch tape for the site you pick, and one decision card per site.
       </PageHead>
 
+      <PaidDataBanner />
       {status.data && status.data.state !== "ok" && (
         <div className="notice warn" role="alert">
           Agent status: <b>{status.data.state}</b>. {status.data.reason} Last update {ago(status.data.updated_at)}.{status.data.degraded && status.data.degraded.length > 0 && <ul>{status.data.degraded.map((x) => <li key={x}>{x}</li>)}</ul>}

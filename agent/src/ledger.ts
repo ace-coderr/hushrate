@@ -1,6 +1,7 @@
 // Builds data/ledger.json: one row per request that settled a payment, from the saved receipt files.
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { paymentAssetOf } from "@hushrate/core";
 
 export interface LedgerRow {
   file: string;
@@ -18,6 +19,9 @@ export interface LedgerRow {
   tx_hash: string | null;
   payer: string | null;
   amount_uusdc: string | null;
+  /** The asset the payment was made in. Receipts written before 2026-11-17 have none recorded: they are the previous asset. */
+  asset: string;
+  network: string;
   signal_hash: string | null;
   outcome: string;
 }
@@ -51,6 +55,8 @@ export function buildLedger(root = ROOT): LedgerRow[] {
       tx_hash: tr.tx_hash ?? r.payment_response?.transaction ?? b.payment?.transaction ?? null,
       payer: tr.payer ?? r.payment_response?.payer ?? b.payment?.payer ?? null,
       amount_uusdc: tr.amount_uusdc ?? null,
+      asset: paymentAssetOf(r.payment),
+      network: r.payment?.network ?? tr.chain ?? "eip155:11155111",
       signal_hash: b.signal_hash ?? null,
       outcome: ok ? "served" : r.http_status === null ? "transport error after payment was signed; status unknown, check the wallet" : "failed after payment; credited to escrow",
     });

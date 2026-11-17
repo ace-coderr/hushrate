@@ -40,7 +40,7 @@ The default fleet is a **sample fleet of demo assumptions**, labelled as such in
 
 | | |
 |---|---|
-| Price per Telegraph request | $0.01 (10000 units of test USDC) |
+| Price per Telegraph request | $0.01 (10000 units of Circle test USDC `0x1c7D…7238`, 6 decimals) |
 | Cap per payment | 30000 units ($0.03) |
 | Paid calls per run | 2 planned (hashprice + BTC price), hard cap 3 |
 | Per run | $0.02 |
@@ -65,6 +65,23 @@ Measured on every recorded Telegraph hashprice purchase (miner 71083), from `dat
 - **Old tapes** keep the rule they were recorded under, and the Proof page re-applies that rule to them.
 - **A separate finding.** Two hourly runs on 2026-11-13 at 16:17 and 16:20 UTC both bought data for the same hour (four payments, $0.04); the cause and fix are in the diagnosis section of the drift document.
 
+## Network and payment asset
+
+| | |
+|---|---|
+| Network | Ethereum Sepolia (testnet), `eip155:11155111` |
+| Payment asset | **Circle test USDC** `0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238` (6 decimals), since 2026-11-17 |
+| Payee (pinned) | `0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b` |
+| Per-payment cap | 30000 units (3 cents) |
+| Paid calls per run | 2 planned, hard cap 3 |
+| Previous asset (no longer accepted) | `0xcc194e1a843B658526D0D5C431f670028582Ae17`, used until 2026-11-17 07:00 UTC |
+
+The terms are pinned in `config/networks.json`: the payment client allows exactly that asset and payee and never uses `allowedAssets: true` or `spendControls: false`. Every new tape, receipt and ledger row records the asset it was paid in; older ones have no such field and are read as the previous asset.
+
+**Funding the wallet.** Use Circle's faucet at https://faucet.circle.com/ : network **Ethereum Sepolia**, token **USDC**, paste the wallet address from `config/networks.json`. Hushrate cannot mint this token (`npm run mint -w agent` says so and exits). Check with `npm run wallet`; the balance shown is the pinned token's.
+
+**What happened on 2026-11-17.** Telegraph changed the asset and payee it asks for. From the 07:17 UTC run every paid call was refused by Hushrate's own spend controls (nothing was signed, nothing was lost), and 7 hourly tapes (07:00 to 13:00 UTC) used labelled public values. The failure reason did not name the asset, and nothing flagged the run of public-only hours; both are fixed (specific refusal reasons, a funding check, a "Paid data paused" banner). Full record: [docs/payment-asset-change.md](docs/payment-asset-change.md).
+
 ## Failure handling
 
 The agent exits non-zero only for real failures: a missing or wrong wallet key, unreadable config, a failed file write, or an unexpected bug (it also writes `status: error`). A failed upstream source (mempool.space, CAISO OASIS, Telegraph, the Sepolia RPC) is a **degraded run**: the run still finishes with exit code 0, the failure is listed in the tape's `degraded` field and in `data/status.json` (`state: degraded`), it shows as a warning in the Actions run, and the affected inputs are left empty so sites that need them decide HOLD. Specifics:
@@ -74,13 +91,15 @@ The agent exits non-zero only for real failures: a missing or wrong wallet key, 
 - Telegraph call fails: the public hashprice is used and the tape says why.
 - Sepolia RPC down: the balance cannot be proven, so no paid call is made.
 - A degraded rerun never overwrites a more complete tape already recorded for the same hour (every run is still kept under `data/market/`).
-- Below 0.20 test USDC the run is `paused` (exit code 0), not an error.
+- Wallet unfunded for the pinned payment asset (balance below the cost of the run, 0.02): no miner is called, the run records `unfunded: needs USDC 0x1c7D…7238 on Ethereum Sepolia` as a degraded event and labelled public values (exit code 0). Below 0.20 but enough to pay is only a note.
+- Payment terms refused (a miner asks for a different asset, network or payee than the pinned ones): the degraded reason names the asset and network the miner asked for, and the rest of the run makes no further calls.
 
 The Settings page shows the state, the last successful run (a degraded run counts, since the schedule is alive) and the degraded reasons.
 
 ## Limits
 
 - **Testnet.** Sepolia test USDC only.
+- **The payment asset can change under us.** It did on 2026-11-17 (see Network and payment asset): the pinned terms mean a change stops paid data until the config is updated and the wallet is funded in the new token, and the data falls back to labelled public values meanwhile. The wallet's funding is manual (a faucet).
 - **Sample fleet.** Default sites are demo assumptions. Decisions are only as good as your load, efficiency and power adder.
 - **Day-ahead versus real-time.** Real-time moves every five minutes. Hushrate uses the latest published interval, not a forecast.
 - **Hashprice is one block.** The value used (Telegraph's, or the public fallback) is the hashprice of the latest block, so it includes that block's fees and moves with them (within 1.78% of the 144-block mean in the recorded data when no difficulty adjustment was in the window). The tape keeps the 144-block mean beside it for context.

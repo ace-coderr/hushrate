@@ -44,7 +44,7 @@ export function Docs() {
           <li>Computes decisions in your browser from your own site inputs, with a what-if calculator, a 24-hour dispatch tape and a ledger of every paid request.</li>
           <li>Lets you re-verify a tape yourself: recompute the hashprice of the bought block, re-apply the BTC rule, check the payment transaction on Sepolia.</li>
           <li>Exposes the same data and decision math to AI agents through an MCP server.</li>
-          <li>Runs hourly without anyone watching, and pauses itself if the test-USDC balance runs low.</li>
+          <li>Runs hourly without anyone watching. If the wallet cannot pay, or a miner asks for terms Hushrate does not allow, it records labelled public values instead and says so (a "Paid data paused" banner appears after two such hours).</li>
         </ul>
         <p>It runs on Ethereum Sepolia with test USDC only. It does not switch hardware, and it has no customers or measured savings to report.</p>
 
@@ -82,7 +82,7 @@ export function Docs() {
             </tbody>
           </table>
         </div>
-        <p>Safety limits: at most 3 paid calls per run, at most 3 cents per payment, and the agent pauses below 0.20 test USDC. The live total is on <a href="#/receipts">Receipts</a>.</p>
+        <p>Safety limits: at most 3 paid calls per run, at most 3 cents per payment, and the agent checks the wallet's balance of the pinned token before every run. The live total is on <a href="#/receipts">Receipts</a>.</p>
 
         <h2 id="acceptance">Data acceptance</h2>
         <p>Hushrate buys a hashprice reading every hour and uses it only if it passes a check against public chain data. This is how often the Telegraph miner passed, what the check is, and what happens when it does not.</p>
@@ -135,7 +135,7 @@ cp .env.example .env      # set EVM_PRIVATE_KEY to a Sepolia TEST wallet
 npm run wallet            # check test ETH and test USDC
 npm run agent -- --no-pay # free: public sources only
 npm run agent             # buys one hashprice reading, writes data/`}</code></pre>
-        <p>Test USDC can be minted on Sepolia with <code>mint(address,uint256)</code> on 0xcc194e1a843B658526D0D5C431f670028582Ae17. The agent pays at most 3 cents per payment, at most 3 paid calls per run, never retries a settled payment, and pauses if the balance falls under 0.20 test USDC.</p>
+        <p>Fund the test wallet with Circle's test USDC on Ethereum Sepolia (token 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238) from <a href="https://faucet.circle.com/" target="_blank" rel="noopener noreferrer">Circle's faucet</a>: pick Ethereum Sepolia and USDC. The agent pays at most 3 cents per payment and at most 3 paid calls per run, never retries a settled payment, pays only the pinned asset to the pinned payee, and without enough balance makes no paid calls at all.</p>
 
         <h2 id="repro">Reproduce the build</h2>
         <pre><code>{`npm test                    # decision math, hand-computed
@@ -146,6 +146,7 @@ npm run build -w packages/mcp`}</code></pre>
         <h2 id="limits">Limits, in plain language</h2>
         <ul>
           <li><b>Testnet only.</b> Payments are Sepolia test USDC. Nothing touches mainnet or real money.</li>
+          <li><b>The payment asset changed once and can again.</b> On 2026-11-17 Telegraph started asking for a different test USDC (and payee). Hushrate pins the asset it will pay, so it refused, bought nothing for 7 hourly tapes (07:00 to 13:00 UTC) and used labelled public values until the wallet was funded in the new token and the config updated. No money was lost. It now says exactly what was asked for, checks funding first, and shows a "Paid data paused" banner. See the table in the Path to mainnet section and docs/payment-asset-change.md.</li>
           <li><b>Sample fleet.</b> The default sites are demo assumptions. Decisions are only as good as the load, efficiency and adder you enter.</li>
           <li><b>Day-ahead versus real-time.</b> Real-time prices swing from interval to interval. Hushrate uses the latest published five-minute price and labels it; it is not a forecast.</li>
           <li><b>Hashprice is one block.</b> The value used is the hashprice of the latest block, so it includes that block's fees and can sit a percent or two away from the 144-block mean the tape keeps for context. After a difficulty adjustment it follows the new difficulty immediately, which an average would not.</li>
@@ -159,6 +160,19 @@ npm run build -w packages/mcp`}</code></pre>
 
         <h2 id="mainnet">Path to mainnet (not live)</h2>
         <p><b>Hushrate is NOT live on mainnet.</b> Every payment today is Ethereum Sepolia test USDC. Telegraph's published documentation lists testnet addresses only, so this repository contains no mainnet addresses and none were invented.</p>
+        <p>Today's network and payment asset (pinned in <code>config/networks.json</code>):</p>
+        <div className="scroll">
+          <table>
+            <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Network</td><td className="mono">Ethereum Sepolia (testnet), eip155:11155111</td></tr>
+              <tr><td>Payment asset</td><td className="mono">Circle test USDC 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238 (6 decimals), since 2026-11-17</td></tr>
+              <tr><td>Payee (pinned)</td><td className="mono">0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b</td></tr>
+              <tr><td>Cap per payment / calls per run</td><td className="mono">30000 units (3 cents) / 3</td></tr>
+              <tr><td>Previous asset (no longer accepted)</td><td className="mono">0xcc194e1a843B658526D0D5C431f670028582Ae17, until 2026-11-17 07:00 UTC</td></tr>
+            </tbody>
+          </table>
+        </div>
         <p>What exists in code: network settings live in <code>config/networks.json</code>. <code>sepolia</code> is the active network. A <code>mainnet</code> entry exists but is <b>disabled</b>, with every value set to null on purpose. The loader (<code>agent/src/network.ts</code>) refuses to run a non-testnet network unless all three hold: it is switched on in the file, every address, node, limit and RPC value is filled in explicitly (nothing is defaulted), and the environment carries <code>HUSHRATE_MAINNET_ENABLE=I_UNDERSTAND_THIS_USES_REAL_MONEY</code>. Tests cover each refusal. The mint script refuses to run on any non-testnet network.</p>
         <p>Checklist before anyone flips it:</p>
         <ol>

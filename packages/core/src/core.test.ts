@@ -1,7 +1,7 @@
 // Hand-computed checks. Run: npm test -w packages/core
 import test from "node:test";
 import assert from "node:assert/strict";
-import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
+import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, isAllowedPayment, describeRefusal, fundingStatus, paymentAssetOf, paidDataHealth, LEGACY_PAYMENT_ASSET, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
 
 const near = (a: number, b: number, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} vs ${b}`);
 
@@ -173,4 +173,86 @@ test("pinning: the fallback miner may be tried only when the primary signed no p
   assert.match(removed.reason!, /HTTP 404/);
   // A payment was signed (even if the response was lost or the request failed after payment): never pay again this hour.
   assert.equal(mayTryFallback({ paid: true }), false);
+});
+
+// ---- payment asset pinning (the 2026-11-17 change) ------------------------------------------------------------------
+// The values below are the real challenge Telegraph returned on 2026-11-17 (see docs/payment-asset-change.md).
+const NEW_ASSET = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238";
+const NEW_PAYTO = "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b";
+const PIN = { network: "eip155:11155111", asset: NEW_ASSET, payTo: NEW_PAYTO };
+const offer = { scheme: "exact", network: "eip155:11155111", asset: NEW_ASSET, amount: "10000", payTo: NEW_PAYTO };
+
+test("payment: the new asset on the pinned network to the pinned payee is accepted (case-insensitive addresses)", () => {
+  assert.equal(isAllowedPayment(offer, PIN), true);
+  assert.equal(isAllowedPayment({ ...offer, asset: NEW_ASSET.toLowerCase(), payTo: NEW_PAYTO.toLowerCase() }, PIN), true);
+});
+
+test("payment: ASSET MISMATCH is refused (the previous test USDC, which Telegraph no longer asks for, is not on the allow list)", () => {
+  assert.equal(isAllowedPayment({ ...offer, asset: LEGACY_PAYMENT_ASSET }, PIN), false);
+  assert.equal(isAllowedPayment({ ...offer, asset: "0x036CbD53842c5426634e7929541eC2318f3dCF7e" }, PIN), false, "an unknown token");
+});
+
+test("payment: a different network, payee or scheme is refused", () => {
+  assert.equal(isAllowedPayment({ ...offer, network: "eip155:84532" }, PIN), false, "Base Sepolia");
+  assert.equal(isAllowedPayment({ ...offer, payTo: "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e" }, PIN), false, "payee changed");
+  assert.equal(isAllowedPayment({ scheme: "escrow", network: "eip155:11155111", payTo: NEW_PAYTO }, PIN), false, "escrow has no asset");
+});
+
+test("payment: a refusal names the asset and network the miner asked for", () => {
+  // Pinned to the OLD asset while the miner asks for the new one: the situation of the incident.
+  const oldPin = { network: "eip155:11155111", asset: LEGACY_PAYMENT_ASSET, payTo: "0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b" };
+  const msg = describeRefusal([offer, { scheme: "escrow", network: "eip155:11155111", payTo: NEW_PAYTO }], oldPin);
+  assert.match(msg, /asset 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238 on eip155:11155111/);
+  assert.match(msg, /only pays asset 0xcc194e1a843B658526D0D5C431f670028582Ae17/);
+  assert.match(msg, /asset on eip155:11155111 is not the pinned one/);
+  assert.doesNotMatch(msg, /escrow asset/, "an option without an asset is not listed as an asset");
+  assert.match(describeRefusal([{ ...offer, network: "eip155:84532" }], PIN), /None is on eip155:11155111/);
+  assert.match(describeRefusal([offer], { ...PIN, payTo: "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e" }), /payee \(payTo\) is not the pinned one/);
+  assert.match(describeRefusal(null, PIN), /no payment option could be read/);
+});
+
+test("funding: an unfunded wallet is detected against the cost of the run, in the pinned token's base units", () => {
+  const cost = 20000n; // two requests at 10000 units ($0.01 each)
+  assert.deepEqual(fundingStatus(0n, cost), { funded: false, reason: "balance below the cost of the run" });
+  assert.equal(fundingStatus(19999n, cost).funded, false);
+  assert.equal(fundingStatus(20000n, cost).funded, true, "exactly the cost is enough");
+  assert.equal(fundingStatus(15_000_000n, cost).funded, true);
+  assert.match(fundingStatus(null, cost).reason!, /could not be read/);
+});
+
+test("old tapes, receipts and ledger rows without an asset are read as the legacy asset", () => {
+  assert.equal(paymentAssetOf({}), LEGACY_PAYMENT_ASSET);
+  assert.equal(paymentAssetOf(null), LEGACY_PAYMENT_ASSET);
+  assert.equal(paymentAssetOf({ asset: null }), LEGACY_PAYMENT_ASSET);
+  assert.equal(paymentAssetOf({ asset: NEW_ASSET }), NEW_ASSET);
+  assert.equal(paymentAssetOf({ payment: { asset: NEW_ASSET } }), NEW_ASSET);
+});
+
+test("paid-data banner: two consecutive hourly tapes that bought nothing pause it; one miss or a purchase does not", () => {
+  const h = (hour: number, paid: number) => ({ interval_start: `2026-11-17T${String(hour).padStart(2, "0")}:00:00Z`, paid_calls: paid });
+  const now = new Date("2026-11-17T13:30:00Z");
+  assert.equal(paidDataHealth([h(5, 2), h(6, 2)], now).paused, false, "healthy");
+  assert.equal(paidDataHealth([h(5, 2), h(6, 0)], now).paused, false, "one miss is not yet a pause");
+  const two = paidDataHealth([h(5, 2), h(6, 0), h(7, 0)], now);
+  assert.equal(two.paused, true);
+  assert.equal(two.consecutiveMisses, 2);
+  assert.equal(two.lastPaidHour, "2026-11-17T05:00:00Z");
+  assert.equal(paidDataHealth([h(5, 0), h(6, 0), h(7, 0), h(8, 2)], now).paused, false, "a purchase resets it");
+  assert.equal(paidDataHealth([h(6, 0), h(7, 2), h(8, 0)], now).consecutiveMisses, 1, "only trailing misses count");
+  assert.equal(paidDataHealth([], now).paused, false, "no data is not a pause");
+});
+
+test("paid-data banner: counts public-only hours in the last 24 hours", () => {
+  const now = new Date("2026-11-17T14:00:00Z");
+  const rows = [
+    { interval_start: "2026-11-16T10:00:00Z", paid_calls: 0 }, // older than 24 h: not counted
+    { interval_start: "2026-11-16T15:00:00Z", paid_calls: 2 },
+    { interval_start: "2026-11-17T07:00:00Z", paid_calls: 0 },
+    { interval_start: "2026-11-17T08:00:00Z", paid_calls: 0 },
+    { interval_start: "2026-11-17T13:00:00Z", paid_calls: 0 },
+  ];
+  const r = paidDataHealth(rows, now);
+  assert.equal(r.publicOnlyHours24, 3);
+  assert.equal(r.tapes24, 4);
+  assert.equal(r.paused, true);
 });

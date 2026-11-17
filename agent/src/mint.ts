@@ -11,7 +11,13 @@ import { loadNetwork } from "./network.js";
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 try { process.loadEnvFile(`${ROOT}.env`); } catch { /* env may already be set */ }
 
-if (!loadNetwork().testnet) throw new Error("mint is for test tokens only and refuses to run on a non-testnet network");
+const net = loadNetwork();
+if (!net.testnet) throw new Error("mint is for test tokens only and refuses to run on a non-testnet network");
+if (!net.usdc.mintable) {
+  console.log(`${net.usdc.symbol} at ${net.usdc.address} on ${net.label} cannot be minted by this script: it is Circle's test token.`);
+  console.log("Fund the wallet from Circle's faucet: https://faucet.circle.com/ (network: Ethereum Sepolia, token: USDC), address " + WALLET);
+  process.exit(0);
+}
 const MAX_USDC = 20; // hard ceiling per invocation
 const amount = Number(process.argv.find((a, i) => i > 1 && /^\d+(\.\d+)?$/.test(a)) ?? "15");
 if (!(amount > 0 && amount <= MAX_USDC)) throw new Error(`amount must be above 0 and at most ${MAX_USDC}`);

@@ -18,3 +18,4 @@ export const ago = (iso: string, now = Date.now()) => {
 
 export const explorerTx = (h: string) => `https://sepolia.etherscan.io/tx/${h}`;
 export const explorerAddr = (a: string) => `https://sepolia.etherscan.io/address/${a}`;
+export const explorerAsset = (a: string) => `https://sepolia.etherscan.io/token/${a}`;

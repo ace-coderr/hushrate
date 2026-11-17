@@ -11,7 +11,9 @@ export interface NetworkConfig {
   caip2: string | null;
   chain_id: number | null;
   rpc_url: string | null;
-  usdc: { address: string | null; decimals: number };
+  usdc: { address: string | null; decimals: number; symbol?: string; mintable?: boolean };
+  /** The payee Hushrate is willing to pay, pinned (see config/networks.json). */
+  pay_to: string | null;
   telegraph_node: string | null;
   expected_wallet: string | null;
   explorer_tx: string | null;
@@ -28,7 +30,8 @@ export interface Network {
   caip2: `${string}:${string}`;
   chain_id: number;
   rpc_url: string;
-  usdc: { address: `0x${string}`; decimals: number };
+  usdc: { address: `0x${string}`; decimals: number; symbol: string; mintable: boolean };
+  pay_to: `0x${string}`;
   telegraph_node: string;
   expected_wallet: `0x${string}`;
   explorer_tx: string;
@@ -52,12 +55,13 @@ export function resolveNetwork(cfg: { active: string; networks: Record<string, N
 
   const missing: string[] = [];
   const need = (k: string, v: unknown) => { if (v === null || v === undefined || v === "") missing.push(k); };
-  need("caip2", n.caip2); need("chain_id", n.chain_id); need("rpc_url", n.rpc_url); need("usdc.address", n.usdc?.address);
+  need("caip2", n.caip2); need("chain_id", n.chain_id); need("rpc_url", n.rpc_url); need("usdc.address", n.usdc?.address); need("pay_to", n.pay_to);
   need("telegraph_node", n.telegraph_node); need("expected_wallet", n.expected_wallet); need("explorer_tx", n.explorer_tx);
   need("max_amount_per_payment", n.max_amount_per_payment); need("max_paid_calls_per_run", n.max_paid_calls_per_run); need("min_balance_units", n.min_balance_units);
   if (missing.length) throw new Error(`${NETWORK_ERROR}: network "${name}" is missing ${missing.join(", ")}; refusing to run (nothing is defaulted)`);
 
   if (!ADDRESS.test(n.usdc.address!)) throw new Error(`${NETWORK_ERROR}: usdc.address is not a valid address`);
+  if (!ADDRESS.test(n.pay_to!)) throw new Error(`${NETWORK_ERROR}: pay_to is not a valid address`);
   if (!ADDRESS.test(n.expected_wallet!)) throw new Error(`${NETWORK_ERROR}: expected_wallet is not a valid address`);
   if (n.caip2 !== `eip155:${n.chain_id}`) throw new Error(`${NETWORK_ERROR}: caip2 ${n.caip2} does not match chain_id ${n.chain_id}`);
   if (!/^\d+$/.test(n.max_amount_per_payment!) || BigInt(n.max_amount_per_payment!) <= 0n) throw new Error(`${NETWORK_ERROR}: max_amount_per_payment must be a positive integer string`);
@@ -68,7 +72,8 @@ export function resolveNetwork(cfg: { active: string; networks: Record<string, N
 
   return {
     name, label: n.label, testnet: n.testnet, caip2: n.caip2 as `${string}:${string}`, chain_id: n.chain_id!, rpc_url: n.rpc_url!,
-    usdc: { address: n.usdc.address as `0x${string}`, decimals: n.usdc.decimals }, telegraph_node: n.telegraph_node!.replace(/\/$/, ""),
+    usdc: { address: n.usdc.address as `0x${string}`, decimals: n.usdc.decimals, symbol: n.usdc.symbol ?? "USDC", mintable: n.usdc.mintable === true },
+    pay_to: n.pay_to as `0x${string}`, telegraph_node: n.telegraph_node!.replace(/\/$/, ""),
     expected_wallet: n.expected_wallet as `0x${string}`, explorer_tx: n.explorer_tx!, max_amount_per_payment: n.max_amount_per_payment!,
     max_paid_calls_per_run: n.max_paid_calls_per_run!, min_balance_units: BigInt(n.min_balance_units!),
   };

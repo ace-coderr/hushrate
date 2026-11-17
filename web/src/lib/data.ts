@@ -10,6 +10,11 @@ export interface Status {
   last_success_at?: string | null;
   reason?: string;
   usdc_balance?: string | null;
+  /** The asset the balance is in and the agent is allowed to pay with. Absent on status files from before 2026-11-17. */
+  payment_asset?: string;
+  payment_network?: string;
+  payment_symbol?: string;
+  unfunded?: boolean;
   last_tape?: string;
   paid_calls_last_run?: number;
   cost_usd_last_run?: number;
@@ -22,6 +27,8 @@ export interface LedgerRow {
   http_status: number | null; billed_usd: number; paid_usd: number;
   receipt_hash: string | null; tx_hash: string | null; payer: string | null; amount_uusdc: string | null;
   signal_hash: string | null; outcome: string;
+  /** Absent on a ledger file written before 2026-11-17: those rows are the previous asset. */
+  asset?: string; network?: string;
 }
 
 export interface Ticker {
