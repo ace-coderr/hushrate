@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "interval_start": "2026-11-17T22:00:00Z",
-  "recorded_at": "2026-11-17T22:17:24.143Z",
+  "recorded_at": "2026-11-17T22:19:51.750Z",
   "block_height": 976333,
   "btc_usd": 64342,
   "hashprice": {
@@ -31,7 +31,7 @@
       "signal_hash": null,
       "receipt_hash": null,
       "tx_hash": "",
-      "receipt_file": "2026-11-17T22-17-59-012Z-hashprice-976333.json",
+      "receipt_file": "2026-11-17T22-20-25-771Z-hashprice-976333.json",
       "accepted": false,
       "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
     },
@@ -60,7 +60,7 @@
       "signal_hash": null,
       "receipt_hash": null,
       "tx_hash": "",
-      "receipt_file": "2026-11-17T22-18-30-725Z-btc-2026-11-17T22-00-00Z.json",
+      "receipt_file": "2026-11-17T22-20-56-457Z-btc-2026-11-17T22-00-00Z.json",
       "accepted": false,
       "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
     }
