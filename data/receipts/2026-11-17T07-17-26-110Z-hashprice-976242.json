@@ -1,0 +1,18 @@
+{
+  "label": "hashprice-976242",
+  "miner_id_requested": "1900999013",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 976242
+  },
+  "query": null,
+  "idempotency_key": "[\"1900999013\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":976242}]",
+  "paid": false,
+  "http_status": 404,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "error": "miner_not_found",
+    "message": "miner not found: 1900999013"
+  }
+}
