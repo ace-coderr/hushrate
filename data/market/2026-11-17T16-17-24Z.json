@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "interval_start": "2026-11-17T16:00:00Z",
+  "recorded_at": "2026-11-17T16:17:24.299Z",
+  "block_height": 976299,
+  "btc_usd": 64374,
+  "hashprice": {
+    "value_sats_per_ph_day": 46681.15993037102,
+    "source": "public",
+    "label": "public: mempool.space, single block 976299 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not bought: the node's payment terms are not on the allow-list (see degraded)",
+    "public_144": {
+      "tip": 976299,
+      "blocks": 144,
+      "from_height": 976156,
+      "to_height": 976299,
+      "hashprice_sats_per_ph_day": 46880.53135007157,
+      "min_block": 46646.32159924596,
+      "max_block": 47528.917820546034
+    },
+    "telegraph": null,
+    "public_at_telegraph_height": 46681.15993037102,
+    "comparison": "single_block_at_returned_height",
+    "tolerance_rel": 0.01,
+    "miner_role": null
+  },
+  "btc": {
+    "value_usd": 64374,
+    "source": "public",
+    "label": "public: mempool.space BTC/USD; Telegraph price not bought: the node's payment terms are not on the allow-list (see degraded)",
+    "public_usd": 64374,
+    "tolerance_rel": 0.005,
+    "telegraph": null
+  },
+  "power": [
+    {
+      "node": "TH_SP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 0.81274,
+      "day_ahead_interval": "2026-11-17T16:00:00.000Z",
+      "real_time_usd_per_mwh": 10.329,
+      "real_time_interval": "2026-11-17T16:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_NP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 50.25772,
+      "day_ahead_interval": "2026-11-17T16:00:00.000Z",
+      "real_time_usd_per_mwh": 62.94629,
+      "real_time_interval": "2026-11-17T16:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_ZP26_GEN-APND",
+      "day_ahead_usd_per_mwh": 3.32632,
+      "day_ahead_interval": "2026-11-17T16:00:00.000Z",
+      "real_time_usd_per_mwh": 11.95719,
+      "real_time_interval": "2026-11-17T16:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    }
+  ],
+  "spend": {
+    "paid_calls": 0,
+    "cost_usd": 0
+  },
+  "wallet_usdc_after": "20",
+  "notes": [
+    "Telegraph hashprice not bought this run: the node's payment terms are not on the allow-list (see degraded)",
+    "Telegraph BTC price not bought this run: the node's payment terms are not on the allow-list (see degraded)"
+  ],
+  "degraded": [
+    "payment refused by spend controls: the miner asked for exact asset 0xcc194e1a843B658526D0D5C431f670028582Ae17 on eip155:11155111 (payTo 0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b, amount 10000); exact asset 0x036CbD53842c5426634e7929541eC2318f3dCF7e on eip155:84532 (payTo 0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e, amount 10000); exact asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU on solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1 (payTo G53EbeTZSNsAn7bj6iMFUQnq3zpDdEbHhKkPRywo8bix, amount 10000). Hushrate only pays: 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238 on eip155:11155111 to 0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b; 0xcc194e1a843B658526D0D5C431f670028582Ae17 on eip155:11155111 to 0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b. The asset is allowed but the payee (payTo) is not the one pinned for it."
+  ],
+  "payment": {
+    "asset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+    "requested": null,
+    "allowed": [
+      "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      "0xcc194e1a843B658526D0D5C431f670028582Ae17"
+    ]
+  }
+}
