@@ -1,5 +1,5 @@
 {
-  "_note": "Only Ethereum Sepolia is live. The mainnet entry is a disabled placeholder: Telegraph docs publish testnet addresses only, so every mainnet value is null or empty on purpose and nothing here may be filled in with a guess. Telegraph changed the Sepolia payment asset on 2026-11-17 and may change it again, so Hushrate pays from an explicit allow-list of assets, each with its own pinned payee (see docs/payment-asset-change.md). The node picks which allowed asset to ask for; anything else is refused loudly.",
+  "_note": "Only Ethereum Sepolia is live. The mainnet entry is a disabled placeholder: Telegraph docs publish testnet addresses only, so every mainnet value is null or empty on purpose and nothing here may be filled in with a guess. Telegraph changed the Sepolia payment asset on 2026-11-17 and may change it again, so Hushrate pays from an explicit allow-list of assets, each with its own pinned payee (see docs/payment-asset-change.md). The node picks which allowed asset to ask for; anything else is refused loudly. On 2026-11-17 the node began asking for the previous asset paid to the same payee as the current one, so both assets are pinned to that single payee (the earlier payee, 0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b, is no longer allowed).",
   "active": "sepolia",
   "networks": {
     "sepolia": {
@@ -24,7 +24,7 @@
           "symbol": "USDC",
           "name": "USD Coin (previous test USDC)",
           "decimals": 6,
-          "pay_to": "0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b",
+          "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
           "mintable": true,
           "role": "previous"
         }

@@ -67,12 +67,12 @@ Measured on every recorded Telegraph hashprice purchase (miner 71083), from `dat
 
 ## Network and payment asset
 
-Telegraph changed the payment asset it asks for on 2026-11-17 and may change it again, so Hushrate does not hard-code one asset. It pays from an **explicit allow-list of two Sepolia assets**, each with its own pinned payee, and pays whichever of the two the node's 402 challenge asks for:
+Telegraph changed the payment asset it asks for on 2026-11-17 and may change it again, so Hushrate does not hard-code one asset. It pays from an **explicit allow-list of two Sepolia assets**, each with a pinned payee (today the same one), and pays whichever of the two the node's 402 challenge asks for:
 
 | | Asset | Payee (pinned) | Status |
 |---|---|---|---|
 | Circle test USDC | `0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238` (6 decimals) | `0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b` | asked for since 2026-11-17 |
-| Previous test USDC | `0xcc194e1a843B658526D0D5C431f670028582Ae17` (6 decimals) | `0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b` | asked for until 2026-11-17 07:00 UTC |
+| Previous test USDC | `0xcc194e1a843B658526D0D5C431f670028582Ae17` (6 decimals) | `0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b` | asked for until 07:00 UTC and again from about 16:00 UTC on 2026-11-17, now to the new payee |
 
 Network `eip155:11155111` (Ethereum Sepolia, testnet). Per-payment cap 30000 units (3 cents); paid calls per run: 2 planned, hard cap 3. The terms are in `config/networks.json`; the payment client enforces them with spend controls plus a policy that requires the exact (network, asset, payee) triple, and never uses `allowedAssets: true` or `spendControls: false`.
 

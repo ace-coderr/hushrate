@@ -22,12 +22,12 @@ test("the committed config runs Sepolia with an allow-list of exactly two assets
   assert.ok(n.assets.every((a) => a.decimals === 6 && a.symbol === "USDC"));
 });
 
-test("each allowed asset has its own exact payee, and no other asset is allowed", () => {
+test("both allowed assets are pinned to the node's current payee, and the pre-2026-11-17 payee is not allowed", () => {
   const n = resolveNetwork(repoConfig, {});
   const by = Object.fromEntries(n.assets.map((a) => [a.address, a.pay_to]));
   assert.equal(by[NEW_ASSET], "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b");
-  assert.equal(by[OLD_ASSET], "0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b");
-  assert.notEqual(by[NEW_ASSET].toLowerCase(), by[OLD_ASSET].toLowerCase());
+  assert.equal(by[OLD_ASSET], "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b", "the node asked for the previous asset paid to this payee on 2026-11-17");
+  assert.ok(!n.assets.some((a) => a.pay_to.toLowerCase() === "0x3624eb012b5e998bb57b6be6c9cfc9c4bc5eb99b"), "the earlier payee is no longer allowed");
 });
 
 test("only the previous test USDC is mintable here; Circle's token is funded from the faucet", () => {

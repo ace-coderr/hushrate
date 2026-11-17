@@ -160,13 +160,13 @@ npm run build -w packages/mcp`}</code></pre>
 
         <h2 id="mainnet">Path to mainnet (not live)</h2>
         <p><b>Hushrate is NOT live on mainnet.</b> Every payment today is Ethereum Sepolia test USDC. Telegraph's published documentation lists testnet addresses only, so this repository contains no mainnet addresses and none were invented.</p>
-        <p>Today's network and payment assets (in <code>config/networks.json</code>). Telegraph changed the asset it asks for on 2026-11-17 and may again, so Hushrate pays from an explicit allow-list of two assets, each to its own pinned payee, and pays whichever the node's 402 asks for:</p>
+        <p>Today's network and payment assets (in <code>config/networks.json</code>). Telegraph changed the asset it asks for on 2026-11-17 and may again, so Hushrate pays from an explicit allow-list of two assets, each with a pinned payee (today the same one), and pays whichever the node's 402 asks for:</p>
         <div className="scroll">
           <table>
             <thead><tr><th>Asset</th><th>Payee (pinned)</th><th>Status</th></tr></thead>
             <tbody>
               <tr><td className="mono">Circle test USDC 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238 (6 decimals)</td><td className="mono">0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b</td><td>asked for since 2026-11-17</td></tr>
-              <tr><td className="mono">Previous test USDC 0xcc194e1a843B658526D0D5C431f670028582Ae17 (6 decimals)</td><td className="mono">0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b</td><td>asked for until 2026-11-17 07:00 UTC</td></tr>
+              <tr><td className="mono">Previous test USDC 0xcc194e1a843B658526D0D5C431f670028582Ae17 (6 decimals)</td><td className="mono">0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b</td><td>asked for until 07:00 UTC and again from about 16:00 UTC on 2026-11-17, now to the new payee</td></tr>
               <tr><td>Network, caps</td><td className="mono" colSpan={2}>Ethereum Sepolia (testnet) eip155:11155111 · 30000 units (3 cents) per payment · 3 paid calls per run</td></tr>
             </tbody>
           </table>

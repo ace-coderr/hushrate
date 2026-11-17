@@ -1,0 +1,245 @@
+{
+  "fetched_at": "2026-11-17T19:09:38.724Z",
+  "tip_used": 976312,
+  "node": "https://devnode.telegraphprotocol.com",
+  "wallet": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+  "challenges": [
+    {
+      "miner": "71083",
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "url": "https://devnode.telegraphprotocol.com/engine/v1/ask/71083",
+      "http_status": 402,
+      "x402Version": 2,
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:11155111",
+          "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "eip155:84532",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "amount": "10000",
+          "payTo": "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USDC",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+          "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+          "amount": "10000",
+          "payTo": "G53EbeTZSNsAn7bj6iMFUQnq3zpDdEbHhKkPRywo8bix",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "feePayer": "C7ckEzH4varMpBQsaD9bJZSCnWVyk4zAKYA85spuuNbR"
+          }
+        },
+        {
+          "scheme": "escrow",
+          "network": "eip155:11155111",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+          "extra": {
+            "description": "Charged to the caller's Telegraph escrow balance in the next ledger block. Fund it once with LedgerFacet.depositUSDC(amount); no per-request settlement.",
+            "message": "Telegraph Escrow Payment\n\nWallet: {from}\nPay To: 0x72a70e949362670bf8bcead24efc5b8f950aa08b\nNetwork: eip155:11155111\nAmount: 10000 uUSDC\nResource: /v1/ask/71083\nNonce: {nonce}\nValid After: {validAfter}\nValid Before: {validBefore}",
+            "resource": "/v1/ask/71083",
+            "signWith": "personal_sign (EIP-191)"
+          }
+        }
+      ]
+    },
+    {
+      "miner": "1900999013",
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "url": "https://devnode.telegraphprotocol.com/engine/v1/ask/1900999013",
+      "http_status": 402,
+      "x402Version": 2,
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:11155111",
+          "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "eip155:84532",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "amount": "10000",
+          "payTo": "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USDC",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+          "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+          "amount": "10000",
+          "payTo": "G53EbeTZSNsAn7bj6iMFUQnq3zpDdEbHhKkPRywo8bix",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "feePayer": "C7ckEzH4varMpBQsaD9bJZSCnWVyk4zAKYA85spuuNbR"
+          }
+        },
+        {
+          "scheme": "escrow",
+          "network": "eip155:11155111",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+          "extra": {
+            "description": "Charged to the caller's Telegraph escrow balance in the next ledger block. Fund it once with LedgerFacet.depositUSDC(amount); no per-request settlement.",
+            "message": "Telegraph Escrow Payment\n\nWallet: {from}\nPay To: 0x72a70e949362670bf8bcead24efc5b8f950aa08b\nNetwork: eip155:11155111\nAmount: 10000 uUSDC\nResource: /v1/ask/1900999013\nNonce: {nonce}\nValid After: {validAfter}\nValid Before: {validBefore}",
+            "resource": "/v1/ask/1900999013",
+            "signWith": "personal_sign (EIP-191)"
+          }
+        }
+      ]
+    },
+    {
+      "miner": "7320",
+      "intent": "CRYPTO_PRICE_USD",
+      "url": "https://devnode.telegraphprotocol.com/engine/v1/ask/7320",
+      "http_status": 402,
+      "x402Version": 2,
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:11155111",
+          "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "eip155:84532",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "amount": "10000",
+          "payTo": "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USDC",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+          "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+          "amount": "10000",
+          "payTo": "G53EbeTZSNsAn7bj6iMFUQnq3zpDdEbHhKkPRywo8bix",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "feePayer": "C7ckEzH4varMpBQsaD9bJZSCnWVyk4zAKYA85spuuNbR"
+          }
+        },
+        {
+          "scheme": "escrow",
+          "network": "eip155:11155111",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+          "extra": {
+            "description": "Charged to the caller's Telegraph escrow balance in the next ledger block. Fund it once with LedgerFacet.depositUSDC(amount); no per-request settlement.",
+            "message": "Telegraph Escrow Payment\n\nWallet: {from}\nPay To: 0x72a70e949362670bf8bcead24efc5b8f950aa08b\nNetwork: eip155:11155111\nAmount: 10000 uUSDC\nResource: /v1/ask/7320\nNonce: {nonce}\nValid After: {validAfter}\nValid Before: {validBefore}",
+            "resource": "/v1/ask/7320",
+            "signWith": "personal_sign (EIP-191)"
+          }
+        }
+      ]
+    },
+    {
+      "miner": "router",
+      "intent": "CRYPTO_PRICE_USD",
+      "url": "https://devnode.telegraphprotocol.com/engine/v1/ask",
+      "http_status": 402,
+      "x402Version": 2,
+      "accepts": [
+        {
+          "scheme": "exact",
+          "network": "eip155:11155111",
+          "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USD Coin",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "eip155:84532",
+          "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+          "amount": "10000",
+          "payTo": "0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "name": "USDC",
+            "version": "2"
+          }
+        },
+        {
+          "scheme": "exact",
+          "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+          "asset": "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU",
+          "amount": "10000",
+          "payTo": "G53EbeTZSNsAn7bj6iMFUQnq3zpDdEbHhKkPRywo8bix",
+          "maxTimeoutSeconds": 60,
+          "extra": {
+            "feePayer": "C7ckEzH4varMpBQsaD9bJZSCnWVyk4zAKYA85spuuNbR"
+          }
+        },
+        {
+          "scheme": "escrow",
+          "network": "eip155:11155111",
+          "amount": "10000",
+          "payTo": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+          "extra": {
+            "description": "Charged to the caller's Telegraph escrow balance in the next ledger block. Fund it once with LedgerFacet.depositUSDC(amount); no per-request settlement.",
+            "message": "Telegraph Escrow Payment\n\nWallet: {from}\nPay To: 0x72a70e949362670bf8bcead24efc5b8f950aa08b\nNetwork: eip155:11155111\nAmount: 10000 uUSDC\nResource: /v1/ask\nNonce: {nonce}\nValid After: {validAfter}\nValid Before: {validBefore}",
+            "resource": "/v1/ask",
+            "signWith": "personal_sign (EIP-191)"
+          }
+        }
+      ]
+    }
+  ],
+  "onchain": [
+    {
+      "asset": "0xcc194e1a843b658526d0d5c431f670028582ae17",
+      "has_code": true,
+      "symbol": "USDC",
+      "name": "USD Coin",
+      "decimals": 6,
+      "total_supply": "1010000000001005785081322",
+      "wallet_balance_units": "13780000",
+      "wallet_balance": 13.78,
+      "rpc": "https://ethereum-sepolia-rpc.publicnode.com"
+    }
+  ]
+}
