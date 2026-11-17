@@ -1,0 +1,25 @@
+{
+  "label": "btc-2026-11-17T15-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-17T15:00:00Z\"]",
+  "paid": true,
+  "http_status": 402,
+  "payment": null,
+  "payment_response": {
+    "success": false,
+    "errorReason": "settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "transaction": "",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": null,
+  "response": {
+    "error": "payment required",
+    "hint": "the payment was verified but could not be settled — this is usually the facilitator, not your signature. Retry; if it persists, report the reason above.",
+    "reason": "settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
+  }
+}

@@ -1,17 +1,38 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-17T14:18:04.233Z",
-  "last_success_at": "2026-11-17T14:18:04.233Z",
-  "usdc_balance": "13.78",
-  "last_tape": "data/market/2026-11-17T14-17-22Z.json",
-  "paid_calls_last_run": 0,
+  "updated_at": "2026-11-17T15:19:02.684Z",
+  "last_success_at": "2026-11-17T15:19:02.684Z",
+  "usdc_balance": "20",
+  "balances": [
+    {
+      "asset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      "symbol": "USDC",
+      "role": "current",
+      "balance": "20"
+    },
+    {
+      "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+      "symbol": "USDC",
+      "role": "previous",
+      "balance": "13.78"
+    }
+  ],
+  "payment_asset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+  "payment_network": "eip155:11155111",
+  "allowed_assets": [
+    "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+    "0xcc194e1a843B658526D0D5C431f670028582Ae17"
+  ],
+  "unfunded": false,
+  "unfunded_asset": null,
+  "last_tape": "data/market/2026-11-17T15-17-21Z.json",
+  "paid_calls_last_run": 2,
   "cost_usd_last_run": 0,
   "hashprice_source": "public",
   "btc_source": "public",
   "degraded": [
-    "Telegraph miner 71083 (primary) hashprice: call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
-    "Telegraph miner 1900999013 (fallback) hashprice: call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
-    "Telegraph miner 7320 (BTC price): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false."
+    "Telegraph miner 71083 (primary) hashprice: HTTP 402",
+    "Telegraph miner 7320 (BTC price): HTTP 402"
   ],
-  "reason": "3 upstream problem(s); see degraded list"
+  "reason": "2 upstream problem(s); see degraded list"
 }
