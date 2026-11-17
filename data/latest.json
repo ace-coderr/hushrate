@@ -1,19 +1,19 @@
 {
   "schema": 1,
-  "interval_start": "2026-11-17T09:00:00Z",
-  "recorded_at": "2026-11-17T09:17:21.821Z",
-  "block_height": 976252,
-  "btc_usd": 64184,
+  "interval_start": "2026-11-17T10:00:00Z",
+  "recorded_at": "2026-11-17T10:17:25.368Z",
+  "block_height": 976255,
+  "btc_usd": 64262,
   "hashprice": {
-    "value_sats_per_ph_day": 46804.13443032311,
+    "value_sats_per_ph_day": 46921.348223753695,
     "source": "public",
-    "label": "public: mempool.space, single block 976252 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.; miner 1900999013 (fallback): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
+    "label": "public: mempool.space, single block 976255 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.; miner 1900999013 (fallback): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
     "public_144": {
-      "tip": 976252,
+      "tip": 976255,
       "blocks": 144,
-      "from_height": 976109,
-      "to_height": 976252,
-      "hashprice_sats_per_ph_day": 46878.18648894121,
+      "from_height": 976112,
+      "to_height": 976255,
+      "hashprice_sats_per_ph_day": 46884.64683318765,
       "min_block": 46645.87398030829,
       "max_block": 48120.58635140292
     },
@@ -28,16 +28,16 @@
       "receipt_file": null,
       "reject_reason": "call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false."
     },
-    "public_at_telegraph_height": 46804.13443032311,
+    "public_at_telegraph_height": 46921.348223753695,
     "comparison": "single_block_at_returned_height",
     "tolerance_rel": 0.01,
     "miner_role": "fallback"
   },
   "btc": {
-    "value_usd": 64184,
+    "value_usd": 64262,
     "source": "public",
     "label": "public: mempool.space BTC/USD; Telegraph price not used: call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
-    "public_usd": 64184,
+    "public_usd": 64262,
     "tolerance_rel": 0.005,
     "telegraph": {
       "intent": "CRYPTO_PRICE_USD",
@@ -54,28 +54,28 @@
   "power": [
     {
       "node": "TH_SP15_GEN-APND",
-      "day_ahead_usd_per_mwh": 38.59719,
-      "day_ahead_interval": "2026-11-17T09:00:00.000Z",
-      "real_time_usd_per_mwh": 40.42302,
-      "real_time_interval": "2026-11-17T09:15:00.000Z",
+      "day_ahead_usd_per_mwh": 38.89124,
+      "day_ahead_interval": "2026-11-17T10:00:00.000Z",
+      "real_time_usd_per_mwh": 36.57289,
+      "real_time_interval": "2026-11-17T10:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_NP15_GEN-APND",
-      "day_ahead_usd_per_mwh": 42.18608,
-      "day_ahead_interval": "2026-11-17T09:00:00.000Z",
-      "real_time_usd_per_mwh": 52.54805,
-      "real_time_interval": "2026-11-17T09:15:00.000Z",
+      "day_ahead_usd_per_mwh": 41.99158,
+      "day_ahead_interval": "2026-11-17T10:00:00.000Z",
+      "real_time_usd_per_mwh": 51.97083,
+      "real_time_interval": "2026-11-17T10:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_ZP26_GEN-APND",
-      "day_ahead_usd_per_mwh": 39.68306,
-      "day_ahead_interval": "2026-11-17T09:00:00.000Z",
-      "real_time_usd_per_mwh": 41.23897,
-      "real_time_interval": "2026-11-17T09:15:00.000Z",
+      "day_ahead_usd_per_mwh": 39.58907,
+      "day_ahead_interval": "2026-11-17T10:00:00.000Z",
+      "real_time_usd_per_mwh": 37.76009,
+      "real_time_interval": "2026-11-17T10:15:00.000Z",
       "telegraph": null,
       "errors": []
     }
