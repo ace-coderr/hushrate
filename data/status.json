@@ -1,8 +1,8 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-17T19:18:00.896Z",
-  "last_success_at": "2026-11-17T19:18:00.896Z",
-  "usdc_balance": "20",
+  "updated_at": "2026-11-17T20:19:03.262Z",
+  "last_success_at": "2026-11-17T20:19:03.262Z",
+  "usdc_balance": "13.78",
   "balances": [
     {
       "asset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
@@ -17,7 +17,7 @@
       "balance": "13.78"
     }
   ],
-  "payment_asset": null,
+  "payment_asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
   "payment_network": "eip155:11155111",
   "allowed_assets": [
     "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
@@ -25,13 +25,14 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-17T19-17-21Z.json",
+  "last_tape": "data/market/2026-11-17T20-17-19Z.json",
   "paid_calls_last_run": 0,
   "cost_usd_last_run": 0,
   "hashprice_source": "public",
   "btc_source": "public",
   "degraded": [
-    "payment refused by spend controls: the miner asked for exact asset 0xcc194e1a843B658526D0D5C431f670028582Ae17 on eip155:11155111 (payTo 0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b, amount 10000); exact asset 0x036CbD53842c5426634e7929541eC2318f3dCF7e on eip155:84532 (payTo 0xC0A3FB6d3F1f4B54617d29ffbdA4663Af5F96e2e, amount 10000); exact asset 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU on solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1 (payTo G53EbeTZSNsAn7bj6iMFUQnq3zpDdEbHhKkPRywo8bix, amount 10000). Hushrate only pays: 0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238 on eip155:11155111 to 0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b; 0xcc194e1a843B658526D0D5C431f670028582Ae17 on eip155:11155111 to 0x3624EB012B5E998BB57B6bE6C9Cfc9c4bc5eb99b. The asset is allowed but the payee (payTo) is not the one pinned for it."
+    "Telegraph miner 71083 (primary) hashprice: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "Telegraph miner 7320 (BTC price): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
   ],
-  "reason": "1 upstream problem(s); see degraded list"
+  "reason": "2 upstream problem(s); see degraded list"
 }

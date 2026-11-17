@@ -4485,5 +4485,35 @@
     "receipt_hashes": [],
     "paid_kinds": [],
     "btc_source": "public"
+  },
+  {
+    "interval_start": "2026-11-17T20:00:00Z",
+    "block_height": 976317,
+    "btc_usd": 63694,
+    "hashprice_sats_per_ph_day": 47051.678445708494,
+    "hashprice_source": "public",
+    "power": [
+      {
+        "node": "TH_SP15_GEN-APND",
+        "usd_per_mwh": 6.85314,
+        "basis": "real-time"
+      },
+      {
+        "node": "TH_NP15_GEN-APND",
+        "usd_per_mwh": 37.79016,
+        "basis": "real-time"
+      },
+      {
+        "node": "TH_ZP26_GEN-APND",
+        "usd_per_mwh": 1.13207,
+        "basis": "real-time"
+      }
+    ],
+    "paid_calls": 0,
+    "cost_usd": 0,
+    "tx_hashes": [],
+    "receipt_hashes": [],
+    "paid_kinds": [],
+    "btc_source": "public"
   }
 ]
