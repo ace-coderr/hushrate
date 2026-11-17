@@ -1,16 +1,16 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-17T07:18:01.749Z",
-  "last_success_at": "2026-11-17T07:18:01.749Z",
+  "updated_at": "2026-11-17T08:18:03.249Z",
+  "last_success_at": "2026-11-17T08:18:03.249Z",
   "usdc_balance": "13.78",
-  "last_tape": "data/market/2026-11-17T07-17-22Z.json",
+  "last_tape": "data/market/2026-11-17T08-17-20Z.json",
   "paid_calls_last_run": 0,
   "cost_usd_last_run": 0,
   "hashprice_source": "public",
   "btc_source": "public",
   "degraded": [
     "Telegraph miner 71083 (primary) hashprice: call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
-    "Telegraph miner 1900999013 (fallback) hashprice: HTTP 404",
+    "Telegraph miner 1900999013 (fallback) hashprice: call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
     "Telegraph miner 7320 (BTC price): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false."
   ],
   "reason": "3 upstream problem(s); see degraded list"
