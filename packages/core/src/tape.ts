@@ -1,6 +1,14 @@
 // Shape of the hourly market tape. MARKET data only: no site or decision data lives here.
 import type { HashpriceWindow } from "./hashprice.js";
 
+/**
+ * Did money move? TelegraphCall.paid means a payment was SIGNED and sent. If the node then answered HTTP 402 ("verified but
+ * could not be settled", e.g. a facilitator timeout) nothing settled. A settled payment answers 200, or an error status after
+ * settlement (the node credits those back to escrow). Accounting, history and the paid-data banner count settled payments only;
+ * the fallback rule still uses "signed", because an unsettled authorization must not be followed by a second payment.
+ */
+export const isSettled = (c: { paid: boolean; http_status: number | null }) => c.paid && c.http_status !== 402;
+
 export interface TelegraphCall {
   intent: string;
   requested_miner: string | null;
@@ -126,10 +134,10 @@ export function selectPower(p: PowerPrice): { usd_per_mwh: number | null; basis:
 }
 
 export function toHistoryEntry(t: MarketTape): HistoryEntry {
-  const calls = [t.hashprice.telegraph, t.btc?.telegraph ?? null, ...t.power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && c.paid);
+  const calls = [t.hashprice.telegraph, t.btc?.telegraph ?? null, ...t.power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && isSettled(c));
   const paid_kinds: PurchaseKind[] = [];
-  if (t.hashprice.telegraph?.paid) paid_kinds.push("hashprice");
-  if (t.btc?.telegraph?.paid) paid_kinds.push("btc");
+  if (t.hashprice.telegraph && isSettled(t.hashprice.telegraph)) paid_kinds.push("hashprice");
+  if (t.btc?.telegraph && isSettled(t.btc.telegraph)) paid_kinds.push("btc");
   return {
     interval_start: t.interval_start,
     block_height: t.block_height,
@@ -137,7 +145,8 @@ export function toHistoryEntry(t: MarketTape): HistoryEntry {
     hashprice_sats_per_ph_day: t.hashprice.value_sats_per_ph_day,
     hashprice_source: t.hashprice.source,
     power: t.power.map((p) => { const s = selectPower(p); return { node: p.node, usd_per_mwh: s.usd_per_mwh, basis: s.basis }; }),
-    paid_calls: t.spend.paid_calls,
+    // Settled calls recorded on the tape itself (a signed-but-unsettled payment is not a purchase).
+    paid_calls: calls.length,
     cost_usd: t.spend.cost_usd,
     tx_hashes: calls.map((c) => c.tx_hash).filter((x): x is string => !!x),
     receipt_hashes: calls.map((c) => c.receipt_hash).filter((x): x is string => !!x),

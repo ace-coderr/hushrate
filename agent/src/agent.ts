@@ -13,7 +13,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import {
-  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, assessPayment,
+  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, assessPayment, isSettled,
   type MarketTape, type PowerPrice, type TelegraphCall, type HistoryEntry,
 } from "@hushrate/core";
 import { balances, unitsByAsset } from "./wallet.js";
@@ -203,7 +203,7 @@ async function main(): Promise<void> {
     const b = rec.response ?? {};
     // A settled payment that then failed upstream is credited back to escrow by the node; recorded, not billed.
     const billed = rec.http_status === 200 ? (b.cost_usd ?? null) : 0;
-    if (!out.skipped && rec.paid) { spendCalls++; spendUsd += billed ?? PRICE; }
+    if (!out.skipped && rec.paid && rec.http_status !== 402) { spendCalls++; spendUsd += billed ?? PRICE; } // settled payments only
     const tr = rec.telegraph_receipt ?? {};
     return {
       intent, requested_miner: minerId, miner_id: b.miner_id ?? null, miner_name: b.miner_name ?? null,
@@ -212,6 +212,8 @@ async function main(): Promise<void> {
       returned_height: b.result?.block_height ?? null, signal_hash: b.signal_hash ?? null,
       receipt_hash: tr.receipt_hash ?? null, tx_hash: tr.tx_hash ?? rec.payment_response?.transaction ?? null,
       receipt_file: out.receipt_file ?? null, accepted: false,
+      // The node's own explanation for a refusal, so the degraded reason says why (not just the status code).
+      ...(rec.http_status >= 400 ? { reject_reason: `HTTP ${rec.http_status}: ${String(b.reason ?? b.hint ?? b.error ?? "no reason given").slice(0, 240)}` } : {}),
     };
   }
 
@@ -320,7 +322,7 @@ async function main(): Promise<void> {
 
   // ---- tape ---------------------------------------------------------------------------------------------
   // Accounting follows the calls the tape references (including purchases kept from an earlier run this hour).
-  const tapeCalls = [hashCall, btcCall, ...power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && c.paid);
+  const tapeCalls = [hashCall, btcCall, ...power.map((p) => p.telegraph)].filter((c): c is TelegraphCall => !!c && isSettled(c));
   const tapeSpend = { paid_calls: tapeCalls.length, cost_usd: Number(tapeCalls.reduce((a, c) => a + (c.cost_usd ?? 0), 0).toFixed(2)) };
   if (noPay) notes.push("run with --no-pay: no Telegraph data bought");
   for (const p of power) if (p.real_time_usd_per_mwh === null && p.day_ahead_usd_per_mwh === null) notes.push(`${p.node}: no power price available`);

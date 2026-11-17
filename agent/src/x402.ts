@@ -49,7 +49,8 @@ const guardedFetch: typeof fetch = async (input, init) => {
     currentCallPaid = true;
   }
   const res = await fetch(input, init);
-  if (res.status === 402) {
+  // Only the challenge that answers a request WITHOUT payment: the 402 that follows a payment is a settlement failure, not terms.
+  if (res.status === 402 && !headers.has("payment-signature")) {
     try {
       const h = res.headers.get("payment-required");
       if (h) lastChallenge = (JSON.parse(Buffer.from(h, "base64").toString("utf8")).accepts ?? []) as PaymentChallengeOption[];

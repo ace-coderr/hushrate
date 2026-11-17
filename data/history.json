@@ -4359,14 +4359,11 @@
         "basis": "real-time"
       }
     ],
-    "paid_calls": 2,
+    "paid_calls": 0,
     "cost_usd": 0,
     "tx_hashes": [],
     "receipt_hashes": [],
-    "paid_kinds": [
-      "hashprice",
-      "btc"
-    ],
+    "paid_kinds": [],
     "btc_source": "public"
   }
 ]

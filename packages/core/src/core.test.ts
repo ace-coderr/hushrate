@@ -1,7 +1,7 @@
 // Hand-computed checks. Run: npm test -w packages/core
 import test from "node:test";
 import assert from "node:assert/strict";
-import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, isAllowedPayment, describeRefusal, selectPayment, assessPayment, fundingStatus, paymentAssetOf, paidDataHealth, LEGACY_PAYMENT_ASSET, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
+import { decide, validateSite, hashrateTh, blockHashprice, windowHashprice, selectPower, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, isAllowedPayment, describeRefusal, selectPayment, assessPayment, fundingStatus, isSettled, paymentAssetOf, paidDataHealth, LEGACY_PAYMENT_ASSET, toHistoryEntry, type Site, type PowerPrice, type MarketTape } from "./index.js";
 
 const near = (a: number, b: number, eps = 1e-9) => assert.ok(Math.abs(a - b) < eps, `${a} vs ${b}`);
 
@@ -299,4 +299,25 @@ test("paid-data banner: counts public-only hours in the last 24 hours", () => {
   assert.equal(r.publicOnlyHours24, 3);
   assert.equal(r.tapes24, 4);
   assert.equal(r.paused, true);
+});
+
+// ---- signed is not settled (the 2026-11-17 15:17 run: payment verified, facilitator settlement timed out, HTTP 402) ----
+test("a payment that was signed but answered HTTP 402 (verified, not settled) is not a purchase", () => {
+  assert.equal(isSettled({ paid: true, http_status: 200 }), true);
+  assert.equal(isSettled({ paid: true, http_status: 500 }), true, "settled, then failed upstream: credited back, but money moved");
+  assert.equal(isSettled({ paid: true, http_status: 402 }), false, "verified but could not be settled");
+  assert.equal(isSettled({ paid: false, http_status: 503 }), false);
+  assert.equal(isSettled({ paid: true, http_status: null }), true, "transport error after signing: unknown, treated as spent");
+});
+
+test("history counts settled calls only, so an unsettled run shows as a miss and the banner can fire", () => {
+  const call = (http: number) => ({ intent: "i", requested_miner: "1", http_status: http, paid: true, cost_usd: http === 200 ? 0.01 : 0, value: null, accepted: false, receipt_hash: null, tx_hash: null });
+  const base = { schema: 1, interval_start: "2026-11-17T15:00:00Z", recorded_at: "x", block_height: 1, btc_usd: 1, power: [], wallet_usdc_after: null, notes: [], hashprice: { value_sats_per_ph_day: 1, source: "public", label: "", public_144: null, public_at_telegraph_height: null } };
+  const unsettled = toHistoryEntry({ ...base, spend: { paid_calls: 2, cost_usd: 0 }, hashprice: { ...base.hashprice, telegraph: call(402) }, btc: { value_usd: 1, source: "public", label: "", public_usd: 1, telegraph: call(402) } } as unknown as MarketTape);
+  assert.equal(unsettled.paid_calls, 0);
+  assert.deepEqual(unsettled.paid_kinds, []);
+  const settled = toHistoryEntry({ ...base, spend: { paid_calls: 2, cost_usd: 0.02 }, hashprice: { ...base.hashprice, telegraph: call(200) }, btc: { value_usd: 1, source: "telegraph", label: "", public_usd: 1, telegraph: call(200) } } as unknown as MarketTape);
+  assert.equal(settled.paid_calls, 2);
+  // Two unsettled hours in a row pause the banner; the old accounting would have shown them as paid.
+  assert.equal(paidDataHealth([{ interval_start: "2026-11-17T14:00:00Z", paid_calls: unsettled.paid_calls }, { interval_start: "2026-11-17T15:00:00Z", paid_calls: unsettled.paid_calls }], new Date("2026-11-17T16:00:00Z")).paused, true);
 });
