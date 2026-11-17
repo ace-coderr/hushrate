@@ -1,0 +1,57 @@
+{
+  "label": "btc-2026-11-17T06-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-17T06:00:00Z\"]",
+  "paid": true,
+  "http_status": 200,
+  "payment_response": {
+    "success": true,
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "transaction": "0xe1b714acc78e78c7fbf6adf4a0aa5204084e3c233cf9640a48bd3b5d6e313aa0",
+    "network": "eip155:11155111"
+  },
+  "telegraph_receipt": {
+    "receipt_hash": "0xae44aa9c551a5c16110e9a55e8b8a7a22bb3ac65113be2395b0fd375eb916262",
+    "rail": "x402",
+    "payer": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "miner": "354",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 2111,
+    "settlement": "onchain",
+    "chain": "eip155:11155111",
+    "tx_hash": "0xe1b714acc78e78c7fbf6adf4a0aa5204084e3c233cf9640a48bd3b5d6e313aa0",
+    "timestamp": 1794896273
+  },
+  "response": {
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 64607.3
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 88,
+    "timestamp": "2026-11-17T06:17:52.281235036Z",
+    "reasoning": "Intent: miner finwire-crypto-price given by the caller\nMiner: The user is asking for the price of a cryptocurrency (BTC) in USD. The FinWire Crypto Price miner has a /price endpoint that accepts a 'symbol' query parameter and is suitable for the CRYPTO_PRICE_USD intent. The provided parameters include the required 'symbol' field.",
+    "intent": "CRYPTO_PRICE_USD",
+    "signal_hash": "0xe0c505e36b2eb25d5286afd86efaaf8bb4552baffe9dd884909e17ea6093532c",
+    "warnings": [
+      "parameter \"symbol\" length 0 violates the miner's declared limit (lte 60): symbol is a ticker such as BTC, ETH, SOL or a CoinGecko id such as bitcoin. A whole question is accepted too. Defaults to BTC when unfilled."
+    ]
+  }
+}
