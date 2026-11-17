@@ -1,21 +1,21 @@
 {
   "schema": 1,
   "interval_start": "2026-11-17T13:00:00Z",
-  "recorded_at": "2026-11-17T13:17:21.200Z",
-  "block_height": 976277,
-  "btc_usd": 65042,
+  "recorded_at": "2026-11-17T13:19:14.045Z",
+  "block_height": 976278,
+  "btc_usd": 64999,
   "hashprice": {
-    "value_sats_per_ph_day": 46676.016788777204,
+    "value_sats_per_ph_day": 46771.57880657382,
     "source": "public",
-    "label": "public: mempool.space, single block 976277 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.; miner 1900999013 (fallback): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
+    "label": "public: mempool.space, single block 976278 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.; miner 1900999013 (fallback): call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
     "public_144": {
-      "tip": 976277,
+      "tip": 976278,
       "blocks": 144,
-      "from_height": 976134,
-      "to_height": 976277,
-      "hashprice_sats_per_ph_day": 46899.4842922856,
+      "from_height": 976135,
+      "to_height": 976278,
+      "hashprice_sats_per_ph_day": 46899.753436641884,
       "min_block": 46646.32159924596,
-      "max_block": 48120.58635140292
+      "max_block": 48120.58635140294
     },
     "telegraph": {
       "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
@@ -28,16 +28,16 @@
       "receipt_file": null,
       "reject_reason": "call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false."
     },
-    "public_at_telegraph_height": 46676.016788777204,
+    "public_at_telegraph_height": 46771.57880657382,
     "comparison": "single_block_at_returned_height",
     "tolerance_rel": 0.01,
     "miner_role": "fallback"
   },
   "btc": {
-    "value_usd": 65042,
+    "value_usd": 64999,
     "source": "public",
     "label": "public: mempool.space BTC/USD; Telegraph price not used: call failed: Failed to create payment payload: All payment requirements were rejected by spendControls: only default assets or entries in spendControls.allowedAssets are allowed. Add an allowedAssets entry for non-default tokens, set allowedAssets: true, or set spendControls: false.",
-    "public_usd": 65042,
+    "public_usd": 64999,
     "tolerance_rel": 0.005,
     "telegraph": {
       "intent": "CRYPTO_PRICE_USD",

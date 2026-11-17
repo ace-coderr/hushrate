@@ -4278,9 +4278,9 @@
   },
   {
     "interval_start": "2026-11-17T13:00:00Z",
-    "block_height": 976277,
-    "btc_usd": 65042,
-    "hashprice_sats_per_ph_day": 46676.016788777204,
+    "block_height": 976278,
+    "btc_usd": 64999,
+    "hashprice_sats_per_ph_day": 46771.57880657382,
     "hashprice_source": "public",
     "power": [
       {
