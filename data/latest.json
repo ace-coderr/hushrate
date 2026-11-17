@@ -1,19 +1,19 @@
 {
   "schema": 1,
-  "interval_start": "2026-11-17T20:00:00Z",
-  "recorded_at": "2026-11-17T20:17:19.598Z",
-  "block_height": 976317,
-  "btc_usd": 63694,
+  "interval_start": "2026-11-17T21:00:00Z",
+  "recorded_at": "2026-11-17T21:17:22.459Z",
+  "block_height": 976321,
+  "btc_usd": 63940,
   "hashprice": {
-    "value_sats_per_ph_day": 47051.678445708494,
+    "value_sats_per_ph_day": 47355.888034476506,
     "source": "public",
-    "label": "public: mempool.space, single block 976317 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "label": "public: mempool.space, single block 976321 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
     "public_144": {
-      "tip": 976317,
+      "tip": 976321,
       "blocks": 144,
-      "from_height": 976174,
-      "to_height": 976317,
-      "hashprice_sats_per_ph_day": 46925.94421232936,
+      "from_height": 976178,
+      "to_height": 976321,
+      "hashprice_sats_per_ph_day": 46936.49776443283,
       "min_block": 46646.32159924596,
       "max_block": 47846.84066308846
     },
@@ -31,20 +31,20 @@
       "signal_hash": null,
       "receipt_hash": null,
       "tx_hash": "",
-      "receipt_file": "2026-11-17T20-17-56-491Z-hashprice-976317.json",
+      "receipt_file": "2026-11-17T21-17-58-253Z-hashprice-976321.json",
       "accepted": false,
       "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
     },
-    "public_at_telegraph_height": 47051.678445708494,
+    "public_at_telegraph_height": 47355.888034476506,
     "comparison": "single_block_at_returned_height",
     "tolerance_rel": 0.01,
     "miner_role": "primary"
   },
   "btc": {
-    "value_usd": 63694,
+    "value_usd": 63940,
     "source": "public",
     "label": "public: mempool.space BTC/USD; Telegraph price not used: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
-    "public_usd": 63694,
+    "public_usd": 63940,
     "tolerance_rel": 0.005,
     "telegraph": {
       "intent": "CRYPTO_PRICE_USD",
@@ -60,7 +60,7 @@
       "signal_hash": null,
       "receipt_hash": null,
       "tx_hash": "",
-      "receipt_file": "2026-11-17T20-18-28-667Z-btc-2026-11-17T20-00-00Z.json",
+      "receipt_file": "2026-11-17T21-18-30-150Z-btc-2026-11-17T21-00-00Z.json",
       "accepted": false,
       "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
     }
@@ -68,28 +68,28 @@
   "power": [
     {
       "node": "TH_SP15_GEN-APND",
-      "day_ahead_usd_per_mwh": -1.5833,
-      "day_ahead_interval": "2026-11-17T20:00:00.000Z",
-      "real_time_usd_per_mwh": 6.85314,
-      "real_time_interval": "2026-11-17T20:15:00.000Z",
+      "day_ahead_usd_per_mwh": -5.4359,
+      "day_ahead_interval": "2026-11-17T21:00:00.000Z",
+      "real_time_usd_per_mwh": -2.38737,
+      "real_time_interval": "2026-11-17T21:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_NP15_GEN-APND",
-      "day_ahead_usd_per_mwh": 39.63296,
-      "day_ahead_interval": "2026-11-17T20:00:00.000Z",
-      "real_time_usd_per_mwh": 37.79016,
-      "real_time_interval": "2026-11-17T20:15:00.000Z",
+      "day_ahead_usd_per_mwh": 38.39661,
+      "day_ahead_interval": "2026-11-17T21:00:00.000Z",
+      "real_time_usd_per_mwh": 39.57891,
+      "real_time_interval": "2026-11-17T21:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_ZP26_GEN-APND",
-      "day_ahead_usd_per_mwh": -1.87634,
-      "day_ahead_interval": "2026-11-17T20:00:00.000Z",
-      "real_time_usd_per_mwh": 1.13207,
-      "real_time_interval": "2026-11-17T20:15:00.000Z",
+      "day_ahead_usd_per_mwh": -5.09578,
+      "day_ahead_interval": "2026-11-17T21:00:00.000Z",
+      "real_time_usd_per_mwh": -4.9836,
+      "real_time_interval": "2026-11-17T21:15:00.000Z",
       "telegraph": null,
       "errors": []
     }
