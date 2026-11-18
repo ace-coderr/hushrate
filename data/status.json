@@ -1,7 +1,7 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-18T14:18:05.319Z",
-  "last_success_at": "2026-11-18T14:18:05.319Z",
+  "updated_at": "2026-11-18T15:19:04.319Z",
+  "last_success_at": "2026-11-18T15:19:04.319Z",
   "usdc_balance": "13.78",
   "balances": [
     {
@@ -25,14 +25,14 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-18T14-17-22Z.json",
+  "last_tape": "data/market/2026-11-18T15-17-21Z.json",
   "paid_calls_last_run": 0,
   "cost_usd_last_run": 0,
-  "hashprice_source": null,
-  "btc_source": null,
+  "hashprice_source": "public",
+  "btc_source": "public",
   "degraded": [
-    "mempool.space tip height: fetch failed",
-    "mempool.space BTC/USD price: fetch failed"
+    "Telegraph miner 71083 (primary) hashprice: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "Telegraph miner 7320 (BTC price): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
   ],
   "reason": "2 upstream problem(s); see degraded list"
 }

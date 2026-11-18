@@ -1,53 +1,95 @@
 {
   "schema": 1,
-  "interval_start": "2026-11-18T14:00:00Z",
-  "recorded_at": "2026-11-18T14:17:22.460Z",
-  "block_height": null,
-  "btc_usd": null,
+  "interval_start": "2026-11-18T15:00:00Z",
+  "recorded_at": "2026-11-18T15:17:21.958Z",
+  "block_height": 976452,
+  "btc_usd": 63488,
   "hashprice": {
-    "value_sats_per_ph_day": null,
-    "source": null,
-    "label": "unavailable: mempool.space latest block could not be read this run; Telegraph value not bought: no Bitcoin block height",
-    "public_144": null,
-    "telegraph": null,
-    "public_at_telegraph_height": null,
+    "value_sats_per_ph_day": 46909.40410922725,
+    "source": "public",
+    "label": "public: mempool.space, single block 976452 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "public_144": {
+      "tip": 976452,
+      "blocks": 144,
+      "from_height": 976309,
+      "to_height": 976452,
+      "hashprice_sats_per_ph_day": 46947.26887799076,
+      "min_block": 46627.83195299397,
+      "max_block": 47924.31663770857
+    },
+    "telegraph": {
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "requested_miner": "71083",
+      "miner_id": null,
+      "miner_name": null,
+      "http_status": 402,
+      "paid": true,
+      "cost_usd": 0,
+      "field_status": null,
+      "value": null,
+      "returned_height": null,
+      "signal_hash": null,
+      "receipt_hash": null,
+      "tx_hash": "",
+      "receipt_file": "2026-11-18T15-17-57-603Z-hashprice-976452.json",
+      "accepted": false,
+      "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
+    },
+    "public_at_telegraph_height": 46909.40410922725,
     "comparison": "single_block_at_returned_height",
     "tolerance_rel": 0.01,
-    "miner_role": null
+    "miner_role": "primary"
   },
   "btc": {
-    "value_usd": null,
-    "source": null,
-    "label": "unavailable: mempool.space BTC/USD could not be read this run; Telegraph price not bought: no public BTC/USD price to verify against",
-    "public_usd": null,
+    "value_usd": 63488,
+    "source": "public",
+    "label": "public: mempool.space BTC/USD; Telegraph price not used: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "public_usd": 63488,
     "tolerance_rel": 0.005,
-    "telegraph": null
+    "telegraph": {
+      "intent": "CRYPTO_PRICE_USD",
+      "requested_miner": "7320",
+      "miner_id": null,
+      "miner_name": null,
+      "http_status": 402,
+      "paid": true,
+      "cost_usd": 0,
+      "field_status": null,
+      "value": null,
+      "returned_height": null,
+      "signal_hash": null,
+      "receipt_hash": null,
+      "tx_hash": "",
+      "receipt_file": "2026-11-18T15-18-29-406Z-btc-2026-11-18T15-00-00Z.json",
+      "accepted": false,
+      "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
+    }
   },
   "power": [
     {
       "node": "TH_SP15_GEN-APND",
-      "day_ahead_usd_per_mwh": 55.93476,
-      "day_ahead_interval": "2026-11-18T14:00:00.000Z",
-      "real_time_usd_per_mwh": 47.84689,
-      "real_time_interval": "2026-11-18T14:15:00.000Z",
+      "day_ahead_usd_per_mwh": 39.06859,
+      "day_ahead_interval": "2026-11-18T15:00:00.000Z",
+      "real_time_usd_per_mwh": 35.95355,
+      "real_time_interval": "2026-11-18T15:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_NP15_GEN-APND",
-      "day_ahead_usd_per_mwh": 59.4503,
-      "day_ahead_interval": "2026-11-18T14:00:00.000Z",
-      "real_time_usd_per_mwh": 51.29288,
-      "real_time_interval": "2026-11-18T14:15:00.000Z",
+      "day_ahead_usd_per_mwh": 68.6025,
+      "day_ahead_interval": "2026-11-18T15:00:00.000Z",
+      "real_time_usd_per_mwh": 65.74029,
+      "real_time_interval": "2026-11-18T15:15:00.000Z",
       "telegraph": null,
       "errors": []
     },
     {
       "node": "TH_ZP26_GEN-APND",
-      "day_ahead_usd_per_mwh": 56.73345,
-      "day_ahead_interval": "2026-11-18T14:00:00.000Z",
-      "real_time_usd_per_mwh": 48.89545,
-      "real_time_interval": "2026-11-18T14:15:00.000Z",
+      "day_ahead_usd_per_mwh": 50.6807,
+      "day_ahead_interval": "2026-11-18T15:00:00.000Z",
+      "real_time_usd_per_mwh": 44.77611,
+      "real_time_interval": "2026-11-18T15:15:00.000Z",
       "telegraph": null,
       "errors": []
     }
@@ -57,13 +99,10 @@
     "cost_usd": 0
   },
   "wallet_usdc_after": "13.78",
-  "notes": [
-    "Telegraph hashprice not bought this run: no Bitcoin block height",
-    "Telegraph BTC price not bought this run: no public BTC/USD price to verify against"
-  ],
+  "notes": [],
   "degraded": [
-    "mempool.space tip height: fetch failed",
-    "mempool.space BTC/USD price: fetch failed"
+    "Telegraph miner 71083 (primary) hashprice: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "Telegraph miner 7320 (BTC price): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
   ],
   "payment": {
     "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
