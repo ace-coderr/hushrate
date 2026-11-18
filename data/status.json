@@ -1,7 +1,7 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-18T10:19:07.527Z",
-  "last_success_at": "2026-11-18T10:19:07.527Z",
+  "updated_at": "2026-11-18T11:19:06.153Z",
+  "last_success_at": "2026-11-18T11:19:06.153Z",
   "usdc_balance": "13.78",
   "balances": [
     {
@@ -25,7 +25,7 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-18T10-17-24Z.json",
+  "last_tape": "data/market/2026-11-18T11-17-24Z.json",
   "paid_calls_last_run": 0,
   "cost_usd_last_run": 0,
   "hashprice_source": "public",
