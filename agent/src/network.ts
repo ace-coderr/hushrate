@@ -13,6 +13,8 @@ export interface NetworkConfig {
   rpc_url: string | null;
   /** The allow-list: the only assets Hushrate pays, each with its own pinned payee. Empty means nothing may be paid. */
   assets: { address: string | null; symbol?: string; name?: string; decimals: number; pay_to: string | null; mintable?: boolean; role?: string }[];
+  /** The escrow rail: the one Diamond that may be paid, and the token it is funded in. null disables the rail. */
+  escrow?: { diamond: string | null; token: string | null } | null;
   telegraph_node: string | null;
   expected_wallet: string | null;
   explorer_tx: string | null;
@@ -33,6 +35,7 @@ export interface Network {
   chain_id: number;
   rpc_url: string;
   assets: NetworkAsset[];
+  escrow: { diamond: `0x${string}`; token: `0x${string}` } | null;
   telegraph_node: string;
   expected_wallet: `0x${string}`;
   explorer_tx: string;
@@ -69,6 +72,10 @@ export function resolveNetwork(cfg: { active: string; networks: Record<string, N
     if (seen.has(a.address.toLowerCase())) throw new Error(`${NETWORK_ERROR}: asset ${a.address} is listed twice`);
     seen.add(a.address.toLowerCase());
   }
+  if (n.escrow) {
+    if (!n.escrow.diamond || !ADDRESS.test(n.escrow.diamond)) throw new Error(`${NETWORK_ERROR}: escrow.diamond is not a valid address`);
+    if (!n.escrow.token || !ADDRESS.test(n.escrow.token)) throw new Error(`${NETWORK_ERROR}: escrow.token is not a valid address`);
+  }
   if (!ADDRESS.test(n.expected_wallet!)) throw new Error(`${NETWORK_ERROR}: expected_wallet is not a valid address`);
   if (n.caip2 !== `eip155:${n.chain_id}`) throw new Error(`${NETWORK_ERROR}: caip2 ${n.caip2} does not match chain_id ${n.chain_id}`);
   if (!/^\d+$/.test(n.max_amount_per_payment!) || BigInt(n.max_amount_per_payment!) <= 0n) throw new Error(`${NETWORK_ERROR}: max_amount_per_payment must be a positive integer string`);
@@ -80,6 +87,7 @@ export function resolveNetwork(cfg: { active: string; networks: Record<string, N
   return {
     name, label: n.label, testnet: n.testnet, caip2: n.caip2 as `${string}:${string}`, chain_id: n.chain_id!, rpc_url: n.rpc_url!,
     assets: n.assets.map((a) => ({ address: a.address as `0x${string}`, symbol: a.symbol ?? "USDC", name: a.name ?? a.symbol ?? "USDC", decimals: a.decimals, pay_to: a.pay_to as `0x${string}`, mintable: a.mintable === true, role: a.role ?? "allowed" })), telegraph_node: n.telegraph_node!.replace(/\/$/, ""),
+    escrow: n.escrow ? { diamond: n.escrow.diamond as `0x${string}`, token: n.escrow.token as `0x${string}` } : null,
     expected_wallet: n.expected_wallet as `0x${string}`, explorer_tx: n.explorer_tx!, max_amount_per_payment: n.max_amount_per_payment!,
     max_paid_calls_per_run: n.max_paid_calls_per_run!, min_balance_units: BigInt(n.min_balance_units!),
   };

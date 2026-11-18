@@ -34,7 +34,12 @@
       "explorer_tx": "https://sepolia.etherscan.io/tx/",
       "max_amount_per_payment": "30000",
       "max_paid_calls_per_run": 3,
-      "min_balance_units": "200000"
+      "min_balance_units": "200000",
+      "escrow": {
+        "diamond": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+        "token": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+        "rail_note": "Telegraph escrow rail: deposit once (scripts/fund-escrow.ts), then each call is authorised by a signed message. Only this Diamond on this network is paid."
+      }
     },
     "mainnet": {
       "label": "Ethereum mainnet (NOT LIVE: disabled)",
@@ -49,7 +54,8 @@
       "explorer_tx": null,
       "max_amount_per_payment": null,
       "max_paid_calls_per_run": null,
-      "min_balance_units": null
+      "min_balance_units": null,
+      "escrow": null
     }
   }
 }

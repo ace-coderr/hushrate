@@ -23,6 +23,13 @@ export interface TelegraphCall {
   signal_hash?: string | null;
   receipt_hash?: string | null;
   tx_hash?: string | null;
+  /** Which rail paid this call. Absent on calls recorded before 2026-11-18, which all used the exact (settlement) rail. */
+  rail?: "escrow" | "exact" | null;
+  /** Escrow only: the epoch whose ledger root charges the call, and the later check that the node billed it. */
+  epoch_id?: number | null;
+  billing_verified?: boolean | null;
+  billing_checked_at?: string | null;
+  billing_note?: string | null;
   receipt_file?: string | null;
   accepted: boolean;
   reject_reason?: string | null;
@@ -86,6 +93,10 @@ export interface MarketTape {
    * 2026-11-17: those were paid in the previous test USDC, LEGACY_PAYMENT_ASSET.
    */
   payment?: {
+    /** The rail used this run: escrow, exact (settlement) or none. Absent on tapes before 2026-11-18 (exact). */
+    rail?: "escrow" | "exact" | "public";
+    /** Why this rail (or none) was chosen. */
+    rail_reason?: string;
     /** The asset this run paid (or would pay) in: the one the node's 402 asked for, when it could be read. */
     asset: string;
     network: string;

@@ -13,7 +13,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import {
-  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, assessPayment, isSettled,
+  fetchTipHeight, fetchBtcUsd, fetchBlocks, windowHashprice, blockHashprice, toHistoryEntry, selectPower, tapeScore, checkBtcPurchase, checkHashpricePurchase, mayTryFallback, assessPayment, isSettled, checkEscrowOffer, escrowFunding, chooseRail, type EscrowOption,
   type MarketTape, type PowerPrice, type TelegraphCall, type HistoryEntry,
 } from "@hushrate/core";
 import { balances, unitsByAsset } from "./wallet.js";
@@ -21,6 +21,7 @@ import { dayAhead, realTime } from "./caiso.js";
 import { writeLedger } from "./ledger.js";
 import { allBought, purchasesThisHourFromDisk } from "./guard.js";
 import { loadNetwork } from "./network.js";
+import { ledgerAccount, usdc, type LedgerAccount } from "./ledgeracct.js";
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const noPay = process.argv.includes("--no-pay");
@@ -123,6 +124,9 @@ async function main(): Promise<void> {
   let balanceRows: { asset: string; symbol: string; role: string; balance: string }[] = [];
   let unfundedAsset: string | null = null;
   const runCostUnits = BigInt(plannedCalls) * 10000n; // 10000 units = $0.01 per call
+  let rail: "escrow" | "exact" | "public" | null = null; // the rail chosen for this run
+  let railReason: string | null = null;
+  let escrowLedger: LedgerAccount | null = null;
   let usdcBalance: string | null = null; // balance of the requested asset (or of the first allowed asset when none was requested)
   try {
     const bal = await balances();
@@ -138,21 +142,41 @@ async function main(): Promise<void> {
         : { miner: cfg.telegraph.btc_miner, intent: "CRYPTO_PRICE_USD", params: { symbol: "BTC" } };
       try { challenge = await x402.previewChallenge(first.miner, first.intent, first.params); } catch (e) { degraded.push(`payment terms: the 402 challenge could not be fetched (${msg(e)})`); }
       const verdict = assessPayment(challenge, x402.PINS, unitsByAsset(bal), runCostUnits);
-      if (verdict.state === "ok") {
-        requestedAsset = verdict.pin.asset;
-        usdcBalance = bal.assets.find((x) => x.asset.toLowerCase() === verdict.pin.asset.toLowerCase())?.formatted ?? usdcBalance;
-        console.log(`payment terms: the node asks for ${verdict.pin.symbol} ${verdict.pin.asset} (${verdict.pin.network}); funded`);
-        if (verdict.balanceUnits < net.min_balance_units) notes.push(`low balance: ${Number(verdict.balanceUnits) / 10 ** (verdict.pin.decimals ?? 6)} of ${verdict.pin.asset} is under the ${Number(net.min_balance_units) / 10 ** (verdict.pin.decimals ?? 6)} floor`);
-      } else if (verdict.state === "unfunded") {
-        canPay = false; unfunded = true; requestedAsset = verdict.pin.asset; unfundedAsset = verdict.pin.asset;
-        usdcBalance = bal.assets.find((x) => x.asset.toLowerCase() === verdict.pin.asset.toLowerCase())?.formatted ?? usdcBalance;
-        degraded.push(`${verdict.reason}. No miner was called; values below are public and labelled.`);
-      } else if (verdict.state === "refused") {
-        canPay = false; refusedUp = true;
-        degraded.push(verdict.reason);
+      // Rails, in order: escrow (terms pass the pins and the available balance covers the run), then exact settlement (its own
+      // assessment passed), then labelled public values. An unreadable escrow balance never falls back to settlement.
+      const offer = x402.ESCROW_PIN ? checkEscrowOffer(challenge as unknown as EscrowOption[] | null, x402.ESCROW_PIN, BigInt(net.max_amount_per_payment), `/v1/ask/${first.miner}`) : ({ state: "absent" } as const);
+      escrowLedger = await ledgerAccount();
+      const funding = offer.state === "ok" ? escrowFunding(escrowLedger?.available, runCostUnits) : null;
+      const choice = chooseRail(offer, funding, { ok: verdict.state === "ok", reason: verdict.state === "ok" ? "" : verdict.reason });
+      rail = choice.rail; railReason = choice.reason;
+      console.log(`rail: ${choice.rail}: ${choice.reason}`);
+      if (choice.rail === "escrow") {
+        x402.setRails({ escrow: true, exact: verdict.state === "ok" });
+        requestedAsset = net.escrow!.token;
+        usdcBalance = bal.assets.find((x) => x.asset.toLowerCase() === net.escrow!.token.toLowerCase())?.formatted ?? usdcBalance;
+        if (escrowLedger && escrowLedger.available < BigInt(net.min_balance_units)) notes.push(`low escrow balance: ${usdc(escrowLedger.available)} USDC available is under the ${usdc(BigInt(net.min_balance_units))} floor`);
+      } else if (choice.rail === "exact") {
+        x402.setRails({ escrow: false, exact: true });
+        if (verdict.state === "ok") {
+          requestedAsset = verdict.pin.asset;
+          usdcBalance = bal.assets.find((x) => x.asset.toLowerCase() === verdict.pin.asset.toLowerCase())?.formatted ?? usdcBalance;
+          console.log(`payment terms: the node asks for ${verdict.pin.symbol} ${verdict.pin.asset} (${verdict.pin.network}); funded`);
+          if (verdict.balanceUnits < net.min_balance_units) notes.push(`low balance: ${Number(verdict.balanceUnits) / 10 ** (verdict.pin.decimals ?? 6)} of ${verdict.pin.asset} is under the ${Number(net.min_balance_units) / 10 ** (verdict.pin.decimals ?? 6)} floor`);
+        }
       } else {
         canPay = false;
-        degraded.push(`payment terms: ${verdict.reason}. No miner was called; values below are public and labelled.`);
+        x402.setRails({ escrow: false, exact: false });
+        if (offer.state !== "absent") degraded.push(`payment rail: ${choice.reason}. No miner was called; values below are public and labelled.`);
+        if (verdict.state === "unfunded") {
+          unfunded = true; requestedAsset = verdict.pin.asset; unfundedAsset = verdict.pin.asset;
+          usdcBalance = bal.assets.find((x) => x.asset.toLowerCase() === verdict.pin.asset.toLowerCase())?.formatted ?? usdcBalance;
+          if (offer.state === "absent") degraded.push(`${verdict.reason}. No miner was called; values below are public and labelled.`);
+        } else if (verdict.state === "refused") {
+          refusedUp = true;
+          if (offer.state === "absent") degraded.push(verdict.reason);
+        } else if (offer.state === "absent") {
+          degraded.push(`payment terms: ${verdict.state === "unreadable" ? verdict.reason : "unknown"}. No miner was called; values below are public and labelled.`);
+        }
       }
     }
   } catch (e) {
@@ -210,7 +234,11 @@ async function main(): Promise<void> {
       http_status: rec.http_status, paid: !!rec.paid, cost_usd: billed, field_status: b.field_status ?? null,
       value: typeof b.result?.[valueKey] === "number" ? b.result[valueKey] : null,
       returned_height: b.result?.block_height ?? null, signal_hash: b.signal_hash ?? null,
-      receipt_hash: tr.receipt_hash ?? null, tx_hash: tr.tx_hash ?? rec.payment_response?.transaction ?? null,
+      rail: rec.rail ?? null,
+      // Escrow: a receipt_hash and an epoch, never a tx_hash (the escrow rail settles once per epoch, not per call).
+      receipt_hash: rec.rail === "escrow" ? (rec.escrow_receipt?.receipt_hash ?? null) : (tr.receipt_hash ?? null),
+      epoch_id: rec.rail === "escrow" ? (rec.escrow_receipt?.epoch_id ?? null) : null,
+      tx_hash: rec.rail === "escrow" ? null : (tr.tx_hash ?? rec.payment_response?.transaction ?? null),
       receipt_file: out.receipt_file ?? null, accepted: false,
       // The node's own explanation for a refusal, so the degraded reason says why (not just the status code).
       ...(rec.http_status >= 400 ? { reject_reason: `HTTP ${rec.http_status}: ${String(b.reason ?? b.hint ?? b.error ?? "no reason given").slice(0, 240)}` } : {}),
@@ -333,7 +361,7 @@ async function main(): Promise<void> {
     hashprice: { value_sats_per_ph_day: hashValue, source: hashSource, label: hashLabel, public_144: tapePublic144, telegraph: hashCall, public_at_telegraph_height: tapeSingle, comparison: hashComparison, tolerance_rel: cfg.tolerance.hashprice_rel, miner_role: hashRole },
     btc: { value_usd: btcValue, source: btcSource, label: btcLabel, public_usd: btcPublic ?? reuseBtc?.public_usd ?? null, tolerance_rel: cfg.tolerance.btc_rel, telegraph: btcCall },
     power, spend: tapeSpend, wallet_usdc_after: usdcBalance, notes, degraded,
-    payment: { asset: requestedAsset ?? net.assets[0].address, network: net.caip2, pay_to: (net.assets.find((x) => x.address === (requestedAsset ?? net.assets[0].address)) ?? net.assets[0]).pay_to, requested: requestedAsset, allowed: net.assets.map((x) => x.address) },
+    payment: { ...(rail ? { rail, rail_reason: railReason ?? undefined } : {}), asset: requestedAsset ?? net.assets[0].address, network: net.caip2, pay_to: rail === "escrow" ? net.escrow!.diamond : (net.assets.find((x) => x.address === (requestedAsset ?? net.assets[0].address)) ?? net.assets[0]).pay_to, requested: requestedAsset, allowed: net.assets.map((x) => x.address) },
   };
   try {
     const after = await balances();
@@ -359,9 +387,12 @@ async function main(): Promise<void> {
   }
   if (!dry) console.log(`ledger rows: ${writeLedger()}`);
 
+  { try { escrowLedger = await ledgerAccount() ?? escrowLedger; } catch { /* keep the earlier reading */ } }
   const state: State = degraded.length ? "degraded" : "ok";
   status(state, {
-    usdc_balance: tape.wallet_usdc_after, balances: balanceRows, payment_asset: requestedAsset, payment_network: net.caip2, allowed_assets: net.assets.map((x) => x.address), unfunded, unfunded_asset: unfundedAsset, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls,
+    usdc_balance: tape.wallet_usdc_after, balances: balanceRows,
+    rail, rail_reason: railReason,
+    escrow: net.escrow ? { diamond: net.escrow.diamond, token: net.escrow.token, read_at: new Date().toISOString(), ...(escrowLedger ? { available_usdc: usdc(escrowLedger.available), deposited_usdc: usdc(escrowLedger.deposited), balance_usdc: usdc(escrowLedger.balance), unbilled_usdc: usdc(escrowLedger.unbilled) } : { available_usdc: null, error: "the escrow balance could not be read" }) } : null, payment_asset: requestedAsset, payment_network: net.caip2, allowed_assets: net.assets.map((x) => x.address), unfunded, unfunded_asset: unfundedAsset, last_tape: `data/market/${stamp}.json`, paid_calls_last_run: spendCalls,
     cost_usd_last_run: Number(spendUsd.toFixed(2)), hashprice_source: hashSource, btc_source: btcSource,
     ...(degraded.length ? { degraded, reason: `${degraded.length} upstream problem(s); see degraded list` } : {}),
   });
