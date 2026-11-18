@@ -112,7 +112,7 @@ The Settings page shows the state, the last successful run (a degraded run count
 
 ## Navigation
 
-One navigation bar with two modes. On the landing page it shows Product, Desk, Proof, Docs, the theme toggle and the "Open the desk" button. On every app page it becomes a single bar of the app tabs (Desk, Sites, What-if, Receipts, Proof, Docs, Settings) and the theme toggle, with nothing repeated and no call-to-action button; on a phone the tabs scroll horizontally. The focus ring appears for keyboard focus only. The footer is a grid (brand and testnet note, then Product, Verify and Project link columns, a divider, and a bottom row ending in "Built by" and the author's pill) that stacks into a single column at 375px.
+One navigation bar with two modes. On the landing page it shows Product, Desk, Proof, Docs, the theme toggle and the "Open the desk" button. On every app page it becomes a single bar of the app tabs (Desk, Sites, What-if, Receipts, Proof, Docs, Settings) and the theme toggle, with nothing repeated and no call-to-action button; on a phone the tabs scroll horizontally. The focus ring appears for keyboard focus only. The footer is a grid (brand and testnet note, then Product, Verify and Project link columns, a divider, and a bottom line with the testnet note) that stacks into a single column at 375px.
 
 ## Path to mainnet (not live)
 

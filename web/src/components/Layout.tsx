@@ -112,7 +112,6 @@ export function Footer() {
         <hr className="foot-rule" />
         <div className="foot-bottom">
           <p className="foot-note">Testnet only. Nothing here touches mainnet or real funds.</p>
-          <p className="built">Built by <a className="ace-pill" href="https://x.com/_ace_won" rel="noopener noreferrer" target="_blank">ace</a></p>
         </div>
       </div>
     </footer>
