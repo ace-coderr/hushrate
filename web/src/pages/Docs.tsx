@@ -79,10 +79,25 @@ export function Docs() {
               <tr><td>To 1 December (19 days)</td><td className="mono">912</td><td className="mono">$9.12</td></tr>
               <tr><td>Per 30 days</td><td className="mono">1,440</td><td className="mono">$14.40</td></tr>
               <tr><td>Per extra site</td><td className="mono">0</td><td className="mono">$0.00</td></tr>
+              <tr><td>One 8 USDC escrow deposit (18 Nov) covers</td><td className="mono">800</td><td className="mono">about 16 days</td></tr>
             </tbody>
           </table>
         </div>
         <p>Safety limits: at most 3 paid calls per run, at most 3 cents per payment, and the agent checks the wallet's balance of the pinned token before every run. The live total is on <a href="#/receipts">Receipts</a>.</p>
+
+        <h2 id="rails">How the data is paid for</h2>
+        <p>Hushrate tries three ways of getting each reading, in this order, and labels which one it used:</p>
+        <div className="scroll">
+          <table>
+            <thead><tr><th>Order</th><th>Rail</th><th>What happens</th><th>Proof it leaves</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><b>Escrow</b></td><td>The wallet deposited 8 USDC once into Telegraph's escrow (an on-chain transaction). Each call is then authorised by a signed message and charged to that balance in the node's epoch ledger. No facilitator, no per-call transaction.</td><td>A <code>receipt_hash</code> and an epoch, plus a billing check against the node's delivery record. <b>Not a per-call transaction hash.</b></td></tr>
+              <tr><td>2</td><td>Exact (settlement)</td><td>The earlier way: a signed token authorisation that a facilitator settles on chain for each call. Used only if escrow cannot pay and the wallet can.</td><td>A transaction hash per call.</td></tr>
+              <tr><td>3</td><td>Public values</td><td>If neither can pay, the hour uses labelled public values and no miner is called.</td><td>None; the tape says why.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Escrow is used only when its terms match the pins: the Telegraph escrow contract (Diamond) <span className="mono">0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b</span> on Ethereum Sepolia, an amount of at most 3 cents, a message that names that contract, network and the endpoint being called, and a validity window of 90 seconds. If the escrow balance cannot be read, Hushrate does not fall back to settlement: it stays on public values and says why. Why not the API-key path: Telegraph does not document receipts for it, and Hushrate's point is a receipt per paid call. The funding transactions are on <a href="#/receipts">Receipts</a> and can be checked on the <a href="#/proof">Proof</a> page, which also checks that the node billed an escrow call once its epoch is recorded (up to about an hour later).</p>
 
         <h2 id="acceptance">Data acceptance</h2>
         <p>Hushrate buys a hashprice reading every hour and uses it only if it passes a check against public chain data. This is how often the Telegraph miner passed, what the check is, and what happens when it does not.</p>
@@ -146,7 +161,7 @@ npm run build -w packages/mcp`}</code></pre>
         <h2 id="limits">Limits, in plain language</h2>
         <ul>
           <li><b>Testnet only.</b> Payments are Sepolia test USDC. Nothing touches mainnet or real money.</li>
-          <li><b>Settlement outage (since 17 Nov 20:17 UTC, last checked 18 Nov 06:17 UTC).</b> Since 17 Nov 20:17 UTC every paid purchase has failed at Telegraph's settlement step: the node accepted Hushrate's signed payment and then answered HTTP 402 because its call to the facilitator (facilitator.x402.rs/settle) timed out. The tapes for those hours are public-only and labelled that way, and no funds moved: the wallet balance is unchanged and the failed payments are not counted as purchases. The last hour that bought paid data was 06:00 UTC on 17 Nov. (Between 07:00 and 19:00 UTC that day purchases were refused or failed for the payment-asset reasons described in the previous item.) When purchases resume, the next tape will show the hashprice and BTC price as bought, two paid calls of $0.01 each with transaction hashes on Receipts and the Desk banner clearing after one such hour. This note will be updated with the first hour that buys again.</li>
+          <li><b>Settlement outage and move to escrow (updated 18 Nov 20:40 UTC).</b> Since 17 Nov 20:17 UTC every paid purchase failed at Telegraph's settlement step: the node accepted the signed payment, then its call to the facilitator (facilitator.x402.rs/settle) timed out and it answered HTTP 402. The tapes for those hours are public-only and labelled that way, and no funds moved: the wallet balances did not change and a failed payment is not counted as a purchase. The last hour that bought paid data was 06:00 UTC on 17 Nov (07:00 to 19:00 UTC that day failed for the payment-asset reasons in the next item). On 18 Nov at 20:23 UTC the wallet funded Telegraph's escrow with 8 USDC in one deposit, and the agent now pays from escrow first (no facilitator, no per-call transaction), then by settlement, then falls back to labelled public values. The first escrow purchase is expected in the 21:17 UTC run; this note will be updated with the first hour that buys.</li>
           <li><b>The payment asset changed once and can again.</b> On 2026-11-17 Telegraph started asking for a different test USDC (and payee). Hushrate had pinned the one asset it paid, so it refused, bought nothing for 7 hourly tapes (07:00 to 13:00 UTC) and used labelled public values until the wallet was funded in the new token and the config updated. No money was lost. It now pays from an allow-list of two assets, says exactly what was asked for, checks funding of the asked-for asset first, and shows a "Paid data paused" banner. See the table in the Path to mainnet section and docs/payment-asset-change.md.</li>
           <li><b>Sample fleet.</b> The default sites are demo assumptions. Decisions are only as good as the load, efficiency and adder you enter.</li>
           <li><b>Day-ahead versus real-time.</b> Real-time prices swing from interval to interval. Hushrate uses the latest published five-minute price and labels it; it is not a forecast.</li>

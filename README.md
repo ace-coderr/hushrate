@@ -47,6 +47,8 @@ The default fleet is a **sample fleet of demo assumptions**, labelled as such in
 | Per day (24 runs) | $0.48 |
 | To 1 Dec (19 days) | $9.12 |
 | Per extra site | $0.00 (one tape serves every site) |
+| Escrow deposit | 8.00 USDC, once (2026-11-18), covers about 16 days at $0.48/day; topped up with `scripts/fund-escrow.ts` (at most 8 USDC per run) |
+| Rail | escrow first, then exact (settlement), then labelled public values; same $0.01 per call on each |
 
 The agent never retries after a payment settled, buys each intent at most once per UTC hour (a per-intent same-hour guard: a run that already paid for hashprice buys only the missing BTC price, and an hour that paid for both is a no-op), skips an identical request it already paid for, and pauses (writes `data/status.json`, buys nothing) if the test-USDC balance is below 0.20. A request that settles and then fails upstream is credited back to escrow by the node and shows in the ledger as billed $0.
 
@@ -64,6 +66,22 @@ Measured on every recorded Telegraph hashprice purchase (miner 71083), from `dat
 - **The fallback.** If the Telegraph value is unavailable or fails the check, the agent uses the public single-block value of the latest block, the same definition, and the tape says why. A second miner (1900999013) is tried only if the first signed no payment, so hashprice is never bought twice in an hour.
 - **Old tapes** keep the rule they were recorded under, and the Proof page re-applies that rule to them.
 - **A separate finding.** Two hourly runs on 2026-11-13 at 16:17 and 16:20 UTC both bought data for the same hour (four payments, $0.04); the cause and fix are in the diagnosis section of the drift document.
+
+## Payment rails: escrow first
+
+Telegraph accepts payment two ways on the same `/engine/v1/ask` endpoints. Hushrate tries them in this order and records which one paid:
+
+1. **Escrow.** Fund Telegraph's escrow once (`scripts/fund-escrow.ts`: `approve` the Diamond, then `LedgerFacet.depositUSDC`), and each call is authorised by an EIP-191 `personal_sign` over the message template in the 402 challenge, sent in the `X-PAYMENT` header. No facilitator and no per-request on-chain transaction. A served call returns `X-PAYMENT-RESPONSE` with a `receipt_hash`, an `epoch_id` and `settlement: epoch`.
+2. **Exact (settlement)**, the earlier rail, only if escrow cannot pay and the wallet can.
+3. **Labelled public values**, if neither can.
+
+**Escrow receipts have a receipt hash and a billing record, not a per-call transaction hash.** That is how the rail works: the node charges every call in its epoch ledger root, one on-chain transaction per epoch. Proof is therefore two things: the on-chain deposit that funds the escrow (`data/deposits.json`, linked on Receipts and checkable on Proof), and, for each call, the node's delivery record for the epoch (`GET /v1/blocks/{epochId}/deliveries/{receiptHash}`), which the hourly workflow checks after the data commit and records in `data/billing.json` as `billing_verified` true, false or still pending (the node answers 404 until the epoch's block is recorded, up to about an hour). Nothing is marked verified without a real answer naming this wallet as the payer.
+
+Rules the escrow rail enforces before it signs anything: the network is exactly `eip155:11155111`; the payee is exactly the Telegraph Diamond `0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b` (in the challenge and in the message); the message names the endpoint being called; the message amount equals the 402 amount and is at most 30000 (3 cents); the lower-case wallet and a fresh random nonce are used for every attempt; the validity window is 90 seconds (the node allows at most 2 minutes). If the escrow balance is too low the agent falls back to exact, and if the balance cannot be read it does **not** fall back to settlement. A request the node refuses is not billed; the agent never retries it in the same run. The 3-call per-run cap counts escrow and exact attempts together, and the same-hour per-intent guard blocks a second purchase of an intent in an hour under either rail.
+
+**Why not the API-key path:** Telegraph does not document receipts for it, and a receipt per paid call is what Hushrate verifies.
+
+**Incident, dated.** Since 17 Nov 20:17 UTC paid purchases failed at Telegraph's settlement step (`facilitator.x402.rs/settle` timed out; HTTP 402 after Hushrate had signed; nothing moved). Telegraph confirmed the integration was still valid and pointed to its escrow rail. On 18 Nov 20:23 UTC the wallet deposited 8 USDC (approve `0x049cce73…4496`, deposit `0xfe542fb2…9a4d`, both on Sepolia) and Hushrate moved to escrow. Details and the free checks run before funding: [docs/escrow-rail.md](docs/escrow-rail.md).
 
 ## Network and payment asset
 
@@ -92,6 +110,8 @@ The agent exits non-zero only for real failures: a missing or wrong wallet key, 
 - Sepolia RPC down: the balance cannot be proven, so no paid call is made.
 - A degraded rerun never overwrites a more complete tape already recorded for the same hour (every run is still kept under `data/market/`).
 - Wallet unfunded for the asset the node asks for (balance of that asset below the cost of the run, 0.02): no miner is called, the run records `unfunded for USDC 0x…` as a degraded event and labelled public values (exit code 0). Below 0.20 but enough to pay is only a note.
+- Escrow balance below the cost of the run: the agent uses the exact rail if the wallet can pay that way, otherwise labelled public values. Escrow balance unreadable: no payment of any kind (never a fallback to settlement without knowing the balance). Escrow terms off the pins (another payee, network, endpoint or amount, or an amount above 3 cents): refused with the reason named.
+- Settlement timeouts at the facilitator (exact rail): the call is recorded as signed but unsettled, never as a purchase, and the next run tries again.
 - Payment terms off the allow-list (an unknown asset, a known asset to a different payee, another network): the degraded reason names the asset and network the node asked for, and no miner is called.
 
 The Settings page shows the state, the last successful run (a degraded run counts, since the schedule is alive) and the degraded reasons.
@@ -99,7 +119,7 @@ The Settings page shows the state, the last successful run (a degraded run count
 ## Limits
 
 - **Testnet.** Sepolia test USDC only.
-- **Settlement outage (since 17 Nov 20:17 UTC, last checked 18 Nov 06:17 UTC).** Since 17 Nov 20:17 UTC every paid purchase has failed at Telegraph's settlement step: the node accepted Hushrate's signed payment and then answered HTTP 402 because its call to the facilitator (facilitator.x402.rs/settle) timed out. The tapes for those hours are public-only and labelled that way, and no funds moved: the wallet balance is unchanged and the failed payments are not counted as purchases. The last hour that bought paid data was 06:00 UTC on 17 Nov. (Between 07:00 and 19:00 UTC that day purchases were refused or failed for the payment-asset reasons described in the previous item.) When purchases resume, the next tape will show the hashprice and BTC price as bought, two paid calls of $0.01 each with transaction hashes on Receipts and the Desk banner clearing after one such hour. This note will be updated with the first hour that buys again.
+- **Settlement outage and move to escrow (updated 18 Nov 20:40 UTC).** Since 17 Nov 20:17 UTC every paid purchase failed at Telegraph's settlement step: the node accepted the signed payment, then its call to the facilitator (facilitator.x402.rs/settle) timed out and it answered HTTP 402. The tapes for those hours are public-only and labelled that way, and no funds moved: the wallet balances did not change and a failed payment is not counted as a purchase. The last hour that bought paid data was 06:00 UTC on 17 Nov (07:00 to 19:00 UTC that day failed for the payment-asset reasons in the next item). On 18 Nov at 20:23 UTC the wallet funded Telegraph's escrow with 8 USDC in one deposit, and the agent now pays from escrow first (no facilitator, no per-call transaction), then by settlement, then falls back to labelled public values. The first escrow purchase is expected in the 21:17 UTC run; this note will be updated with the first hour that buys.
 - **The payment asset can change under us.** It did on 2026-11-17 (see Network and payment asset). Hushrate pays two allow-listed assets; a third, or a new payee, stops paid data until the config is updated, and the data falls back to labelled public values meanwhile. Funding is manual (a faucet), and the wallet must hold the asset the node currently asks for.
 - **Sample fleet.** Default sites are demo assumptions. Decisions are only as good as your load, efficiency and power adder.
 - **Day-ahead versus real-time.** Real-time moves every five minutes. Hushrate uses the latest published interval, not a forecast.
