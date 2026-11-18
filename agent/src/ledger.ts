@@ -24,6 +24,13 @@ export interface LedgerRow {
   network: string;
   signal_hash: string | null;
   outcome: string;
+  /** The rail that paid: escrow or exact (settlement). Receipts written before 2026-11-18 are exact. */
+  rail: "escrow" | "exact";
+  /** Escrow only: the epoch whose ledger root charges the call, and the recorded billing check (data/billing.json). */
+  epoch_id: number | null;
+  billing_verified: boolean | null;
+  billing_status: string | null;
+  billing_checked_at: string | null;
 }
 
 const ROOT = fileURLToPath(new URL("../../", import.meta.url));
@@ -31,6 +38,8 @@ const PRICE_PER_CALL = 0.01;
 
 export function buildLedger(root = ROOT): LedgerRow[] {
   const dir = `${root}data/receipts`;
+  let billing: Record<string, { billing_verified: boolean | null; status: string; checked_at: string }> = {};
+  try { for (const b of JSON.parse(readFileSync(`${root}data/billing.json`, "utf8"))) billing[String(b.receipt_hash).toLowerCase()] = b; } catch { /* none recorded yet */ }
   const rows: LedgerRow[] = [];
   for (const f of readdirSync(dir).filter((n) => n.endsWith(".json")).sort()) {
     let r: any;
@@ -38,7 +47,10 @@ export function buildLedger(root = ROOT): LedgerRow[] {
     if (!r.paid) continue; // refused before payment: nothing was spent
     if (r.http_status === 402) continue; // payment was not accepted by the node: nothing settled
     const b = r.response ?? {};
-    const tr = r.telegraph_receipt ?? {};
+    const escrow = r.rail === "escrow";
+    // Escrow receipts carry the node's receipt in escrow_receipt (X-PAYMENT-RESPONSE); exact ones in telegraph_receipt.
+    const tr = escrow ? (r.escrow_receipt ?? {}) : (r.telegraph_receipt ?? {});
+    const bill = escrow && tr.receipt_hash ? billing[String(tr.receipt_hash).toLowerCase()] : undefined;
     const ok = r.http_status === 200;
     rows.push({
       file: f,
@@ -52,12 +64,17 @@ export function buildLedger(root = ROOT): LedgerRow[] {
       billed_usd: ok ? (b.cost_usd ?? PRICE_PER_CALL) : 0,
       paid_usd: PRICE_PER_CALL,
       receipt_hash: tr.receipt_hash ?? null,
-      tx_hash: tr.tx_hash ?? r.payment_response?.transaction ?? b.payment?.transaction ?? null,
+      tx_hash: escrow ? null : (tr.tx_hash ?? r.payment_response?.transaction ?? b.payment?.transaction ?? null),
       payer: tr.payer ?? r.payment_response?.payer ?? b.payment?.payer ?? null,
       amount_uusdc: tr.amount_uusdc ?? null,
       asset: paymentAssetOf(r.payment),
       network: r.payment?.network ?? tr.chain ?? "eip155:11155111",
       signal_hash: b.signal_hash ?? null,
+      rail: escrow ? "escrow" : "exact",
+      epoch_id: escrow ? (tr.epoch_id ?? null) : null,
+      billing_verified: escrow ? (bill?.billing_verified ?? null) : null,
+      billing_status: escrow ? (bill?.status ?? (tr.receipt_hash ? "not checked yet" : null)) : null,
+      billing_checked_at: bill?.checked_at ?? null,
       outcome: ok ? "served" : r.http_status === null ? "transport error after payment was signed; status unknown, check the wallet" : "failed after payment; credited to escrow",
     });
   }

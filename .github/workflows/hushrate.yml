@@ -49,6 +49,13 @@ jobs:
           # ticker, schedule or manual: lets the Settings page show whether the hourly chain is alive
           HUSHRATE_TRIGGER: ${{ github.event_name == 'workflow_dispatch' && inputs.source || github.event_name }}
         run: npm run agent
+      # Free GET requests only. Records, for each escrow receipt, whether the node's delivery record for its epoch names this wallet.
+      - name: Verify billing of escrow receipts
+        if: always()
+        continue-on-error: true
+        env:
+          TELEGRAPH_NODE: https://devnode.telegraphprotocol.com
+        run: npm run billing
       # Never rebase or merge generated data: save it, reset to the remote, copy it back (the run's files win),
       # commit and push, retrying up to 3 times. The script runs from a copy because the reset rewrites the tree.
       - name: Commit new data

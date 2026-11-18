@@ -11,6 +11,7 @@
     "mint": "tsx src/mint.ts",
     "typecheck": "tsc --noEmit",
     "ledger": "tsx src/ledger.ts",
+    "billing": "tsx src/billing.ts",
     "test": "tsx --test src/*.test.ts"
   },
   "devDependencies": {

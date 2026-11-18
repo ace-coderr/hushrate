@@ -139,3 +139,41 @@ export function chooseRail(escrow: EscrowOffer, funding: EscrowFunding | null, e
   const why = escrow.state === "refused" ? escrow.reason : "the node offers no escrow rail";
   return exact.ok ? { rail: "exact", reason: `${why}; paying by settlement instead` } : { rail: "public", reason: `${why}; and ${exact.reason}` };
 }
+
+// ---- billing verification ------------------------------------------------------------------------------------------------
+// An escrow call has no per-call transaction. Its proof of billing is the node's delivery record for the epoch:
+// GET /v1/blocks/{epochId}/deliveries/{receiptHash} (at the node root, not under /engine). Until the epoch's block is recorded it
+// answers 404 {"error":"no block recorded for this epoch"}; on the testnet that is up to about an hour.
+
+/** One recorded check of an escrow receipt. billing_verified is true or false only after a real response; null means "not yet". */
+export interface BillingRecord {
+  receipt_hash: string;
+  epoch_id: number | null;
+  billing_verified: boolean | null;
+  status: "verified" | "pending" | "not_found" | "mismatch" | "error";
+  checked_at: string;
+  http_status: number | null;
+  note: string;
+  /** The block's deliveries_root, when the node returned it. */
+  deliveries_root?: string | null;
+}
+
+/** Turn the node's answer to the deliveries request into a record. Never returns verified without a 200 that names our wallet. */
+export function classifyBilling(args: { receipt_hash: string; epoch_id: number | null; wallet: string; http_status: number | null; body: unknown; now: string }): BillingRecord {
+  const { receipt_hash, epoch_id, wallet, http_status, body, now } = args;
+  const base = { receipt_hash, epoch_id, checked_at: now, http_status };
+  if (http_status === null) return { ...base, billing_verified: null, status: "error", note: "the billing endpoint could not be reached" };
+  const text = (() => { try { return JSON.stringify(body) ?? ""; } catch { return ""; } })();
+  const errText = typeof (body as { error?: unknown } | null)?.error === "string" ? (body as { error: string }).error : "";
+  if (http_status === 200) {
+    const root = (body as { deliveries_root?: unknown } | null)?.deliveries_root;
+    const deliveries_root = typeof root === "string" ? root : null;
+    const names = text.toLowerCase().includes(wallet.toLowerCase());
+    return names
+      ? { ...base, billing_verified: true, status: "verified", note: "the node's delivery record for this epoch names this wallet as the payer", deliveries_root }
+      : { ...base, billing_verified: false, status: "mismatch", note: "the node returned a delivery record that does not name this wallet as the payer", deliveries_root };
+  }
+  if (http_status === 404 && /no block recorded/i.test(errText)) return { ...base, billing_verified: null, status: "pending", note: "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)" };
+  if (http_status === 404) return { ...base, billing_verified: false, status: "not_found", note: `the epoch's block exists but has no delivery for this receipt: ${errText || "404"}` };
+  return { ...base, billing_verified: null, status: "error", note: `unexpected answer HTTP ${http_status}: ${errText || text.slice(0, 120)}` };
+}
