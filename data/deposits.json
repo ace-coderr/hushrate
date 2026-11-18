@@ -1,0 +1,15 @@
+[
+  {
+    "at": "2026-11-18T20:23:13.591Z",
+    "network": "eip155:11155111",
+    "wallet": "0x3F857679462C80CC4Ffe99635aA3bd6e44FC913e",
+    "token": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "diamond": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+    "amount_uusdc": "8000000",
+    "amount_usdc": "8",
+    "approve_tx": "0x049cce737e49ac3ca9b87f8b0551656a14c94cf6cc73e4ab7f163c09387c4496",
+    "deposit_tx": "0xfe542fb2dc6088d2516108c9410c5142ca4afdbf141bef4503a5012c69969a4d",
+    "deposit_block": 12163767,
+    "explorer_tx": "https://sepolia.etherscan.io/tx/"
+  }
+]
