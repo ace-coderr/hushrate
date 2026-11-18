@@ -1,7 +1,7 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-18T01:19:03.266Z",
-  "last_success_at": "2026-11-18T01:19:03.266Z",
+  "updated_at": "2026-11-18T02:19:03.473Z",
+  "last_success_at": "2026-11-18T02:19:03.473Z",
   "usdc_balance": "13.78",
   "balances": [
     {
@@ -25,14 +25,17 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-18T01-17-19Z.json",
+  "last_tape": "data/market/2026-11-18T02-17-23Z.json",
   "paid_calls_last_run": 0,
   "cost_usd_last_run": 0,
   "hashprice_source": "public",
   "btc_source": "public",
   "degraded": [
     "Telegraph miner 71083 (primary) hashprice: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
-    "Telegraph miner 7320 (BTC price): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
+    "Telegraph miner 7320 (BTC price): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "CAISO OASIS day-ahead TH_SP15_GEN-APND: fetch failed",
+    "CAISO OASIS real-time TH_SP15_GEN-APND: fetch failed",
+    "CAISO OASIS day-ahead TH_NP15_GEN-APND: fetch failed"
   ],
-  "reason": "2 upstream problem(s); see degraded list"
+  "reason": "5 upstream problem(s); see degraded list"
 }
