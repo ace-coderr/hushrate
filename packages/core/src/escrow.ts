@@ -88,7 +88,7 @@ export function buildEscrowRequest(offer: Extract<EscrowOffer, { state: "ok" }>,
 
 /** The X-PAYMENT header value: base64 of the escrow envelope. */
 export function encodeEscrowPayment(network: string, signature: string, authorization: EscrowAuthorization): string {
-  return Buffer.from(JSON.stringify({ x402Version: 2, scheme: "escrow", network, payload: { signature, authorization } })).toString("base64");
+  return btoa(JSON.stringify({ x402Version: 2, scheme: "escrow", network, payload: { signature, authorization } }));
 }
 
 export interface EscrowReceipt {
@@ -100,7 +100,7 @@ export interface EscrowReceipt {
 export function decodeEscrowReceipt(header: string | null | undefined): EscrowReceipt | null {
   if (!header) return null;
   try {
-    const j = JSON.parse(Buffer.from(header, "base64").toString("utf8")) as Record<string, unknown>;
+    const j = JSON.parse(atob(header)) as Record<string, unknown>;
     const s = (k: string) => (typeof j[k] === "string" ? (j[k] as string) : j[k] !== undefined && j[k] !== null ? String(j[k]) : null);
     const n = (k: string) => (typeof j[k] === "number" ? (j[k] as number) : null);
     return { receipt_hash: s("receipt_hash"), rail: s("rail"), payer: s("payer"), miner: s("miner"), intent: s("intent"), amount_uusdc: s("amount_uusdc"), epoch_id: n("epoch_id"), settlement: s("settlement"), chain: s("chain"), timestamp: n("timestamp") };
@@ -168,7 +168,7 @@ export function classifyBilling(args: { receipt_hash: string; epoch_id: number |
   if (http_status === 200) {
     const root = (body as { deliveries_root?: unknown } | null)?.deliveries_root;
     const deliveries_root = typeof root === "string" ? root : null;
-    const names = text.toLowerCase().includes(wallet.toLowerCase());
+    const names = wallet.length > 0 && text.toLowerCase().includes(wallet.toLowerCase());
     return names
       ? { ...base, billing_verified: true, status: "verified", note: "the node's delivery record for this epoch names this wallet as the payer", deliveries_root }
       : { ...base, billing_verified: false, status: "mismatch", note: "the node returned a delivery record that does not name this wallet as the payer", deliveries_root };

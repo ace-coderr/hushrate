@@ -69,6 +69,8 @@ export function Settings() {
                 </Fragment>
               ))}
               {!s.balances && s.usdc_balance != null && <><dt>Test-USDC balance</dt><dd className="mono">{s.usdc_balance}</dd></>}
+              {s.escrow && <><dt>Escrow balance (Telegraph)</dt><dd className="mono">{s.escrow.available_usdc != null ? `${s.escrow.available_usdc} USDC available` : "unreadable"}{s.escrow.deposited_usdc != null ? ` · ${s.escrow.deposited_usdc} deposited, ${s.escrow.unbilled_usdc} unbilled` : ""}<br /><small className="muted">{s.escrow.error ?? `read ${ago(s.escrow.read_at)} · funded in USDC ${shortHash(s.escrow.token, 6, 4)} at the Diamond ${shortHash(s.escrow.diamond, 6, 4)}`}</small></dd></>}
+              {s.rail && <><dt>Payment rail (last run)</dt><dd>{s.rail === "escrow" ? "escrow (no facilitator, no per-call transaction)" : s.rail === "exact" ? "exact (settled per call through a facilitator)" : "none: values were public and labelled"}{s.rail_reason ? <><br /><small className="muted">{s.rail_reason}</small></> : null}</dd></>}
               {s.allowed_assets && <><dt>Pays only</dt><dd>{s.allowed_assets.length} allowed assets, each to its own pinned payee</dd></>}
               {s.unfunded && <><dt>Funding</dt><dd className="stall">unfunded for {shortHash(s.unfunded_asset ?? s.payment_asset ?? "", 8, 6)}: the node asked for it and the wallet cannot pay</dd></>}
               {s.hashprice_source && <><dt>Hashprice source</dt><dd>{s.hashprice_source}</dd></>}

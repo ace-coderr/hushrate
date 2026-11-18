@@ -18,6 +18,11 @@ export interface Status {
   allowed_assets?: string[];
   /** The balance of each allowed asset. */
   balances?: { asset: string; symbol: string; role: string; balance: string }[];
+  /** The rail chosen for the last run: escrow, exact (settlement) or public (nothing bought). Absent before 2026-11-18. */
+  rail?: "escrow" | "exact" | "public" | null;
+  rail_reason?: string | null;
+  /** The wallet's escrow balance on the Telegraph node, in USDC, as read by the agent. */
+  escrow?: { diamond: string; token: string; read_at: string; available_usdc: string | null; deposited_usdc?: string; balance_usdc?: string; unbilled_usdc?: string; error?: string } | null;
   unfunded?: boolean;
   unfunded_asset?: string | null;
   last_tape?: string;
@@ -34,6 +39,18 @@ export interface LedgerRow {
   signal_hash: string | null; outcome: string;
   /** Absent on a ledger file written before 2026-11-17: those rows are the previous asset. */
   asset?: string; network?: string;
+  /** Absent on a ledger file written before 2026-11-18: those rows were paid by settlement (exact). */
+  rail?: "escrow" | "exact";
+  epoch_id?: number | null;
+  billing_verified?: boolean | null;
+  billing_status?: string | null;
+  billing_checked_at?: string | null;
+}
+
+/** One on-chain funding of the escrow (data/deposits.json): public hashes only. */
+export interface Deposit {
+  at: string; network: string; wallet: string; token: string; diamond: string;
+  amount_uusdc: string; amount_usdc: string; approve_tx: string | null; deposit_tx: string; deposit_block: number;
 }
 
 export interface Ticker {
@@ -75,3 +92,4 @@ export const useHistory = () => useJson<HistoryEntry[]>("data/history.json");
 export const useStatus = () => useJson<Status>("data/status.json");
 export const useTicker = () => useJson<Ticker>("data/ticker.json");
 export const useLedger = () => useJson<LedgerRow[]>("data/ledger.json");
+export const useDeposits = () => useJson<Deposit[]>("data/deposits.json");

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { blockHashprice, checkBtcPurchase, checkHashpricePurchase, fetchBlocks, fetchBtcUsd, paymentAssetOf, sameAddress, windowHashprice, type MarketTape } from "@hushrate/core";
+import { blockHashprice, classifyBilling, checkBtcPurchase, checkHashpricePurchase, fetchBlocks, fetchBtcUsd, paymentAssetOf, sameAddress, windowHashprice, type MarketTape } from "@hushrate/core";
 import { Empty, PageHead } from "../components/Layout";
-import { useLatest, useLedger, type LedgerRow } from "../lib/data";
+import { useDeposits, useLatest, useLedger, type Deposit, type LedgerRow } from "../lib/data";
 import { explorerTx, num, shortHash } from "../lib/format";
 
 const RPC = "https://ethereum-sepolia-rpc.publicnode.com";
+const NODE = "https://devnode.telegraphprotocol.com";
 const TRANSFER = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 
 type Result = { state: "idle" | "running" | "pass" | "fail" | "error"; text: string; detail?: string };
@@ -21,16 +22,24 @@ async function rpc(method: string, params: unknown[]) {
 export function Proof() {
   const latest = useLatest();
   const ledger = useLedger();
+  const deposits = useDeposits();
   const t = latest.data;
   const [hp, setHp] = useState<Result>(idle);
   const [cmp, setCmp] = useState<Result>(idle);
   const [btc, setBtc] = useState<Result>(idle);
   const [pay, setPay] = useState<Result>(idle);
+  const [bill, setBill] = useState<Result>(idle);
+  const [billPick, setBillPick] = useState<string>("");
   const rows = (ledger.data ?? []).filter((r) => r.tx_hash && r.http_status === 200);
+  const depositList: Deposit[] = deposits.data ?? [];
+  const escrowRows = (ledger.data ?? []).filter((r) => r.rail === "escrow" && r.receipt_hash && r.epoch_id != null && r.http_status === 200);
+  const escrowPick = billPick || escrowRows[escrowRows.length - 1]?.receipt_hash || "";
+  const escrowRow = escrowRows.find((r) => r.receipt_hash === escrowPick);
   const tapeTx = t?.hashprice.telegraph?.tx_hash ?? null;
   const [pick, setPick] = useState<string>("");
-  const tx = pick || tapeTx || rows[rows.length - 1]?.tx_hash || "";
+  const tx = pick || tapeTx || rows[rows.length - 1]?.tx_hash || depositList[depositList.length - 1]?.deposit_tx || "";
   const row: LedgerRow | undefined = rows.find((r) => r.tx_hash === tx);
+  const dep: Deposit | undefined = depositList.find((d) => d.deposit_tx === tx);
 
   async function recompute(tape: MarketTape) {
     if (tape.block_height === null) { setHp({ state: "error", text: "This tape has no block height (mempool.space was unreachable that hour), so there is nothing to recompute." }); setCmp(idle); return; }
@@ -121,20 +130,36 @@ export function Proof() {
       if (!r) { setPay({ state: "fail", text: "Transaction not found on Sepolia." }); return; }
       const ok = r.status === "0x1";
       // The asset comes from the ledger row (or the tape), not from a constant: rows without one are the previous asset.
-      const asset = paymentAssetOf(row ?? (t && tx === tapeTx ? t : null));
-      const payer = (row?.payer ?? "").toLowerCase().replace(/^0x/, "");
+      const asset = dep ? dep.token : paymentAssetOf(row ?? (t && tx === tapeTx ? t : null));
+      const payer = (dep ? dep.wallet : (row?.payer ?? "")).toLowerCase().replace(/^0x/, "");
       let total = 0n;
       for (const l of r.logs as { address: string; topics: string[]; data: string }[]) {
-        if (sameAddress(l.address, asset) && l.topics[0] === TRANSFER && (!payer || l.topics[1]?.toLowerCase().endsWith(payer))) total += BigInt(l.data);
+        if (sameAddress(l.address, asset) && l.topics[0] === TRANSFER && (!payer || l.topics[1]?.toLowerCase().endsWith(payer)) && (!dep || l.topics[2]?.toLowerCase().endsWith(dep.diamond.toLowerCase().replace(/^0x/, "")))) total += BigInt(l.data);
       }
-      const need = BigInt(row?.amount_uusdc ?? "10000");
+      const need = BigInt(dep ? dep.amount_uusdc : (row?.amount_uusdc ?? "10000"));
       const covered = total >= need;
       setPay({
         state: ok && covered ? "pass" : "fail",
-        text: `Transaction ${ok ? "succeeded" : "failed"} in block ${parseInt(r.blockNumber, 16)}. Transferred from the payer in this transaction in token ${asset.slice(0, 8)}…${asset.slice(-6)}: ${Number(total) / 1e6} (this request needed ${Number(need) / 1e6}).`,
-        detail: "Several requests from one wallet can share a settlement transaction, so the total can exceed one request's cost.",
+        text: `Transaction ${ok ? "succeeded" : "failed"} in block ${parseInt(r.blockNumber, 16)}. Transferred from the payer${dep ? " to the escrow Diamond" : ""} in this transaction in token ${asset.slice(0, 8)}…${asset.slice(-6)}: ${Number(total) / 1e6} (${dep ? "the deposit was" : "this request needed"} ${Number(need) / 1e6}).`,
+        detail: dep ? "An escrow deposit is one transaction that funds many later calls." : "Several requests from one wallet can share a settlement transaction, so the total can exceed one request's cost.",
       });
     } catch (e) { setPay({ state: "error", text: `RPC check failed: ${(e as Error).message}` }); }
+  }
+
+  /** Step 5: ask the node, from your browser, whether its delivery record for the epoch names this wallet. Shows the recorded result if the node cannot be read. */
+  async function checkBilling() {
+    const r = escrowRow;
+    if (!r || !r.receipt_hash || r.epoch_id == null) return;
+    setBill({ state: "running", text: "Asking the Telegraph node for the delivery record of this epoch…" });
+    try {
+      const res = await fetch(`${NODE}/v1/blocks/${r.epoch_id}/deliveries/${r.receipt_hash}`);
+      const body = await res.json().catch(() => null);
+      const c = classifyBilling({ receipt_hash: r.receipt_hash, epoch_id: r.epoch_id, wallet: r.payer ?? "", http_status: res.status, body, now: new Date().toISOString() });
+      setBill({ state: c.billing_verified === true ? "pass" : c.billing_verified === false ? "fail" : "error", text: c.note, detail: c.billing_verified === null ? "Not yet verifiable. Nothing is marked verified until the node returns the delivery record." : undefined });
+    } catch {
+      const rec = r.billing_status ? `The last recorded result (from the hourly run) is: ${r.billing_status}${r.billing_checked_at ? `, checked ${r.billing_checked_at}` : ""}.` : "No billing result is recorded for this call yet.";
+      setBill({ state: "error", text: `Your browser could not read the node's billing endpoint (the node may block cross-origin requests or be unreachable). ${rec}` });
+    }
   }
 
   return (
@@ -169,11 +194,12 @@ export function Proof() {
           </section>
 
           <section className="card check">
-            <h3>4 · Check the payment on Sepolia</h3>
-            <p>Looks up the settlement transaction through a public RPC and finds the transfer of the payment asset recorded for that request (the asset is taken from the ledger, so requests paid in the previous test USDC and in the current one both check).</p>
-            {rows.length > 0 ? (
+            <h3>4 · Check a payment or the escrow deposit on Sepolia</h3>
+            <p>Looks up a transaction through a public RPC and finds the transfer of the payment asset recorded for it. Pick a per-call settlement (rows from before the escrow rail) or the escrow deposit that funds today's calls; the asset is taken from the ledger or the deposit record, never a constant.</p>
+            {rows.length + depositList.length > 0 ? (
               <label className="field inline">Transaction
                 <select value={tx} onChange={(e) => { setPick(e.target.value); setPay(idle); }}>
+                  {depositList.map((d) => <option key={d.deposit_tx} value={d.deposit_tx}>escrow deposit {d.amount_usdc} USDC · {shortHash(d.deposit_tx)}</option>)}
                   {[...rows].reverse().map((r) => <option key={r.file} value={r.tx_hash!}>{r.label} · {shortHash(r.tx_hash)}</option>)}
                 </select>
               </label>
@@ -183,6 +209,23 @@ export function Proof() {
               {tx && <a className="pill ghost" href={explorerTx(tx)} target="_blank" rel="noopener noreferrer">Open in explorer</a>}
             </div>
             <Verdict r={pay} />
+          </section>
+
+          <section className="card check">
+            <h3>5 · Check that the node billed an escrow call</h3>
+            <p>An escrow call has no transaction of its own. Its proof is the node's delivery record for the epoch: the page asks the node for that record and looks for this wallet as the payer. Until the epoch's block is recorded (up to about an hour) the node answers 404, and the call stays pending: nothing is marked verified without a real response.</p>
+            {escrowRows.length > 0 ? (
+              <>
+                <label className="field inline">Escrow call
+                  <select value={escrowPick} onChange={(e) => { setBillPick(e.target.value); setBill(idle); }}>
+                    {[...escrowRows].reverse().map((r) => <option key={r.file} value={r.receipt_hash!}>{r.label} · epoch {r.epoch_id} · {shortHash(r.receipt_hash)}</option>)}
+                  </select>
+                </label>
+                {escrowRow && <p className="small muted">Recorded by the hourly run: {escrowRow.billing_verified === true ? `verified ${escrowRow.billing_checked_at ?? ""}` : escrowRow.billing_verified === false ? `not verified (${escrowRow.billing_status})` : `pending${escrowRow.billing_checked_at ? ` (last checked ${escrowRow.billing_checked_at})` : ", not checked yet"}`}.</p>}
+                <div className="cta-row"><button className="pill primary" onClick={checkBilling} disabled={!escrowRow || bill.state === "running"}>Ask the node now</button></div>
+              </>
+            ) : <p className="muted">No escrow call has been recorded yet. Once the agent buys through escrow, its calls appear here.</p>}
+            <Verdict r={bill} />
           </section>
         </div>
       )}
