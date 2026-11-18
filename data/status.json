@@ -1,8 +1,8 @@
 {
-  "state": "degraded",
-  "updated_at": "2026-11-18T20:19:04.799Z",
-  "last_success_at": "2026-11-18T20:19:04.799Z",
-  "usdc_balance": "13.78",
+  "state": "ok",
+  "updated_at": "2026-11-18T21:18:06.164Z",
+  "last_success_at": "2026-11-18T21:18:06.164Z",
+  "usdc_balance": "5.78",
   "balances": [
     {
       "asset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
@@ -14,9 +14,20 @@
       "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
       "symbol": "USDC",
       "role": "previous",
-      "balance": "13.78"
+      "balance": "5.78"
     }
   ],
+  "rail": "escrow",
+  "rail_reason": "escrow funded: 8000000 uUSDC available",
+  "escrow": {
+    "diamond": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+    "token": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "read_at": "2026-11-18T21:18:06.164Z",
+    "available_usdc": "7.98",
+    "deposited_usdc": "8.00",
+    "balance_usdc": "8.00",
+    "unbilled_usdc": "0.02"
+  },
   "payment_asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
   "payment_network": "eip155:11155111",
   "allowed_assets": [
@@ -25,14 +36,9 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-18T20-17-23Z.json",
-  "paid_calls_last_run": 0,
-  "cost_usd_last_run": 0,
-  "hashprice_source": "public",
-  "btc_source": "public",
-  "degraded": [
-    "Telegraph miner 71083 (primary) hashprice: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
-    "Telegraph miner 7320 (BTC price): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
-  ],
-  "reason": "2 upstream problem(s); see degraded list"
+  "last_tape": "data/market/2026-11-18T21-17-20Z.json",
+  "paid_calls_last_run": 2,
+  "cost_usd_last_run": 0.02,
+  "hashprice_source": "telegraph",
+  "btc_source": "telegraph"
 }
