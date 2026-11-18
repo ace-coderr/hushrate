@@ -1,19 +1,19 @@
 {
   "schema": 1,
   "interval_start": "2026-11-18T04:00:00Z",
-  "recorded_at": "2026-11-18T04:16:25.277Z",
-  "block_height": 976375,
-  "btc_usd": 64351,
+  "recorded_at": "2026-11-18T04:19:00.931Z",
+  "block_height": 976376,
+  "btc_usd": 64337,
   "hashprice": {
-    "value_sats_per_ph_day": 47203.69908773222,
+    "value_sats_per_ph_day": 46863.38261576976,
     "source": "public",
-    "label": "public: mempool.space, single block 976375 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "label": "public: mempool.space, single block 976376 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
     "public_144": {
-      "tip": 976375,
+      "tip": 976376,
       "blocks": 144,
-      "from_height": 976232,
-      "to_height": 976375,
-      "hashprice_sats_per_ph_day": 46941.01796138245,
+      "from_height": 976233,
+      "to_height": 976376,
+      "hashprice_sats_per_ph_day": 46941.467085853255,
       "min_block": 46648.30410352088,
       "max_block": 47846.84066308846
     },
@@ -31,20 +31,20 @@
       "signal_hash": null,
       "receipt_hash": null,
       "tx_hash": "",
-      "receipt_file": "2026-11-18T04-17-00-684Z-hashprice-976375.json",
+      "receipt_file": "2026-11-18T04-19-34-825Z-hashprice-976376.json",
       "accepted": false,
       "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
     },
-    "public_at_telegraph_height": 47203.69908773222,
+    "public_at_telegraph_height": 46863.38261576976,
     "comparison": "single_block_at_returned_height",
     "tolerance_rel": 0.01,
     "miner_role": "primary"
   },
   "btc": {
-    "value_usd": 64351,
+    "value_usd": 64337,
     "source": "public",
     "label": "public: mempool.space BTC/USD; Telegraph price not used: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
-    "public_usd": 64351,
+    "public_usd": 64337,
     "tolerance_rel": 0.005,
     "telegraph": {
       "intent": "CRYPTO_PRICE_USD",
@@ -60,7 +60,7 @@
       "signal_hash": null,
       "receipt_hash": null,
       "tx_hash": "",
-      "receipt_file": "2026-11-18T04-17-32-592Z-btc-2026-11-18T04-00-00Z.json",
+      "receipt_file": "2026-11-18T04-20-05-367Z-btc-2026-11-18T04-00-00Z.json",
       "accepted": false,
       "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
     }
