@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "interval_start": "2026-11-18T09:00:00Z",
+  "recorded_at": "2026-11-18T09:17:22.614Z",
+  "block_height": 976409,
+  "btc_usd": 64669,
+  "hashprice": {
+    "value_sats_per_ph_day": 46970.62151958703,
+    "source": "public",
+    "label": "public: mempool.space, single block 976409 (reward incl. fees at that block's difficulty), the quantity the Telegraph miner computes; Telegraph value not used: miner 71083 (primary): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "public_144": {
+      "tip": 976409,
+      "blocks": 144,
+      "from_height": 976266,
+      "to_height": 976409,
+      "hashprice_sats_per_ph_day": 46951.49005512851,
+      "min_block": 46648.304103520895,
+      "max_block": 47924.31663770857
+    },
+    "telegraph": {
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "requested_miner": "71083",
+      "miner_id": null,
+      "miner_name": null,
+      "http_status": 402,
+      "paid": true,
+      "cost_usd": 0,
+      "field_status": null,
+      "value": null,
+      "returned_height": null,
+      "signal_hash": null,
+      "receipt_hash": null,
+      "tx_hash": "",
+      "receipt_file": "2026-11-18T09-17-58-166Z-hashprice-976409.json",
+      "accepted": false,
+      "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
+    },
+    "public_at_telegraph_height": 46970.62151958703,
+    "comparison": "single_block_at_returned_height",
+    "tolerance_rel": 0.01,
+    "miner_role": "primary"
+  },
+  "btc": {
+    "value_usd": 64669,
+    "source": "public",
+    "label": "public: mempool.space BTC/USD; Telegraph price not used: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "public_usd": 64669,
+    "tolerance_rel": 0.005,
+    "telegraph": {
+      "intent": "CRYPTO_PRICE_USD",
+      "requested_miner": "7320",
+      "miner_id": null,
+      "miner_name": null,
+      "http_status": 402,
+      "paid": true,
+      "cost_usd": 0,
+      "field_status": null,
+      "value": null,
+      "returned_height": null,
+      "signal_hash": null,
+      "receipt_hash": null,
+      "tx_hash": "",
+      "receipt_file": "2026-11-18T09-18-30-635Z-btc-2026-11-18T09-00-00Z.json",
+      "accepted": false,
+      "reject_reason": "HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
+    }
+  },
+  "power": [
+    {
+      "node": "TH_SP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 44.62232,
+      "day_ahead_interval": "2026-11-18T09:00:00.000Z",
+      "real_time_usd_per_mwh": 45.24571,
+      "real_time_interval": "2026-11-18T09:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_NP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 46.74692,
+      "day_ahead_interval": "2026-11-18T09:00:00.000Z",
+      "real_time_usd_per_mwh": 48.63968,
+      "real_time_interval": "2026-11-18T09:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_ZP26_GEN-APND",
+      "day_ahead_usd_per_mwh": 45.14077,
+      "day_ahead_interval": "2026-11-18T09:00:00.000Z",
+      "real_time_usd_per_mwh": 47.04322,
+      "real_time_interval": "2026-11-18T09:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    }
+  ],
+  "spend": {
+    "paid_calls": 0,
+    "cost_usd": 0
+  },
+  "wallet_usdc_after": "13.78",
+  "notes": [],
+  "degraded": [
+    "Telegraph miner 71083 (primary) hashprice: HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded",
+    "Telegraph miner 7320 (BTC price): HTTP 402: settlement failed: settle request failed: Post \"https://facilitator.x402.rs/settle\": context deadline exceeded"
+  ],
+  "payment": {
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+    "requested": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "allowed": [
+      "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      "0xcc194e1a843B658526D0D5C431f670028582Ae17"
+    ]
+  }
+}
