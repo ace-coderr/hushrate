@@ -6571,7 +6571,7 @@
     "epoch_id": 19,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T19:18:07.760Z",
+    "billing_checked_at": "2026-11-19T20:18:10.230Z",
     "outcome": "served"
   },
   {
@@ -6596,7 +6596,7 @@
     "epoch_id": 19,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T19:18:08.183Z",
+    "billing_checked_at": "2026-11-19T20:18:10.819Z",
     "outcome": "served"
   },
   {
@@ -6621,7 +6621,7 @@
     "epoch_id": 19,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T19:18:08.449Z",
+    "billing_checked_at": "2026-11-19T20:18:11.008Z",
     "outcome": "served"
   },
   {
@@ -6646,7 +6646,57 @@
     "epoch_id": 19,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T19:18:08.855Z",
+    "billing_checked_at": "2026-11-19T20:18:11.183Z",
+    "outcome": "served"
+  },
+  {
+    "file": "2026-11-19T20-17-31-505Z-hashprice-976630.json",
+    "at": "2026-11-19T20:17:31.505Z",
+    "label": "hashprice-976630",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_requested": "71083",
+    "miner_id": "71083",
+    "miner_name": "Bitcoin Block Hashprice",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0xa3e1e815331d2c6bd36262a48880dc3e086d88022e7f9057f81c0fa78deeb250",
+    "tx_hash": null,
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "signal_hash": "0x6bf9ef4fbf17e3d8b09018dab7431e54c3497203b3cd91b0031c51cf67cd95ac",
+    "rail": "escrow",
+    "epoch_id": 19,
+    "billing_verified": null,
+    "billing_status": "pending",
+    "billing_checked_at": "2026-11-19T20:18:11.371Z",
+    "outcome": "served"
+  },
+  {
+    "file": "2026-11-19T20-17-34-574Z-btc-2026-11-19T20-00-00Z.json",
+    "at": "2026-11-19T20:17:34.574Z",
+    "label": "btc-2026-11-19T20-00-00Z",
+    "intent": "CRYPTO_PRICE_USD",
+    "miner_requested": "7320",
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0xccbcb3a53e835f7bf2fac945bb50f48ad263bb6fb6968e3abf6a411dc6cfa1f7",
+    "tx_hash": null,
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "signal_hash": "0xad4a110fe89fdcc4da4c30d6106f5bd72560ebef6762d2b3252e17fbb5598c34",
+    "rail": "escrow",
+    "epoch_id": 19,
+    "billing_verified": null,
+    "billing_status": "pending",
+    "billing_checked_at": "2026-11-19T20:18:11.579Z",
     "outcome": "served"
   }
 ]
