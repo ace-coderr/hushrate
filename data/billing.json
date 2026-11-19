@@ -242,52 +242,76 @@
   {
     "receipt_hash": "0x8c68f27282b458d5db7235c86a10ba0d4881bf9bf6b0aa6b36b9ad8979a2ea99",
     "epoch_id": 16,
-    "checked_at": "2026-11-19T11:18:09.593Z",
-    "http_status": 404,
-    "billing_verified": null,
-    "status": "pending",
-    "note": "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)"
+    "checked_at": "2026-11-19T12:18:05.756Z",
+    "http_status": 200,
+    "billing_verified": true,
+    "status": "verified",
+    "note": "the node's delivery record for this epoch names this wallet as the payer",
+    "deliveries_root": "0xe94ff881ab3bf2ff9da623a07d8338af464bc11731dae9046dea5c54056154ea"
   },
   {
     "receipt_hash": "0x7c802a54bc51b431e00319177f4e630b06814bac59bc17ca58a8b85424565bce",
     "epoch_id": 16,
-    "checked_at": "2026-11-19T11:18:10.099Z",
-    "http_status": 404,
-    "billing_verified": null,
-    "status": "pending",
-    "note": "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)"
+    "checked_at": "2026-11-19T12:18:05.942Z",
+    "http_status": 200,
+    "billing_verified": true,
+    "status": "verified",
+    "note": "the node's delivery record for this epoch names this wallet as the payer",
+    "deliveries_root": "0xe94ff881ab3bf2ff9da623a07d8338af464bc11731dae9046dea5c54056154ea"
   },
   {
     "receipt_hash": "0xd57506431517b2135e5ff8703dd6d350996c72fcd85eaf4b396825bfa65c5bfa",
     "epoch_id": 16,
-    "checked_at": "2026-11-19T11:18:10.266Z",
-    "http_status": 404,
-    "billing_verified": null,
-    "status": "pending",
-    "note": "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)"
+    "checked_at": "2026-11-19T12:18:06.144Z",
+    "http_status": 200,
+    "billing_verified": true,
+    "status": "verified",
+    "note": "the node's delivery record for this epoch names this wallet as the payer",
+    "deliveries_root": "0xe94ff881ab3bf2ff9da623a07d8338af464bc11731dae9046dea5c54056154ea"
   },
   {
     "receipt_hash": "0x9722cb45b8b2b8c6d81a5558d10df22edc61e466f77fbd09be54ba6228c77dda",
     "epoch_id": 16,
-    "checked_at": "2026-11-19T11:18:10.451Z",
-    "http_status": 404,
-    "billing_verified": null,
-    "status": "pending",
-    "note": "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)"
+    "checked_at": "2026-11-19T12:18:06.327Z",
+    "http_status": 200,
+    "billing_verified": true,
+    "status": "verified",
+    "note": "the node's delivery record for this epoch names this wallet as the payer",
+    "deliveries_root": "0xe94ff881ab3bf2ff9da623a07d8338af464bc11731dae9046dea5c54056154ea"
   },
   {
     "receipt_hash": "0x746fb5348588ddc2c0d87398f2c8727cd94233b412ad196364aeff51e563785b",
     "epoch_id": 16,
-    "checked_at": "2026-11-19T11:18:10.616Z",
+    "checked_at": "2026-11-19T12:18:06.499Z",
+    "http_status": 200,
+    "billing_verified": true,
+    "status": "verified",
+    "note": "the node's delivery record for this epoch names this wallet as the payer",
+    "deliveries_root": "0xe94ff881ab3bf2ff9da623a07d8338af464bc11731dae9046dea5c54056154ea"
+  },
+  {
+    "receipt_hash": "0x57c27748645921ebf0ceb47f7c38ae4076e524dff6f054c514ad69505e409a54",
+    "epoch_id": 16,
+    "checked_at": "2026-11-19T12:18:06.970Z",
+    "http_status": 200,
+    "billing_verified": true,
+    "status": "verified",
+    "note": "the node's delivery record for this epoch names this wallet as the payer",
+    "deliveries_root": "0xe94ff881ab3bf2ff9da623a07d8338af464bc11731dae9046dea5c54056154ea"
+  },
+  {
+    "receipt_hash": "0xf0d271f4ca84a8fdcceb5cf35835f041fb4dfbce9060dc3438fbcd1cbc397d9c",
+    "epoch_id": 17,
+    "checked_at": "2026-11-19T12:18:07.153Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
     "note": "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)"
   },
   {
-    "receipt_hash": "0x57c27748645921ebf0ceb47f7c38ae4076e524dff6f054c514ad69505e409a54",
-    "epoch_id": 16,
-    "checked_at": "2026-11-19T11:18:10.787Z",
+    "receipt_hash": "0x6457d26ba673002d5ce0f92a174c29f8b94bce23e856fa35ec74e973597d0fb1",
+    "epoch_id": 17,
+    "checked_at": "2026-11-19T12:18:07.353Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
