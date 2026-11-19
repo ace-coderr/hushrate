@@ -1,0 +1,73 @@
+{
+  "label": "hashprice-976522",
+  "miner_id_requested": "71083",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 976522
+  },
+  "query": null,
+  "idempotency_key": "[\"71083\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":976522}]",
+  "paid": true,
+  "http_status": 200,
+  "rail": "escrow",
+  "payment": {
+    "rail": "escrow",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b"
+  },
+  "escrow_request": {
+    "from": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "to": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+    "value": "10000",
+    "validAfter": "1795058238",
+    "validBefore": "1795058328",
+    "nonce": "2bb759c8-fd00-4c60-b05a-8276cfbb524b"
+  },
+  "escrow_available_before_uusdc": "7880000",
+  "escrow_receipt": {
+    "receipt_hash": "0xe539aca86c8c625934d2ae041eae34792d134b2d8a6f8d9a81f8dbcb1436934a",
+    "rail": "escrow",
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "miner": "4859",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 14,
+    "settlement": "epoch",
+    "chain": "telegraph",
+    "timestamp": 1795058246
+  },
+  "escrow_receipt_matches": true,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "miner_id": "71083",
+    "miner_name": "Bitcoin Block Hashprice",
+    "endpoint": "/hashprice",
+    "result": {
+      "hashprice_sats_per_ph_day": 46661.734015,
+      "block_height": 976522,
+      "hashrate_eh_s": 965.10662,
+      "hashprice_usd_per_ph_day": null
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "hashprice_sats_per_ph_day": "ok",
+      "block_height": "ok",
+      "hashrate_eh_s": "ok",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "input": {
+      "block_height": 976522
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 1513,
+    "timestamp": "2026-11-19T03:17:25.444439751Z",
+    "reasoning": "Intent: miner zk-hashprice given by the caller\nMiner: The user wants to verify the hashprice for a specific Bitcoin block height. The Bitcoin Block Hashprice miner has an endpoint '/hashprice' that serves the MINING_HASHPRICE_VERIFY_GENERAL intent and accepts 'block_height' as a query parameter. The provided block height is 976522, which is used directly in the request body as required by the miner's configuration for GET requests.",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "intent_version": 2,
+    "signal_hash": "0x7008032b46e6a95bf02a4e2f3b2968548f5c477289be3476be52953bd34dbbef"
+  }
+}
