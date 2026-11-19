@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "interval_start": "2026-11-19T14:00:00Z",
+  "recorded_at": "2026-11-19T14:17:23.146Z",
+  "block_height": null,
+  "btc_usd": null,
+  "hashprice": {
+    "value_sats_per_ph_day": null,
+    "source": null,
+    "label": "unavailable: mempool.space latest block could not be read this run; Telegraph value not bought: no Bitcoin block height",
+    "public_144": null,
+    "telegraph": null,
+    "public_at_telegraph_height": null,
+    "comparison": "single_block_at_returned_height",
+    "tolerance_rel": 0.01,
+    "miner_role": null
+  },
+  "btc": {
+    "value_usd": null,
+    "source": null,
+    "label": "unavailable: mempool.space BTC/USD could not be read this run; Telegraph price not bought: no public BTC/USD price to verify against",
+    "public_usd": null,
+    "tolerance_rel": 0.005,
+    "telegraph": null
+  },
+  "power": [
+    {
+      "node": "TH_SP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 55.02977,
+      "day_ahead_interval": "2026-11-19T14:00:00.000Z",
+      "real_time_usd_per_mwh": 57.08347,
+      "real_time_interval": "2026-11-19T14:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_NP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 60.42179,
+      "day_ahead_interval": "2026-11-19T14:00:00.000Z",
+      "real_time_usd_per_mwh": 82.298,
+      "real_time_interval": "2026-11-19T14:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_ZP26_GEN-APND",
+      "day_ahead_usd_per_mwh": 57.32756,
+      "day_ahead_interval": "2026-11-19T14:00:00.000Z",
+      "real_time_usd_per_mwh": 64.63357,
+      "real_time_interval": "2026-11-19T14:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    }
+  ],
+  "spend": {
+    "paid_calls": 0,
+    "cost_usd": 0
+  },
+  "wallet_usdc_after": "5.78",
+  "notes": [
+    "Telegraph hashprice not bought this run: no Bitcoin block height",
+    "Telegraph BTC price not bought this run: no public BTC/USD price to verify against"
+  ],
+  "degraded": [
+    "mempool.space tip height: fetch failed",
+    "mempool.space BTC/USD price: fetch failed"
+  ],
+  "payment": {
+    "rail": "escrow",
+    "rail_reason": "escrow funded: 7660000 uUSDC available",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+    "requested": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "allowed": [
+      "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      "0xcc194e1a843B658526D0D5C431f670028582Ae17"
+    ]
+  }
+}

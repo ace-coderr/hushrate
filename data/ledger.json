@@ -6321,7 +6321,7 @@
     "epoch_id": 17,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T13:18:11.506Z",
+    "billing_checked_at": "2026-11-19T14:18:08.761Z",
     "outcome": "served"
   },
   {
@@ -6346,7 +6346,7 @@
     "epoch_id": 17,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T13:18:11.788Z",
+    "billing_checked_at": "2026-11-19T14:18:09.510Z",
     "outcome": "served"
   },
   {
@@ -6371,7 +6371,7 @@
     "epoch_id": 17,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T13:18:12.025Z",
+    "billing_checked_at": "2026-11-19T14:18:09.774Z",
     "outcome": "served"
   },
   {
@@ -6396,7 +6396,7 @@
     "epoch_id": 17,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T13:18:12.263Z",
+    "billing_checked_at": "2026-11-19T14:18:10.025Z",
     "outcome": "served"
   }
 ]
