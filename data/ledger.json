@@ -6321,7 +6321,7 @@
     "epoch_id": 17,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T12:18:07.153Z",
+    "billing_checked_at": "2026-11-19T12:59:00.867Z",
     "outcome": "served"
   },
   {
@@ -6346,7 +6346,7 @@
     "epoch_id": 17,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-19T12:18:07.353Z",
+    "billing_checked_at": "2026-11-19T12:59:01.150Z",
     "outcome": "served"
   }
 ]

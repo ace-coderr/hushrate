@@ -302,7 +302,7 @@
   {
     "receipt_hash": "0xf0d271f4ca84a8fdcceb5cf35835f041fb4dfbce9060dc3438fbcd1cbc397d9c",
     "epoch_id": 17,
-    "checked_at": "2026-11-19T12:18:07.153Z",
+    "checked_at": "2026-11-19T12:59:00.867Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
@@ -311,7 +311,7 @@
   {
     "receipt_hash": "0x6457d26ba673002d5ce0f92a174c29f8b94bce23e856fa35ec74e973597d0fb1",
     "epoch_id": 17,
-    "checked_at": "2026-11-19T12:18:07.353Z",
+    "checked_at": "2026-11-19T12:59:01.150Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
