@@ -46,3 +46,9 @@ Recorded in `data/deposits.json` (public: hashes and amounts only). 8 USDC cover
 ## How Hushrate was checked before the first live escrow call
 
 Against a local stub node (nothing left the machine): the stub rebuilt the message from the template and verified the EIP-191 signature, the exact value, the Diamond as payee, the 120-second window limit, the lower-case wallet and nonce replay. Passed: funded escrow served with a matching receipt and no tx hash; an identical request skipped; a wrong payee refused with nothing sent; an insufficient escrow balance paid nothing and named the shortfall; an unreadable balance paid nothing and did not fall back to settlement; the 3-call cap counted escrow attempts. The pure rules are also unit-tested (`packages/core/src/escrow.test.ts`, `agent/src/escrow.test.ts`).
+
+## First live results (checked 2026-11-19 07:23 UTC)
+
+- The 21:17 UTC run on 2026-11-18 was the first to pay through escrow: both intents, HTTP 200, `rail: escrow`, a `receipt_hash` and an `epoch_id`, no `tx_hash`. Every hourly run since (through 07:17 UTC on 19 Nov) did the same: 22 paid calls, at most one per hour and intent, served by the pinned miners 71083 (hashprice) and 7320 (BTC price).
+- Billing verification (`data/billing.json`): epochs 12, 13 and 14 answered 200 with a delivery record naming this wallet as the payer, so those 18 receipts are `billing_verified: true`. The 4 receipts of epoch 15 were still pending (the node answered 404 until the epoch's block is recorded).
+- Escrow after the 07:17 UTC run: 7.78 USDC available, 8.00 deposited, 0.04 unbilled. The node's receipts name its own internal miner ids (4859, 5406); the response and the ledger rows name the miners Hushrate called.
