@@ -1,0 +1,73 @@
+{
+  "label": "hashprice-976619",
+  "miner_id_requested": "1900999013",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 976619
+  },
+  "query": null,
+  "idempotency_key": "[\"1900999013\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":976619}]",
+  "paid": true,
+  "http_status": 200,
+  "rail": "escrow",
+  "payment": {
+    "rail": "escrow",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b"
+  },
+  "escrow_request": {
+    "from": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "to": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+    "value": "10000",
+    "validAfter": "1795112247",
+    "validBefore": "1795112337",
+    "nonce": "5418a9b4-c966-492c-ab31-d0a1cf2bb23d"
+  },
+  "escrow_available_before_uusdc": "7600000",
+  "escrow_receipt": {
+    "receipt_hash": "0xc5832c9ded2c76da84db214376f3ebd0cc3ae5b7eebf42fb8a42c2bbad6e990d",
+    "rail": "escrow",
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "miner": "4992",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "amount_uusdc": "10000",
+    "epoch_id": 19,
+    "settlement": "epoch",
+    "chain": "telegraph",
+    "timestamp": 1795112256
+  },
+  "escrow_receipt_matches": true,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "miner_id": "1900999013",
+    "miner_name": "MetricWire Mining Hashprice Verify",
+    "endpoint": "/hashprice",
+    "result": {
+      "hashprice_sats_per_ph_day": 47699.593877,
+      "block_height": 976619,
+      "hashrate_eh_s": 965.10662,
+      "hashprice_usd_per_ph_day": null
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "hashprice_sats_per_ph_day": "ok",
+      "block_height": "ok",
+      "hashrate_eh_s": "ok",
+      "hashprice_usd_per_ph_day": "missing"
+    },
+    "input": {
+      "block_height": 976619
+    },
+    "input_schema_version": 1,
+    "cost_usd": 0.01,
+    "duration_ms": 1433,
+    "timestamp": "2026-11-19T18:17:34.314527183Z",
+    "reasoning": "Intent: miner metricwire-mining-hashprice-verify given by the caller\nMiner: The user is asking for the hashprice of Bitcoin at a specific block height. The MetricWire Mining Hashprice Verify miner has an endpoint `/hashprice` that serves the `MINING_HASHPRICE_VERIFY_GENERAL` intent. This endpoint accepts a query parameter that can be used to specify the block height. The question is formatted as a query to be passed to the miner.",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "intent_version": 2,
+    "signal_hash": "0xa9f3bacaf69e7d8d4ef7cbe48a151abf5bb1e193b6c521954fdfad6714c1f6e6"
+  }
+}
