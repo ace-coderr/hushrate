@@ -7469,9 +7469,9 @@
     "signal_hash": "0xdfc350ee79a245c82f3ee97186f89e21bd4374d3142b2a23c971d27f6edcf99d",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:10.861Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:07.906Z",
     "outcome": "served"
   },
   {
@@ -7494,9 +7494,9 @@
     "signal_hash": "0x00ddfee10804a30fa11f4a8375649064fb9bca2fa22eb7faa048d65806d80ff2",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:11.170Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:08.157Z",
     "outcome": "served"
   },
   {
@@ -7519,9 +7519,9 @@
     "signal_hash": "0xcb890d29f73b6ba658d87a8e12c004f1536b150ab0ea7554ec9f0b757cba5ef4",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:11.440Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:08.424Z",
     "outcome": "served"
   },
   {
@@ -7544,9 +7544,9 @@
     "signal_hash": "0x11f6f19361fde45b3a5c0d2a331ff972bb72689cd7203fd71a4656cba04893a4",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:11.705Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:08.672Z",
     "outcome": "served"
   },
   {
@@ -7569,9 +7569,9 @@
     "signal_hash": "0x16357e1e0cfb985f15048673f675f1c1abbf4f1054cc94e87bf1de46bfc0fff1",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:11.964Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:08.933Z",
     "outcome": "served"
   },
   {
@@ -7594,9 +7594,9 @@
     "signal_hash": "0x26cbcccc1546f3e4fc4eb8c95c25c224cbbb323a02dcf0a31e0997b4b4d3281f",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:12.225Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:09.183Z",
     "outcome": "served"
   },
   {
@@ -7619,9 +7619,9 @@
     "signal_hash": "0xb258423e719449db1da8ba9ba0be2d6739e0f739531f00dc5bc156ff2b1fe5d2",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:12.469Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:09.436Z",
     "outcome": "served"
   },
   {
@@ -7644,9 +7644,9 @@
     "signal_hash": "0x49bf75f0551748a5b30c7c760100c51c19508dd2385669113585a2fe99b37f4e",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:12.731Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:09.687Z",
     "outcome": "served"
   },
   {
@@ -7669,9 +7669,9 @@
     "signal_hash": "0x3d03553bf0d4f32a22acb5bd1ee363e5ebdb4e8d30bc609d5d689b8b1274186e",
     "rail": "escrow",
     "epoch_id": 25,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:12.975Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:09.949Z",
     "outcome": "served"
   },
   {
@@ -7694,9 +7694,59 @@
     "signal_hash": "0x8249adb5f14868d46943005e87fa88e97bef1fcae2dd9a9574b567a9fe29952c",
     "rail": "escrow",
     "epoch_id": 25,
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T18:18:10.213Z",
+    "outcome": "served"
+  },
+  {
+    "file": "2026-11-20T18-17-27-564Z-hashprice-976766.json",
+    "at": "2026-11-20T18:17:27.564Z",
+    "label": "hashprice-976766",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_requested": "71083",
+    "miner_id": "71083",
+    "miner_name": "Bitcoin Block Hashprice",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0x129c3f182b83a535c828c1a065083e04e0b1b6ae96dd194973d1c700621b7064",
+    "tx_hash": null,
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "signal_hash": "0xe372cc514b3f523be992315aa2532b19bd089b0f708fc0efdd28449f300b0155",
+    "rail": "escrow",
+    "epoch_id": 26,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T17:18:13.250Z",
+    "billing_checked_at": "2026-11-20T18:18:10.475Z",
+    "outcome": "served"
+  },
+  {
+    "file": "2026-11-20T18-17-31-356Z-btc-2026-11-20T18-00-00Z.json",
+    "at": "2026-11-20T18:17:31.356Z",
+    "label": "btc-2026-11-20T18-00-00Z",
+    "intent": "CRYPTO_PRICE_USD",
+    "miner_requested": "7320",
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0x6a48be33b6d106e2d9c87e7d6d1ec05142530faa22e5f1c8372e2da927a580b4",
+    "tx_hash": null,
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "signal_hash": "0x4840780aa500771ed77da3194aabc9fee00ce1b92a9c674e9bf077cb25c53e99",
+    "rail": "escrow",
+    "epoch_id": 26,
+    "billing_verified": null,
+    "billing_status": "pending",
+    "billing_checked_at": "2026-11-20T18:18:10.808Z",
     "outcome": "served"
   }
 ]
