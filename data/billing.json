@@ -702,7 +702,7 @@
   {
     "receipt_hash": "0x516e91cb5375326e46e09aebb6960bddb18bd97bcf99a0a6766e0243efe1dc2e",
     "epoch_id": 24,
-    "checked_at": "2026-11-20T11:30:41.459Z",
+    "checked_at": "2026-11-20T12:18:17.496Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
@@ -711,7 +711,7 @@
   {
     "receipt_hash": "0xdb732039f073b0f1fd5ed8c83aa60934dc63760a7622c68e6daa1fef6686061e",
     "epoch_id": 24,
-    "checked_at": "2026-11-20T11:30:42.092Z",
+    "checked_at": "2026-11-20T12:18:17.739Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
@@ -720,7 +720,7 @@
   {
     "receipt_hash": "0x6f7e1ad77e10f5a260ba05c53492440a70c3b05be112c5c19a265e1442c36baf",
     "epoch_id": 24,
-    "checked_at": "2026-11-20T11:30:42.307Z",
+    "checked_at": "2026-11-20T12:18:17.963Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
@@ -729,7 +729,25 @@
   {
     "receipt_hash": "0xf3cadcc5a411edcd33d27f5b9cb49c35938efa111cd34e6c751c78ee449ca6ed",
     "epoch_id": 24,
-    "checked_at": "2026-11-20T11:30:42.522Z",
+    "checked_at": "2026-11-20T12:18:18.184Z",
+    "http_status": 404,
+    "billing_verified": null,
+    "status": "pending",
+    "note": "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)"
+  },
+  {
+    "receipt_hash": "0x63b410f01f5f1399d25bc3da3abe0c74c1cad0969a7442445dcffd587d15e19c",
+    "epoch_id": 24,
+    "checked_at": "2026-11-20T12:18:18.395Z",
+    "http_status": 404,
+    "billing_verified": null,
+    "status": "pending",
+    "note": "the epoch's block is not recorded yet (the node answers 404 until it is, up to about an hour on the testnet)"
+  },
+  {
+    "receipt_hash": "0x111899dc64810b97422acb4c6adb95668dff40162c96b20944cfecc3cfa9e907",
+    "epoch_id": 24,
+    "checked_at": "2026-11-20T12:18:18.620Z",
     "http_status": 404,
     "billing_verified": null,
     "status": "pending",
