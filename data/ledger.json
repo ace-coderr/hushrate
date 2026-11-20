@@ -7471,7 +7471,7 @@
     "epoch_id": 25,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T15:18:08.509Z",
+    "billing_checked_at": "2026-11-20T16:18:14.640Z",
     "outcome": "served"
   },
   {
@@ -7496,7 +7496,7 @@
     "epoch_id": 25,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T15:18:09.251Z",
+    "billing_checked_at": "2026-11-20T16:18:15.360Z",
     "outcome": "served"
   },
   {
@@ -7521,7 +7521,7 @@
     "epoch_id": 25,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T15:18:09.499Z",
+    "billing_checked_at": "2026-11-20T16:18:15.611Z",
     "outcome": "served"
   },
   {
@@ -7546,7 +7546,7 @@
     "epoch_id": 25,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T15:18:09.752Z",
+    "billing_checked_at": "2026-11-20T16:18:15.859Z",
     "outcome": "served"
   },
   {
@@ -7571,7 +7571,7 @@
     "epoch_id": 25,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T15:18:09.993Z",
+    "billing_checked_at": "2026-11-20T16:18:16.109Z",
     "outcome": "served"
   },
   {
@@ -7596,7 +7596,57 @@
     "epoch_id": 25,
     "billing_verified": null,
     "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T15:18:10.236Z",
+    "billing_checked_at": "2026-11-20T16:18:16.357Z",
+    "outcome": "served"
+  },
+  {
+    "file": "2026-11-20T16-17-34-847Z-hashprice-976753.json",
+    "at": "2026-11-20T16:17:34.847Z",
+    "label": "hashprice-976753",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_requested": "71083",
+    "miner_id": "71083",
+    "miner_name": "Bitcoin Block Hashprice",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0x082534efe14fdc174e912e712a2079220f23ca7b4793346491564f4113454a92",
+    "tx_hash": null,
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "signal_hash": "0xb258423e719449db1da8ba9ba0be2d6739e0f739531f00dc5bc156ff2b1fe5d2",
+    "rail": "escrow",
+    "epoch_id": 25,
+    "billing_verified": null,
+    "billing_status": "pending",
+    "billing_checked_at": "2026-11-20T16:18:17.050Z",
+    "outcome": "served"
+  },
+  {
+    "file": "2026-11-20T16-17-38-696Z-btc-2026-11-20T16-00-00Z.json",
+    "at": "2026-11-20T16:17:38.696Z",
+    "label": "btc-2026-11-20T16-00-00Z",
+    "intent": "CRYPTO_PRICE_USD",
+    "miner_requested": "7320",
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "http_status": 200,
+    "billed_usd": 0.01,
+    "paid_usd": 0.01,
+    "receipt_hash": "0x93e6ea7cb314fffd1f0f416976b596583fde68fdcd3b678329c705db8972c883",
+    "tx_hash": null,
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "amount_uusdc": "10000",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "signal_hash": "0x49bf75f0551748a5b30c7c760100c51c19508dd2385669113585a2fe99b37f4e",
+    "rail": "escrow",
+    "epoch_id": 25,
+    "billing_verified": null,
+    "billing_status": "pending",
+    "billing_checked_at": "2026-11-20T16:18:17.300Z",
     "outcome": "served"
   }
 ]
