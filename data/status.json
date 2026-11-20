@@ -1,8 +1,8 @@
 {
-  "state": "ok",
-  "updated_at": "2026-11-20T21:18:24.702Z",
-  "last_success_at": "2026-11-20T21:18:24.702Z",
-  "usdc_balance": "5.78",
+  "state": "degraded",
+  "updated_at": "2026-11-20T22:18:33.457Z",
+  "last_success_at": "2026-11-20T22:18:33.457Z",
+  "usdc_balance": "20",
   "balances": [
     {
       "asset": "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
@@ -17,18 +17,18 @@
       "balance": "5.78"
     }
   ],
-  "rail": "escrow",
-  "rail_reason": "escrow funded: 7080000 uUSDC available",
+  "rail": "public",
+  "rail_reason": "the node offers no escrow rail; and the node's payment terms (402 challenge) could not be read",
   "escrow": {
     "diamond": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
     "token": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
-    "read_at": "2026-11-20T21:18:24.702Z",
+    "read_at": "2026-11-20T22:18:33.456Z",
     "available_usdc": "7.06",
     "deposited_usdc": "8.00",
-    "balance_usdc": "7.14",
-    "unbilled_usdc": "0.08"
+    "balance_usdc": "7.06",
+    "unbilled_usdc": "0.00"
   },
-  "payment_asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+  "payment_asset": null,
   "payment_network": "eip155:11155111",
   "allowed_assets": [
     "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
@@ -36,9 +36,14 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-20T21-17-36Z.json",
-  "paid_calls_last_run": 2,
-  "cost_usd_last_run": 0.02,
-  "hashprice_source": "telegraph",
-  "btc_source": "telegraph"
+  "last_tape": "data/market/2026-11-20T22-17-26Z.json",
+  "paid_calls_last_run": 0,
+  "cost_usd_last_run": 0,
+  "hashprice_source": "public",
+  "btc_source": "public",
+  "degraded": [
+    "payment terms: the 402 challenge could not be fetched (The operation was aborted due to timeout)",
+    "payment terms: the node's payment terms (402 challenge) could not be read. No miner was called; values below are public and labelled."
+  ],
+  "reason": "2 upstream problem(s); see degraded list"
 }

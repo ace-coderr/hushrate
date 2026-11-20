@@ -7719,9 +7719,9 @@
     "signal_hash": "0xe372cc514b3f523be992315aa2532b19bd089b0f708fc0efdd28449f300b0155",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:25.636Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:34.282Z",
     "outcome": "served"
   },
   {
@@ -7744,9 +7744,9 @@
     "signal_hash": "0x4840780aa500771ed77da3194aabc9fee00ce1b92a9c674e9bf077cb25c53e99",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:25.963Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:34.470Z",
     "outcome": "served"
   },
   {
@@ -7769,9 +7769,9 @@
     "signal_hash": "0x50007345cb56d1867f9369e1627b57f9c90957f3659969b0407e6e7d2e22c8cd",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:26.251Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:34.643Z",
     "outcome": "served"
   },
   {
@@ -7794,9 +7794,9 @@
     "signal_hash": "0x940c2f66b75524c608e9271f21a4d2c683321a491e35272094ae1e0ed6f4d874",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:26.536Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:34.829Z",
     "outcome": "served"
   },
   {
@@ -7819,9 +7819,9 @@
     "signal_hash": "0x755ed3e364270deea21e0ec3840688f91f56177106103fcca73ff68870598f5e",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:26.813Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:35.011Z",
     "outcome": "served"
   },
   {
@@ -7844,9 +7844,9 @@
     "signal_hash": "0xdf2719016990ecc4bf73211050e1644c52a6ebbe16a58cfd69b360caa4ead6db",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:27.099Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:35.199Z",
     "outcome": "served"
   },
   {
@@ -7869,9 +7869,9 @@
     "signal_hash": "0x5789adf4d1eabb819ae31e41996ab43ffbd267241e65927f862f632a1d083663",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:27.389Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:35.374Z",
     "outcome": "served"
   },
   {
@@ -7894,9 +7894,9 @@
     "signal_hash": "0xb247bd9d2d346a1e137793802a2561061847d502b7759d23c4c122aeccacab23",
     "rail": "escrow",
     "epoch_id": 26,
-    "billing_verified": null,
-    "billing_status": "pending",
-    "billing_checked_at": "2026-11-20T21:18:27.679Z",
+    "billing_verified": true,
+    "billing_status": "verified",
+    "billing_checked_at": "2026-11-20T22:18:35.545Z",
     "outcome": "served"
   }
 ]
