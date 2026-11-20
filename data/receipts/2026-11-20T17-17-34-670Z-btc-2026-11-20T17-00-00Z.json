@@ -1,0 +1,67 @@
+{
+  "label": "btc-2026-11-20T17-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-20T17:00:00Z\"]",
+  "paid": true,
+  "http_status": 200,
+  "rail": "escrow",
+  "payment": {
+    "rail": "escrow",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b"
+  },
+  "escrow_request": {
+    "from": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "to": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+    "value": "10000",
+    "validAfter": "1795195048",
+    "validBefore": "1795195138",
+    "nonce": "35becc99-e1e4-45c9-b202-47c860d39eb0"
+  },
+  "escrow_available_before_uusdc": "7150000",
+  "escrow_receipt": {
+    "receipt_hash": "0xf94be08d31623a70a1466f12c89d1df2ba70362d627ae7cf04ffc9aba649d393",
+    "rail": "escrow",
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "miner": "5406",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 25,
+    "settlement": "epoch",
+    "chain": "telegraph",
+    "timestamp": 1795195054
+  },
+  "escrow_receipt_matches": true,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 59290.2
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 352,
+    "timestamp": "2026-11-20T17:17:33.706631252Z",
+    "reasoning": "Intent: miner finwire-crypto-price given by the caller\nMiner: The user is asking for the price of a cryptocurrency (BTC), which falls under the CRYPTO_PRICE_USD intent. The FinWire Crypto Price miner has a /price endpoint that accepts a 'symbol' query parameter, which directly maps to the provided 'symbol' parameter from the user's request. This endpoint is suitable for the CRYPTO_PRICE_USD intent.",
+    "intent": "CRYPTO_PRICE_USD",
+    "intent_version": 1,
+    "signal_hash": "0x8249adb5f14868d46943005e87fa88e97bef1fcae2dd9a9574b567a9fe29952c"
+  }
+}
