@@ -1,7 +1,7 @@
 {
   "state": "degraded",
-  "updated_at": "2026-11-20T03:10:37.343Z",
-  "last_success_at": "2026-11-20T03:10:37.343Z",
+  "updated_at": "2026-11-20T04:18:17.846Z",
+  "last_success_at": "2026-11-20T04:18:17.846Z",
   "usdc_balance": "5.78",
   "balances": [
     {
@@ -18,15 +18,15 @@
     }
   ],
   "rail": "escrow",
-  "rail_reason": "escrow funded: 7420000 uUSDC available",
+  "rail_reason": "escrow funded: 7400000 uUSDC available",
   "escrow": {
     "diamond": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
     "token": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
-    "read_at": "2026-11-20T03:10:37.343Z",
-    "available_usdc": "7.40",
+    "read_at": "2026-11-20T04:18:17.845Z",
+    "available_usdc": "7.38",
     "deposited_usdc": "8.00",
-    "balance_usdc": "7.46",
-    "unbilled_usdc": "0.06"
+    "balance_usdc": "7.40",
+    "unbilled_usdc": "0.02"
   },
   "payment_asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
   "payment_network": "eip155:11155111",
@@ -36,13 +36,13 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-20T03-09-43Z.json",
+  "last_tape": "data/market/2026-11-20T04-17-23Z.json",
   "paid_calls_last_run": 2,
   "cost_usd_last_run": 0.02,
-  "hashprice_source": "public",
+  "hashprice_source": "telegraph",
   "btc_source": "telegraph",
   "degraded": [
-    "Telegraph miner 71083 (primary) hashprice: HTTP 500: miner error unavailable [unverified_block]: Hashprice for Bitcoin block 976673 is unavailable because the public sources could not be verified; no value is estimated."
+    "CAISO OASIS day-ahead TH_SP15_GEN-APND: fetch failed"
   ],
   "reason": "1 upstream problem(s); see degraded list"
 }
