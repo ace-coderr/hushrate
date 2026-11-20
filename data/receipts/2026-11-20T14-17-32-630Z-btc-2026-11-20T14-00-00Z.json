@@ -1,0 +1,67 @@
+{
+  "label": "btc-2026-11-20T14-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-20T14:00:00Z\"]",
+  "paid": true,
+  "http_status": 200,
+  "rail": "escrow",
+  "payment": {
+    "rail": "escrow",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b"
+  },
+  "escrow_request": {
+    "from": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "to": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+    "value": "10000",
+    "validAfter": "1795184246",
+    "validBefore": "1795184336",
+    "nonce": "b616f0ee-accd-48e0-a519-b57c9071ccfc"
+  },
+  "escrow_available_before_uusdc": "7210000",
+  "escrow_receipt": {
+    "receipt_hash": "0x52a16f9cefaf3b7cc99f1dbb4b74ed9b10ca1dbb6f9b8cc80fa9cd8bea6dd1c5",
+    "rail": "escrow",
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "miner": "5406",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 25,
+    "settlement": "epoch",
+    "chain": "telegraph",
+    "timestamp": 1795184252
+  },
+  "escrow_receipt_matches": true,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 61859
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 408,
+    "timestamp": "2026-11-20T14:17:31.795349185Z",
+    "reasoning": "Intent: miner finwire-crypto-price given by the caller\nMiner: The user is asking for the price of Bitcoin (BTC), which falls under the CRYPTO_PRICE_USD intent. The FinWire Crypto Price miner has a /price endpoint that accepts a 'symbol' query parameter, which directly maps to the provided 'symbol: BTC' parameter. This endpoint is suitable for the CRYPTO_PRICE_USD intent.",
+    "intent": "CRYPTO_PRICE_USD",
+    "intent_version": 1,
+    "signal_hash": "0x11f6f19361fde45b3a5c0d2a331ff972bb72689cd7203fd71a4656cba04893a4"
+  }
+}
