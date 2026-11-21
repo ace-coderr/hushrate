@@ -1,0 +1,67 @@
+{
+  "label": "btc-2026-11-21T05-00-00Z",
+  "miner_id_requested": "7320",
+  "intent": "CRYPTO_PRICE_USD",
+  "params": {
+    "symbol": "BTC"
+  },
+  "query": null,
+  "idempotency_key": "[\"7320\",\"CRYPTO_PRICE_USD\",{\"symbol\":\"BTC\"},null,\"@2026-11-21T05:00:00Z\"]",
+  "paid": true,
+  "http_status": 200,
+  "rail": "escrow",
+  "payment": {
+    "rail": "escrow",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b"
+  },
+  "escrow_request": {
+    "from": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "to": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+    "value": "10000",
+    "validAfter": "1795238247",
+    "validBefore": "1795238337",
+    "nonce": "f7944f5b-3c61-4fdc-8cf7-4689f20d8efd"
+  },
+  "escrow_available_before_uusdc": "6930000",
+  "escrow_receipt": {
+    "receipt_hash": "0x99e9ccf0f96c4510f8f1907e562d839bac8b9f84055edac5cf8a5b90f54dc1c7",
+    "rail": "escrow",
+    "payer": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "miner": "5406",
+    "intent": "CRYPTO_PRICE_USD",
+    "amount_uusdc": "10000",
+    "epoch_id": 29,
+    "settlement": "epoch",
+    "chain": "telegraph",
+    "timestamp": 1795238253
+  },
+  "escrow_receipt_matches": true,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "miner_id": "7320",
+    "miner_name": "FinWire Crypto Price",
+    "endpoint": "/price",
+    "result": {
+      "price_usd": 56313.7
+    },
+    "result_shape": "intent",
+    "format_version": 1,
+    "field_status": {
+      "price_usd": "ok"
+    },
+    "input": {
+      "symbol": "BTC"
+    },
+    "input_schema_version": 3,
+    "cost_usd": 0.01,
+    "duration_ms": 383,
+    "timestamp": "2026-11-21T05:17:33.160029141Z",
+    "reasoning": "Intent: miner finwire-crypto-price given by the caller\nMiner: The user is asking for the price of Bitcoin (BTC) in USD. The FinWire Crypto Price miner has a /price endpoint that accepts a 'symbol' query parameter for this purpose. The intent is CRYPTO_PRICE_USD, which matches the description of the /price endpoint.",
+    "intent": "CRYPTO_PRICE_USD",
+    "intent_version": 1,
+    "signal_hash": "0xe73e613592538bc88c4c21cd882d01a4abb2f3f7c088616a2983c7931b382774"
+  }
+}
