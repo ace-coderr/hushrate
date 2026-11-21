@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "interval_start": "2026-11-21T00:00:00Z",
+  "recorded_at": "2026-11-21T00:17:21.703Z",
+  "block_height": 976806,
+  "btc_usd": 58839.2,
+  "hashprice": {
+    "value_sats_per_ph_day": 46905.345548,
+    "source": "telegraph",
+    "label": "Telegraph miner 71083: equals the public single-block value at block 976806 within 1% (0.000% apart)",
+    "public_144": {
+      "tip": 976806,
+      "blocks": 144,
+      "from_height": 976663,
+      "to_height": 976806,
+      "hashprice_sats_per_ph_day": 47061.227498433465,
+      "min_block": 46626.97267383998,
+      "max_block": 48037.52260037759
+    },
+    "telegraph": {
+      "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+      "requested_miner": "71083",
+      "miner_id": "71083",
+      "miner_name": "Bitcoin Block Hashprice",
+      "http_status": 200,
+      "paid": true,
+      "cost_usd": 0.01,
+      "field_status": {
+        "hashprice_sats_per_ph_day": "ok",
+        "block_height": "ok",
+        "hashrate_eh_s": "ok",
+        "hashprice_usd_per_ph_day": "missing"
+      },
+      "value": 46905.345548,
+      "returned_height": 976806,
+      "signal_hash": "0x0f5c1bfa562d1e3e2724f442b702b0db8df55813cf62a2d34956c73bddbec8cd",
+      "rail": "escrow",
+      "receipt_hash": "0xff4c15349d3aa0f162f9ae98c2e22e00c6b25cb1ee883a44d930865ba8d500d1",
+      "epoch_id": 27,
+      "tx_hash": null,
+      "receipt_file": "2026-11-21T00-17-29-208Z-hashprice-976806.json",
+      "accepted": true
+    },
+    "public_at_telegraph_height": 46905.345548319405,
+    "comparison": "single_block_at_returned_height",
+    "tolerance_rel": 0.01,
+    "miner_role": "primary"
+  },
+  "btc": {
+    "value_usd": 58839.2,
+    "source": "telegraph",
+    "label": "Telegraph miner 7320, within 0.5% of the public mempool.space price",
+    "public_usd": 58890,
+    "tolerance_rel": 0.005,
+    "telegraph": {
+      "intent": "CRYPTO_PRICE_USD",
+      "requested_miner": "7320",
+      "miner_id": "7320",
+      "miner_name": "FinWire Crypto Price",
+      "http_status": 200,
+      "paid": true,
+      "cost_usd": 0.01,
+      "field_status": {
+        "price_usd": "ok"
+      },
+      "value": 58839.2,
+      "returned_height": null,
+      "signal_hash": "0x5e2ba4f4830dcd18266f9be8106dc1f5d8b5cc8d5d5ff455d4962d5565600774",
+      "rail": "escrow",
+      "receipt_hash": "0x205d61891ae0ff6ee6abed4255e1fe037163d63ea954b1de677c480be880f31b",
+      "epoch_id": 27,
+      "tx_hash": null,
+      "receipt_file": "2026-11-21T00-17-32-175Z-btc-2026-11-21T00-00-00Z.json",
+      "accepted": true
+    }
+  },
+  "power": [
+    {
+      "node": "TH_SP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 31.46733,
+      "day_ahead_interval": "2026-11-21T00:00:00.000Z",
+      "real_time_usd_per_mwh": 30.00084,
+      "real_time_interval": "2026-11-21T00:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_NP15_GEN-APND",
+      "day_ahead_usd_per_mwh": 59.16833,
+      "day_ahead_interval": "2026-11-21T00:00:00.000Z",
+      "real_time_usd_per_mwh": 58.49973,
+      "real_time_interval": "2026-11-21T00:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    },
+    {
+      "node": "TH_ZP26_GEN-APND",
+      "day_ahead_usd_per_mwh": 41.20851,
+      "day_ahead_interval": "2026-11-21T00:00:00.000Z",
+      "real_time_usd_per_mwh": 35.06111,
+      "real_time_interval": "2026-11-21T00:15:00.000Z",
+      "telegraph": null,
+      "errors": []
+    }
+  ],
+  "spend": {
+    "paid_calls": 2,
+    "cost_usd": 0.02
+  },
+  "wallet_usdc_after": "5.78",
+  "notes": [],
+  "degraded": [],
+  "payment": {
+    "rail": "escrow",
+    "rail_reason": "escrow funded: 7040000 uUSDC available",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
+    "requested": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "allowed": [
+      "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238",
+      "0xcc194e1a843B658526D0D5C431f670028582Ae17"
+    ]
+  }
+}
