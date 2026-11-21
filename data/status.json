@@ -1,7 +1,7 @@
 {
   "state": "ok",
-  "updated_at": "2026-11-21T03:18:10.107Z",
-  "last_success_at": "2026-11-21T03:18:10.107Z",
+  "updated_at": "2026-11-21T04:18:09.449Z",
+  "last_success_at": "2026-11-21T04:18:09.449Z",
   "usdc_balance": "5.78",
   "balances": [
     {
@@ -18,15 +18,15 @@
     }
   ],
   "rail": "escrow",
-  "rail_reason": "escrow funded: 6980000 uUSDC available",
+  "rail_reason": "escrow funded: 6960000 uUSDC available",
   "escrow": {
     "diamond": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b",
     "token": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
-    "read_at": "2026-11-21T03:18:10.107Z",
-    "available_usdc": "6.96",
+    "read_at": "2026-11-21T04:18:09.448Z",
+    "available_usdc": "6.94",
     "deposited_usdc": "8.00",
     "balance_usdc": "7.02",
-    "unbilled_usdc": "0.06"
+    "unbilled_usdc": "0.08"
   },
   "payment_asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
   "payment_network": "eip155:11155111",
@@ -36,7 +36,7 @@
   ],
   "unfunded": false,
   "unfunded_asset": null,
-  "last_tape": "data/market/2026-11-21T03-17-22Z.json",
+  "last_tape": "data/market/2026-11-21T04-17-22Z.json",
   "paid_calls_last_run": 2,
   "cost_usd_last_run": 0.02,
   "hashprice_source": "telegraph",
