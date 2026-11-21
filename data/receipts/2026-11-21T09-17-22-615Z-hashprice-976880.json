@@ -1,0 +1,37 @@
+{
+  "label": "hashprice-976880",
+  "miner_id_requested": "71083",
+  "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+  "params": {
+    "block_height": 976880
+  },
+  "query": null,
+  "idempotency_key": "[\"71083\",\"MINING_HASHPRICE_VERIFY_GENERAL\",{\"block_height\":976880}]",
+  "paid": false,
+  "http_status": 500,
+  "rail": "escrow",
+  "payment": {
+    "rail": "escrow",
+    "asset": "0xcc194e1a843B658526D0D5C431f670028582Ae17",
+    "network": "eip155:11155111",
+    "pay_to": "0x72a70e949362670Bf8bceAd24eFC5b8f950aa08b"
+  },
+  "escrow_request": {
+    "from": "0x3f857679462c80cc4ffe99635aa3bd6e44fc913e",
+    "to": "0x72a70e949362670bf8bcead24efc5b8f950aa08b",
+    "value": "10000",
+    "validAfter": "1795252636",
+    "validBefore": "1795252726",
+    "nonce": "a9f0689e-9593-4b0e-8233-5f8edef1a6e3"
+  },
+  "escrow_available_before_uusdc": "6860000",
+  "escrow_receipt": null,
+  "escrow_receipt_matches": false,
+  "payment_response": null,
+  "telegraph_receipt": null,
+  "response": {
+    "error": "miner error unavailable [unverified_block]: Hashprice for Bitcoin block 976880 is unavailable because the public sources could not be verified; no value is estimated.",
+    "intent": "MINING_HASHPRICE_VERIFY_GENERAL",
+    "miner_id": "71083"
+  }
+}
